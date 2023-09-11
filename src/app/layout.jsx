@@ -1,4 +1,5 @@
 import './globals.css'
+import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 
 import { Inter } from 'next/font/google'
 
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NavbarWithCTAButton />
+        {children}
+      </body>
     </html>
   )
 }
