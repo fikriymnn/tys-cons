@@ -3,7 +3,7 @@ import React from 'react'
 function ArticleCard() {
     return (
         <a href="/articles/article">
-            <div className='bg-white shadow-xl hover:translate-y-[-10px]'>
+            <div className='bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out'>
                 <div className='h-36 bg-blue-700'>
 
                 </div>
