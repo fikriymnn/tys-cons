@@ -1,65 +1,68 @@
 'use client';
 import React from 'react'
 import { Card } from 'flowbite-react';
-function MainCard() {
+function MainCard({ icon, title, text1, text2, text3, text4, text5, text6, text7 }) {
      return (
-          <Card className='hover:bg-blue-600 hover:text-white'>
+          <Card className='p-10 group block rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500  group-hover:text-white '>
                <a href="">
-                    <div className="flex items-baseline text-gray-900 dark:text-white">
-                         <img src="" alt="" />
-                         <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
-                              Basic Establishment Services
+                    <div className="flex items-baseline text-gray-900  first-linexport hover:/assets/images/icontools3.png 
+                     {mainCard}">
+                         <img className='w-10 group-hover:stroke-white m-1' src={icon} alt="" />
+
+                         <span className="ml-1 text-xl font-normal my-auto  text-black  group-hover:text-white">
+                              {title}
                          </span>
+
                     </div>
                     <ul className="my-7 space-y-5">
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Company Registration
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text1}
                               </span>
                          </li>
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Visa Registration
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text2}
                               </span>
                          </li>
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Trademark
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text3}
                               </span>
                          </li>
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Office Administration
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text4}
                               </span>
                          </li>
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Construction Certifications
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text5}
                               </span>
                          </li>
                          <li className="flex space-x-3">
 
-                              <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                                   Factory Licenses
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text6}
+                              </span>
+                         </li>
+                         <li className="flex space-x-3">
+
+                              <span className="text-base font-normal leading-tight text-black group-hover:text-white">
+                                   {text7}
                               </span>
                          </li>
 
 
                     </ul>
-                    <button
-                         className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                         type="button"
-                    >
-                         <p>
-                              Choose plan
-                         </p>
-                    </button>
+
                </a>
+
 
           </Card>
      )
