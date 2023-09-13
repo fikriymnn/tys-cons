@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const About = () => {
     return (
-        <div className=' p-16'>
+        <div className=' px-16 py-24'>
             <p className='text-blue-800 text-3xl font-semibold pb-4 font-sans'>
                 About Us
             </p>
