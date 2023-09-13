@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import MainCard from '@/components/MainCard'
+import CustomCard from '@/components/CustomCard'
 
 const Home = () => {
   return (
@@ -18,12 +19,18 @@ const Home = () => {
 
       </div>
       <p className='font-bold text-3xl text-center py-10'>What Services We Offer</p>
-      <div className='grid grid-cols-3 gap-4 '>
-        <MainCard />
-        <MainCard />
-        <MainCard />
-        <MainCard />
-        <MainCard />
+      <div className='grid grid-cols-3 gap-4 p-10 '>
+        <MainCard icon={"/assets/images/icontools2.png"} title={"Basic Establishment Services"} text1={"Company Registration"} text2={"Visa Registration"} text3={"Trademark"} text4={"Office Administration"} text5={"Construction Certifications"} text6={"Factory Licenses"} />
+        <MainCard icon={"/assets/images/bag.png"} title={"Product Certifications"} text1={"BPOM Food and Drug"} text2={"ISO Management System"} text3={"SNI National Standard"} text4={"Medical and Hygiene"}
+          text5={"POSTEL Telecommunication"} text6={"Alcohol And Cigarette"} text7={"Other Certification"} />
+        <MainCard icon={"/assets/images/dollar.png"} title={"Finance Accounting Tax"} text1={"Finance Services"} text2={"Accounting Services"} text3={"Tax Services"} />
+        <MainCard icon={"/assets/images/bag2.png"} title={"Talent Recruitment HR"} text1={"Translator Assistant"} text2={"Finance Accounting Tax"} text3={"Marketing Sales"} text4={"Management Candidate"} text5={"HR Management Service"} />
+        <MainCard icon={"/assets/images/file.png"} title={"Legal Services"} text1={"Legal Administration"} />
+      </div>
+      <p className='font-bold text-3xl text-center py-10 '>Latest Articles</p>
+      <div className='grid grid-cols-3 gap-4'>
+        <CustomCard />
+        <CustomCard />
       </div>
     </>
   )
