@@ -9,7 +9,7 @@ function ConstructionCertificationsPage() {
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
+
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
         </>
