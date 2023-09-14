@@ -35,7 +35,7 @@ function Events() {
                 </div>
                 {
                     comp == 0 ? <>
-                        <p >Ini Company Registration</p>
+
                         <div className='grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5'>
                             <CompanyRegistrationPage />
 
@@ -43,7 +43,7 @@ function Events() {
 
                         </div>
                     </> : comp == 1 ? <>
-                        <p>Ini Visa Registration</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <VisaRegistrationPage />
 
@@ -51,7 +51,7 @@ function Events() {
 
                         </div>
                     </> : comp == 2 ? <>
-                        <p>Ini Trademark</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <TrademarkPage />
 
@@ -59,7 +59,7 @@ function Events() {
 
                         </div>
                     </> : comp == 3 ? <>
-                        <p>Ini Office Administration</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <OfficeAdministrationPage />
 
@@ -67,7 +67,7 @@ function Events() {
 
                         </div>
                     </> : comp == 4 ? <>
-                        <p>Ini Construction Certifications</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <ConstructionCertificationsPage />
 
@@ -75,7 +75,7 @@ function Events() {
 
                         </div>
                     </> : comp == 5 ? <>
-                        <p>Ini Factory Licenses</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <FactoryLicensesPage />
 
