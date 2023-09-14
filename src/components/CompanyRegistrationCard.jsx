@@ -2,7 +2,7 @@ import React from 'react'
 
 function CompanyRegistrationCard() {
     return (
-        <a href="/">
+        <a href="/services/detail">
 
 
             <div className='bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2'>
