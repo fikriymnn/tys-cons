@@ -10,11 +10,14 @@ function Event() {
                 className='ps-0'
             />
             <div className='bg-white'>
-                <div className="relative p-5">
-                    <div className='w-full h-1000px'>
-                        <h3>Posted at: Mon Dec 10 2022</h3>
+                <div className="relative p-5 mt-20 md:mt-10">
+                    <div className='w-full'>
+                        <div className='flex md:flex-row flex-col'>
+                            <p>Posted at: </p>
+                            <p>Mon Dec 10 2022</p>
+                        </div>
                         <h1 className='text-4xl text-center p-5 font-semibold'>Event Title</h1>
-                        <div className='bg-blue-500 h-[500px] relative'>
+                        <div className='bg-blue-500 h-[200px] md:h-[500px] relative'>
                             <div
                                 className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
                                 style={{ backgroundImage: 'url(/assets/images/article.png)' }}
