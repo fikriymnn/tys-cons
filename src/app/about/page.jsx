@@ -1,10 +1,13 @@
+'use client';
 import React from 'react'
 import Iframe from 'react-iframe'
 import Image from 'next/image'
 
+
+
 const About = () => {
     return (
-        <div className=' p-16'>
+        <div className=' px-16 py-24'>
             <p className='text-blue-800 text-3xl font-semibold pb-4 font-sans'>
                 About Us
             </p>
@@ -46,10 +49,15 @@ const About = () => {
                         <h1 className=' text-md pb-3'>Phone Number</h1>
                         <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 input' />
                     </div>
-                    <div className=''>
+                    <div className=' py-5'>
                         <h1 className=' text-md pb-3'>Message</h1>
-                        <textarea name="" id="" cols="30" rows="10" className=' w-full resize-none' maxLength={100}>Input your message</textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder='Input your message' color=' bg-transparent' className=' w-full resize-none rounded-lg border-slate-300 ' maxLength={100}></textarea>
                     </div>
+                    <a href="">
+                        <div className=' w-full h-12 bg-blue-500'>
+                            <p className=' text-white text-center my-auto py-3'>Send Message</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
