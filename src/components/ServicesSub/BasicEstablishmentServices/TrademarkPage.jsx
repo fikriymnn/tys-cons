@@ -12,6 +12,9 @@ function TrademarkPage() {
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
+            <CompanyRegistrationCard />
+            <CompanyRegistrationCard />
+            <CompanyRegistrationCard />
         </>
     )
 }
