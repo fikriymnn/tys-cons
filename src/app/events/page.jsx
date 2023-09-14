@@ -3,8 +3,8 @@ import EventCard from '@/components/EventCard'
 
 function Events() {
     return (
-        <div className='bg-gray-200 p-5'>
-            <div className='bg-white'>
+        <div className='bg-gray-200 p-5 '>
+            <div className='bg-white md:mt-20 mt-32'>
                 <div className="relative p-5 pt-10">
                     <div className="relative">
                         <input
@@ -31,7 +31,7 @@ function Events() {
                         </svg>
                     </div>
                 </div>
-                <div className='grid grid-cols-5 gap-5 px-5 pb-5'>
+                <div className='grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5'>
                     <EventCard />
                     <EventCard />
                     <EventCard />
