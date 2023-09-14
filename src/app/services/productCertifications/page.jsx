@@ -3,12 +3,7 @@ import React from 'react'
 import CompanyRegistrationPage from '@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage';
 import { useState } from 'react';
 import { Tabs } from 'flowbite-react';
-import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
-import VisaRegistrationPage from '@/components/ServicesSub/BasicEstablishmentServices/VisaRegistrationPage'
-import TrademarkPage from '@/components/ServicesSub/BasicEstablishmentServices/TrademarkPage'
-import OfficeAdministrationPage from '@/components/ServicesSub/BasicEstablishmentServices/officeAdministrationPage'
-import ConstructionCertificationsPage from '@/components/ServicesSub/BasicEstablishmentServices/ConstructionCertificationsPage'
-import FactoryLicensesPage from '@/components/ServicesSub/BasicEstablishmentServices/FactoryLicensesPage'
+
 import BPOMFoodDrug from '../../../components/ServicesSub/ProductCertificationsServices/BPOMFoodDrug';
 import ISOManagementSystem from '../../../components/ServicesSub/ProductCertificationsServices/ISOManagementSystem';
 import SNINationalStandard from '@/components/ServicesSub/ProductCertificationsServices/SNINationalStandard'
@@ -44,7 +39,7 @@ function ProductCertifications() {
                 </div>
                 {
                     comp == 0 ? <>
-                        <p >Ini Company Registration</p>
+
                         <div className='grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5'>
                             <BPOMFoodDrug />
 
@@ -52,7 +47,7 @@ function ProductCertifications() {
 
                         </div>
                     </> : comp == 1 ? <>
-                        <p>Ini Visa Registration</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <ISOManagementSystem />
 
@@ -60,7 +55,7 @@ function ProductCertifications() {
 
                         </div>
                     </> : comp == 2 ? <>
-                        <p>Ini Trademark</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <SNINationalStandard />
 
@@ -68,14 +63,14 @@ function ProductCertifications() {
 
                         </div>
                     </> : comp == 3 ? <>
-                        <p>Ini Office Administration</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <MedicalAndHygiene />
 
 
                         </div>
                     </> : comp == 4 ? <>
-                        <p>Ini Construction Certifications</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <POSTELTelecommunication />
 
@@ -83,7 +78,7 @@ function ProductCertifications() {
 
                         </div>
                     </> : comp == 5 ? <>
-                        <p>Ini Factory Licenses</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <AlcoholAndCigarette />
 
@@ -92,7 +87,7 @@ function ProductCertifications() {
                         </div> </> : comp == 6 ?
 
                         <>
-                            <p>Ini Factory Licenses</p>
+
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                                 <OtherCer />
 
