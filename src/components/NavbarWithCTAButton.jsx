@@ -34,7 +34,7 @@ export default function NavbarWithCTAButton() {
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                         Flowbite React
                     </span> */}
-                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-52 md:h-14 w-36 h-10' />
+                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-52 md:h-14 sm:w-44 sm:h-12 w-36 h-10' />
                 </Navbar.Brand>
                 <div className="flex md:order-2 md:gap-4 gap-1">
 
@@ -48,35 +48,48 @@ export default function NavbarWithCTAButton() {
                     </div>
                     <Navbar.Toggle />
                 </div>
+                <Navbar.Collapse className=' '>
+                    <div className='my-auto'>
+                        <Navbar.Link
+                            active
+                            href="/"
+                        >
+                            <span className=' my-auto md:text-sm lg:text-base'>Home</span>
+                        </Navbar.Link>
+                    </div>
+                    <div className=' my-auto'>
+                        <Navbar.Link href="about">
+                            <span className=' my-auto md:text-sm lg:text-base'>About</span>
+                        </Navbar.Link>
+                    </div>
+                    <div className=' my-auto'>
+                        <Navbar.Link href="#">
+                            <span className=' md:text-sm lg:text-base'>Services</span>
+                        </Navbar.Link>
+                    </div>
+                    <div className=' my-auto'>
+                        <Navbar.Link href="#">
+                            <span className='md:text-sm lg:text-base'>Articles</span>
+                        </Navbar.Link>
+                    </div>
+                    <div className=' my-auto'>
+                        <Navbar.Link href="#">
+                            <span className=' md:text-sm lg:text-base'>Events</span>
+                        </Navbar.Link>
+                    </div>
+                    <div className=' my-auto'>
+                        <Navbar.Link href="#">
+                            <span className='md:text-sm lg:text-base'>Policies & Regulations</span>
+                        </Navbar.Link>
+                    </div>
 
-                <Navbar.Collapse className=' my-auto'>
-                    <Navbar.Link
-                        active
-                        href="#"
-                    >
-                        <span className=' my-auto text-base'>Home</span>
-                    </Navbar.Link>
-                    <Navbar.Link href="about">
-                        <span className=' my-auto text-base'>About</span>
-                    </Navbar.Link>
-                    <Navbar.Link href="#">
-                        <span className=' text-base'>Services</span>
-                    </Navbar.Link>
-                    <Navbar.Link href="#">
-                        <span className=' text-base'>Articles</span>
-                    </Navbar.Link>
-                    <Navbar.Link href="#">
-                        <span className=' text-base'>Events</span>
-                    </Navbar.Link>
-                    <Navbar.Link href="#">
-                        <span className='text-base'>Policies & Regulations</span>
-                    </Navbar.Link>
                     <Button className=' bg-white rounded-sm md:h-10 my-auto'>
                         <span className=' text-black md:text-base'>Log in</span>
                     </Button>
                     <Button className=' bg-black rounded-sm md:h-10 my-auto'>
                         <span className=' text-white md:text-base'>Sign Up</span>
                     </Button>
+
                 </Navbar.Collapse>
             </Navbar>
         </>
