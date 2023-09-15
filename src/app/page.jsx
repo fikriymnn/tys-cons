@@ -29,8 +29,27 @@ const Home = () => {
       </div>
       <p className='font-bold text-3xl text-center py-10 '>Latest Articles</p>
       <div className='grid grid-cols-3 gap-4'>
-        <CustomCard />
-        <CustomCard />
+        <CustomCard text={"Lorem Ipsum is simply dummy text of the printing a.."} isi={"1 December 2022"} isi2={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"} />
+        <CustomCard text={"Article"} isi={"1 December 2022"} isi2={"lorem ipsum dolor sit amet"} />
+        <a href="">
+          <div className='cursor-pointer border-b-[2px] border-[#031530] pb-3'>
+            <div className='font-bold text-xl hover:underline'>Lorem Ipsum is simply dummy text of the printing and</div>
+            <h1>1 December 2022</h1>
+          </div>
+          <div className='cursor-pointer border-b-[2px] border-[#031530] pb-3'>
+            <div className='font-bold text-xl hover:underline '>Article...</div>
+            <h1>1 December 2022</h1>
+          </div>
+          <div className='class="mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1'>
+            <p>View More Articles</p>
+
+
+
+
+          </div>
+
+
+        </a>
       </div>
     </>
   )
