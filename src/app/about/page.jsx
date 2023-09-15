@@ -54,7 +54,7 @@ const About = () => {
                         <textarea name="" id="" cols="30" rows="10" placeholder='Input your message' color=' bg-transparent' className=' w-full resize-none rounded-lg border-slate-300 ' maxLength={100}></textarea>
                     </div>
                     <a href="">
-                        <div className=' w-full h-12 bg-blue-500'>
+                        <div className=' w-full h-12 bg-blue-600 hover:bg-blue-500'>
                             <p className=' text-white text-center my-auto py-3'>Send Message</p>
                         </div>
                     </a>
