@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { Card } from 'flowbite-react';
-import { textSpanContainsPosition } from 'typescript';
 function CustomCard({ text, isi, isi2 }) {
      return (
           <Card className='transform hover:-translate-y-6 '
