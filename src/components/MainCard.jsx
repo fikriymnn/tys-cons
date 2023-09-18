@@ -3,7 +3,7 @@ import React from 'react'
 import { Card } from 'flowbite-react';
 function MainCard({ icon, title, text1, text2, text3, text4, text5, text6, text7 }) {
      return (
-          <Card className='p-10 group block rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500  group-hover:text-white '>
+          <Card className='group block rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500  group-hover:text-white hover:underline'>
                <a href="">
                     <div className="flex items-baseline text-gray-900  first-linexport hover:/assets/images/icontools3.png 
                      {mainCard}">
