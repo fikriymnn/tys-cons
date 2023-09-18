@@ -1,8 +1,8 @@
 import React from 'react'
 
-function CompanyRegistrationCard() {
+function LegalAdministration() {
     return (
-        <a href="/services/detail">
+        <a href="/">
 
 
             <div className='bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2'>
@@ -19,4 +19,4 @@ function CompanyRegistrationCard() {
     )
 }
 
-export default CompanyRegistrationCard
+export default LegalAdministration

@@ -1,12 +1,11 @@
 import React from 'react'
+import CompanyRegistration from '../../CompanyRegistrationCard'
 import CompanyRegistrationCard from '../../CompanyRegistrationCard'
-
-function TrademarkPage() {
+function
+    AccountingServices() {
     return (
         <>
 
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
@@ -19,4 +18,4 @@ function TrademarkPage() {
     )
 }
 
-export default TrademarkPage
+export default AccountingServices

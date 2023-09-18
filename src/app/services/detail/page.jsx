@@ -15,18 +15,13 @@ function detailServices() {
                         <p className='text-sm'>&gt;</p>
                         <p className='text-sm '>Company Registration</p>
                     </div>
-                    <div className='flex mb-5'>
-                        <div className='bg-gray-100 w-[400px] h-[350px] mt-2'>
+                    <div className='md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5'>
+                        <div className='bg-gray-100 md:w-[400px] md:h-[350px] ms:w-full ms:h-full mt-2'>
 
-                            <Image
-                                src="/assets/images/trademark.jpg"
-                                alt=''
-                                width={350}
-                                height={350}
-                            />
+                            <img src="/assets/images/trademark.jpg" alt="" className='md:w-[350px] md:h-[350px]' />
                         </div>
-                        <div className='ps-10'>
-                            <p className='text-xl pb-4'>公司商标注册 Company Trademark Registration</p>
+                        <div className='md:ps-10 ps-'>
+                            <p className='md:text-2xl text-2xl pb-4'>公司商标注册 Company Trademark Registration</p>
                             <div className='flex pb-4'>
                                 <p className='text-blue-600 text-xl'>3500 - 3000 </p>
                                 <p className=''>元</p>
@@ -70,9 +65,9 @@ function detailServices() {
                     <p>1. The classification standard of trademarks is a common standard all over the world, and there are 45 categories</p>
                     <p>2. A trademark is usually composed of a combination of words, graphics, English and numbers</p>
                     <p>3. It takes two years to formally process a trademark, and you can start using it after obtaining the review approval. It takes about 2-3 weeks from the application to the approval letter</p>
-                    <div className='h-[2px] w-full bg-gray-300 '></div>
+                    <div className='h-[2px] w-full bg-gray-300 mt-5'></div>
                     <div className=' bg-blue-600  w-80 mb-2'>
-                        <p className='text-center text-white text-base font-semibold p-2'>Registration Time and Flow Process</p>
+                        <p className='text-center text-white text-base font-semibold p-2 '>Registration Time and Flow Process</p>
                     </div>
                     <p className='mb-2'>1. Registration Time: 12-24 months</p>
                     <p>2. Flow Process:</p>
@@ -86,22 +81,22 @@ function detailServices() {
                     <p>
 
                         8) Step 8: Issuance a Trademark Certificate</p>
-                    <div className='h-[2px] w-full bg-gray-300 '></div>
+                    <div className='h-[2px] w-full bg-gray-300 mt-5'></div>
                     <div className=' bg-blue-600  w-80 mb-2'>
                         <p className='text-center text-white text-base font-semibold p-2'>Required Documents</p>
                     </div>
                     <p>1. Trademark’s Logo</p>
-                    <div className='h-[2px] w-full bg-gray-300 '></div>
+                    <div className='h-[2px] w-full bg-gray-300 mt-5 '></div>
                     <div className=' bg-blue-600  w-80 mb-2'>
                         <p className='text-center text-white text-base font-semibold p-2'>Finished Registration Docoments</p>
                     </div>
                     <p>1. Trademark’s Logo</p>
-                    <div className='h-[2px] w-full bg-gray-300 '></div>
+                    <div className='h-[2px] w-full bg-gray-300 mt-5'></div>
                     <div className=' bg-blue-600  w-80 mb-2'>
                         <p className='text-center text-white text-base font-semibold p-2'>Trademark Categories/Class</p>
                     </div>
                     <p>1. Trademark’s Logo</p>
-                    <div className='h-[2px] w-full bg-gray-300 '></div>
+                    <div className='h-[2px] w-full bg-gray-300 mt-5'></div>
                     <div className=' bg-blue-600  w-80 mb-2'>
                         <p className='text-center text-white text-base font-semibold p-2'>Precautions</p>
                     </div>

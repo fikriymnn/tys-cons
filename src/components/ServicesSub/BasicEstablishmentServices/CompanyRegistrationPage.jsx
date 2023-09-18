@@ -7,9 +7,7 @@ function CompanyRegistrationPage() {
 
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
+
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
         </>

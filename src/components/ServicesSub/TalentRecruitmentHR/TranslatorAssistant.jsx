@@ -1,19 +1,15 @@
 import React from 'react'
 import CompanyRegistration from '../../CompanyRegistrationCard'
 import CompanyRegistrationCard from '../../CompanyRegistrationCard'
-function ConstructionCertificationsPage() {
+function TranslatorAssistant() {
     return (
         <>
 
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
 
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
         </>
     )
 }
 
-export default ConstructionCertificationsPage
+export default TranslatorAssistant
