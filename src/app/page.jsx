@@ -3,16 +3,17 @@ import Image from 'next/image'
 import MainCard from '@/components/MainCard'
 import CustomCard from '@/components/CustomCard'
 import CardTwo from '@/components/CardTwo'
+import MultipleCarousel from '@/components/MultipleCarousel'
 import Link from 'next/link'
 
 const Home = () => {
   return (
     <>
 
-      <div className='bg-black'>
-        <div className='w-full h-screen z-20 bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-25'></div>
+      <div className='bg-black '>
+        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30'></div>
         <div className='w-full h-screen md:grid md:grid-cols-2 ' >
-          <div className='md:ml-10 md:pl-20 px-10 pt-32'>
+          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-40'>
             <div className='text-white flex items-center font-extrabold md:text-4xl py-5 z-20 text-2xl leading-loose tracking-wide'>
 
               <p>Establish Your Business in Indonesia Conveniently</p>
@@ -29,7 +30,7 @@ const Home = () => {
 
       </div>
       <p className='font-bold text-3xl text-center py-10'>What Services We Offer</p>
-      <div className='grid grid-cols-3 gap-4 p-10 '>
+      <div className='grid md:grid-cols-3 grid-cols-1 gap-4 md:p-10 py-10 '>
         <Link href="/services/basicEstablish">
 
           <MainCard icon={"/assets/images/icontools2.png"} title={"Basic Establishment Services"} text1={"Company Registration"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} clickText4={"/services/basicEstablish/"} clickText5={"/services/basicEstablish/"} clickText6={"/services/basicEstablish/"} clickText7={"/services/basicEstablish/"} text2={"Visa Registration"} text3={"Trademark"} text4={"Office Administration"} text5={"Construction Certifications"} text6={"Factory Licenses"} />
@@ -81,6 +82,11 @@ const Home = () => {
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
         </div>
       </div>
+      <div className='bg-white w-full'>
+        <p className='font-bold text-3xl text-center py-10'>Our Client</p>
+        <MultipleCarousel />
+      </div>
+
     </>
   )
 }
