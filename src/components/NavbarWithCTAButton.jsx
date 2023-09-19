@@ -8,7 +8,7 @@ export default function NavbarWithCTAButton() {
     const [open2, setOpen2] = useState(false);
     const Dropdown = () => {
         return (
-            <div className=' bg-white  absolute mt-10 z-10 shadow-lg '>
+            <div className=' bg-white  absolute mt-10 z-40 shadow-lg '>
                 <div className=' py-1 flex gap-1 hover p-2 hover:bg-blue-300'>
                     <Image src={'/assets/images/united-states.png'} width={40} height={10} />
                     <p className=' my-auto'>EN</p>
@@ -58,19 +58,12 @@ export default function NavbarWithCTAButton() {
     }
     return (
         <>
-            <Navbar className=' fixed justify-beetwen w-full z-20 shadow-md'
+            <Navbar className=' fixed justify-beetwen w-full z-40 shadow-md'
                 fluid
 
             >
                 <Navbar.Brand href="/">
-                    {/* <img
-                        alt="Flowbite React Logo"
-                        className="mr-3 h-6 sm:h-9"
-                        src="/favicon.svg"
-                    />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite React
-                    </span> */}
+
                     <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-44 md:h-12 sm:w-36 sm:h-10 w-28 h-8' />
                 </Navbar.Brand>
                 <div className="flex md:order-2 md:gap-4 gap-1">
