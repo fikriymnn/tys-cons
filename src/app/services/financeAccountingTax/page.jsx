@@ -12,7 +12,7 @@ function FinanceAccountingTax() {
 
     const [comp, setComp] = useState(0);
     return (
-        <div className='bg-gray-200 p-5'>
+        <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
             <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Finance Accounting Tax</p></div>
             <div className='bg-white'>
                 <div className="p-5 pt-3">
@@ -28,7 +28,7 @@ function FinanceAccountingTax() {
                 </div>
                 {
                     comp == 0 ? <>
-                        <p >Finance Services</p>
+
                         <div className='grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5'>
                             <FinanceServices />
 
@@ -36,7 +36,7 @@ function FinanceAccountingTax() {
 
                         </div>
                     </> : comp == 1 ? <>
-                        <p>Ini Visa Registration</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <AccountingServices />
 
@@ -44,7 +44,7 @@ function FinanceAccountingTax() {
 
                         </div>
                     </> : comp == 2 ? <>
-                        <p>Ini Trademark</p>
+
                         <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
                             <TaxServices />
 
