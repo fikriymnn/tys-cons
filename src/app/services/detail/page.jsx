@@ -5,7 +5,7 @@ import { Label, Radio } from 'flowbite-react';
 
 function detailServices() {
     return (
-        <div className='bg-gray-200 p-5'>
+        <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
             <div className='flex pb-5 gap-1'><p>Services </p> <p>&gt;</p><p className='text-blue-600'>公司商标注册 Company Trademark Registration</p></div>
             <div className='bg-white'>
                 <div className="relative p-5 pt-10">

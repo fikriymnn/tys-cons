@@ -10,8 +10,7 @@ function BPOMFoodDrug() {
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
+
         </>
     )
 }

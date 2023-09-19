@@ -11,7 +11,7 @@ function MedicalAndHygiene() {
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
+
         </>
     )
 }

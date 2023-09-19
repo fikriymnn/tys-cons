@@ -7,10 +7,7 @@ function ISOManagementSystem() {
 
             <CompanyRegistrationCard />
             <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
-            <CompanyRegistrationCard />
+
             <CompanyRegistrationCard />
         </>
     )
