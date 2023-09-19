@@ -105,12 +105,11 @@ export default function Policies() {
 
   return (
     <>
-      <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center  mt-10">
+      <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center  pt-24">
         <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
           <div
-            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
-              dropdown ? "bg-blue-700" : ""
-            }`}
+            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown ? "bg-blue-700" : ""
+              }`}
             onClick={() => {
               setDropdown(!dropdown);
             }}
@@ -138,9 +137,8 @@ export default function Policies() {
           {dropdown && (
             <div className="border-y border-white">
               <div
-                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
-                  selectedDetail == 1 ? "bg-blue-900" : ""
-                }`}
+                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 1 ? "bg-blue-900" : ""
+                  }`}
                 onClick={() => {
                   setSelectedDetail(1);
                 }}
@@ -150,9 +148,8 @@ export default function Policies() {
                 </p>
               </div>
               <div
-                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
-                  selectedDetail == 2 ? "bg-blue-900" : ""
-                }`}
+                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 2 ? "bg-blue-900" : ""
+                  }`}
                 onClick={() => {
                   setSelectedDetail(2);
                 }}
@@ -162,9 +159,8 @@ export default function Policies() {
                 </p>
               </div>
               <div
-                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
-                  selectedDetail == 3 ? "bg-blue-900" : ""
-                }`}
+                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 3 ? "bg-blue-900" : ""
+                  }`}
                 onClick={() => {
                   setSelectedDetail(3);
                 }}
@@ -174,9 +170,8 @@ export default function Policies() {
                 </p>
               </div>
               <div
-                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
-                  selectedDetail == 4 ? "bg-blue-900" : ""
-                }`}
+                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 4 ? "bg-blue-900" : ""
+                  }`}
                 onClick={() => {
                   setSelectedDetail(4);
                 }}
@@ -186,9 +181,8 @@ export default function Policies() {
                 </p>
               </div>
               <div
-                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
-                  selectedDetail == 5 ? "bg-blue-900" : ""
-                }`}
+                className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 5 ? "bg-blue-900" : ""
+                  }`}
                 onClick={() => {
                   setSelectedDetail(5);
                 }}
@@ -201,9 +195,8 @@ export default function Policies() {
           )}
 
           <div
-            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
-              selectedDetail == 6 ? "bg-blue-900" : ""
-            }`}
+            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 6 ? "bg-blue-900" : ""
+              }`}
           >
             <p
               className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full"
@@ -215,9 +208,8 @@ export default function Policies() {
             </p>
           </div>
           <div
-            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
-              selectedDetail == 7 ? "bg-blue-900" : ""
-            }`}
+            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 7 ? "bg-blue-900" : ""
+              }`}
           >
             <p
               className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm w-full"
@@ -229,9 +221,8 @@ export default function Policies() {
             </p>
           </div>
           <div
-            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
-              selectedDetail == 8 ? "bg-blue-900" : ""
-            }`}
+            className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 8 ? "bg-blue-900" : ""
+              }`}
             onClick={() => {
               setSelectedDetail(8);
             }}
