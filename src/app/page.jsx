@@ -3,6 +3,7 @@ import Image from 'next/image'
 import MainCard from '@/components/MainCard'
 import CustomCard from '@/components/CustomCard'
 import CardTwo from '@/components/CardTwo'
+import Link from 'next/link'
 
 const Home = () => {
   return (
@@ -27,27 +28,27 @@ const Home = () => {
       </div>
       <p className='font-bold text-3xl text-center py-10'>What Services We Offer</p>
       <div className='grid grid-cols-3 gap-4 p-10 '>
-        <a href="/services/basicEstablish">
+        <Link href="/services/basicEstablish">
 
           <MainCard icon={"/assets/images/icontools2.png"} title={"Basic Establishment Services"} text1={"Company Registration"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} clickText4={"/services/basicEstablish/"} clickText5={"/services/basicEstablish/"} clickText6={"/services/basicEstablish/"} clickText7={"/services/basicEstablish/"} text2={"Visa Registration"} text3={"Trademark"} text4={"Office Administration"} text5={"Construction Certifications"} text6={"Factory Licenses"} />
-        </a>
-        <a href="/services/productCertifications">
+        </Link>
+        <Link href="/services/productCertifications">
 
           <MainCard icon={"/assets/images/bag.png"} title={"Product Certifications"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} clickText4={"/services/basicEstablish/"} clickText5={"/services/basicEstablish/"} clickText6={"/services/basicEstablish/"} clickText7={"/services/basicEstablish/"} text1={"BPOM Food and Drug"} text2={"ISO Management System"} text3={"SNI National Standard"} text4={"Medical and Hygiene"}
             text5={"POSTEL Telecommunication"} text6={"Alcohol And Cigarette"} text7={"Other Certification"} />
-        </a>
-        <a href="/services/financeAccountingTax">
+        </Link>
+        <Link href="/services/financeAccountingTax">
 
           <MainCard icon={"/assets/images/dollar.png"} title={"Finance Accounting Tax"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} text1={"Finance Services"} text2={"Accounting Services"} text3={"Tax Services"} />
-        </a>
-        <a href="/services/TalentRecruitmentHR">
+        </Link>
+        <Link href="/services/TalentRecruitmentHR">
 
           <MainCard icon={"/assets/images/bag2.png"} title={"Talent Recruitment HR"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} clickText4={"/services/basicEstablish/"} clickText5={"/services/basicEstablish/"} text1={"Translator Assistant"} text2={"Finance Accounting Tax"} text3={"Marketing Sales"} text4={"Management Candidate"} text5={"HR Management Service"} />
-        </a>
-        <a href="/services/LegalServeces">
+        </Link>
+        <Link href="/services/LegalServeces">
 
           <MainCard icon={"/assets/images/file.png"} clickText1={"/services/basicEstablish/"} title={"Legal Services"} text1={"Legal Administration"} />
-        </a>
+        </Link>
       </div>
       <p className='font-bold text-3xl text-center py-10 '>Latest Articles</p>
       <div className='grid grid-cols-3 gap-4'>
