@@ -23,21 +23,36 @@ export default function NavbarWithCTAButton() {
     const DropdownServices = () => {
         return (
             <div className=' bg-white absolute mt-10 shadow-md z-10'>
-                <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
-                    <p className=''>Basic Eshtablishment Services</p>
-                </div>
-                <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
-                    <p className=''>Product Certifications</p>
-                </div>
-                <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
-                    <p className=''>Finance Accounting Tax</p>
-                </div>
-                <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
-                    <p className=''>Talent Recruitment HR</p>
-                </div>
-                <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
-                    <p className=''>Legal Services</p>
-                </div>
+                <a href="/services/basicEstablish">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Basic Eshtablishment Services</p>
+                    </div>
+                </a>
+                <a href="/services/productCertifications">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Product Certifications</p>
+                    </div>
+                </a>
+                <a href="/services/financeAccountingTax">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Finance Accounting Tax</p>
+                    </div>
+                </a>
+                <a href="/services/TalentRecruitmentHR">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Talent Recruitment HR</p>
+                    </div>
+                </a>
+                <a href="/services/LegalServices">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Legal Services</p>
+                    </div>
+                </a>
             </div>
         )
     }
@@ -80,7 +95,7 @@ export default function NavbarWithCTAButton() {
                         </Navbar.Link>
                     </div>
                     <div className=' my-auto'>
-                        <Navbar.Link href="about">
+                        <Navbar.Link href="/about">
                             <span className=' my-auto md:text-sm '>About</span>
                         </Navbar.Link>
                     </div>
@@ -94,26 +109,31 @@ export default function NavbarWithCTAButton() {
                         </Navbar.Link>
                     </div>
                     <div className=' my-auto'>
-                        <Navbar.Link href="#">
+                        <Navbar.Link href="/articles">
                             <span className='md:text-sm '>Articles</span>
                         </Navbar.Link>
                     </div>
                     <div className=' my-auto'>
-                        <Navbar.Link href="#">
+                        <Navbar.Link href="/events">
                             <span className=' md:text-sm '>Events</span>
                         </Navbar.Link>
                     </div>
                     <div className=' my-auto'>
-                        <Navbar.Link href="#">
+                        <Navbar.Link href="/policies">
                             <span className='md:text-sm '>Policies & Regulations</span>
                         </Navbar.Link>
                     </div>
-                    <button className=' bg-white rounded-sm p-2 my-auto '>
-                        <span className=' text-black md:text-base'>Log in</span>
-                    </button>
-                    <button className=' bg-black rounded-sm p-2 my-auto '>
-                        <span className=' text-white md:text-base'>Sign Up</span>
-                    </button>
+                    <a href="/login">
+                        <button className=' bg-white rounded-sm p-2 my-auto '>
+                            <span className=' text-black md:text-base'>Log in</span>
+                        </button>
+                    </a>
+                    <a href="/register">
+
+                        <button className=' bg-black rounded-sm p-2 my-auto '>
+                            <span className=' text-white md:text-base'>Sign Up</span>
+                        </button>
+                    </a>
                 </Navbar.Collapse>
             </Navbar>
         </>
