@@ -3,7 +3,7 @@ import EventCard from '@/components/EventCard'
 
 function Events() {
     return (
-        <div className='bg-gray-200 p-5'>
+        <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
             <div className='bg-white'>
                 <div className="relative p-5 pt-10">
                     <div className="relative">
