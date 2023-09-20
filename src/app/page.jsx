@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
 
-      <div className='bg-black '>
+      <div className='bg-black'>
         <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30'></div>
         <div className='w-full h-screen md:grid md:grid-cols-2 ' >
           <div className='md:ml-10 md:pl-20 px-10 pt-32 z-40'>
@@ -66,7 +66,7 @@ const Home = () => {
             <div className='font-semibold text-xl hover:underline '>Article...</div>
             <h1>1 December 2022</h1>
           </div>
-          <div className='class="mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1'>
+          <div className='mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1'>
             <p>View More Articles</p>
           </div>
 
@@ -83,7 +83,7 @@ const Home = () => {
         </div>
       </div>
       <div className='bg-white w-full'>
-        <p className='font-bold text-3xl text-center py-10'>Our Client</p>
+        <p className='font-bold text-3xl text-center py-10 pb-10'>Our Client</p>
         <MultipleCarousel />
       </div>
 
