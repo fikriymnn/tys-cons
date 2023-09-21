@@ -8,7 +8,7 @@ export default function NavbarWithCTAButton() {
     const [open2, setOpen2] = useState(false);
     const Dropdown = () => {
         return (
-            <div className=' bg-white  absolute mt-10 z-10 shadow-lg '>
+            <div className=' bg-white  absolute mt-10 z-40 shadow-lg '>
                 <div className=' py-1 flex gap-1 hover p-2 hover:bg-blue-300'>
                     <Image src={'/assets/images/united-states.png'} width={40} height={10} />
                     <p className=' my-auto'>EN</p>
@@ -58,22 +58,15 @@ export default function NavbarWithCTAButton() {
     }
     return (
         <>
-            <Navbar className=' fixed justify-beetwen w-full z-20 shadow-md'
+            <Navbar className=' fixed w-full z-40 shadow-md top-0'
                 fluid
 
             >
-                <Navbar.Brand href="/">
-                    {/* <img
-                        alt="Flowbite React Logo"
-                        className="mr-3 h-6 sm:h-9"
-                        src="/favicon.svg"
-                    />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite React
-                    </span> */}
+                <Navbar.Brand href="/" className=' '>
+
                     <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-44 md:h-12 sm:w-36 sm:h-10 w-28 h-8' />
                 </Navbar.Brand>
-                <div className="flex md:order-2 md:gap-4 gap-1">
+                <div className="flex md:order-3 gap-1">
 
                     <div className=' my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ' onClick={() => setOpen1(!open1)}>
                         <Image src={'/assets/images/united-states.png'} width={40} height={10} />
@@ -85,7 +78,7 @@ export default function NavbarWithCTAButton() {
                     </div>
                     <Navbar.Toggle />
                 </div>
-                <Navbar.Collapse className=''>
+                <Navbar.Collapse className=' md:order-1'>
                     <div className='my-auto'>
                         <Navbar.Link
                             active
@@ -123,14 +116,16 @@ export default function NavbarWithCTAButton() {
                             <span className='md:text-sm '>Policies & Regulations</span>
                         </Navbar.Link>
                     </div>
+
+                </Navbar.Collapse>
+                <Navbar.Collapse className='md:order-2'>
                     <a href="/login">
-                        <button className=' bg-white rounded-sm p-2 my-auto '>
+                        <button className=' bg-white rounded-sm p-2 my-auto sm:w-full'>
                             <span className=' text-black md:text-base'>Log in</span>
                         </button>
                     </a>
                     <a href="/register">
-
-                        <button className=' bg-black rounded-sm p-2 my-auto '>
+                        <button className=' bg-black rounded-sm p-2 my-auto sm:w-full'>
                             <span className=' text-white md:text-base'>Sign Up</span>
                         </button>
                     </a>
