@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const About = () => {
     return (
-        <div className=' px-5 md:px-16 pt-24 '>
+        <div className=' px-5 md:px-16 sm:px-10 pt-24 '>
             <p className='text-blue-800 text-3xl font-semibold pb-4 font-sans'>
                 About Us
             </p>
@@ -20,7 +20,7 @@ const About = () => {
                         width=""
                         height=""
                         id=""
-                        className="w-full h-80 pr-4"
+                        className="w-full h-80 md:pr-4"
                         display="block"
                         position="" />
                     <div className='flex gap-4'>
@@ -39,15 +39,15 @@ const About = () => {
                 <div>
                     <div className=''>
                         <h1 className=' text-md pb-3'>Name</h1>
-                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 input' />
+                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 ' />
                     </div>
                     <div className=' py-5'>
                         <h1 className=' text-md pb-3'>Email</h1>
-                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 input' />
+                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 ' />
                     </div>
                     <div className=''>
                         <h1 className=' text-md pb-3'>Phone Number</h1>
-                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 input' />
+                        <input type="text" placeholder='Input your name' color=' bg-transparent' className=' rounded-lg w-full border-slate-300 ' />
                     </div>
                     <div className=' py-5'>
                         <h1 className=' text-md pb-3'>Message</h1>
