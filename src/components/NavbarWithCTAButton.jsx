@@ -62,11 +62,11 @@ export default function NavbarWithCTAButton() {
                 fluid
 
             >
-                <Navbar.Brand href="/" className=' '>
+                <Navbar.Brand href="/" className='z-40  '>
 
                     <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-44 md:h-12 sm:w-36 sm:h-10 w-28 h-8' />
                 </Navbar.Brand>
-                <div className="flex md:order-3 gap-1">
+                <div className="flex md:order-3 gap-1 z-40 ">
 
                     <div className=' my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ' onClick={() => setOpen1(!open1)}>
                         <Image src={'/assets/images/united-states.png'} width={40} height={10} />
@@ -78,7 +78,7 @@ export default function NavbarWithCTAButton() {
                     </div>
                     <Navbar.Toggle />
                 </div>
-                <Navbar.Collapse className=' md:order-1'>
+                <Navbar.Collapse className=' md:order-1 z-40 '>
                     <div className='my-auto'>
                         <Navbar.Link
                             active
@@ -118,7 +118,7 @@ export default function NavbarWithCTAButton() {
                     </div>
 
                 </Navbar.Collapse>
-                <Navbar.Collapse className='md:order-2'>
+                <Navbar.Collapse className='md:order-2 z-40 '>
                     <a href="/login">
                         <button className=' bg-white rounded-sm p-2 my-auto sm:w-full'>
                             <span className=' text-black md:text-base'>Log in</span>

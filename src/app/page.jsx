@@ -13,7 +13,7 @@ const Home = () => {
       <div className='bg-black'>
         <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30 md:opacity-30'></div>
         <div className='w-full h-screen md:grid md:grid-cols-2 ' >
-          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-40 md:z-40'>
+          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-30 md:z-30'>
             <div className='text-white flex items-center font-extrabold md:text-4xl py-5 z-20 md:z-20 text-2xl leading-loose tracking-wide'>
 
               <p>Establish Your Business in Indonesia Conveniently</p>

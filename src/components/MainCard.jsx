@@ -17,18 +17,18 @@ function MainCard({ icon, title, text1, text2, text3, text4, text5, text6, text7
                {title ? <hr className='' /> : <></>}
 
                <ul className="my-7 space-y-5">
-                    <a href={clickText1}>
-
-                         <li className="flex space-x-3 ">
-                              <span className="text-base font-normal leading-tight text-black group-hover:text-white pl-3">
 
 
-                                   {text1}
+                    <li className="flex space-x-3 ">
+                         <span className="text-base font-normal leading-tight text-black group-hover:text-white pl-3">
 
-                              </span>
-                         </li>
-                         {text1 ? <hr className='' /> : <></>}
-                    </a>
+
+                              {text1}
+
+                         </span>
+                    </li>
+                    {text1 ? <hr className='' /> : <></>}
+
 
 
                     <li className="flex space-x-3 ">
