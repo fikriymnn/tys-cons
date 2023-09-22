@@ -5,7 +5,7 @@ import Image from 'next/image';
 const CustomFooter = () => {
     return (
         <div className=' w-full bg-[#031530] '>
-            <div className=' md:grid md:grid-cols-3 p-12 gap-10 items-center'>
+            <div className=' md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center'>
                 <div>
                     <Image src={'/assets/images/tys-logo.png'} width={200} height={75} />
                     <p className=' py-4 text-white text-sm'>TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia.</p>
@@ -36,8 +36,8 @@ const CustomFooter = () => {
                 </div>
             </div>
             <hr className=' w-full bg-white ' />
-            <div className=' md:flex lg:justify-between p-5 text-center'>
-                <span className=' text-white'>Copyright &copy; 2022 tysconsultant.com</span>
+            <div className=' md:flex lg:justify-between md:p-5 pt-5  text-center'>
+                <span className=' text-white '>Copyright &copy; 2022 tysconsultant.com</span>
                 <br />
                 <span className=' text-white lg:visible invisible'>Powered by tysconsultant.com</span>
             </div>
