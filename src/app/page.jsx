@@ -11,10 +11,10 @@ const Home = () => {
     <>
 
       <div className='bg-black'>
-        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30'></div>
+        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30 md:opacity-30'></div>
         <div className='w-full h-screen md:grid md:grid-cols-2 ' >
-          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-40'>
-            <div className='text-white flex items-center font-extrabold md:text-4xl py-5 z-20 text-2xl leading-loose tracking-wide'>
+          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-40 md:z-40'>
+            <div className='text-white flex items-center font-extrabold md:text-4xl py-5 z-20 md:z-20 text-2xl leading-loose tracking-wide'>
 
               <p>Establish Your Business in Indonesia Conveniently</p>
             </div>
@@ -30,7 +30,7 @@ const Home = () => {
 
       </div>
       <p className='font-bold text-3xl text-center py-10'>What Services We Offer</p>
-      <div className='grid md:grid-cols-3 grid-cols-1 gap-4 md:p-10 py-10 '>
+      <div className='md:grid md:grid-cols-3 grid-cols-1 gap-4 md:p-10 py-10 p-5 '>
         <Link href="/services/basicEstablish">
 
           <MainCard icon={"/assets/images/icontools2.png"} title={"Basic Establishment Services"} text1={"Company Registration"} clickText1={"/services/basicEstablish/"} clickText2={"/services/basicEstablish/"} clickText3={"/services/basicEstablish/"} clickText4={"/services/basicEstablish/"} clickText5={"/services/basicEstablish/"} clickText6={"/services/basicEstablish/"} clickText7={"/services/basicEstablish/"} text2={"Visa Registration"} text3={"Trademark"} text4={"Office Administration"} text5={"Construction Certifications"} text6={"Factory Licenses"} />
@@ -53,7 +53,8 @@ const Home = () => {
           <MainCard icon={"/assets/images/file.png"} clickText1={"/services/basicEstablish/"} title={"Legal Services"} text1={"Legal Administration"} />
         </Link>
       </div>
-      <p className='font-bold text-3xl text-center py-10 '>Latest Articles</p>     <div className='md:grid md:grid-cols-3 gap-4 py-4 px-5'>
+      <p className='font-bold text-3xl text-center py-10 '>Latest Articles</p>
+      <div className='md:grid md:grid-cols-3 gap-4 py-4 px-5'>
         <CustomCard text={"Lorem Ipsum is simply dummy text of the printing a.."} isi={"1 December 2022"} isi2={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"} />
         <CustomCard text={"Article"} isi={"1 December 2022"} isi2={"lorem ipsum dolor sit amet"} />
 
@@ -63,10 +64,10 @@ const Home = () => {
             <h1>1 December 2022</h1>
           </div>
           <div className='cursor-pointer border-b-[2px] border-[#031530] pb-3'>
-            <div className='font-semibold text-xl hover:underline '>Article...</div>
+            <div className='font-semibold text-xl hover:underline'>Article...</div>
             <h1>1 December 2022</h1>
           </div>
-          <div className='mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1'>
+          <div className='mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1 text-blue-600 p-28'>
             <p>View More Articles</p>
           </div>
 
@@ -76,7 +77,7 @@ const Home = () => {
       </div>
       <div className='bg-slate-100 w-full py-4 mt-6'>
         <p className='font-bold text-3xl text-center py-10 '>Choose The Best Package You Need</p>
-        <div className='bg-slate-100 w-full py-4 mt-6 grid grid-cols-3 gap-3 p-5'>
+        <div className='bg-slate-100 w-full py-4 mt-6 md:grid md:grid-cols-3 gap-3 p-5'>
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
