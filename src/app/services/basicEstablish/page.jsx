@@ -17,7 +17,7 @@ function Events() {
     ]
     const [comp, setComp] = useState(0);
     return (
-        <div className='bg-gray-200 p-5'>
+        <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
             <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Basic Establishment Services</p></div>
             <div className='bg-white'>
                 <div className="p-5 pt-3">

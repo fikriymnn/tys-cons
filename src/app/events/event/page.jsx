@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 function Event() {
     return (
-        <div className='bg-gray-200 p-5'>
+        <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
             <BreadcrumbArticle
                 className='ps-0'
             />
