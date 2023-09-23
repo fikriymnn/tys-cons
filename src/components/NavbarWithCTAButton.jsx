@@ -81,7 +81,7 @@ export default function NavbarWithCTAButton() {
                 <Navbar.Collapse className=' md:order-1 z-40 '>
                     <div className='my-auto'>
                         <Navbar.Link
-                            active
+
                             href="/"
                         >
                             <span className=' my-auto md:text-sm '>Home</span>

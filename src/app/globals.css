@@ -8,3 +8,22 @@
  scrollbar-width: none;
 }
 
+@media (max-width: 525px){
+
+    .service-icon{
+        color: #fff;
+    }
+    
+  
+    
+}
+
+.box-effect:hover .icon-effect {
+    color: white;
+  }
+  
+  .service-list:hover .service-icon {
+    color: #ffff;
+  }
+  
+ 

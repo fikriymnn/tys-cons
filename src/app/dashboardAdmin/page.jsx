@@ -3,6 +3,8 @@ import React from 'react'
 import { useState } from 'react';
 import Image from 'next/image';
 import CrudTable from '@/components/admin/crudTable'
+import CrudCat from '@/components/admin/crudCat'
+import CrudCat2 from '@/components/admin/crudCat2'
 
 function dashboarAdmin() {
     const [bar, setBar] = useState(1);
@@ -10,14 +12,51 @@ function dashboarAdmin() {
         setBar((prevBar) => (prevBar === 1 ? 0 : 1));
     };
     const [comp, setComp] = useState(0);
+
+    const DropdownServices = () => {
+        return (
+            <div className=' bg-white absolute mt-10 shadow-md z-10'>
+                <a href="/services/basicEstablish">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Basic Eshtablishment Services</p>
+                    </div>
+                </a>
+                <a href="/services/productCertifications">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Product Certifications</p>
+                    </div>
+                </a>
+                <a href="/services/financeAccountingTax">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Finance Accounting Tax</p>
+                    </div>
+                </a>
+                <a href="/services/TalentRecruitmentHR">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Talent Recruitment HR</p>
+                    </div>
+                </a>
+                <a href="/services/LegalServices">
+
+                    <div className=' py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600'>
+                        <p className=''>Legal Services</p>
+                    </div>
+                </a>
+            </div>
+        )
+    }
     return (
         <>
 
             <div>Administration</div>
             <div className='flex'>
                 <div
-                    className={`${bar == 1 ? " w-[200px] duration-100 ease-in-out" : " w-[80px] duration-100 ease-in-out"} h-screen bg-blue-500 flex-col`}>
-                    <div className='w-full h-[80px] mt-10 bg-blue-700 '>
+                    className={`${bar == 1 ? " w-[200px] duration-100 ease-in-out" : " w-[80px] duration-100 ease-in-out"} h-screen shadow-md flex-col`}>
+                    <div className='w-full h-[80px] mt-10 shadow-md  '>
                         <button className='w-full h-full' onClick={toggleBar}>CO</button>
                     </div>
                     <button onClick={() => setComp(0)} className={`${bar == 1 ? "ms-5 justify-start items-center" : " justify-center items-center"} w-full h-10 flex `}>
@@ -27,7 +66,7 @@ function dashboarAdmin() {
                             </p>
                         ) : (
 
-                            <p >
+                            <p className=''>
                                 Homepage
                             </p>
                         )}
@@ -43,8 +82,15 @@ function dashboarAdmin() {
                         {bar === 0 ? (
                             <p>S</p>
                         ) : (
-                            <p>Services</p>
-                        )}
+                            <>
+                                <p>Services</p>
+                                {
+
+                                }
+                            </>
+
+                        )
+                        }
                     </button>
                     <button onClick={() => setComp(3)} className={`${bar == 1 ? "ms-5 justify-start items-center" : " justify-center items-center"} w-full h-10 flex `}>
                         {bar === 0 ? (
@@ -74,9 +120,9 @@ function dashboarAdmin() {
 
                         {
                             comp == 0 ? <>
+                                <p className='pt-5 text-center font-bold text-3xl'>Homepage</p>
 
                                 <div className='p-5'>
-                                    <p>Homepage</p>
 
                                     <div className='grid grid-cols-1 gap-5'>
 
@@ -292,8 +338,8 @@ function dashboarAdmin() {
 
 
 
+                                <p className='pt-5 text-center font-bold text-3xl'>About</p>
                                 <div className='p-5'>
-                                    <p>About</p>
 
                                     <div className='grid grid-cols-1 gap-5'>
 
@@ -395,6 +441,7 @@ function dashboarAdmin() {
                                             </div>
 
                                         </div>
+
                                         <div className='flex bg-slate-300 rounded-md'>
 
                                             <div className='w-full flex'>
@@ -443,6 +490,30 @@ function dashboarAdmin() {
                                             </div>
 
                                         </div>
+                                        <div className='flex bg-slate-300 rounded-md'>
+
+                                            <div className='w-full flex'>
+                                                <div className='w-2/12 font-semibold flex justify-start items-center p-2'>
+
+                                                    <p>Barcode</p>
+                                                </div>
+                                                <div className='w-8/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <img className='w-20' src="/assets/images/qr-tys.jpg" alt="" />
+                                                </div>
+
+                                            </div>
+                                            <div className='w-14  flex gap-3 m-3 my-auto'>
+
+
+                                                <button className='bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto'>
+                                                    <img className='w-8' src="/assets/images/edit-svgrepo-com.svg" alt="" />
+                                                </button>
+
+
+                                            </div>
+
+                                        </div>
 
 
 
@@ -456,7 +527,58 @@ function dashboarAdmin() {
 
                             </> : comp == 2 ? <>
 
+                                <p className='pt-5 text-center font-bold text-3xl'>Services</p>
+                                <div className='p-5'>
 
+                                    <div className="flex py-5">
+                                        <button className='bg-blue-500 py-3 px-5 rounded-md text-white font-bold'>New Service</button>
+
+                                    </div>
+                                    <div className='grid grid-cols-1 gap-5'>
+
+                                        <div className='flex bg-slate-300 rounded-md  font-semibold'>
+                                            <div className='p-2 h-full w-[50px] '>No</div>
+                                            <div className='p-2 h-full w-[200px] border-s-2'><p>Image</p></div>
+                                            <div className='w-full flex'>
+                                                <div className='w-4/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Title</p>
+                                                </div>
+                                                <div className='w-6/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Price</p>
+                                                </div>
+                                                <div className='w-6/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Category</p>
+                                                </div>
+                                                <div className=' border-x-2 w-[150px] flex justify-start items-center p-2'>
+
+                                                    <p >Date</p>
+                                                </div>
+                                            </div>
+                                            <div className='w-[230px]  flex gap-3 mx-3 my-auto'>
+                                                <p >Actions</p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className=' h-[500px] overflow-y-auto'>
+                                            <CrudCat />
+                                            <CrudCat />
+                                            <CrudCat />
+                                            <CrudCat />
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
 
 
 
@@ -465,11 +587,11 @@ function dashboarAdmin() {
                             </> : comp == 3 ? <>
 
 
-
+                                <p className='pt-5 text-center font-bold text-3xl'>Articles</p>
                                 <div className='p-5'>
-                                    <p>Article</p>
+
                                     <div className="flex py-5">
-                                        <button className='bg-blue-500 py-3 px-5 rounded-md text-white font-bold'>New Artivle</button>
+                                        <button className='bg-blue-500 py-3 px-5 rounded-md text-white font-bold'>New Article</button>
 
                                     </div>
                                     <div className='grid grid-cols-1 gap-5'>
@@ -526,10 +648,10 @@ function dashboarAdmin() {
 
                             </> : comp == 4 ? <>
 
-
+                                <p className='pt-5 text-center font-bold text-3xl'>Events</p>
 
                                 <div className='p-5'>
-                                    <p>Events</p>
+
                                     <div className="flex py-5">
                                         <button className='bg-blue-500 py-3 px-5 rounded-md text-white font-bold'>New Events</button>
 
@@ -591,7 +713,59 @@ function dashboarAdmin() {
 
 
 
-                                <div>Pol n Reg</div>
+                                <p className='pt-5 text-center font-bold text-3xl'>Policies and Regulation</p>
+                                <div className='p-5'>
+
+                                    <div className="flex py-5">
+                                        <button className='bg-blue-500 py-3 px-5 rounded-md text-white font-bold'>New Content</button>
+
+                                    </div>
+                                    <div className='grid grid-cols-1 gap-5'>
+
+                                        <div className='flex bg-slate-300 rounded-md  font-semibold'>
+                                            <div className='p-2 h-full w-[50px] '>No</div>
+                                            <div className='p-2 h-full w-[200px] border-s-2'><p>Image</p></div>
+                                            <div className='w-full flex'>
+                                                <div className='w-4/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Title</p>
+                                                </div>
+                                                <div className='w-6/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Content</p>
+                                                </div>
+                                                <div className='w-6/12 border-s-2  flex justify-start items-center p-2'>
+
+                                                    <p >Category</p>
+                                                </div>
+                                                <div className=' border-x-2 w-[150px] flex justify-start items-center p-2'>
+
+                                                    <p >Date</p>
+                                                </div>
+                                            </div>
+                                            <div className='w-[230px]  flex gap-3 mx-3 my-auto'>
+                                                <p >Actions</p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className=' h-[500px] overflow-y-auto'>
+                                            <CrudCat2 />
+                                            <CrudCat2 />
+                                            <CrudCat2 />
+                                            <CrudCat2 />
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+
 
 
                             </> : <div>0</div>

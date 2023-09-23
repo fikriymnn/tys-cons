@@ -54,7 +54,7 @@ function
     );
 
     const CompanyReg = [
-        Card1, Card2, Card3, Card4, Card5, card6
+        Card1, Card2, Card3, Card4, Card5, Card6
     ]
     return (
         <>

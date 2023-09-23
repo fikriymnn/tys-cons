@@ -6,7 +6,7 @@ import ArticleCard from '@/components/ArticleCard'
 function Articles() {
     return (
         <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
-            <div className='bg-white md:mt-20 mt-32'>
+            <div className='bg-white '>
                 <div className="relative p-5 pt-10">
                     <div className="relative">
                         <input

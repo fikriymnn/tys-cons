@@ -1,4 +1,5 @@
 import React from 'react'
+import CompanyRegistrationCard from '../../CompanyRegistrationCard'
 
 function LegalAdministration() {
     const Card1 = (

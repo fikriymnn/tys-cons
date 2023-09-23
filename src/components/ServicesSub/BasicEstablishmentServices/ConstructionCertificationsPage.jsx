@@ -6,7 +6,7 @@ function ConstructionCertificationsPage() {
     const Card1 = (
 
         <CompanyRegistrationCard src={"/foto.jpg"}
-            title={"Company Registration Basic Regulation"}
+            title={"n Basic Regulation"}
             price={
                 "3000-2000"
             } />
@@ -36,17 +36,10 @@ function ConstructionCertificationsPage() {
             } />
     );
 
-    const Card5 = (
 
-        <CompanyRegistrationCard src={"/foto.jpg"}
-            title={"Company Registration Basic Regulation"}
-            price={
-                "2000-2000"
-            } />
-    );
 
     const CompanyReg = [
-        Card1, Card2, Card3, Card4, Card5
+        Card1, Card2, Card3, Card4,
     ]
     return (
         <>
