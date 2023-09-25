@@ -26,7 +26,7 @@ function MultipleCarousel() {
      };
 
      return (
-          <Carousel className='pb-24 md:w-full' responsive={responsive} autoPlay={true} infinite={true}>
+          <Carousel className='pb-24 md:w-full' responsive={responsive} autoPlay={true} infinite={true} >
                <div className='text-white'>
                     <Image className='md:w-[200px] w-32'
                          src={'/assets/images/lionair2.jpg'}
