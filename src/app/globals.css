@@ -2,28 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.hideScroll{
--ms-overflow-style: none;
- scrollbar-width: none;
+.hideScroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-@media (max-width: 525px){
-
-    .service-icon{
-        color: #fff;
-    }
-    
-  
-    
+@media (max-width: 525px) {
+  .service-icon {
+    color: #fff;
+  }
 }
 
 .box-effect:hover .icon-effect {
-    color: white;
-  }
-  
-  .service-list:hover .service-icon {
-    color: #ffff;
-  }
-  
- 
+  color: white;
+}
+
+.service-list:hover .service-icon {
+  color: #ffff;
+}
+
+.bgtr {
+  background: rgba(113, 128, 150, 0.26);
+  backdrop-filter: blur(10px);
+}
