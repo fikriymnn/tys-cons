@@ -5,30 +5,39 @@ import CustomCard from '@/components/CustomCard'
 import CardTwo from '@/components/CardTwo'
 import MultipleCarousel from '@/components/MultipleCarousel'
 import Link from 'next/link'
+import Hidden from '@/components/hidden'
 
 const Home = () => {
   return (
     <>
 
       <div className='bg-black'>
-        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30 md:opacity-30'></div>
-        <div className='w-full h-screen md:grid md:grid-cols-2 ' >
-          <div className='md:ml-10 md:pl-20 px-10 pt-32 z-30'>
-            <div className='text-white flex items-center font-extrabold md:text-4xl py-5 z-20 text-2xl leading-loose tracking-wide'>
+        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className='w-full h-screen md:grid md:grid-cols-2 flex items-center justify-center' >
+          <div className='md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0 pt-32 z-30'>
+            <div className='text-white flex items-center font-semibold md:text-4xl py-5 z-20 text-2xl  '>
 
-              <p>Establish Your Business in Indonesia Conveniently</p>
+              <p className='leading-normal tracking-wide'>Establish Your Business in Indonesia Conveniently</p>
             </div>
-            <div className='text-white flex items-center pb-5 '>TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia. Our team are equipped to communicate in Mandarin, English and Bahasa Indonesia with experiences on helping numerous customers in various sectors from establishment till ready to start business operation.</div>
+            <div className='text-white flex items-center pb-5 '>
+              <p className='leading-relaxed tracking-wide lg:text-[17px]'>
+
+                TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia. Our team are equipped to communicate in Mandarin, English and Bahasa Indonesia with experiences on helping numerous customers in various sectors from establishment till ready to start business operation.
+
+              </p>
+            </div>
             <a className='py-10' href="">
-              <div className='text-white bg-blue-700 p-2 w-28 mt-5'>
-                <p className='flex items-center my-auto text-center '>Get Started</p>
+              <div className='text-white bg-primary p-3 w-36 mt-5 '>
+                <p className='flex items-center justify-center text-center font-semibold'>GET STARTED</p>
               </div>
             </a>
           </div>
 
         </div>
 
+
       </div>
+
       <p className='font-bold text-3xl text-center py-10'>What Services We Offer</p>
       <div className='md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:p-10 py-10 p-5 '>
         <Link href="/services/basicEstablish">
@@ -75,10 +84,14 @@ const Home = () => {
 
         </a>
       </div>
-      <div className='bg-slate-100 w-full py-4 mt-6'>
+      <div className='bg-slate-100 w-full py-4 mt-6 '>
         <p className='font-bold text-3xl text-center py-10 '>Choose The Best Package You Need</p>
-        <div className='bg-slate-100 w-full py-4 mt-6 md:grid md:grid-cols-3 gap-3 p-5'>
-          <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
+        <div className='md:hidden sm:hidden  '>
+
+          <Hidden />
+        </div>
+        <div className='bg-slate-100 w-full py-4 mt-6 md:grid md:grid-cols-3 gap-3 p-5 md:visible sm:visible hidden '>
+          <CardTwo title={"Pendirian PT mlllmomplete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
           <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
         </div>
@@ -86,6 +99,8 @@ const Home = () => {
       <div className='bg-white w-full'>
         <p className='font-bold text-3xl text-center py-10 pb-10'>Our Client</p>
         <MultipleCarousel />
+
+
       </div>
 
     </>
