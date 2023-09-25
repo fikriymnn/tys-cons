@@ -6,20 +6,7 @@ import { Button, Navbar, Dropdown, Item, } from 'flowbite-react';
 export default function NavbarWithCTAButton() {
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
-    const Dropdown = () => {
-        return (
-            <div className=' bg-white  absolute mt-10 z-40 shadow-lg '>
-                <div className=' py-1 flex gap-1 hover p-2 hover:bg-blue-300'>
-                    <Image src={'/assets/images/united-states.png'} width={40} height={10} />
-                    <p className=' my-auto'>EN</p>
-                </div>
-                <div className=' py-1 flex gap-1 p-2 hover:bg-blue-300'>
-                    <Image src={'/assets/images/china.png'} width={40} height={10} />
-                    <p className=' my-auto'>CN</p>
-                </div>
-            </div>
-        )
-    }
+
     const DropdownServices = () => {
         return (
             <div className=' bg-white absolute mt-10 shadow-md z-10'>
@@ -58,28 +45,32 @@ export default function NavbarWithCTAButton() {
     }
     return (
         <>
-            <Navbar className=' fixed w-full z-40 shadow-md top-0'
+            <Navbar className=' fixed w-full md:py-5 sm:py-5 py-7 z-40 shadow-md top-0 '
                 fluid
 
             >
                 <Navbar.Brand href="/" className='z-40  '>
 
-                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-44 md:h-12 sm:w-36 sm:h-10 w-28 h-8' />
+                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 ' />
                 </Navbar.Brand>
                 <div className="flex md:order-3 gap-1 z-40 ">
 
-                    <div className=' my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ' onClick={() => setOpen1(!open1)}>
+                    <div className=' my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ' >
                         <Image src={'/assets/images/united-states.png'} width={40} height={10} />
                         <p className=' text-base my-auto'>EN</p>
-                        {
-                            open1 && <Dropdown />
-                        }
+
+
+                    </div>
+                    <div className=' my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ' >
+                        <Image src={'/assets/images/China.png'} width={40} height={10} />
+                        <p className=' text-base my-auto'>语言</p>
+
 
                     </div>
                     <Navbar.Toggle />
                 </div>
-                <Navbar.Collapse className=' md:order-1 z-40 '>
-                    <div className='my-auto'>
+                <Navbar.Collapse className=' md:order-1 z-40  '>
+                    <div className='my-auto '>
                         <Navbar.Link
 
                             href="/"
@@ -89,7 +80,7 @@ export default function NavbarWithCTAButton() {
                     </div>
                     <div className=' my-auto'>
                         <Navbar.Link href="/about">
-                            <span className=' my-auto md:text-sm '>About</span>
+                            <span className=' my-auto md:text-sm '>About Us</span>
                         </Navbar.Link>
                     </div>
                     <div className=' my-auto hover:text-blue-500' onClick={() => setOpen2(!open2)}>
@@ -118,18 +109,7 @@ export default function NavbarWithCTAButton() {
                     </div>
 
                 </Navbar.Collapse>
-                <Navbar.Collapse className='md:order-2 z-40 '>
-                    <a href="/login">
-                        <button className=' bg-white rounded-sm p-2 my-auto sm:w-full'>
-                            <span className=' text-black md:text-base'>Log in</span>
-                        </button>
-                    </a>
-                    <a href="/register">
-                        <button className=' bg-black rounded-sm p-2 my-auto sm:w-full'>
-                            <span className=' text-white md:text-base'>Sign Up</span>
-                        </button>
-                    </a>
-                </Navbar.Collapse>
+
             </Navbar>
         </>
     )
