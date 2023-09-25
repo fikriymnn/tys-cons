@@ -1,11 +1,25 @@
 'use client';
 import Image from 'next/image';
+
 import { useState } from 'react';
 import { Button, Navbar, Dropdown, Item, } from 'flowbite-react';
+import { useRouter } from 'next/router';
 
-export default function NavbarWithCTAButton() {
+export default function NavbarWithCTAButton({ height }) {
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
+
+
+    const [navbar, SetNavbar] = useState(false);
+    const ChangeBG = () => {
+        if (window.scrollY <= height) {
+            SetNavbar(true)
+        } else {
+            SetNavbar(false)
+        }
+
+    }
+    window.addEventListener('scroll', ChangeBG)
 
     const DropdownServices = () => {
         return (
@@ -45,13 +59,13 @@ export default function NavbarWithCTAButton() {
     }
     return (
         <>
-            <Navbar className=' fixed w-full md:py-5 sm:py-5 py-7 z-40 shadow-md top-0 '
+            <Navbar className={navbar ? 'bg-white opacity-40 fixed w-full md:py-5 sm:py-5 py-7 z-10 shadow-md top-0 ' : ' fixed w-full md:py-5 sm:py-5 py-7 z-10 shadow-md top-0 bg-white'}
                 fluid
 
             >
                 <Navbar.Brand href="/" className='z-40  '>
 
-                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 ' />
+                    <img src="/assets/images/tys-logo-blue.png" alt="" className=' md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 opacity-100' />
                 </Navbar.Brand>
                 <div className="flex md:order-3 gap-1 z-40 ">
 
