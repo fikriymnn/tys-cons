@@ -1,5 +1,5 @@
 import './globals.css'
-import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
+
 import CustomFooter from '@/components/CustomFooter';
 
 import { Inter } from 'next/font/google'
@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavbarWithCTAButton height={50} />
+
         {children}
-        <CustomFooter />
+
       </body>
     </html>
   )
