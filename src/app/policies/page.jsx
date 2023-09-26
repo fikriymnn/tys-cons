@@ -2,6 +2,8 @@
 import { useState } from "react";
 import PoliciesDetail from "@/components/PoliciesDetail";
 import Image from "next/image";
+import CustomFooter from '@/components/CustomFooter';
+import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 
 export default function Policies() {
   const [dropdown, setDropdown] = useState(false);
@@ -105,6 +107,8 @@ export default function Policies() {
 
   return (
     <>
+
+      <NavbarWithCTAButton />
       <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center  pt-24">
         <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
           <div
@@ -235,6 +239,7 @@ export default function Policies() {
 
         {componentDetail[selectedDetail]}
       </div>
+      <CustomFooter />
     </>
   );
 }
