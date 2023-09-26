@@ -1,21 +1,58 @@
 import React from 'react'
+import CompanyRegistrationCard from '../../CompanyRegistrationCard'
 
 function LegalAdministration() {
+    const Card1 = (
+
+        <CompanyRegistrationCard src={"/foto.jpg"}
+            title={"Company Registration Basic Regulation"}
+            price={
+                "3000-2000"
+            } />
+    );
+    const Card2 = (
+
+        <CompanyRegistrationCard src={"/foto.jpg"}
+            title={"dakjnlk Basic Regulation"}
+            price={
+                "2000-2000"
+            } />
+    );
+    const Card3 = (
+
+        <CompanyRegistrationCard src={"/foto.jpg"}
+            title={"Company Registration Basic Regulation Company Registration Basic RegulationCompany Registration Basic RegulationCompany Registration Basic Regulation"}
+            price={
+                "2000-2000"
+            } />
+    );
+    const Card4 = (
+
+        <CompanyRegistrationCard src={"/foto.jpg"}
+            title={"Company Registration Basic Regulation"}
+            price={
+                "2000-2000"
+            } />
+    );
+
+    const Card5 = (
+
+        <CompanyRegistrationCard src={"/foto.jpg"}
+            title={"Company Registration Basic Regulation"}
+            price={
+                "2000-2000"
+            } />
+    );
+
+    const CompanyReg = [
+        Card1, Card2, Card3, Card4, Card5
+    ]
     return (
-        <a href="/">
+        <>
 
 
-            <div className='bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2'>
-                <div className='h-36 bg-blue-700'>
-
-                </div>
-                <div className='p-3 md:w-full sm:w-full w-11/12'>
-                    <h1 className='font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2'>Company Registration ipsum dolor sit sdfsd</h1>
-                    <h2 className='md:text-base sm:text-sm text-sm text-blue-600'>1 December 2022 dsdfsdf sdfds</h2>
-                </div>
-
-            </div>
-        </a>
+            {CompanyReg}
+        </>
     )
 }
 
