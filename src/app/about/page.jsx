@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const About = () => {
     return (
-        <div className=' px-5 md:px-16 sm:px-10 pt-24 '>
+        <div className=' px-5 md:px-16 sm:px-10 pt-24 font-sans'>
             <p className='text-blue-800 text-3xl font-semibold pb-4 font-sans'>
                 About Us
             </p>
@@ -24,15 +24,15 @@ const About = () => {
                         display="block"
                         position="" />
                     <div className='flex gap-4'>
-                        <Image src={'/assets/images/map (1).png'} width={25} height={25} alt='' className='py-4' />
+                        <Image src={'/assets/images/map (1).png'} width={25} height={25} alt='' className='py-3' />
                         <p className=' my-auto'>Citra garden, Kalideres, Jakarta Barat 11840</p>
                     </div>
                     <div className='flex gap-4'>
-                        <Image src={'/assets/images/call (1).png'} width={25} height={25} alt='' className=' py-4' />
+                        <Image src={'/assets/images/call (1).png'} width={25} height={25} alt='' className=' py-3' />
                         <p className=' my-auto'>0812-1355-1038</p>
                     </div>
                     <div className='flex gap-4'>
-                        <Image src={'/assets/images/email (3).png'} width={25} height={25} alt='' className=' py-4' />
+                        <Image src={'/assets/images/email (3).png'} width={25} height={25} alt='' className=' py-3' />
                         <p className=' my-auto'>marketing@.com</p>
                     </div>
                 </div>
