@@ -7,11 +7,11 @@ const CustomFooter = () => {
         <div className=' w-full bg-[#031530] '>
             <div className=' md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-2 items-start'>
                 <div className=' mx-auto'>
-                    <Image src={'/assets/images/tys-logo.png'} width={200} height={75} />
-                    <p className=' py-4 text-white text-base leading-relaxed'>TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia.</p>
+                    <img src="/assets/images/tys-logo.png" alt="" className=' w-auto h-12' />
+                    <p className=' py-4 text-white text-base leading-relaxed font-sans'>TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia.</p>
                 </div>
-                <div className=' ml-3'>
-                    <p className=' uppercase font-bold text-white '>Contact Us</p>
+                <div className=' md:ml-2'>
+                    <p className=' uppercase font-bold text-white font-sans '>Contact Us</p>
                     <p className=' text-white pt-3 pb-2'>Citra garden, Kalideres, Jakarta Barat 11840</p>
                     <div className=' flex gap-3 py-2'>
                         <img src="/assets/images/call (2).png" alt="" className='w-5 h-5 my-auto' />
@@ -22,8 +22,8 @@ const CustomFooter = () => {
                         <p className=' text-white my-auto'>marketing@.com</p>
                     </div>
                 </div>
-                <div className=' py-4 md:py-0 '>
-                    <p className=' text-white font-bold pb-2'>Our Social Media</p>
+                <div className=' py-4 md:py-0 px-2'>
+                    <p className=' text-white font-bold pb-3'>Our Social Media</p>
                     <div className=' flex gap-4'>
                         <img src="/assets/images/qr-tys.jpg" alt="" className=' w-40' />
                         <div className=' '>
