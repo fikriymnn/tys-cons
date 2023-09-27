@@ -5,16 +5,24 @@ import CustomCard from "@/components/CustomCard";
 import CardTwo from "@/components/CardTwo";
 import MultipleCarousel from "@/components/MultipleCarousel";
 import Link from "next/link";
+import Hidden from "@/components/hidden";
+import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
+import CustomFooter from "@/components/CustomFooter";
 
 const Home = () => {
   return (
     <>
+      <div className="z-40">
+        <NavbarWithCTAButton height={700} />
+      </div>
       <div className="bg-black">
-        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-30 md:opacity-30'></div>
-        <div className="w-full h-screen md:grid md:grid-cols-2 ">
-          <div className="md:ml-10 md:pl-20 px-10 pt-32 z-30">
-            <div className="text-white flex items-center font-extrabold md:text-4xl py-5 z-20 text-2xl leading-loose tracking-wide">
-              <p>Establish Your Business in Indonesia Conveniently</p>
+        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className="w-full h-screen md:grid md:grid-cols-2 flex items-center justify-center">
+          <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0 pt-32 z-10">
+            <div className="text-white flex items-center font-semibold md:text-4xl py-5 z-20 text-2xl  ">
+              <p className="leading-normal tracking-wide">
+                Establish Your Business in Indonesia Conveniently
+              </p>
             </div>
             <div className="text-white flex items-center pb-5 ">
               TYS Consulting is a Business Consultant with main business in
@@ -262,6 +270,7 @@ const Home = () => {
         <p className="font-bold text-3xl text-center py-10 pb-10">Our Client</p>
         <MultipleCarousel />
       </div>
+      <CustomFooter />
     </>
   );
 };

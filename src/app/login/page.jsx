@@ -1,12 +1,15 @@
 'use client';
+import CustomFooter from '@/components/CustomFooter';
+import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 
 import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
 
 export default function LoginPage() {
   return (
     <>
+      <NavbarWithCTAButton />
       <div className='bg-black  '>
-        <div className=' bg-cover bg-[url("/assets/images/login.jpg")] h-screen w-screen flex justify-center items-center opacity-30 absolute'></div>
+        <div className=' bg-cover bg-[url("/assets/images/login.jpg")] h-screen w-full flex justify-center items-center opacity-30 absolute'></div>
         <div className='h-screen flex justify-center items-center' >
           <div className='w-[700px] mx-5 z-20'>
 
@@ -63,6 +66,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <CustomFooter />
     </>
   )
 }
