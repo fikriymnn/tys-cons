@@ -1,9 +1,77 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../../../../firebase/page";
 
-function EditAbout() {
+function EditParagraph() {
   const [isAlert, setIsAlert] = useState(false);
+
+  const [china, setChina] = useState("");
+  const [inggris, setInggris] = useState("");
+
+  useEffect(() => {
+    getDataHomeParagraph();
+  }, []);
+
+  const getDataHomeParagraph = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "paragraph");
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setChina(data[0].chinese);
+      setInggris(data[0].english);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const update = async (e) => {
+    e.preventDefault();
+
+    try {
+      const todoRef = doc(db, "editHomePage", "paragraph");
+
+      await updateDoc(todoRef, {
+        chinese: china,
+        english: inggris,
+      });
+
+      alert("Success");
+
+      // Update the "completed" field of the todo document to the value of the "checked" property of the event target.
+
+      // Get a reference to the todo document with the given ID in the "todos" collection in Firestore.
+
+      // After updating the todo, fetch all todos for the current user and update the state with the new data.
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const openAlert = () => {
     setIsAlert(true);
   };
@@ -17,7 +85,7 @@ function EditAbout() {
           <div className="flex-col">
             <div className=" text-2xl mb-5">Change Will not be saved</div>
             <div className="flex justify-between">
-              <a href="/dashboardAdmin/about">
+              <a href="/dashboardAdmin/home">
                 <button className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-red-700">
                   Oke
                 </button>
@@ -39,15 +107,17 @@ function EditAbout() {
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
-            <p>Edit "Component Name"</p>
+            <p>Edit Heading</p>
           </div>
           <div className="w-1/12 flex items-center justify-center">
-            <button
-              onClick={openAlert}
-              className="bg-red-600 rounded-lg py-2 px-5 text-xl"
-            >
-              X
-            </button>
+            <a href="/dashboardAdmin/home">
+              <button
+                // onClick={openAlert}
+                className="bg-red-600 rounded-lg py-2 px-5 text-xl"
+              >
+                X
+              </button>
+            </a>
           </div>
         </div>
 
@@ -58,6 +128,8 @@ function EditAbout() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={inggris || ""}
+                onChange={(e) => setInggris(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -75,6 +147,8 @@ function EditAbout() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={china || ""}
+                onChange={(e) => setChina(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -90,8 +164,8 @@ function EditAbout() {
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">
               <button
+                onClick={(e) => update(e)}
                 className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-[#007aff]"
-                // onClick={closeEdit}
               >
                 Save
               </button>
@@ -103,4 +177,4 @@ function EditAbout() {
   );
 }
 
-export default EditAbout;
+export default EditParagraph;

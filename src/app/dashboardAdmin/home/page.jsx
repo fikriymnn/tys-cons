@@ -116,7 +116,7 @@ function HomeAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/edit"
+                    href="/dashboardAdmin/home/editHeading"
                   >
                     <button>
                       <img
@@ -151,7 +151,7 @@ function HomeAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/edit"
+                    href="/dashboardAdmin/home/editParagraph"
                   >
                     <button>
                       <img

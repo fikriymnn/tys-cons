@@ -43,6 +43,17 @@ function ServicesAdmin() {
       alert(error);
     }
   };
+  const deleteProd = async (id) => {
+    try {
+      // Delete the todo document with the given ID from the "todos" collection in Firestore.
+      await deleteDoc(doc(db, "promo", id));
+      alert("delete success");
+      location.reload();
+      console.log("Deleted successfully");
+    } catch (error) {
+      console.error("An error occured", error);
+    }
+  };
   return (
     <>
       <div className="flex">
@@ -91,10 +102,10 @@ function ServicesAdmin() {
                       <>
                         <div className="flex bg-slate-300 rounded-md mb-3">
                           <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                            <p>1</p>
+                            <p>{i + 1}</p>
                           </div>
                           <div className="p-2 h-full w-[200px] border-s-2">
-                            <img src="/foto.jpg" alt="" />
+                            <img src={data.img} alt="" />
                           </div>
                           <div className="w-full flex">
                             <div className="w-4/12 border-s-2  flex justify-start items-center p-2">
@@ -128,7 +139,7 @@ function ServicesAdmin() {
                             </button>
                             <a
                               className="bg-yellow-400 h-10 rounded-md p-3"
-                              href="/dashboardAdmin/services/edit"
+                              href={`/dashboardAdmin/services/edit?id=${data.id}`}
                             >
                               <button
                               //onClick={openEditService}
@@ -139,7 +150,20 @@ function ServicesAdmin() {
                                 />
                               </button>
                             </a>
-                            <button className="bg-red-600 h-10 rounded-md p-3">
+                            <button
+                              onClick={async (e) => {
+                                try {
+                                  // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                  await deleteDoc(doc(db, "service", data.id));
+                                  alert("delete success");
+                                  location.reload();
+                                  console.log("Deleted successfully");
+                                } catch (error) {
+                                  console.error("An error occured", error);
+                                }
+                              }}
+                              className="bg-red-600 h-10 rounded-md p-3"
+                            >
                               <img
                                 src="/assets/images/delete-1-svgrepo-com.svg"
                                 alt=""

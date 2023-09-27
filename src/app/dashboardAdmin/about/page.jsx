@@ -314,7 +314,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editHeading"
                   >
                     <button>
                       <img
@@ -349,7 +349,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/edit"
+                    href="/dashboardAdmin/about/editParagraph"
                   >
                     <button>
                       <img
@@ -381,7 +381,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editAddress"
                   >
                     <button>
                       <img
@@ -413,7 +413,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editPhone"
                   >
                     <button>
                       <img
@@ -444,7 +444,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editEmail"
                   >
                     <button>
                       <img
@@ -475,7 +475,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editInstagram"
                   >
                     <button>
                       <img
@@ -506,7 +506,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editFacebook"
                   >
                     <button>
                       <img
@@ -537,7 +537,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editWechat"
                   >
                     <button>
                       <img
@@ -568,7 +568,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editLinkedin"
                   >
                     <button>
                       <img
@@ -595,7 +595,7 @@ function AboutAdmin() {
                 <div className="w-14  flex gap-3 m-3 my-auto">
                   <a
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/edit"
+                    href="/dashboardAdmin/about/editBarcode"
                   >
                     <button>
                       <img
