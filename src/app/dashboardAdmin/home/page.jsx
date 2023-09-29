@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/admin/navigation";
+import { initializeApp } from "firebase/app";
 import {
   collection,
   addDoc,
