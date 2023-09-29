@@ -1,6 +1,26 @@
 "use client";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  deleteDoc,
+  getDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 function EditArticle() {
   const [isAlert, setIsAlert] = useState(false);
@@ -9,6 +29,122 @@ function EditArticle() {
   };
   const closeAlert = () => {
     setIsAlert(false);
+  };
+  const searchParams = useSearchParams();
+  const [dataArticles, setDataArticles] = useState("");
+
+  const [titleIng, setTitleIng] = useState("");
+  const [titleChi, setTitleChi] = useState("");
+  const [headTextIng, setHeadTextIng] = useState("");
+  const [headTextChi, setHeadTextChi] = useState("");
+  const [contentIng, setContentIng] = useState("");
+  const [contentChi, setcontentChi] = useState("");
+
+  const [downloadURL, setDownloadURL] = useState("");
+
+  // progress
+  const [percent, setPercent] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState("");
+  const id = searchParams.get("id");
+
+  useEffect(() => {
+    getDataArticles();
+  }, []);
+
+  const getDataArticles = async () => {
+    try {
+      const docRef = doc(db, "articles", id);
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setTitleIng(data[0].titleEnglish);
+      setTitleChi(data[0].titleChinese);
+      setHeadTextIng(data[0].headTextEnglish);
+      setHeadTextChi(data[0].headTextChinese);
+      setContentIng(data[0].contentEnglish);
+      setcontentChi(data[0].ContentChinese);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleUpload = async (filess) => {
+    const files = filess;
+    try {
+      setLoading(true);
+      setFile(files.name);
+      const storageRef = ref(storage, `/articles/${files.name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            setDownloadURL(url);
+            setLoading(false);
+          });
+        }
+      );
+    } catch (error) {
+      alert(error);
+      setLoading(false);
+    }
+  };
+
+  const addData = async (e) => {
+    e.preventDefault();
+    const todoRef = doc(db, "articles", id);
+
+    if (file == "") {
+      await updateDoc(todoRef, {
+        titleEnglish: titleIng,
+        titleChinese: titleChi,
+        headTextEnglish: headTextIng,
+        headTextChinese: headTextChi,
+
+        contentEnglish: contentIng,
+        ContentChinese: contentChi,
+      });
+    } else {
+      await updateDoc(todoRef, {
+        titleEnglish: titleIng,
+        titleChinese: titleChi,
+        headTextEnglish: headTextIng,
+        headTextChinese: headTextChi,
+        img: downloadURL,
+        contentEnglish: contentIng,
+        ContentChinese: contentChi,
+      });
+    }
+
+    alert("success");
   };
   return (
     <>
@@ -42,12 +178,14 @@ function EditArticle() {
             <p>Edit Article</p>
           </div>
           <div className="w-1/12 flex items-center justify-center">
-            <button
-              onClick={openAlert}
-              className="bg-red-600 rounded-lg py-2 px-5 text-xl"
-            >
-              X
-            </button>
+            <a href="/dashboardAdmin/articles">
+              <button
+                // onClick={openAlert}
+                className="bg-red-600 rounded-lg py-2 px-5 text-xl"
+              >
+                X
+              </button>
+            </a>
           </div>
         </div>
 
@@ -57,7 +195,10 @@ function EditArticle() {
               <p>Image</p>
             </div>
             <div className=" w-10/12 p-3">
-              <input type="file" />
+              <input
+                type="file"
+                onChange={(event) => handleUpload(event.target.files[0])}
+              />
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -72,6 +213,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={titleIng ?? ""}
+                onChange={(e) => setTitleIng(e.target.value)}
                 type="text"
                 placeholder="Insert Title"
                 color=" bg-transparent"
@@ -85,6 +228,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={titleChi ?? ""}
+                onChange={(e) => setTitleChi(e.target.value)}
                 type="text"
                 placeholder="Insert Title"
                 color=" bg-transparent"
@@ -105,6 +250,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={headTextIng ?? ""}
+                onChange={(e) => setHeadTextIng(e.target.value)}
                 type="text"
                 placeholder="Insert Price"
                 color=" bg-transparent"
@@ -118,6 +265,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={headTextChi ?? ""}
+                onChange={(e) => setHeadTextChi(e.target.value)}
                 type="text"
                 placeholder="Insert Price"
                 color=" bg-transparent"
@@ -142,6 +291,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={contentIng ?? ""}
+                onChange={(e) => setContentIng(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -159,6 +310,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={contentChi ?? ""}
+                onChange={(e) => setcontentChi(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -172,9 +325,16 @@ function EditArticle() {
           </div>
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">
-              <button className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400">
-                Edit Article
-              </button>
+              {loading ? (
+                <p>Loading</p>
+              ) : (
+                <button
+                  onClick={(e) => addData(e)}
+                  className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
+                >
+                  Edit Article
+                </button>
+              )}
             </div>
           </div>
         </div>

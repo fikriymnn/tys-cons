@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <div className="z-40">
-        <NavbarWithCTAButton height={700} />
+        <NavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
         <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>

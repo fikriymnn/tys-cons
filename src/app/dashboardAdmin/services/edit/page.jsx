@@ -622,7 +622,7 @@ function EditService() {
                 onClick={(e) => addData(e)}
                 className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-green-400"
               >
-                Create New Service
+                Edit Service
               </button>
             </div>
           </div>
