@@ -316,13 +316,17 @@ function AboutAdmin() {
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
                     href="/dashboardAdmin/about/editHeading"
                   >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
+                    <>
+                      <button>
+                        <>
+                          <img
+                            className="w-8"
+                            src="/assets/images/edit-svgrepo-com.svg"
+                            alt=""
+                          />
+                        </>
+                      </button>
+                    </>
                   </a>
                 </div>
               </div>
@@ -351,13 +355,17 @@ function AboutAdmin() {
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
                     href="/dashboardAdmin/about/editParagraph"
                   >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
+                    <>
+                      <button>
+                        <>
+                          <img
+                            className="w-8"
+                            src="/assets/images/edit-svgrepo-com.svg"
+                            alt=""
+                          />
+                        </>
+                      </button>
+                    </>
                   </a>
                 </div>
               </div>
@@ -383,13 +391,17 @@ function AboutAdmin() {
                     className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
                     href="/dashboardAdmin/about/editAddress"
                   >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
+                    <>
+                      <button>
+                        <>
+                          <img
+                            className="w-8"
+                            src="/assets/images/edit-svgrepo-com.svg"
+                            alt=""
+                          />
+                        </>
+                      </button>
+                    </>
                   </a>
                 </div>
               </div>

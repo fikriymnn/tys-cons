@@ -116,10 +116,12 @@ function ArticlesAdmin() {
                           </div>
                           <div className="w-56  flex gap-3 m-3 my-auto">
                             <button className="bg-green-600  h-10 rounded-md p-3 ">
-                              <img
-                                src="/assets/images/view-svgrepo-com.svg"
-                                alt=""
-                              />
+                              <>
+                                <img
+                                  src="/assets/images/view-svgrepo-com.svg"
+                                  alt=""
+                                />
+                              </>
                             </button>
                             <a
                               className="bg-yellow-400 h-10 rounded-md p-3"
@@ -128,10 +130,12 @@ function ArticlesAdmin() {
                               <button
                               //onClick={openEditArticle}
                               >
-                                <img
-                                  src="/assets/images/edit-svgrepo-com.svg"
-                                  alt=""
-                                />
+                                <>
+                                  <img
+                                    src="/assets/images/edit-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </>
                               </button>
                             </a>
                             <button
@@ -148,10 +152,12 @@ function ArticlesAdmin() {
                               }}
                               className="bg-red-600 h-10 rounded-md p-3"
                             >
-                              <img
-                                src="/assets/images/delete-1-svgrepo-com.svg"
-                                alt=""
-                              />
+                              <>
+                                <img
+                                  src="/assets/images/delete-1-svgrepo-com.svg"
+                                  alt=""
+                                />
+                              </>
                             </button>
                           </div>
                         </div>

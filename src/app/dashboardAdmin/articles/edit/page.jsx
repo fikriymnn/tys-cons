@@ -31,7 +31,6 @@ function EditArticle() {
     setIsAlert(false);
   };
   const searchParams = useSearchParams();
-  const [dataArticles, setDataArticles] = useState("");
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
