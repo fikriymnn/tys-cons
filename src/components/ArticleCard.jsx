@@ -3,8 +3,8 @@ import React from 'react'
 function ArticleCard() {
     return (
         <a href="/articles/article">
-            <div className='bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out'>
-                <div className='h-36 bg-blue-700'>
+            <div className='bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1'>
+                <div className='bg-blue-700 md:grid grid-cols-1 min-h-28 md:h-36'>
 
                 </div>
                 <div className='p-3 '>
