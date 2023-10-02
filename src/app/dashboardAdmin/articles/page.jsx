@@ -106,8 +106,8 @@ function ArticlesAdmin() {
                             </div>
                             <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
-                                <p>{data.contentEnglish}</p>
-                                <p>{data.contentChinese}</p>
+                                <p>{data.content[0].contentIng}</p>
+                                <p>{data.content[0].contentChi}</p>
                               </div>
                             </div>
                             <div className=" border-x-2 w-2/12 flex justify-start items-center p-2">

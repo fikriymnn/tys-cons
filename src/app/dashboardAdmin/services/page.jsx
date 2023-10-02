@@ -43,17 +43,7 @@ function ServicesAdmin() {
       alert(error);
     }
   };
-  const deleteProd = async (id) => {
-    try {
-      // Delete the todo document with the given ID from the "todos" collection in Firestore.
-      await deleteDoc(doc(db, "promo", id));
-      alert("delete success");
-      location.reload();
-      console.log("Deleted successfully");
-    } catch (error) {
-      console.error("An error occured", error);
-    }
-  };
+
   return (
     <>
       <div className="flex">
@@ -116,8 +106,7 @@ function ServicesAdmin() {
                             </div>
                             <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
-                                <p>{data.priceYuan} 元</p>
-                                <p>IDR {data.priceRp}</p>
+                                <p>{data.price[0].price} 元</p>
                               </div>
                             </div>
                             <div className="w-6/12 border-s-2  flex justify-start items-center p-2">

@@ -20,9 +20,15 @@ function HomeAdmin() {
   //get data home page
   const [dataHomeHeading, setDataHomeHeading] = useState([]);
   const [dataHomeParagraph, setDataHomeParagraph] = useState([]);
+  const [dataLogoWhite, setDataLogoWhite] = useState([]);
+  const [dataLogoNav, setDataLogoNav] = useState([]);
+  const [dataLogoFoot, setDataLogoFoot] = useState([]);
   useEffect(() => {
     getDataHomeHeading();
     getDataHomeParagraph();
+    getDataHomeLogoWhite();
+    getDataHomeLogoNav();
+    getDataHomeLogoFoot();
   }, []);
 
   //get data home page
@@ -67,6 +73,75 @@ function HomeAdmin() {
       data.push(querySnapshot.data());
 
       setDataHomeParagraph(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getDataHomeLogoWhite = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoWhite");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setDataLogoWhite(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getDataHomeLogoNav = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoNav");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setDataLogoNav(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getDataHomeLogoFoot = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoFooter");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setDataLogoFoot(data);
     } catch (error) {
       alert(error);
     }
@@ -144,6 +219,96 @@ function HomeAdmin() {
                               <p>{data.chinese}</p>
                             </>
                           );
+                        })}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-14  flex gap-3 m-3 my-auto">
+                  <a
+                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                    href="/dashboardAdmin/home/editParagraph"
+                  >
+                    <button>
+                      <img
+                        className="w-8"
+                        src="/assets/images/edit-svgrepo-com.svg"
+                        alt=""
+                      />
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex bg-slate-300 rounded-md">
+                <div className="w-full flex">
+                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
+                    <p>Logo navbar white</p>
+                  </div>
+                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                    <div className="flex flex-col">
+                      {dataLogoWhite.length > 0 &&
+                        dataLogoWhite.map((data, i) => {
+                          return <img src={data.img}></img>;
+                        })}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-14  flex gap-3 m-3 my-auto">
+                  <a
+                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                    href="/dashboardAdmin/home/editParagraph"
+                  >
+                    <button>
+                      <img
+                        className="w-8"
+                        src="/assets/images/edit-svgrepo-com.svg"
+                        alt=""
+                      />
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex bg-slate-300 rounded-md">
+                <div className="w-full flex">
+                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
+                    <p>Logo navbar</p>
+                  </div>
+                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                    <div className="flex flex-col">
+                      {dataLogoNav.length > 0 &&
+                        dataLogoNav.map((data, i) => {
+                          return <img src={data.img}></img>;
+                        })}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-14  flex gap-3 m-3 my-auto">
+                  <a
+                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                    href="/dashboardAdmin/home/editParagraph"
+                  >
+                    <button>
+                      <img
+                        className="w-8"
+                        src="/assets/images/edit-svgrepo-com.svg"
+                        alt=""
+                      />
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex bg-slate-300 rounded-md">
+                <div className="w-full flex">
+                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
+                    <p>Logo footer</p>
+                  </div>
+                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                    <div className="flex flex-col">
+                      {dataLogoFoot.length > 0 &&
+                        dataLogoFoot.map((data, i) => {
+                          return <img src={data.img}></img>;
                         })}
                     </div>
                   </div>

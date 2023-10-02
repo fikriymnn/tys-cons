@@ -10,6 +10,121 @@ function EditPolicies() {
   const closeAlert = () => {
     setIsAlert(false);
   };
+  const searchParams = useSearchParams();
+  const [titleIng, setTitleIng] = useState("");
+  const [titleChi, setTitleChi] = useState("");
+  const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
+  const [contentIng, setContentIng] = useState("");
+  const [contentChi, setContentChi] = useState("");
+
+  const [downloadURL, setDownloadURL] = useState("");
+  const [file, setFile] = useState("");
+
+  const id = searchParams.get("id");
+
+  // progress
+  const [percent, setPercent] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getDataEventse();
+  }, []);
+
+  const getDataEventse = async () => {
+    try {
+      const docRef = doc(db, "policies", id);
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setTitleIng(data[0].titleEnglish);
+      setTitleChi(data[0].titleChinese);
+      setCategory(data[0].category);
+      setSubCategory(data[0].subCategory);
+      setContentIng(date[0].contentEnglish);
+      setContentChi(date[0].contentChinese);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleUpload = async (filess) => {
+    const files = filess;
+    try {
+      setLoading(true);
+      setFile(files.name);
+      const storageRef = ref(storage, `/policies/${files.name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            setDownloadURL(url);
+            setLoading(false);
+          });
+        }
+      );
+    } catch (error) {
+      alert(error);
+      setLoading(false);
+    }
+  };
+
+  const addData = async (e) => {
+    e.preventDefault();
+    const todoRef = doc(db, "events", id);
+
+    if (file == "") {
+      await updateDoc(todoRef, {
+        titleEnglish: titleIng,
+        titleChinese: titleChi,
+        category: category,
+        subCategory: subCategory,
+        contentChinese: contentChi,
+        contentIng: contentIng,
+      });
+    } else {
+      await updateDoc(todoRef, {
+        titleEnglish: titleIng,
+        titleChinese: titleChi,
+        category: category,
+        subCategory: subCategory,
+        contentChinese: contentChi,
+        contentIng: contentIng,
+
+        img: downloadURL,
+      });
+    }
+
+    alert("success");
+  };
   return (
     <>
       {isAlert && (
@@ -42,12 +157,14 @@ function EditPolicies() {
             <p>Edit Policies and Regulations</p>
           </div>
           <div className="w-1/12 flex items-center justify-center">
-            <button
-              onClick={openAlert}
-              className="bg-red-600 rounded-lg py-2 px-5 text-xl"
-            >
-              X
-            </button>
+            <a href="/dashboardAdmin/policies">
+              <button
+                // onClick={openAlert}
+                className="bg-red-600 rounded-lg py-2 px-5 text-xl"
+              >
+                X
+              </button>
+            </a>
           </div>
         </div>
 
@@ -57,7 +174,10 @@ function EditPolicies() {
               <p>Image</p>
             </div>
             <div className=" w-10/12 p-3">
-              <input type="file" />
+              <input
+                type="file"
+                onChange={(event) => handleUpload(event.target.files[0])}
+              />
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -72,6 +192,8 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={titleIng ?? ""}
+                onChange={(e) => setTitleIng(e.target.value)}
                 type="text"
                 placeholder="Insert Title"
                 color=" bg-transparent"
@@ -85,6 +207,8 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3">
               <input
+                value={titleChi ?? ""}
+                onChange={(e) => setTitleChi(e.target.value)}
                 type="text"
                 placeholder="Insert Title"
                 color=" bg-transparent"
@@ -103,6 +227,23 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
               <input
+                value={category ?? ""}
+                onChange={(e) => setCategory(e.target.value)}
+                type="text"
+                placeholder="This will be a Dropdown"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5 text-2xl font-semibold">
+              <p> Sub Category</p>
+            </div>
+            <div className=" w-10/12 p-3 flex gap-3">
+              <input
+                value={subCategory ?? ""}
+                onChange={(e) => setSubCategory(e.target.value)}
                 type="text"
                 placeholder="This will be a Dropdown"
                 color=" bg-transparent"
@@ -123,6 +264,8 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={contentIng ?? ""}
+                onChange={(e) => setContentIng(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -140,6 +283,8 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3">
               <textarea
+                value={contentChi ?? ""}
+                onChange={(e) => setContentChi(e.target.value)}
                 name=""
                 id=""
                 cols="20"
@@ -154,9 +299,16 @@ function EditPolicies() {
 
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">
-              <button className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-[#007aff]">
-                Edit Policies and Regulations
-              </button>
+              {loading ? (
+                <p>Loading</p>
+              ) : (
+                <button
+                  onClick={(e) => addData(e)}
+                  className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
+                >
+                  Create New Policies and Regulations
+                </button>
+              )}
             </div>
           </div>
         </div>
