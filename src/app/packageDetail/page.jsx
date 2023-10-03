@@ -1,37 +1,23 @@
 import React from 'react'
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 import CustomFooter from '@/components/CustomFooter';
+import CardTwo from '@/components/CardTwo';
+import Hidden from '@/components/hidden';
 
 function PackageDetails() {
     return (
         <>
             <NavbarWithCTAButton />
-            <div className='bg-gray-200 p-5'>
-                <div className='flex pb-5 gap-1'><p>Package </p> <p>&gt;</p><p className='text-blue-600'>Pendirian PT PMA Complete</p></div>
-                <div className='bg-white'>
-                    <div className="relative p-5 pt-10">
-                        <div className='md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5'>
-                            <div className=''>
-                                <p className='md:text-2xl text-2xl pb-4'>Pendirian PT PMA Complete</p>
-                                <div className='flex pb-4'>
-                                    <p className='text-blue-600 text-xl'>Rp 15.000.000 </p>
+            <div className='bg-slate-100 w-full py-24  '>
+                <p className='font-bold text-3xl text-center py-10 '>Choose The Best Package You Need</p>
+                <div className='md:hidden sm:hidden  '>
 
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div className='h-[2px] w-full bg-gray-300 '></div>
-                        <div className=' bg-blue-600  w-80 mb-2'>
-                            <p className='text-center text-white text-base font-semibold p-3'>Package Includes:</p>
-                        </div>
-                        <p>1. The classification standard of trademarks is a common standard all over the world, and there are 45 categories</p>
-                        <p>2. A trademark is usually composed of a combination of words, graphics, English and numbers</p>
-                        <p>3. It takes two years to formally process a trademark, and you can start using it after obtaining the review approval. It takes about 2-3 weeks from the application to the approval letter</p>
-                        <div className='h-[2px] w-full bg-gray-300 mt-5'></div>
-
-                    </div>
+                    <Hidden />
+                </div>
+                <div className='bg-slate-100 w-full py-4 mt-6 md:grid md:grid-cols-3 gap-3 p-5 md:visible sm:visible hidden '>
+                    <CardTwo title={"Pendirian PT mlllmomplete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
+                    <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
+                    <CardTwo title={"Pendirian PT PMA Complete"} price={"RP.15.000.00"} text1={"Package Includes:"} text2={"Brand Perfomance Analytics"} text3={"Daily Prices Change Notifications"} text4={"Marketplace Price Tracking"} text5={"Stock Availability Monitoring"} text6={"Marketplace Price Tracking"} />
                 </div>
             </div>
             <CustomFooter />

@@ -281,7 +281,7 @@ function AboutAdmin() {
             <div className="w-full grid grid-cols-1 gap-5">
               <div className="w-full flex bg-slate-300 rounded-md  font-semibold">
                 <div className="w-full flex">
-                  <div className="w-2/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[500px] border-s-2  flex justify-start items-center ">
                     <p>Section</p>
                   </div>
                   <div className="w-8/12 border-s-2  flex justify-start items-center p-2">

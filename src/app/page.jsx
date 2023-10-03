@@ -19,12 +19,12 @@ const Home = () => {
         <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
         <div className="w-full h-screen md:grid md:grid-cols-2 flex items-center justify-center">
           <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0 pt-32 z-10">
-            <div className="text-white flex items-center font-semibold md:text-4xl py-5 z-20 text-2xl  ">
+            <div className="text-white flex items-center font-semibold md:text-[38px] py-5 z-20 text-2xl  ">
               <p className="leading-normal tracking-wide">
                 Establish Your Business in Indonesia Conveniently
               </p>
             </div>
-            <div className="text-white flex items-center pb-5 ">
+            <div className="text-white flex items-center pb-5 leading-normal tracking-wide text-[17px]">
               TYS Consulting is a Business Consultant with main business in
               providing one-stop enterprise consultation services for
               enterprises or individuals who wants to establish business in
@@ -34,19 +34,19 @@ const Home = () => {
               start business operation.
             </div>
             <a className="py-10" href="">
-              <div className="text-white bg-blue-700 p-2 w-28 mt-5">
-                <p className="flex items-center my-auto text-center ">
-                  Get Started
+              <div className="text-white bg-primary p-3 w-36 mt-5 flex items-center justify-center">
+                <p className=" my-auto text-center ">
+                  GET STARTED
                 </p>
               </div>
             </a>
           </div>
         </div>
       </div>
-      <p className="font-bold text-3xl text-center py-10">
+      <p className="font-semibold text-3xl text-center pt-14 pb">
         What Services We Offer
       </p>
-      <div className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:p-10 py-10 p-5 ">
+      <div className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 ">
         <Link href="/services/basicEstablish">
           <MainCard
             icon1={
@@ -196,8 +196,8 @@ const Home = () => {
           />
         </Link>
       </div>
-      <p className="font-bold text-3xl text-center py-10 ">Latest Articles</p>
-      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-5">
+      <p className="font-semibold text-3xl text-center py-5 ">Latest Articles</p>
+      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10">
         <CustomCard
           text={"Lorem Ipsum is simply dummy text of the printing a.."}
           isi={"1 December 2022"}
@@ -206,9 +206,9 @@ const Home = () => {
           }
         />
         <CustomCard
-          text={"Article"}
+          text={"Lorem Ipsum is simply dummy text of the printing a.."}
           isi={"1 December 2022"}
-          isi2={"lorem ipsum dolor sit amet"}
+          isi2={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "}
         />
 
         <a href="">
@@ -224,16 +224,17 @@ const Home = () => {
             </div>
             <h1>1 December 2022</h1>
           </div>
-          <div className="mt-2 lg:mt-auto text-primary font-semibold cursor-pointer flex items-center lg:justify-center space-x-1 text-blue-600 p-28">
-            <p>View More Articles</p>
+          <div className="mt-2 lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 p-28">
+            <p>View More Articles </p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-[1rem] w-auto mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
           </div>
         </a>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <p className="font-bold text-3xl text-center py-10 ">
+        <p className="font-semibold text-3xl text-center pt-10 ">
           Choose The Best Package You Need
         </p>
-        <div className="bg-slate-100 w-full py-4 mt-6 md:grid md:grid-cols-3 gap-3 p-5">
+        <div className="bg-slate-100 w-full pt-4 pb-24 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           <CardTwo
             title={"Pendirian PT PMA Complete"}
             price={"RP.15.000.00"}
@@ -267,7 +268,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-white w-full">
-        <p className="font-bold text-3xl text-center py-10 pb-10">Our Client</p>
+        <p className="font-semibold text-3xl text-center py-10 pb-10">Our Clients</p>
         <MultipleCarousel />
       </div>
       <CustomFooter />
