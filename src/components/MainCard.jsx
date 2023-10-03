@@ -6,7 +6,7 @@ function MainCard({ icon, title, text1, text2, text3, text4, text5, text6, text7
      return (
           <div className='group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2'>
 
-               <div className="flex items-baseline text-gray-900   
+               <div className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5">
 
                     {icon1}{icon2}{icon3}{icon4}{icon5}
