@@ -24,7 +24,7 @@ const Home = () => {
                 Establish Your Business in Indonesia Conveniently
               </p>
             </div>
-            <div className="text-white flex items-center pb-5 leading-normal tracking-wide text-[17px]">
+            <div className="text-white flex items-center pb-5 leading-normal tracking-wide md:text-[17px]">
               TYS Consulting is a Business Consultant with main business in
               providing one-stop enterprise consultation services for
               enterprises or individuals who wants to establish business in
@@ -234,7 +234,7 @@ const Home = () => {
         <p className="font-semibold text-3xl text-center pt-10 ">
           Choose The Best Package You Need
         </p>
-        <div className="bg-slate-100 w-full pt-4 pb-24 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
+        <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           <CardTwo
             title={"Pendirian PT PMA Complete"}
             price={"RP.15.000.00"}
@@ -265,6 +265,12 @@ const Home = () => {
             text5={"Stock Availability Monitoring"}
             text6={"Marketplace Price Tracking"}
           />
+        </div>
+        <div className="pb-24 pt-10 px-12">
+          <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
+            <a href="/packages">See More Packages</a> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" aria-hidden="true" class="h-[1rem] w-auto mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+          </div>
+
         </div>
       </div>
       <div className="bg-white w-full">
