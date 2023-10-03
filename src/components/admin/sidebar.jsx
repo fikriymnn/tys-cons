@@ -87,6 +87,16 @@ function Sidebar() {
       >
         {bar === 0 ? <p>PR</p> : <p>Pol and Reg</p>}
       </button>
+      <button
+        onClick={() => setComp(6)}
+        className={`${
+          bar == 1
+            ? "ms-5 justify-start items-center"
+            : " justify-center items-center"
+        } w-full h-10 flex `}
+      >
+        {bar === 0 ? <p>C</p> : <p>Clients</p>}
+      </button>
     </div>
   );
 }

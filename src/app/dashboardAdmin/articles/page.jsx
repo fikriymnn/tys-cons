@@ -66,21 +66,21 @@ function ArticlesAdmin() {
             <div className="grid grid-cols-1 gap-5 w-full">
               <div className="flex bg-slate-300 rounded-md  font-semibold">
                 <div className="p-2 h-full w-[50px] ">No</div>
-                <div className="p-2 h-full w-[200px] border-s-2">
+                <div className="p-2 h-full w-[225px] border-s-2">
                   <p>Image</p>
                 </div>
                 <div className="w-full flex">
-                  <div className="w-4/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                     <p>Title</p>
                   </div>
-                  <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                     <p>Content</p>
                   </div>
-                  <div className=" border-x-2 w-2/12 flex justify-start items-center p-2">
+                  <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
                     <p>Date</p>
                   </div>
                 </div>
-                <div className="w-64  flex gap-3 mx-3 my-auto">
+                <div className="w-32  flex gap-3 mx-3 my-auto">
                   <p>Actions</p>
                 </div>
               </div>
@@ -94,33 +94,27 @@ function ArticlesAdmin() {
                           <div className="p-2 h-full w-[50px] flex justify-start items-center ">
                             <p>{i + 1}</p>
                           </div>
-                          <div className="p-2 h-full w-[200px] border-s-2">
+                          <div className="px-4 py-2 h-full w-[212px] border-s-2">
                             <img src={data.img} alt="" />
                           </div>
                           <div className="w-full flex">
-                            <div className="w-4/12 border-s-2  flex justify-start items-center p-2">
+                            <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
                                 <p>{data.titleEnglish}</p>
                                 <p>{data.titleChinese}</p>
                               </div>
                             </div>
-                            <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                            <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
                                 <p>{data.content[0].contentIng}</p>
                                 <p>{data.content[0].contentChi}</p>
                               </div>
                             </div>
-                            <div className=" border-x-2 w-2/12 flex justify-start items-center p-2">
+                            <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
                               <p>{data.date}</p>
                             </div>
                           </div>
-                          <div className="w-56  flex gap-3 m-3 my-auto">
-                            <button className="bg-green-600  h-10 rounded-md p-3 ">
-                              <img
-                                src="/assets/images/view-svgrepo-com.svg"
-                                alt=""
-                              />
-                            </button>
+                          <div className="w-32  flex gap-3 m-3 my-auto">
                             <a
                               className="bg-yellow-400 h-10 rounded-md p-3"
                               href={`/dashboardAdmin/articles/edit?id=${data.id}`}

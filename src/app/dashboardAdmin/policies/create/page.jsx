@@ -19,6 +19,8 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
+import DropdownDef1 from "@/components/dropdownDef";
+import DropdownDef2 from "@/components/dropdownDef2";
 
 function CreatePolicies() {
   const [isAlert, setIsAlert] = useState(false);

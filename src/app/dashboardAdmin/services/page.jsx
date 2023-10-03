@@ -66,17 +66,17 @@ function ServicesAdmin() {
             <div className="grid grid-cols-1 gap-5">
               <div className="flex bg-slate-300 rounded-md  font-semibold">
                 <div className="p-2 h-full w-[50px] ">No</div>
-                <div className="p-2 h-full w-[200px] border-s-2">
+                <div className="p-2 h-full w-[225px] border-s-2">
                   <p>Image</p>
                 </div>
                 <div className="w-full flex">
-                  <div className="w-4/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                     <p>Title</p>
                   </div>
-                  <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                     <p>Price</p>
                   </div>
-                  <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                  <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
                     <p>Category</p>
                   </div>
                 </div>
@@ -94,22 +94,22 @@ function ServicesAdmin() {
                           <div className="p-2 h-full w-[50px] flex justify-start items-center ">
                             <p>{i + 1}</p>
                           </div>
-                          <div className="p-2 h-full w-[200px] border-s-2">
+                          <div className="p-2 h-full w-[209px] border-s-2">
                             <img src={data.img} alt="" />
                           </div>
                           <div className="w-full flex">
-                            <div className="w-4/12 border-s-2  flex justify-start items-center p-2">
+                            <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
                                 <p>{data.titleEnglish}</p>
                                 <p>{data.titleChinese}</p>
                               </div>
                             </div>
-                            <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                            <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
                                 <p>{data.price[0].price} 元</p>
                               </div>
                             </div>
-                            <div className="w-6/12 border-s-2  flex justify-start items-center p-2">
+                            <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
                                 <p>{data.service}</p>
                                 <p className="text-blue-600">
@@ -118,16 +118,9 @@ function ServicesAdmin() {
                               </div>
                             </div>
                           </div>
-                          <div className="w-56  flex gap-3 m-3 my-auto">
-                            <button className="bg-green-600  h-10 rounded-md p-3 ">
-                              {" "}
-                              <img
-                                src="/assets/images/view-svgrepo-com.svg"
-                                alt=""
-                              />
-                            </button>
+                          <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
                             <a
-                              className="bg-yellow-400 h-10 rounded-md p-3"
+                              className="bg-yellow-400  rounded-md p-1"
                               href={`/dashboardAdmin/services/edit?id=${data.id}`}
                             >
                               <button
@@ -151,7 +144,7 @@ function ServicesAdmin() {
                                   console.error("An error occured", error);
                                 }
                               }}
-                              className="bg-red-600 h-10 rounded-md p-3"
+                              className="bg-red-600  rounded-md p-1"
                             >
                               <img
                                 src="/assets/images/delete-1-svgrepo-com.svg"

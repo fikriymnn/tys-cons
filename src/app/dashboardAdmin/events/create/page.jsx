@@ -381,7 +381,7 @@ function CreateEvent() {
                     ></textarea>
                   </div>
                 </div>
-                <div className=" w-10/12 p-3">
+                <div className=" w-10/12 p-3 ps-72">
                   <input
                     type="file"
                     name="img"
@@ -389,17 +389,24 @@ function CreateEvent() {
                       handleUpload2(event.target.files[0], event, i)
                     }
                   />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
                 </div>
-                {data.length !== 1 && (
-                  <button onClick={(e) => handleDelete(i)}>
-                    Delete option
-                  </button>
-                )}
               </>
             );
           })}
-          <p>{JSON.stringify(data)}</p>
-          <button onClick={handleClick}>Add More</button>
+          {/* <p>{JSON.stringify(data)}</p> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
+            </div>
+          </div>
+          {/* <button onClick={handleClick}>Add More</button> */}
 
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">

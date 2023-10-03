@@ -347,7 +347,7 @@ function CreateArticle() {
                   </div>
                 </div>
 
-                <div className=" w-10/12 p-3">
+                <div className=" w-10/12 p-3 ps-72">
                   <input
                     type="file"
                     name="img"
@@ -364,8 +364,14 @@ function CreateArticle() {
               </>
             );
           })}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
+            </div>
+          </div>
 
-          <button onClick={handleClick}>Add More</button>
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">
               {loading ? (

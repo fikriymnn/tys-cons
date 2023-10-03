@@ -105,6 +105,17 @@ function Navigation() {
             {bar === 0 ? <p>PR</p> : <p>Pol and Reg</p>}
           </button>
         </a>
+        <a href="/dashboardAdmin/clients">
+          <button
+            className={`${
+              bar == 1
+                ? "ms-5 justify-start items-center"
+                : " justify-center items-center"
+            } w-full h-10 flex `}
+          >
+            {bar === 0 ? <p>C</p> : <p>Clients</p>}
+          </button>
+        </a>
       </div>
     </div>
   );
