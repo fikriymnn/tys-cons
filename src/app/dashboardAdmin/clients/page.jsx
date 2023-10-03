@@ -52,7 +52,7 @@ function ClientAdmin() {
           <p className="pt-5 text-center font-bold text-3xl">Customers</p>
 
           <div className="p-5 w-full">
-            <div className="grid grid-cols-5 gap-7">
+            <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-7">
               <div className="border-2 p-2">
                 <img src="/assets/images/article.png" alt="" />
                 <div className=" flex gap-2 w-24 pt-2">
