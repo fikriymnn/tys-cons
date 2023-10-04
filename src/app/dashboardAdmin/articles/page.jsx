@@ -48,7 +48,7 @@ function ArticlesAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div className="w-full">
+        <div className="w-full h-screen overflow-y-scroll">
           <p className="pt-5 text-center font-bold text-3xl">Articles</p>
           <div className="p-5 w-full">
             <div className="flex py-5">
