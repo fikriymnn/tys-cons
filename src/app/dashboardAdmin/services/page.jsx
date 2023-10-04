@@ -48,7 +48,7 @@ function ServicesAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div>
+        <div className="w-full h-screen overflow-y-scroll">
           <p className="pt-5 text-center font-bold text-3xl">Services</p>
           <div className="p-5">
             <div className="flex py-5">
