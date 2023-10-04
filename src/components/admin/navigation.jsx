@@ -13,7 +13,7 @@ function Navigation() {
         className={`${bar == 1
           ? " w-[200px] duration-100 ease-in-out"
           : " w-[80px] duration-100 ease-in-out"
-          } h-screen shadow-md flex-col`}
+          } h-screen shadow-md flex-col text-[#007aff]`}
       >
         <div className="w-full h-[80px] mb-5 shadow-md  ">
           <button className="w-full h-full" onClick={toggleBar}>
@@ -37,7 +37,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
 
@@ -47,7 +47,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="homepage.svg"
                   alt="My Image"
@@ -66,7 +66,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
               <Image
@@ -75,7 +75,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="information-sign.svg"
                   alt="My Image"
@@ -93,7 +93,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <Image
@@ -103,7 +103,7 @@ function Navigation() {
                 height={30}
               />
             ) : (
-              <div className="flex gap-2">
+              <div className="flex gap-2  hcurrentColorover:text-blue-800">
                 <Image
                   src="services.svg"
                   alt="My Image"
@@ -122,7 +122,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
               <Image
@@ -131,7 +131,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="newspaper.svg"
                   alt="My Image"
@@ -149,7 +149,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
               <Image
@@ -158,7 +158,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="megaphone.svg"
                   alt="My Image"
@@ -176,7 +176,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
               <Image
@@ -185,7 +185,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="exclamation-mark.svg"
                   alt="My Image"
@@ -203,7 +203,7 @@ function Navigation() {
             className={`${bar == 1
               ? "ms-5 justify-start items-center"
               : " justify-center items-center"
-              } w-full h-10 flex `}
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ?
               <Image
@@ -212,7 +212,7 @@ function Navigation() {
                 width={30}
                 height={30}
               />
-              : <div className="flex gap-2">
+              : <div className="flex gap-2 currentColor hover:text-blue-800">
                 <Image
                   src="checked.svg"
                   alt="My Image"
