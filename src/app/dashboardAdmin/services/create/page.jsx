@@ -21,6 +21,7 @@ import {
 import { db, storage } from "../../../../../firebase/page";
 import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
+import { Dropdown } from "flowbite-react";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");
@@ -179,6 +180,119 @@ function CreateService() {
     deleteVal.splice(i, 1);
     setDataOption(deleteVal);
   };
+
+  let Drop;
+
+  if (service == "Basic Establishment Services") {
+    Drop = (
+      <>
+        <div className="flex items-start justify-start">
+          <div className="grid grid-cols-1">
+            <button onClick={() => setSubService("Company Registration")}>
+              <div className="p-2">Company Registration</div>
+            </button>
+            <button onClick={() => setSubService("Visa Registration")}>
+              <div className="p-2">Visa Registration</div>
+            </button>
+            <button onClick={() => setSubService("Trademark")}>
+              <div className="p-2">Trademark</div>
+            </button>
+            <button onClick={() => setSubService("Office Administration")}>
+              <div className="p-2">Office Administration</div>
+            </button>
+            <button
+              onClick={() => setSubService("Construction Certifications")}
+            >
+              <div className="p-2">Construction Certifications</div>
+            </button>
+            <button onClick={() => setSubService("Factory Licenses")}>
+              <div className="p-2">Factory Licenses</div>
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  } else if (service == "Product Certifications") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("BPOM Food and Drug")}>
+            <div className="p-2">BPOM Food and Drug</div>
+          </button>
+          <button onClick={() => setSubService("ISO Management System")}>
+            <div className="p-2">ISO Management System</div>
+          </button>
+          <button onClick={() => setSubService("SNI National Standard")}>
+            <div className="p-2">SNI National Standard</div>
+          </button>
+          <button onClick={() => setSubService("Medical and Hygiene")}>
+            <div className="p-2">Medical and Hygiene</div>
+          </button>
+          <button onClick={() => setSubService("POSTEL Telecommunication")}>
+            <div className="p-2">POSTEL Telecommunication</div>
+          </button>
+          <button onClick={() => setSubService("Alcohol and Cigarette")}>
+            <div className="p-2">Alcohol and Cigarette</div>
+          </button>
+          <button onClick={() => setSubService("Other Certification")}>
+            <div className="p-2">Other Certification</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Finance Accounting Tax") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Finance Services")}>
+            <div className="p-2">Finance Services</div>
+          </button>
+          <button onClick={() => setSubService("Accounting Services")}>
+            <div className="p-2">Accounting Services</div>
+          </button>
+          <button onClick={() => setSubService("Tax Services")}>
+            <div className="p-2">Tax Services</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Talent Recruitment HR") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Translator Assistant")}>
+            <div className="p-2">Translator Assistant</div>
+          </button>
+          <button onClick={() => setSubService("Finance Accounting Tax")}>
+            <div className="p-2">Finance Accounting Tax</div>
+          </button>
+          <button onClick={() => setSubService("Marketing Sales")}>
+            <div className="p-2">Marketing Sales</div>
+          </button>
+          <button onClick={() => setSubService("Management Candidate")}>
+            <div className="p-2">Management Candidate</div>
+          </button>
+          <button onClick={() => setSubService("HR Management Service")}>
+            <div className="p-2">HR Management Service</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Legal Services") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Legal Administration")}>
+            <div className="p-2">Legal Administration</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  }
 
   return (
     <>
@@ -341,8 +455,59 @@ function CreateService() {
               <p>Service</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <DropdownDef1 />
-              <DropdownDef2 />
+              <Dropdown
+                className="bg-white"
+                label={service == "" ? "Categories" : service}
+              >
+                <div className="grid grid-cols-1 ">
+                  <button
+                    onClick={() => {
+                      setService("Basic Establishment Services");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Basic Establishment Services</div>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setService("Product Certifications");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Product Certifications</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Finance Accounting Tax");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2"> Finance Accounting Tax</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Talent Recruitment HR");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2"> Talent Recruitment HR</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Legal Services");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Legal Services</div>
+                  </button>
+                </div>
+              </Dropdown>
+              <Dropdown
+                label={subService == "" ? "Sub Categories" : subService}
+              >
+                {Drop}
+              </Dropdown>
               {/* <input
                 type="text"
                 onChange={(e) => setService(e.target.value)}

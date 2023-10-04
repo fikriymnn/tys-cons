@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Dropdown } from "flowbite-react";
 import { useState, useEffect } from "react";
 import {
   collection,
@@ -203,13 +204,51 @@ function CreatePolicies() {
               <p>Category</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <input
+              <Dropdown
+                className="bg-white"
+                label={category == "" ? "Categories" : category}
+              >
+                <div className="grid grid-cols-1 ">
+                  <button
+                    onClick={() => {
+                      setCategory("Foreign Company Registration");
+                    }}
+                  >
+                    <div className="p-2">Foreign Company Registration</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Tax Regulation");
+                    }}
+                  >
+                    <div className="p-2">Tax Regulation</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Labor Policy");
+                    }}
+                  >
+                    <div className="p-2">Labor Policy</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Import Export Procedures & Policies");
+                    }}
+                  >
+                    <div className="p-2">
+                      Import Export Procedures & Policies
+                    </div>
+                  </button>
+                </div>
+              </Dropdown>
+
+              {/* <input
                 onChange={(e) => setCategory(e.target.value)}
                 type="text"
                 placeholder="This will be a Dropdown"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
-              />
+              /> */}
             </div>
           </div>
           <div className=" flex py-1 px-20 ">

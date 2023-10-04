@@ -8,23 +8,65 @@ import Link from "next/link";
 import Hidden from "@/components/hidden";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../firebase/page";
+import { dataLocal } from "../components/local";
 
-const Home = () => {
+async function getHeading() {
+  let data = [];
+  try {
+    const docRef = doc(db, "editHomePage", "heading");
+    const querySnapshot = await getDoc(docRef);
+
+    if (querySnapshot.exists()) {
+      console.log("Document data:", querySnapshot.data());
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+
+    // doc.data() is never undefined for query doc snapshots
+
+    data.push(querySnapshot.data());
+  } catch (error) {
+    console.log(error);
+  }
+  return data;
+}
+
+const Home = async () => {
+  const dataHeading = await getHeading();
+  const check = await dataLocal;
+
+  console.log(dataHeading);
+  console.log(check);
+
   return (
     <>
       <div className="z-40">
         <NavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
-        <div className="w-full h-screen md:grid md:grid-cols-2 flex items-center justify-center">
-          <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0 pt-32 z-10">
-            <div className="text-white flex items-center font-semibold md:text-[38px] py-5 z-20 text-2xl  ">
-              <p className="leading-normal tracking-wide">
-                Establish Your Business in Indonesia Conveniently
+        <div className='w-full h-[800px] bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className="w-full h-[800px] md:grid md:grid-cols-2 flex items-center justify-center ">
+          <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0  z-10">
+            <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
+              <p className="leading-relaxed tracking-wide">
+                {dataHeading[0].english}
               </p>
             </div>
-            <div className="text-white flex items-center pb-5 leading-normal tracking-wide md:text-[17px]">
+            <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
               TYS Consulting is a Business Consultant with main business in
               providing one-stop enterprise consultation services for
               enterprises or individuals who wants to establish business in
@@ -35,9 +77,7 @@ const Home = () => {
             </div>
             <a className="py-10" href="">
               <div className="text-white bg-primary p-3 w-36 mt-5 flex items-center justify-center">
-                <p className=" my-auto text-center ">
-                  GET STARTED
-                </p>
+                <p className=" my-auto text-center ">GET STARTED</p>
               </div>
             </a>
           </div>
@@ -46,7 +86,7 @@ const Home = () => {
       <p className="font-semibold text-3xl text-center pt-14 pb">
         What Services We Offer
       </p>
-      <div className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 ">
+      <div className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7">
         <Link href="/services/basicEstablish">
           <MainCard
             icon1={
@@ -196,7 +236,9 @@ const Home = () => {
           />
         </Link>
       </div>
-      <p className="font-semibold text-3xl text-center py-5 ">Latest Articles</p>
+      <p className="font-semibold text-3xl text-center py-5 ">
+        Latest Articles
+      </p>
       <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10">
         <CustomCard
           text={"Lorem Ipsum is simply dummy text of the printing a.."}
@@ -208,7 +250,9 @@ const Home = () => {
         <CustomCard
           text={"Lorem Ipsum is simply dummy text of the printing a.."}
           isi={"1 December 2022"}
-          isi2={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "}
+          isi2={
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          }
         />
 
         <a href="">
@@ -226,7 +270,21 @@ const Home = () => {
           </div>
           <div className="mt-2 lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 p-28">
             <p>View More Articles </p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-[1rem] w-auto mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+              class="h-[1rem] w-auto mt-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              ></path>
+            </svg>
           </div>
         </a>
       </div>
@@ -234,11 +292,14 @@ const Home = () => {
         <p className="font-semibold text-3xl text-center pt-10 ">
           Choose The Best Package You Need
         </p>
-        <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
+        <div className="md:hidden sm:hidden visible p-5">
+          <Hidden />
+        </div>
+        <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           <CardTwo
             title={"Pendirian PT PMA Complete"}
             price={"RP.15.000.00"}
-            text1={"Package Includes:"}
+            text1={" Package Includes:"}
             text2={"Brand Perfomance Analytics"}
             text3={"Daily Prices Change Notifications"}
             text4={"Marketplace Price Tracking"}
@@ -268,13 +329,29 @@ const Home = () => {
         </div>
         <div className="pb-24 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
-            <a href="/packages">See More Packages</a> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" aria-hidden="true" class="h-[1rem] w-auto mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+            <a href="/packages">See More Packages</a>{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.7"
+              stroke="currentColor"
+              aria-hidden="true"
+              class="h-[1rem] w-auto mt-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              ></path>
+            </svg>
           </div>
-
         </div>
       </div>
       <div className="bg-white w-full">
-        <p className="font-semibold text-3xl text-center py-10 pb-10">Our Clients</p>
+        <p className="font-semibold text-3xl text-center py-10 pb-10">
+          Our Clients
+        </p>
         <MultipleCarousel />
       </div>
       <CustomFooter />
