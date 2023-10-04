@@ -47,122 +47,124 @@ function PoliciesAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div className="w-full">
-          <p className="pt-5 text-center font-bold text-3xl">
-            Policies and Regulation
-          </p>
-          <div className="p-5 w-full">
-            <div className="flex py-5 w-full ">
-              <a
-                className="bg-blue-500 py-3 px-5 rounded-md text-white font-bold"
-                href="/dashboardAdmin/policies/create"
-              >
-                <button
-                // onClick={openAddPolicies}
+        <div className="p-5 w-full h-screen overflow-y-scroll">
+          <div className="w-full bg-[#0d3064] ">
+            <p className="pt-5 text-center font-bold text-3xl text-white">
+              Policies and Regulation
+            </p>
+            <div className="p-5 w-full">
+              <div className="flex py-5 w-full ">
+                <a
+                  className="bg-blue-500 py-3 px-5 rounded-md text-white font-bold"
+                  href="/dashboardAdmin/policies/create"
                 >
-                  New Content
-                </button>
-              </a>
-            </div>
-            <div className="grid grid-cols-1 gap-5 w-full">
-              <div className="flex bg-slate-300 rounded-md  font-semibold">
-                <div className="p-2 h-full w-[50px] ">No</div>
-                <div className="p-2 h-full w-[200px] border-s-2">
-                  <p>Image</p>
-                </div>
-                <div className="w-full flex">
-                  <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                    <p>Title</p>
-                  </div>
-                  <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                    <p>Content</p>
-                  </div>
-                  <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                    <p>Category</p>
-                  </div>
-                  <div className=" border-x-2 w-[150px] flex justify-start items-center p-2">
-                    <p>Date</p>
-                  </div>
-                </div>
-                <div className="w-36 flex gap-3 mx-3 my-auto">
-                  <p>Actions</p>
-                </div>
+                  <button
+                  // onClick={openAddPolicies}
+                  >
+                    New Content
+                  </button>
+                </a>
               </div>
+              <div className="grid grid-cols-1 gap-5 w-full">
+                <div className="flex bg-slate-300 rounded-md  font-semibold">
+                  <div className="p-2 h-full w-[50px] ">No</div>
+                  <div className="p-2 h-full w-[200px] border-s-2">
+                    <p>Image</p>
+                  </div>
+                  <div className="w-full flex">
+                    <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                      <p>Title</p>
+                    </div>
+                    <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
+                      <p>Content</p>
+                    </div>
+                    <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                      <p>Category</p>
+                    </div>
+                    <div className=" border-x-2 w-[150px] flex justify-start items-center p-2">
+                      <p>Date</p>
+                    </div>
+                  </div>
+                  <div className="w-36 flex gap-3 mx-3 my-auto">
+                    <p>Actions</p>
+                  </div>
+                </div>
 
-              <div className=" h-[500px] overflow-y-auto">
-                {dataPolicies.length > 0 &&
-                  dataPolicies.map((data, i) => {
-                    return (
-                      <>
-                        <div className="flex bg-slate-300 rounded-md mb-3">
-                          <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                            <p>{i + 1}</p>
-                          </div>
-                          <div className="p-2 h-full w-[200px] border-s-2">
-                            <img src={data.img} alt="" />
-                          </div>
-                          <div className="w-full flex">
-                            <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                              <div className="flex flex-col">
-                                <p>{data.titleEnglish}</p>
-                                <p>{data.titleChinese}</p>
+                <div className=" h-[500px] overflow-y-auto">
+                  {dataPolicies.length > 0 &&
+                    dataPolicies.map((data, i) => {
+                      return (
+                        <>
+                          <div className="flex bg-slate-300 rounded-md mb-3">
+                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                              <p>{i + 1}</p>
+                            </div>
+                            <div className="p-2 h-full w-[200px] border-s-2">
+                              <img src={data.img} alt="" />
+                            </div>
+                            <div className="w-full flex">
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.titleEnglish}</p>
+                                  <p>{data.titleChinese}</p>
+                                </div>
+                              </div>
+                              <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.contentEnglish}</p>
+                                </div>
+                              </div>
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.category}</p>
+                                  <p className="text-blue-600">
+                                    {data.subCategory}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className=" border-x-2 w-[150px] flex justify-start items-center p-2">
+                                <p>{data.date}</p>
                               </div>
                             </div>
-                            <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                              <div className="flex flex-col">
-                                <p>{data.contentEnglish}</p>
-                              </div>
-                            </div>
-                            <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                              <div className="flex flex-col">
-                                <p>{data.category}</p>
-                                <p className="text-blue-600">
-                                  {data.subCategory}
-                                </p>
-                              </div>
-                            </div>
-                            <div className=" border-x-2 w-[150px] flex justify-start items-center p-2">
-                              <p>{data.date}</p>
-                            </div>
-                          </div>
-                          <div className="w-36  flex gap-3 m-3 my-auto">
-                            <a
-                              className="bg-yellow-400 h-10 rounded-md p-3"
-                              href={`/dashboardAdmin/policies/edit?id=${data.id}`}
-                            >
+                            <div className="w-36  flex gap-3 m-3 my-auto">
+                              <a
+                                className="bg-yellow-400 h-10 rounded-md p-3"
+                                href={`/dashboardAdmin/policies/edit?id=${data.id}`}
+                              >
+                                <button
+                                // onClick={openEditPolicies}
+                                >
+                                  <img
+                                    src="/assets/images/edit-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </button>
+                              </a>
                               <button
-                              // onClick={openEditPolicies}
+                                onClick={async (e) => {
+                                  try {
+                                    // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                    await deleteDoc(doc(db, "policies", data.id));
+                                    alert("delete success");
+                                    location.reload();
+                                    console.log("Deleted successfully");
+                                  } catch (error) {
+                                    console.error("An error occured", error);
+                                  }
+                                }}
+                                className="bg-red-600 h-10 rounded-md p-3"
                               >
                                 <img
-                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  src="/assets/images/delete-1-svgrepo-com.svg"
                                   alt=""
                                 />
                               </button>
-                            </a>
-                            <button
-                              onClick={async (e) => {
-                                try {
-                                  // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                  await deleteDoc(doc(db, "policies", data.id));
-                                  alert("delete success");
-                                  location.reload();
-                                  console.log("Deleted successfully");
-                                } catch (error) {
-                                  console.error("An error occured", error);
-                                }
-                              }}
-                              className="bg-red-600 h-10 rounded-md p-3"
-                            >
-                              <img
-                                src="/assets/images/delete-1-svgrepo-com.svg"
-                                alt=""
-                              />
-                            </button>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    );
-                  })}
+                        </>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>
