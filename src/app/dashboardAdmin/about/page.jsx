@@ -275,11 +275,11 @@ function AboutAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div>
+        <div className="w-full h-screen overflow-y-scroll">
           <p className="pt-5 text-center font-bold text-3xl">About</p>
           <div className="w-full p-5">
             <div className="w-full grid grid-cols-1 gap-5">
-              <div className="w-full flex bg-slate-300 rounded-md  font-semibold">
+              <div className=" flex bg-slate-300 rounded-md  font-semibold">
                 <div className="w-full flex">
                   <div className="w-[500px] border-s-2  flex justify-start items-center ">
                     <p>Section</p>
@@ -588,6 +588,7 @@ function AboutAdmin() {
                   <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
                     {dataAboutBarcode.length > 0 &&
                       dataAboutBarcode.map((data, i) => {
+                        // eslint-disable-next-line react/jsx-key
                         return <img className="w-20" src={data.img} alt="" />;
                       })}
                   </div>
