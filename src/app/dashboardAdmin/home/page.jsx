@@ -152,181 +152,183 @@ function HomeAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div className="w-full h-screen overflow-y-scroll">
-          <p className="pt-5 text-center font-bold text-3xl ">Homepage</p>
+        <div className="p-5 w-full h-screen overflow-y-scroll">
+          <div className="w-full bg-[#0d3064] ">
+            <p className="pt-5 text-center font-bold text-3xl text-white ">Homepage</p>
 
-          <div className="p-5 w-full">
-            <div className="grid grid-cols-1 gap-5 w-full">
-              <div className="flex bg-slate-300 rounded-md w-full font-semibold">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2  flex justify-start items-center p-2">
-                    <p>Section</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <p>Content</p>
-                  </div>
-                </div>
-                <div className="w-14  flex gap-3 mx-3 my-auto">
-                  <p>Edit</p>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Heading</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataHomeHeading.length > 0 &&
-                        dataHomeHeading.map((data, i) => {
-                          return (
-                            <>
-                              <p>{data.english}</p>
-                              <p>{data.chinese}</p>
-                            </>
-                          );
-                        })}
+            <div className="p-5 w-full">
+              <div className="grid grid-cols-1 gap-5 w-full">
+                <div className="flex bg-slate-300 rounded-md w-full font-semibold">
+                  <div className="w-full flex">
+                    <div className="w-2/12  flex justify-start items-center p-2">
+                      <p>Section</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <p>Content</p>
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/editHeading"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Paragraph</p>
+                  <div className="w-14  flex gap-3 mx-3 my-auto">
+                    <p>Edit</p>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataHomeParagraph.length > 0 &&
-                        dataHomeParagraph.map((data, i) => {
-                          return (
-                            <>
-                              <p>{data.english}</p>
-                              <p>{data.chinese}</p>
-                            </>
-                          );
-                        })}
+                </div>
+                <div className="flex bg-slate-300 rounded-md">
+                  <div className="w-full flex">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Heading</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataHomeHeading.length > 0 &&
+                          dataHomeHeading.map((data, i) => {
+                            return (
+                              <>
+                                <p>{data.english}</p>
+                                <p>{data.chinese}</p>
+                              </>
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/editParagraph"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Logo navbar white</p>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/home/editHeading"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataLogoWhite.length > 0 &&
-                        dataLogoWhite.map((data, i) => {
-                          return <img src={data.img}></img>;
-                        })}
+                </div>
+
+                <div className="flex bg-slate-300 rounded-md">
+                  <div className="w-full flex">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Paragraph</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataHomeParagraph.length > 0 &&
+                          dataHomeParagraph.map((data, i) => {
+                            return (
+                              <>
+                                <p>{data.english}</p>
+                                <p>{data.chinese}</p>
+                              </>
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/editParagraph"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Logo navbar</p>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/home/editParagraph"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataLogoNav.length > 0 &&
-                        dataLogoNav.map((data, i) => {
-                          return <img src={data.img}></img>;
-                        })}
+                </div>
+
+                <div className="flex bg-slate-300 rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Logo navbar white</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataLogoWhite.length > 0 &&
+                          dataLogoWhite.map((data, i) => {
+                            return <img src={data.img}></img>;
+                          })}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/editParagraph"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Logo footer</p>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/home/editParagraph"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataLogoFoot.length > 0 &&
-                        dataLogoFoot.map((data, i) => {
-                          return <img src={data.img}></img>;
-                        })}
+                </div>
+
+                <div className="flex bg-slate-300 rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Logo navbar</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataLogoNav.length > 0 &&
+                          dataLogoNav.map((data, i) => {
+                            return <img src={data.img}></img>;
+                          })}
+                      </div>
                     </div>
                   </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/home/editParagraph"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/home/editParagraph"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
+
+                <div className="flex bg-slate-300 rounded-md">
+                  <div className="w-full h-20 flex">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Logo footer</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataLogoFoot.length > 0 &&
+                          dataLogoFoot.map((data, i) => {
+                            return <img src={data.img}></img>;
+                          })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/home/editParagraph"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
