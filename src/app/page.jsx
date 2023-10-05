@@ -29,14 +29,6 @@ async function getHeading() {
     const docRef = doc(db, "editHomePage", "heading");
     const querySnapshot = await getDoc(docRef);
 
-    if (querySnapshot.exists()) {
-      console.log("Document data:", querySnapshot.data());
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
-
-    // doc.data() is never undefined for query doc snapshots
 
     data.push(querySnapshot.data());
   } catch (error) {
@@ -45,9 +37,25 @@ async function getHeading() {
   return data;
 }
 
+async function getDataHomeParagraph() {
+  let data = [];
+  try {
+    const docRef = doc(db, "editHomePage", "paragraph");
+    const querySnapshot = await getDoc(docRef);
+
+    data.push(querySnapshot.data());
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  return data;
+};
+
 const Home = async () => {
   const dataHeading = await getHeading();
   const check = await dataLocal;
+  const dataParagraph = await getDataHomeParagraph();
 
   console.log(dataHeading);
   console.log(check);
@@ -67,13 +75,7 @@ const Home = async () => {
               </p>
             </div>
             <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
-              TYS Consulting is a Business Consultant with main business in
-              providing one-stop enterprise consultation services for
-              enterprises or individuals who wants to establish business in
-              Indonesia. Our team are equipped to communicate in Mandarin,
-              English and Bahasa Indonesia with experiences on helping numerous
-              customers in various sectors from establishment till ready to
-              start business operation.
+              {dataParagraph[0].english}
             </div>
             <a className="py-10" href="">
               <div className="text-white bg-primary p-3 w-36 mt-5 flex items-center justify-center">

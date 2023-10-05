@@ -599,26 +599,12 @@ function CreateService() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description English For Description ${
+                      placeholder={`Input Description Mandarin For Description ${
                         i + 1
                       }`}
                       maxLength={1000}
                       className="h-[200px] w-full   "
                     />
-
-                    {/* <textarea
-                      name="contentIng"
-                      value={val.contentIng}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Description English For Description ${i + 1
-                        }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea> */}
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
@@ -674,7 +660,7 @@ function CreateService() {
               </>
             );
           })}
-          <p>{JSON.stringify(data)}</p>
+          {/* <p>{JSON.stringify(data)}</p> */}
           <div className="flex justify-center items-center gap-10 mb-20">
             <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
               <button onClick={handleClick} className="font-light">

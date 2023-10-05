@@ -624,6 +624,7 @@ function EditService() {
                     <ReactQuill
                       theme="snow"
                       value={val.contentIng}
+                      // onChange={(e) => handleChange(e, i)}
                       onChange={(e) =>
                         handleChange(
                           {
