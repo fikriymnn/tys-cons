@@ -1,25 +1,154 @@
-'use client';
+
 import React, { } from 'react'
 import Image from 'next/image';
+import {
+    collection,
+    addDoc,
+    getDocs,
+    where,
+    query,
+    getDoc,
+    deleteDoc,
+    updateDoc,
+    doc,
+    Firestore,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../firebase/page";
 
-const CustomFooter = () => {
+async function GetDataFb() {
+    let data = [];
+    const docRefFb = doc(db, "editAbout", "facebook");
+    const querySnapshot = await getDoc(docRefFb);
+    data.push(querySnapshot.data());
+    return data;
+
+};
+async function GetDataIg() {
+    let data = [];
+    const docRefFb = doc(db, "editAbout", "ig");
+    const querySnapshot = await getDoc(docRefFb);
+    data.push(querySnapshot.data());
+    return data;
+
+};
+async function GetDataLinkedid() {
+    let data = [];
+    const docRefFb = doc(db, "editAbout", "linkedin");
+    const querySnapshot = await getDoc(docRefFb);
+    data.push(querySnapshot.data());
+    return data;
+
+};
+async function GetDataWechat() {
+    let data = [];
+    const docRefFb = doc(db, "editAbout", "wechat");
+    const querySnapshot = await getDoc(docRefFb);
+    data.push(querySnapshot.data());
+    return data;
+
+};
+async function getDataAboutParagraph() {
+
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "paragraph");
+        const querySnapshot = await getDoc(docRef);
+
+
+        // doc.data() is never undefined for query doc snapshots
+
+        data.push(querySnapshot.data());
+
+
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+async function getDataAboutAdrress() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "address");
+        const querySnapshot = await getDoc(docRef);
+
+
+
+        data.push(querySnapshot.data());
+
+        setDataAboutAddress(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+async function getDataAboutPhone() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "phone");
+        const querySnapshot = await getDoc(docRef);
+
+
+
+
+
+        data.push(querySnapshot.data());
+
+        setDataAboutPhone(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+async function getDataAboutEmail() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "email");
+        const querySnapshot = await getDoc(docRef);
+
+
+        // doc.data() is never undefined for query doc snapshots
+
+        data.push(querySnapshot.data());
+
+        setDataAboutEmail(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+const CustomFooter = async () => {
+    const dataIg = await GetDataIg();
+    const dataFb = await GetDataFb();
+    const dataLinkedin = await GetDataLinkedid();
+    const dataWechat = await GetDataWechat();
+    const dataParagraph = await getDataAboutParagraph();
+    const dataAddress = await getDataAboutAdrress();
+    const dataPhone = await getDataAboutPhone();
+    const dataEmail = await getDataAboutEmail();
     return (
         <div className=' w-full bg-[#031530] '>
             <div className=' md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center'>
                 <div>
+
+
+
+
                     <Image src={'/assets/images/tys-logo.png'} width={200} height={75} />
-                    <p className=' py-4 text-white text-[15px]'>TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia.</p>
+                    <p className=' py-4 text-white text-[15px]'>{dataParagraph[0].english}</p>
                 </div>
                 <div>
                     <p className=' uppercase font-bold text-white'>Contact Us</p>
-                    <p className=' text-white pt-3 pb-2'>Citra garden, Kalideres, Jakarta Barat 11840</p>
+                    <p className=' text-white pt-3 pb-2'>{dataAddress[0].address}</p>
                     <div className=' flex gap-3 py-2'>
                         <img src="/assets/images/call (2).png" alt="" className='w-5 h-5 my-auto' />
-                        <p className=' text-white my-auto'>0812-1355-1038</p>
+                        <p className=' text-white my-auto'>{dataPhone[0].no}</p>
                     </div>
                     <div className=' flex gap-3 py-2'>
                         <img src="/assets/images/email (4).png" alt="" className='w-5 h-5 my-auto' />
-                        <p className=' text-white my-auto'>marketing@.com</p>
+                        <p className=' text-white my-auto'>{dataEmail[0].email}</p>
                     </div>
                 </div>
                 <div className=' py-4 md:py-0'>
@@ -27,10 +156,22 @@ const CustomFooter = () => {
                     <div className=' flex gap-4'>
                         <img src="/assets/images/qr-tys.jpg" alt="" className=' w-40' />
                         <div className=' '>
-                            <img src="/assets/images/facebook-circular-logo.png" alt="" className=' w-6 h-6 hover:scale-110' />
-                            <img src="/assets/images/linkedin.png" alt="" className=' w-6 h-6 hover:scale-110 my-5' />
-                            <img src="/assets/images/instagram (2).png" alt="" className=' w-6 h-6 hover:scale-110 mb-5' />
-                            <img src="/assets/images/youtube.png" alt="" className=' w-6 h-6 hover:scale-110' />
+                            <a href={dataFb[0].link} >
+
+                                <img src="/assets/images/facebook-circular-logo.png" alt="" className=' w-6 h-6 hover:scale-110' />
+                            </a>
+                            <a href={dataLinkedin[0].link}>
+
+                                <img src="/assets/images/linkedin.png" alt="" className=' w-6 h-6 hover:scale-110 my-5' />
+                            </a>
+                            <a href={`https:/www.instagram.com/` + dataIg[0].link}>
+
+                                <img src="/assets/images/instagram (2).png" alt="" className=' w-6 h-6 hover:scale-110 mb-5' />
+                            </a>
+                            <a href={dataWechat[0].link}>
+
+                                <img src="/assets/images/youtube.png" alt="" className=' w-6 h-6 hover:scale-110' />
+                            </a>
                         </div>
                     </div>
                 </div>
