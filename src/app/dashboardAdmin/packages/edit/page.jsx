@@ -34,7 +34,7 @@ function EditPackage() {
                 <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
                     <div className="w-1/12"></div>
                     <div className=" w-10/12 flex justify-center items-center">
-                        <p>Create New Package</p>
+                        <p>Edit Package</p>
                     </div>
                     <div className="w-1/12 flex items-center justify-center">
                         <a href="/dashboardAdmin/packages">
@@ -290,7 +290,7 @@ function EditPackage() {
 
                                 className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
                             >
-                                Create New Service
+                                Edit Package
                             </button>
 
                         </div>

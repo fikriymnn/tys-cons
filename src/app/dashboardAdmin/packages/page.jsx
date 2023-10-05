@@ -10,12 +10,12 @@ function PackageAdmin() {
                 <Navigation />
                 <div className="p-5 w-full h-screen overflow-y-scroll">
                     <div className="w-full bg-[#0d3064] ">
-                        <p className="pt-5 text-center font-bold text-3xl text-white">Services</p>
+                        <p className="pt-5 text-center font-bold text-3xl text-white">Packages</p>
                         <div className="p-5">
                             <div className="flex py-5">
                                 <a
                                     className="bg-blue-500 py-3 px-5 rounded-md text-white font-bold"
-                                    href="/dashboardAdmin/package/create"
+                                    href="/dashboardAdmin/packages/create"
                                 >
                                     <button
                                     //onClick={openAddService}
@@ -72,7 +72,7 @@ function PackageAdmin() {
                                             <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
                                                 <a
                                                     className="bg-yellow-400  rounded-md p-1"
-                                                    href=""
+                                                    href="/dashboardAdmin/packages/edit"
                                                 >
                                                     <button
                                                     //onClick={openEditService}
