@@ -34,10 +34,10 @@ function EditArticle() {
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
-  const [headTextIng, setHeadTextIng] = useState("");
-  const [headTextChi, setHeadTextChi] = useState("");
-  const [contentIng, setContentIng] = useState("");
-  const [contentChi, setcontentChi] = useState("");
+
+  const [data, setData] = useState([
+    { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+  ]);
 
   const [downloadURL, setDownloadURL] = useState("");
 
@@ -70,10 +70,7 @@ function EditArticle() {
 
       setTitleIng(data[0].titleEnglish);
       setTitleChi(data[0].titleChinese);
-      setHeadTextIng(data[0].headTextEnglish);
-      setHeadTextChi(data[0].headTextChinese);
-      setContentIng(data[0].contentEnglish);
-      setcontentChi(data[0].ContentChinese);
+      setData(data[0].content);
     } catch (error) {
       alert(error);
     }
@@ -117,6 +114,48 @@ function EditArticle() {
     }
   };
 
+  const handleUpload2 = async (filess, e, i) => {
+    const files = filess;
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+
+    try {
+      setLoading(true);
+      const storageRef = ref(storage, `/articles/${files.name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+
+            onchangeVal[i][name] = url;
+            setData(onchangeVal);
+            setLoading(false);
+          });
+        }
+      );
+    } catch (error) {
+      alert(error);
+      setLoading(false);
+    }
+  };
+
   const addData = async (e) => {
     e.preventDefault();
     const todoRef = doc(db, "articles", id);
@@ -125,25 +164,36 @@ function EditArticle() {
       await updateDoc(todoRef, {
         titleEnglish: titleIng,
         titleChinese: titleChi,
-        headTextEnglish: headTextIng,
-        headTextChinese: headTextChi,
-
-        contentEnglish: contentIng,
-        ContentChinese: contentChi,
+        content: data,
       });
     } else {
       await updateDoc(todoRef, {
         titleEnglish: titleIng,
         titleChinese: titleChi,
-        headTextEnglish: headTextIng,
-        headTextChinese: headTextChi,
+        content: data,
         img: downloadURL,
-        contentEnglish: contentIng,
-        ContentChinese: contentChi,
       });
     }
 
     alert("success");
+  };
+
+  const handleClick = () => {
+    setData([
+      ...data,
+      { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+    ]);
+  };
+  const handleChange = (e, i) => {
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+    onchangeVal[i][name] = value;
+    setData(onchangeVal);
+  };
+  const handleDelete = (i) => {
+    const deleteVal = [...data];
+    deleteVal.splice(i, 1);
+    setData(deleteVal);
   };
   return (
     <>
@@ -170,7 +220,7 @@ function EditArticle() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -188,7 +238,7 @@ function EditArticle() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -237,91 +287,129 @@ function EditArticle() {
             </div>
           </div>
 
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Head Text</p>
+          {data.map((val, i) => {
+            return (
+              <>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                    <p>{i + 1}</p>
+                  </div>
+                  <div className=" w-10/12 "></div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                    <p>Head Text</p>
+                  </div>
+                  <div className=" w-10/12 "></div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>English :</p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <input
+                      name="topicIng"
+                      value={val.topicIng}
+                      onChange={(e) => handleChange(e, i)}
+                      type="text"
+                      placeholder="Insert Price"
+                      color=" bg-transparent"
+                      className=" rounded-lg w-full border-slate-300 "
+                    />
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>Chinese :</p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <input
+                      name="topicChi"
+                      value={val.topicChi}
+                      onChange={(e) => handleChange(e, i)}
+                      type="text"
+                      placeholder="Insert Price"
+                      color=" bg-transparent"
+                      className=" rounded-lg w-full border-slate-300 "
+                    />
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 "></div>
+                  <div className=" w-10/12 "></div>
+                </div>
+
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                    <p>Article Content</p>
+                  </div>
+                  <div className=" w-10/12 "></div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>English :</p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <textarea
+                      name="contentIng"
+                      value={val.contentIng}
+                      onChange={(e) => handleChange(e, i)}
+                      id=""
+                      cols="20"
+                      rows="5"
+                      placeholder="Enter New Text"
+                      color=" bg-transparent"
+                      className=" w-full resize-none rounded-lg border-slate-300 "
+                      maxLength={1000}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>Chinese :</p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <textarea
+                      name="contentChi"
+                      value={val.contentChi}
+                      onChange={(e) => handleChange(e, i)}
+                      id=""
+                      cols="20"
+                      rows="5"
+                      placeholder="Enter New Text"
+                      color=" bg-transparent"
+                      className=" w-full resize-none rounded-lg border-slate-300 "
+                      maxLength={1000}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className=" w-10/12 p-3 ps-72">
+                  <input
+                    type="file"
+                    name="img"
+                    onChange={(event) =>
+                      handleUpload2(event.target.files[0], event, i)
+                    }
+                  />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+          })}
+
+          {/* <button onClick={handleClick}>Add More</button> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
             </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                value={headTextIng ?? ""}
-                onChange={(e) => setHeadTextIng(e.target.value)}
-                type="text"
-                placeholder="Insert Price"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                value={headTextChi ?? ""}
-                onChange={(e) => setHeadTextChi(e.target.value)}
-                type="text"
-                placeholder="Insert Price"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 "></div>
-            <div className=" w-10/12 "></div>
           </div>
 
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
-              <p>Article Content</p>
-            </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <textarea
-                value={contentIng ?? ""}
-                onChange={(e) => setContentIng(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
-            </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <textarea
-                value={contentChi ?? ""}
-                onChange={(e) => setcontentChi(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
-            </div>
-          </div>
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">
               {loading ? (

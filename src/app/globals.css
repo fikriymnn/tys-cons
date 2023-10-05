@@ -29,3 +29,7 @@
 .bg-primary {
   background-color: #007aff;
 }
+
+.currentColor {
+  fill: currentColor;
+}

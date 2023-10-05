@@ -275,348 +275,341 @@ function AboutAdmin() {
     <>
       <div className="flex">
         <Navigation />
-        <div>
-          <p className="pt-5 text-center font-bold text-3xl">About</p>
-          <div className="w-full p-5">
-            <div className="w-full grid grid-cols-1 gap-5">
-              <div className="w-full flex bg-slate-300 rounded-md  font-semibold">
-                <div className="w-full flex">
-                  <div className="w-[500px] border-s-2  flex justify-start items-center ">
-                    <p>Section</p>
+        <div className="p-5 w-full h-screen overflow-y-scroll">
+          <div className="w-full bg-[#0d3064] ">
+            <p className="pt-5 text-center font-bold text-3xl text-white">
+              About
+            </p>
+            <div className="w-full p-5">
+              <div className="w-full grid grid-cols-1 gap-5">
+                <div className=" flex bg-slate-300 rounded-md  font-semibold">
+                  <div className="w-full flex">
+                    <div className="w-2/12 p-2  flex justify-start items-center ">
+                      <p>Section</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <p>Content</p>
+                    </div>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <p>Content</p>
+                  <div className="w-14  flex gap-3 mx-3 my-auto">
+                    <p>Edit</p>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 mx-3 my-auto">
-                  <p>Edit</p>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Heading</p>
+                <div className="flex bg-slate-300 w-full rounded-md">
+                  <div className="w-full flex">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Heading</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataAboutHeading.length > 0 &&
+                          dataAboutHeading.map((data, i) => {
+                            return (
+                              <>
+                                <p>{data.english}</p>
+                                <p>{data.chinese}</p>
+                              </>
+                            );
+                          })}
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataAboutHeading.length > 0 &&
-                        dataAboutHeading.map((data, i) => {
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editHeading"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex bg-slate-300 w-full rounded-md">
+                  <div className="w-full flex">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Paragraph</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      <div className="flex flex-col">
+                        {dataAboutParagraph.length > 0 &&
+                          dataAboutParagraph.map((data, i) => {
+                            return (
+                              <>
+                                <p>{data.english}</p>
+                                <p>{data.chinese}</p>
+                              </>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editParagraph"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex bg-slate-300 w-full rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Address</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutAddress.length > 0 &&
+                        dataAboutAddress.map((data, i) => {
                           return (
                             <>
-                              <p>{data.english}</p>
-                              <p>{data.chinese}</p>
+                              <p>{data.address}</p>
                             </>
                           );
                         })}
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editHeading"
-                  >
-                    <>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editAddress"
+                    >
                       <button>
-                        <>
-                          <img
-                            className="w-8"
-                            src="/assets/images/edit-svgrepo-com.svg"
-                            alt=""
-                          />
-                        </>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
                       </button>
-                    </>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 w-full rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 border-s-2 font-semibold flex justify-start items-center p-2">
-                    <p>Paragraph</p>
+                    </a>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    <div className="flex flex-col">
-                      {dataAboutParagraph.length > 0 &&
-                        dataAboutParagraph.map((data, i) => {
+                </div>
+
+                <div className="flex bg-slate-300 w-full rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Phone</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutPhone.length > 0 &&
+                        dataAboutPhone.map((data, i) => {
                           return (
                             <>
-                              <p>{data.english}</p>
-                              <p>{data.chinese}</p>
+                              <p>{data.no}</p>
                             </>
                           );
                         })}
                     </div>
                   </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editParagraph"
-                  >
-                    <>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editPhone"
+                    >
                       <button>
-                        <>
-                          <img
-                            className="w-8"
-                            src="/assets/images/edit-svgrepo-com.svg"
-                            alt=""
-                          />
-                        </>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
                       </button>
-                    </>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 w-full rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 font-semibold flex justify-start items-center p-2">
-                    <p>Address</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutAddress.length > 0 &&
-                      dataAboutAddress.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.address}</p>
-                          </>
-                        );
-                      })}
+                    </a>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editAddress"
-                  >
-                    <>
+                <div className="flex bg-slate-300 w-full  rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12  font-semibold flex justify-start items-center p-2">
+                      <p>EMail</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutEmail.length > 0 &&
+                        dataAboutEmail.map((data, i) => {
+                          return (
+                            <>
+                              <p>{data.email}</p>
+                            </>
+                          );
+                        })}
+                    </div>
+                  </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editEmail"
+                    >
                       <button>
-                        <>
-                          <img
-                            className="w-8"
-                            src="/assets/images/edit-svgrepo-com.svg"
-                            alt=""
-                          />
-                        </>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
                       </button>
-                    </>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex bg-slate-300 w-full rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 font-semibold flex justify-start items-center p-2">
-                    <p>Phone</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutPhone.length > 0 &&
-                      dataAboutPhone.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.no}</p>
-                          </>
-                        );
-                      })}
+                    </a>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editPhone"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full  rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                    <p>EMail</p>
+                <div className="flex bg-slate-300 w-full  rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12  font-semibold flex justify-start items-center p-2">
+                      <p>Instagram</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutIg.length > 0 &&
+                        dataAboutIg.map((data, i) => {
+                          return (
+                            <>
+                              <p>{data.link}</p>
+                            </>
+                          );
+                        })}
+                    </div>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutEmail.length > 0 &&
-                      dataAboutEmail.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.email}</p>
-                          </>
-                        );
-                      })}
-                  </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editEmail"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full  rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                    <p>Instagram</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutIg.length > 0 &&
-                      dataAboutIg.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.link}</p>
-                          </>
-                        );
-                      })}
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editInstagram"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editInstagram"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full  rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                    <p>Facebook</p>
+                <div className="flex bg-slate-300 w-full  rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12  font-semibold flex justify-start items-center p-2">
+                      <p>Facebook</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutFacebook.length > 0 &&
+                        dataAboutFacebook.map((data, i) => {
+                          return (
+                            <>
+                              <p>{data.link}</p>
+                            </>
+                          );
+                        })}
+                    </div>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutFacebook.length > 0 &&
-                      dataAboutFacebook.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.link}</p>
-                          </>
-                        );
-                      })}
-                  </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editFacebook"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full  rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                    <p>WeChat</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutWechat.length > 0 &&
-                      dataAboutWechat.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.link}</p>
-                          </>
-                        );
-                      })}
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editFacebook"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editWechat"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full  rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                    <p>LinkedIn</p>
+                <div className="flex bg-slate-300 w-full  rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12  font-semibold flex justify-start items-center p-2">
+                      <p>WeChat</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutWechat.length > 0 &&
+                        dataAboutWechat.map((data, i) => {
+                          return (
+                            <>
+                              <p>{data.link}</p>
+                            </>
+                          );
+                        })}
+                    </div>
                   </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutLinkedin.length > 0 &&
-                      dataAboutLinkedin.map((data, i) => {
-                        return (
-                          <>
-                            <p>{data.link}</p>
-                          </>
-                        );
-                      })}
-                  </div>
-                </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editLinkedin"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="flex bg-slate-300 w-full rounded-md">
-                <div className="w-full flex">
-                  <div className="w-2/12 font-semibold flex justify-start items-center p-2">
-                    <p>Barcode</p>
-                  </div>
-                  <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
-                    {dataAboutBarcode.length > 0 &&
-                      dataAboutBarcode.map((data, i) => {
-                        return <img className="w-20" src={data.img} alt="" />;
-                      })}
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editWechat"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
                   </div>
                 </div>
-                <div className="w-14  flex gap-3 m-3 my-auto">
-                  <a
-                    className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                    href="/dashboardAdmin/about/editBarcode"
-                  >
-                    <button>
-                      <img
-                        className="w-8"
-                        src="/assets/images/edit-svgrepo-com.svg"
-                        alt=""
-                      />
-                    </button>
-                  </a>
+                <div className="flex bg-slate-300 w-full  rounded-md">
+                  <div className="w-full flex h-20">
+                    <div className="w-2/12  font-semibold flex justify-start items-center p-2">
+                      <p>LinkedIn</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutLinkedin.length > 0 &&
+                        dataAboutLinkedin.map((data, i) => {
+                          return (
+                            <>
+                              <p>{data.link}</p>
+                            </>
+                          );
+                        })}
+                    </div>
+                  </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editLinkedin"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
+                </div>
+                <div className="flex bg-slate-300 w-full rounded-md">
+                  <div className="w-full flex h-32">
+                    <div className="w-2/12 font-semibold flex justify-start items-center p-2">
+                      <p>Barcode</p>
+                    </div>
+                    <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
+                      {dataAboutBarcode.length > 0 &&
+                        dataAboutBarcode.map((data, i) => {
+                          // eslint-disable-next-line react/jsx-key
+                          return <img className="w-20" src={data.img} alt="" />;
+                        })}
+                    </div>
+                  </div>
+                  <div className="w-14  flex gap-3 m-3 my-auto">
+                    <a
+                      className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
+                      href="/dashboardAdmin/about/editBarcode"
+                    >
+                      <button>
+                        <img
+                          className="w-8"
+                          src="/assets/images/edit-svgrepo-com.svg"
+                          alt=""
+                        />
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
