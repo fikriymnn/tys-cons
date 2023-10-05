@@ -17,11 +17,19 @@ import {
 import { db, storage, firebaseAnalytics } from "../../../../../firebase/page";
 
 function CreatePackage() {
+
+  const [isHidden, setIsHidden] = useState(true);
+
+  const toggleHidden = () => {
+    setIsHidden(!isHidden);
+  };
+
   const [dataService, setDataService] = useState([]);
 
   useEffect(() => {
     getDataService();
   }, []);
+
 
   //get data about
   const getDataService = async () => {
@@ -43,6 +51,8 @@ function CreatePackage() {
       alert(error);
     }
   };
+
+
   return (
     <>
       {/* {isAlert && (
@@ -184,39 +194,39 @@ function CreatePackage() {
               <p>Service</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <input
-                type="text"
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
+              <button onClick={toggleHidden} className=" rounded-lg text-white px-10 p-3 bg-blue-700 border-slate-300 text-start">Add Service</button>
             </div>
           </div>
-          <Dropdown className="bg-white" label="">
-            {dataService.map((data, i) => {
-              return (
-                <>
-                  <button>
-                    <div className="p-5 w-full">
-                      <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-7">
-                        <div className=" bg-blue-700">
-                          <img src={data.img} alt="" />
+          <div className=" px-32">
+            {isHidden ? null : (
+              <div className="grid grid-cols-2 gap-5 p-5 bg-slate-300">
+
+                {dataService.map((data, i) => {
+                  return (
+                    <>
+
+                      <button>
+                        <div className="bg-white hover:bg-slate-200 flex">
+                          <img className="w-[80px] h-[80px]" src={data.img} alt="" />
+                          <div className="p-3">
+                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                              {data.titleEnglish}
+                            </h1>
+                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                              {data.price[0].price} 元
+                            </h2>
+                          </div>
                         </div>
-                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
-                          <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                            {data.titleEnglish}
-                          </h1>
-                          <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                            {data.price[0].price} 元
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </>
-              );
-            })}
-          </Dropdown>
+                      </button>
+                    </>
+                  );
+                })}
+              </div>
+
+            )}
+
+          </div>
+
           <div className="flex justify-center items-center gap-10 mb-20">
             <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
               <button className="font-light">Add Service</button>
