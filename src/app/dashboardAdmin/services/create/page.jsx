@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 import { useState, useEffect } from "react";
 import {
@@ -554,8 +554,9 @@ function CreateService() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic English For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic English For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -572,8 +573,9 @@ function CreateService() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic Mandarin For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -585,11 +587,24 @@ function CreateService() {
                     <p>Description :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentIng}
-                      // onChange={(e) => handleChange(e, i)}
-                      name="contentIng" placeholder={`Input Description English For Description ${i + 1
-                        }`} maxLength={1000} className="h-[200px] w-full   " />
-
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentIng}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentIng" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentIng"
+                      placeholder={`Input Description English For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px] w-full   "
+                    />
 
                     {/* <textarea
                       name="contentIng"
@@ -609,10 +624,24 @@ function CreateService() {
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5"></div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentIng}
-                      // onChange={(e) => handleChange(e, i)} 
-                      name="contentChi" placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`} maxLength={1000} className="h-[200px] my-10 " />
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentChi}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentChi" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px] my-10 "
+                    />
                     {/* <textarea
                       name="contentChi"
                       value={val.contentChi}

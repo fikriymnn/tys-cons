@@ -19,24 +19,6 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  where,
-  query,
-  deleteDoc,
-  updateDoc,
-  doc,
-  Firestore,
-} from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { db, storage } from "../../../../../firebase/page";
 
 function CreateEvent() {
   const [isAlert, setIsAlert] = useState(false);
