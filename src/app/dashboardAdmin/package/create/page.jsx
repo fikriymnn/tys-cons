@@ -35,7 +35,7 @@ function CreatePackage() {
                         <p>Create New Package</p>
                     </div>
                     <div className="w-1/12 flex items-center justify-center">
-                        <a href="/dashboardAdmin/services">
+                        <a href="/dashboardAdmin/packages">
                             <button
                                 // onClick={openAlert}
                                 className="bg-red-600 rounded-lg py-2 px-5 text-xl"
