@@ -1,23 +1,128 @@
-'use client';
+
 import React from 'react'
 import Iframe from 'react-iframe'
 import CustomFooter from '@/components/CustomFooter';
 import Image from 'next/image'
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
+import {
+    collection,
+    addDoc,
+    getDocs,
+    where,
+    query,
+    getDoc,
+    deleteDoc,
+    updateDoc,
+    doc,
+    Firestore,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+
+
+async function getDataAboutHeading() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "heading");
+        const querySnapshot = await getDoc(docRef);
+
+        data.push(querySnapshot.data());
+
+
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+async function getDataAboutParagraph() {
+
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "paragraph");
+        const querySnapshot = await getDoc(docRef);
+
+
+        // doc.data() is never undefined for query doc snapshots
+
+        data.push(querySnapshot.data());
+
+
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+async function getDataAboutAdrress() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "address");
+        const querySnapshot = await getDoc(docRef);
 
 
 
-const About = () => {
+        data.push(querySnapshot.data());
+
+        setDataAboutAddress(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+async function getDataAboutPhone() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "phone");
+        const querySnapshot = await getDoc(docRef);
+
+
+
+
+
+        data.push(querySnapshot.data());
+
+        setDataAboutPhone(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+async function getDataAboutEmail() {
+    let data = [];
+    try {
+        const docRef = doc(db, "editAbout", "email");
+        const querySnapshot = await getDoc(docRef);
+
+
+        // doc.data() is never undefined for query doc snapshots
+
+        data.push(querySnapshot.data());
+
+        setDataAboutEmail(data);
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+
+const About = async () => {
+    const dataHeading = await getDataAboutHeading();
+    const dataParagraph = await getDataAboutParagraph();
+    const dataAddress = await getDataAboutAdrress();
+    const dataPhone = await getDataAboutPhone();
+    const dataEmail = await getDataAboutEmail();
+
     return (
         <>
 
             <NavbarWithCTAButton />
             <div className=' px-5 md:px-16 sm:px-10 pt-24 '>
                 <p className='text-blue-800 text-3xl font-semibold pb-4 font-sans'>
-                    About Us
+                    {dataHeading[0].english}
                 </p>
                 <p className=' text-lg font-sans'>
-                    TYS Consulting is a Business Consultant with main business in providing one-stop enterprise consultation services for enterprises or individuals who wants to establish business in Indonesia. Our team are equipped to communicate in Mandarin, English and Bahasa Indonesia with experiences on helping numerous customers in various sectors from establishment till ready to start business operation.
+                    {dataParagraph[0].english}
                 </p>
                 <div className='md:grid md:grid-cols-2 py-10 gap-2 '>
                     <div>
@@ -30,15 +135,15 @@ const About = () => {
                             position="" />
                         <div className='flex gap-4'>
                             <Image src={'/assets/images/map (1).png'} width={25} height={25} alt='' className='py-4' />
-                            <p className=' my-auto'>Citra garden, Kalideres, Jakarta Barat 11840</p>
+                            <p className=' my-auto'>{dataAddress[0].address}</p>
                         </div>
                         <div className='flex gap-4'>
                             <Image src={'/assets/images/call (1).png'} width={25} height={25} alt='' className=' py-4' />
-                            <p className=' my-auto'>0812-1355-1038</p>
+                            <p className=' my-auto'>{dataPhone[0].no}</p>
                         </div>
                         <div className='flex gap-4'>
                             <Image src={'/assets/images/email (3).png'} width={25} height={25} alt='' className=' py-4' />
-                            <p className=' my-auto'>marketing@.com</p>
+                            <p className=' my-auto'>{dataEmail[0].email}</p>
                         </div>
                     </div>
                     <div>
