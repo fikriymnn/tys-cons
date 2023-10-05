@@ -250,7 +250,7 @@ function EditEvent() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -268,7 +268,7 @@ function EditEvent() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -373,9 +373,8 @@ function EditEvent() {
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Topic English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Topic English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -392,9 +391,8 @@ function EditEvent() {
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Topic Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Topic Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -413,9 +411,8 @@ function EditEvent() {
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -432,9 +429,8 @@ function EditEvent() {
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}

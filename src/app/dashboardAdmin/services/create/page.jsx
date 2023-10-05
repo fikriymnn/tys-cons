@@ -1,5 +1,9 @@
 "use client";
 import React from "react";
+
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 import { useState, useEffect } from "react";
 import {
   collection,
@@ -319,7 +323,7 @@ function CreateService() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -337,7 +341,7 @@ function CreateService() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -549,10 +553,9 @@ function CreateService() {
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
-                      rows="5"
-                      placeholder={`Input Topic English For Description ${
-                        i + 1
-                      }`}
+                      rows="1"
+                      placeholder={`Input Topic English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -568,10 +571,9 @@ function CreateService() {
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
-                      rows="5"
-                      placeholder={`Input Topic Mandarin For Description ${
-                        i + 1
-                      }`}
+                      rows="1"
+                      placeholder={`Input Topic Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -583,39 +585,47 @@ function CreateService() {
                     <p>Description :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
+                    <ReactQuill theme="snow" value={val.contentIng}
+                      // onChange={(e) => handleChange(e, i)}
+                      name="contentIng" placeholder={`Input Description English For Description ${i + 1
+                        }`} maxLength={1000} className="h-[200px] w-full   " />
+
+
+                    {/* <textarea
                       name="contentIng"
                       value={val.contentIng}
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
-                    ></textarea>
+                    ></textarea> */}
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5"></div>
                   <div className=" w-10/12 p-3">
-                    <textarea
+                    <ReactQuill theme="snow" value={val.contentIng}
+                      // onChange={(e) => handleChange(e, i)} 
+                      name="contentChi" placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`} maxLength={1000} className="h-[200px] my-10 " />
+                    {/* <textarea
                       name="contentChi"
                       value={val.contentChi}
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
-                    ></textarea>
+                    ></textarea> */}
                   </div>
                 </div>
                 <div className=" w-10/12 p-3 ps-72">
@@ -635,7 +645,7 @@ function CreateService() {
               </>
             );
           })}
-          {/* <p>{JSON.stringify(data)}</p> */}
+          <p>{JSON.stringify(data)}</p>
           <div className="flex justify-center items-center gap-10 mb-20">
             <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
               <button onClick={handleClick} className="font-light">
