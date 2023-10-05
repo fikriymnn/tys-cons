@@ -12,6 +12,8 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   getStorage,
   ref,
@@ -188,7 +190,7 @@ function CreateEvent() {
         </div>
       )}
 
-      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -344,37 +346,37 @@ function CreateEvent() {
                     <p>Description :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
-                      name="contentIng"
-                      value={val.contentIng}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Description English For Description ${i + 1
-                        }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                    <ReactQuill theme="snow" value={val.contentIng}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentIng" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentIng" placeholder={`Input Description English For Description ${i + 1
+                        }`} maxLength={2000} className="h-[200px] " />
+
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+
+                  </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
-                      name="contentChi"
-                      value={val.contentChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                    <ReactQuill theme="snow" value={val.contentChi}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentChi" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentChi" placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`} maxLength={2000} className="h-[200px] my-10 " />
+
                   </div>
                 </div>
                 <div className=" w-10/12 p-3 ps-72">
