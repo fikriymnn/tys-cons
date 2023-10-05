@@ -33,8 +33,6 @@ function CreateService() {
 
   const [service, setService] = useState("");
   const [subService, setSubService] = useState("");
-  const [basicInfoIng, setBasicInfoIng] = useState("");
-  const [basicInfoChi, setBasicInfoChi] = useState("");
 
   const [data, setData] = useState([
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },

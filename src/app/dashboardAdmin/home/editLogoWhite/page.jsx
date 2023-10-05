@@ -21,18 +21,15 @@ import {
 } from "firebase/storage";
 import { db, storage, firebaseAnalytics } from "../../../../../firebase/page";
 import { prototype } from "events";
-import { useSearchParams } from "next/navigation";
 
-function EditClient() {
+function EditLogoWhite() {
   const [isAlert, setIsAlert] = useState(false);
-
+  const [file, setFile] = useState("");
   const [downloadURL, setDownloadURL] = useState("");
 
   // progress
   const [percent, setPercent] = useState(0);
   const [loading, setLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
 
   // Handle file upload event and update state
 
@@ -40,7 +37,7 @@ function EditClient() {
     const files = filess;
     try {
       setLoading(true);
-      const storageRef = ref(storage, `/client/${files.name}`);
+      const storageRef = ref(storage, `/logo/${files.name}`);
 
       // progress can be paused and resumed. It also exposes progress updates.
       // Receives the storage reference and the file to upload.
@@ -75,8 +72,10 @@ function EditClient() {
 
   const update = async (e) => {
     e.preventDefault();
-    const todoRef = doc(db, "clients", id);
+
     try {
+      const todoRef = doc(db, "editHomePage", "logoWhite");
+
       await updateDoc(todoRef, {
         img: downloadURL,
       });
@@ -93,6 +92,12 @@ function EditClient() {
     }
   };
 
+  const openAlert = () => {
+    setIsAlert(true);
+  };
+  const closeAlert = () => {
+    setIsAlert(false);
+  };
   return (
     <>
       {isAlert && (
@@ -122,10 +127,10 @@ function EditClient() {
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
-            <p>Edit Logo</p>
+            <p>Edit Logo White</p>
           </div>
           <div className="w-1/12 flex items-center justify-center">
-            <a href="/dashboardAdmin/clients">
+            <a href="/dashboardAdmin/home">
               <button
                 // onClick={openAlert}
                 className="bg-red-600 rounded-lg py-2 px-5 text-xl"
@@ -167,4 +172,4 @@ function EditClient() {
   );
 }
 
-export default EditClient;
+export default EditLogoWhite;

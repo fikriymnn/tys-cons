@@ -21,14 +21,12 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
-import { dataLocal } from "../components/local";
 
 async function getHeading() {
   let data = [];
   try {
     const docRef = doc(db, "editHomePage", "heading");
     const querySnapshot = await getDoc(docRef);
-
 
     data.push(querySnapshot.data());
   } catch (error) {
@@ -44,21 +42,18 @@ async function getDataHomeParagraph() {
     const querySnapshot = await getDoc(docRef);
 
     data.push(querySnapshot.data());
-
-
   } catch (error) {
     console.log(error);
   }
   return data;
-};
+}
 
 const Home = async () => {
   const dataHeading = await getHeading();
-  const check = await dataLocal;
+
   const dataParagraph = await getDataHomeParagraph();
 
   console.log(dataHeading);
-  console.log(check);
 
   return (
     <>
