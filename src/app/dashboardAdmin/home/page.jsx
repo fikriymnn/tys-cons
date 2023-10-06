@@ -154,7 +154,9 @@ function HomeAdmin() {
         <Navigation />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
-            <p className="pt-5 text-center font-bold text-3xl text-white ">Homepage</p>
+            <p className="pt-5 text-center font-bold text-3xl text-white ">
+              Homepage
+            </p>
 
             <div className="p-5 w-full">
               <div className="grid grid-cols-1 gap-5 w-full">
@@ -258,7 +260,7 @@ function HomeAdmin() {
                   <div className="w-14  flex gap-3 m-3 my-auto">
                     <a
                       className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                      href="/dashboardAdmin/home/editParagraph"
+                      href="/dashboardAdmin/home/editLogoWhite"
                     >
                       <button>
                         <img
@@ -288,7 +290,7 @@ function HomeAdmin() {
                   <div className="w-14  flex gap-3 m-3 my-auto">
                     <a
                       className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                      href="/dashboardAdmin/home/editParagraph"
+                      href="/dashboardAdmin/home/editLogoNavbar"
                     >
                       <button>
                         <img
@@ -318,7 +320,7 @@ function HomeAdmin() {
                   <div className="w-14  flex gap-3 m-3 my-auto">
                     <a
                       className="bg-yellow-400 w-full h-10 rounded-md flex items-center justify-center m-auto"
-                      href="/dashboardAdmin/home/editParagraph"
+                      href="/dashboardAdmin/home/editLogoFooter"
                     >
                       <button>
                         <img
