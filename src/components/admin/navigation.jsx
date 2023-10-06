@@ -14,11 +14,10 @@ function Navigation() {
   return (
     <div className="z-40 ">
       <div
-        className={`${
-          bar == 1
-            ? " w-[200px] duration-100 ease-in-out"
-            : " w-[80px] duration-100 ease-in-out"
-        } h-screen shadow-md flex-col text-[#ffffff] bg-[#0d3064]`}
+        className={`${bar == 1
+          ? " w-[200px] duration-100 ease-in-out"
+          : " w-[80px] duration-100 ease-in-out"
+          } h-screen shadow-md flex-col text-[#ffffff] bg-[#0d3064]`}
       >
         <div className="w-full h-[80px] mb-5 shadow-md  ">
           <button className="w-full h-full" onClick={toggleBar}>
@@ -39,11 +38,10 @@ function Navigation() {
         </div>
         <a href="/dashboardAdmin/home">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -73,11 +71,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/about">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -117,11 +114,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/services">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -159,11 +155,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/packages">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -193,11 +188,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/articles">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -227,11 +221,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/events">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -269,11 +262,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/policies">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -303,11 +295,10 @@ function Navigation() {
         </a>
         <a href="/dashboardAdmin/clients">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -337,11 +328,10 @@ function Navigation() {
         </a>
 
         <button
-          className={`${
-            bar == 1
-              ? "ms-5 justify-start items-center"
-              : " justify-center items-center"
-          } w-full h-10 flex my-3`}
+          className={`${bar == 1
+            ? "ms-5 justify-start items-center"
+            : " justify-center items-center"
+            } w-full h-10 flex my-3`}
           onClick={() => {
             signOut(auth);
             localStorage.removeItem("auth");
@@ -350,22 +340,16 @@ function Navigation() {
           }}
         >
           {bar === 0 ? (
-            <div className="w-10">
+            <div className="w-10 mt-7">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                  fill="#ffffff"
-                  d="M10.21,14.75a1,1,0,0,0,1.42,0l4.08-4.08a1,1,0,0,0-1.42-1.42l-3.37,3.38L9.71,11.41a1,1,0,0,0-1.42,1.42ZM21,2H3A1,1,0,0,0,2,3V21a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,20H4V4H20Z"
-                />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#dc2626" d="M20.5,15.1a1,1,0,0,0-1.34.45A8,8,0,1,1,12,4a7.93,7.93,0,0,1,7.16,4.45,1,1,0,0,0,1.8-.9,10,10,0,1,0,0,8.9A1,1,0,0,0,20.5,15.1ZM21,11H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H21a1,1,0,0,0,0-2Z" /></svg>
               </svg>
             </div>
           ) : (
-            <div className="flex gap-2 currentColor hover:text-[#007aff]">
+            <div className="mt-7 bg-red-600 hover:bg-red-500 px-5 py-2 rounded-md flex gap-2 currentColor">
               <div className="w-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    fill="#ffffff"
-                    d="M10.21,14.75a1,1,0,0,0,1.42,0l4.08-4.08a1,1,0,0,0-1.42-1.42l-3.37,3.38L9.71,11.41a1,1,0,0,0-1.42,1.42ZM21,2H3A1,1,0,0,0,2,3V21a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,20H4V4H20Z"
-                  />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#ffffff" d="M20.5,15.1a1,1,0,0,0-1.34.45A8,8,0,1,1,12,4a7.93,7.93,0,0,1,7.16,4.45,1,1,0,0,0,1.8-.9,10,10,0,1,0,0,8.9A1,1,0,0,0,20.5,15.1ZM21,11H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H21a1,1,0,0,0,0-2Z" /></svg>
                 </svg>
               </div>
               <div className="flex items-center justify-center font-semibold">
