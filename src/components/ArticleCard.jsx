@@ -9,7 +9,7 @@ function ArticleCard({ img, title, date, id }) {
           <img src={img} alt="" />
         </div>
         <div className="p-3 ">
-          <h1 className="font-semibold text-gray-900  ">{title}</h1>
+          <h1 className="font-semibold text-gray-900 line-clamp-2  ">{title}</h1>
           <h2>{date}</h2>
         </div>
       </div>
