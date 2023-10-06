@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import parse from 'html-react-parser';
 import Navigation from "@/components/admin/navigation";
 import {
   collection,
@@ -100,7 +101,7 @@ function ArticlesAdmin() {
                             <div className="px-4 py-2 h-full w-[212px] border-s-2">
                               <img src={data.img} alt="" />
                             </div>
-                            <div className="w-full flex">
+                            <div className="w-full flex ">
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
                                   <p>{data.titleEnglish}</p>
@@ -109,8 +110,8 @@ function ArticlesAdmin() {
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
-                                  <p>{data.content[0].contentIng}</p>
-                                  <p>{data.content[0].contentChi}</p>
+                                  <p>{parse(data.content[0].contentIng)}</p>
+                                  <p>{parse(data.content[0].contentChi)}</p>
                                 </div>
                               </div>
                               <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
