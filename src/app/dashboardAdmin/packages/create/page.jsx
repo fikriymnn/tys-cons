@@ -441,15 +441,15 @@ function CreatePackage() {
                       })}
                     </div>
                   )}
+                  {dataServiceId.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDeleteService(ii)}>
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                {dataServiceId.length !== 1 && (
-                  <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                    <button onClick={(e) => handleDeleteService(ii)}>
-                      Delete
-                    </button>
-                  </div>
-                )}
               </>
             );
           })}
