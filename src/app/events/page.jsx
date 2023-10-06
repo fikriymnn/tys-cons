@@ -2,8 +2,40 @@ import React from 'react'
 import EventCard from '@/components/EventCard'
 import CustomFooter from '@/components/CustomFooter';
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
+import parse from 'html-react-parser';
 
-function Events() {
+import {
+    collection,
+    addDoc,
+    getDocs,
+    where,
+
+    Firestore,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+
+async function getDataEvents() {
+    let data = [];
+    try {
+        try {
+            const querySnapshot = await getDocs(collection(db, "events"));
+            console.log(querySnapshot);
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataEvents(data);
+        } catch (error) {
+            console.log(error);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+};
+async function Events() {
+    const dataEvents = await getDataEvents();
     return (
         <>
             <NavbarWithCTAButton />
@@ -36,9 +68,16 @@ function Events() {
                         </div>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5'>
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
+                        {dataEvents.map((data, i) => {
+                            return (
+                                <EventCard key={i}
+                                    date={data.date}
+                                    id={data.id}
+                                    img={data.img}
+                                    title={data.titleEnglish} />
+                            );
+                        })}
+
 
                     </div>
                 </div>
