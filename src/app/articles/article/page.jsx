@@ -1,11 +1,48 @@
+'use client'
 import React from "react";
 import SolidBackground from "@/components/BreadcrumbArticle";
 import CustomFooter from "@/components/CustomFooter";
 import BreadcrumbArticle from "@/components/BreadcrumbArticle";
 import Image from "next/image";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
+import { useSearchParams } from "next/navigation";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+import { db, storage } from "../../../../firebase/page";
+import parse from 'html-react-parser';
 
-function Article() {
+async function getDataArticles() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  let data = [];
+  try {
+    const docRef = doc(db, "articles", id);
+    const querySnapshot = await getDoc(docRef);
+
+
+
+    data.push(querySnapshot.data());
+
+    setTitleIng(data[0].titleEnglish);
+    setTitleChi(data[0].titleChinese);
+    setData(data[0].content);
+  } catch (error) {
+    console.log(error);
+  }
+  return data;
+};
+async function Article() {
+  const dataArticle = await getDataArticles();
   return (
     <>
       <NavbarWithCTAButton />
@@ -14,9 +51,9 @@ function Article() {
         <div className="bg-white">
           <div className="relative p-5">
             <div className="w-full h-1000px">
-              <h3>Mon Dec 10 2022</h3>
+              <h3>{dataArticle[0].date}</h3>
               <h1 className="text-4xl text-center p-5 font-semibold">
-                Article Title
+                {dataArticle[0].titleEnglish}
               </h1>
               <div className="bg-blue-500 h-[500px] relative">
                 <div
@@ -31,18 +68,25 @@ function Article() {
                                 /> */}
                 </div>
               </div>
-              <div className="bg-gray-400 h-[2px] mt-5  "></div>
-              <div className="w-100px flex items-center justify-center">
-                <div className="bg-blue-600 h-[50px] flex items-center">
-                  <h2 className="mx-5 text-xl text-center font-semibold text-white">
-                    New Article
-                  </h2>
-                </div>
-              </div>
-              <div className="py-5">
-                <p>Lorem Ipsum dolor sit amet</p>
-                <p>abcd</p>
-              </div>
+
+              {dataArticle[0].content.map((data, i) => {
+                return (
+                  <>
+
+                    <div className="bg-gray-400 h-[2px] mt-5  "></div>
+                    <div className="w-100px flex items-center justify-center">
+                      <div className="bg-blue-600 h-[50px] flex items-center">
+                        <h2 className="mx-5 text-xl text-center font-semibold text-white">
+                          {data.topicIng}
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="py-5">
+                      {parse(data.contentIng)}
+                    </div>
+                  </>
+                )
+              })}
             </div>
           </div>
         </div>
