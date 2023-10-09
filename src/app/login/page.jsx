@@ -140,42 +140,70 @@ export default function LoginPage() {
   };
   return (
     <>
-      <br />
-      <div className="bg-[#3C2A21] md:w-[500px] sm:w-[450px] w-[350px] mx-auto rounded-xl md:mt-20 sm:mt-20 mt-36 mb-20 ">
-        <h1 className="md:text-3xl sm:text-2xl text-xl font-bold text-center pt-10 mb-5 text-white">
-          Login
-        </h1>
-        <div className="pb-20 pl-20 pr-20">
-          <form onSubmit={onSubmit} className="">
-            <div>
-              <p className="md:text-base text-sm">Email :</p>
-              <input
-                id="email"
-                name="email"
-                type="text"
-                placeholder="Masukan Email"
-                className="text-black my-5 md:w-80 sm:w-[300px] w-[200px]"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
 
-            <div>
-              <p className="md:text-base text-sm">Password :</p>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Masukan Password"
-                className="text-black my-5  md:w-80 sm:w-[300px] w-[200px]"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center mt-3">
-              <button className="bg-neutral-400 px-4 py-1 rounded-lg m-auto hover:bg-neutral-600">
-                Login
-              </button>
-            </div>
-          </form>
+      {/* <form onSubmit={onSubmit} className="">
+        <div>
+          <p className="md:text-base text-sm">Email :</p>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            placeholder="Masukan Email"
+            className="text-black my-5 md:w-80 sm:w-[300px] w-[200px]"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <p className="md:text-base text-sm">Password :</p>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Masukan Password"
+            className="text-black my-5  md:w-80 sm:w-[300px] w-[200px]"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="flex items-center mt-3">
+          <button className="bg-neutral-400 px-4 py-1 rounded-lg m-auto hover:bg-neutral-600">
+            Login
+          </button>
+        </div>
+      </form> */}
+
+
+      <div className='w-screen h-screen bg-cover bg-[url("/assets/images/login.jpg")]'>
+
+        <div className='flex justify-center items-center h-screen z-40'>
+          <div className="bg-white w-[550px] p-7">
+            <h1 className="text-blue-600 font-semibold text-xl">Login</h1>
+            <form onSubmit={onSubmit} action="">
+              <div className="py-5">
+                <p>Email</p>
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="Input your Email"
+                  className="text-black my-3 w-full"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <p>Password</p>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Input your Password"
+                  className="text-black my-3 w-full"
+                  onChange={(e) => setPassword(e.target.value)}
+
+                />
+                <button className="w-full my-3 p-2 bg-blue-700 text-white hover:bg-blue-600">Login</button>
+                <div className="flex"><p>Did not have an account? </p> <a className="ms-1 text-blue-600" href="">Sign In</a></div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

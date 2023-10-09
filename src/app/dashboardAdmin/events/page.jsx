@@ -15,7 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
-import parse from "html-react-parser";
+import parse from 'html-react-parser';
 
 function EventsAdmin() {
   const [dataEvents, setDataEvents] = useState([]);
@@ -112,8 +112,7 @@ function EventsAdmin() {
                                 </div>
                                 <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                   <div className="flex flex-col">
-                                    {parse(data.content[0].contentIng)}
-
+                                    <p>{data.content[0].contentIng}</p>
                                     <p>{data.content[0].contentChi}</p>
                                   </div>
                                 </div>

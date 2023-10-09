@@ -24,6 +24,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 function CreatePackage() {
+
   const [isHidden, setIsHidden] = useState(true);
 
   const toggleHidden = () => {
@@ -35,6 +36,7 @@ function CreatePackage() {
   useEffect(() => {
     getDataService();
   }, []);
+
 
   //get data about
   const getDataService = async () => {
@@ -439,15 +441,15 @@ function CreatePackage() {
                       })}
                     </div>
                   )}
+                  {dataServiceId.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDeleteService(ii)}>
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                {dataServiceId.length !== 1 && (
-                  <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                    <button onClick={(e) => handleDeleteService(ii)}>
-                      Delete
-                    </button>
-                  </div>
-                )}
               </>
             );
           })}
@@ -485,9 +487,8 @@ function CreatePackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Topic English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -504,9 +505,8 @@ function CreatePackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Topic Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -530,9 +530,8 @@ function CreatePackage() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       maxLength={1000}
                       className="h-[200px] w-full   "
                     />
@@ -553,9 +552,8 @@ function CreatePackage() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       maxLength={1000}
                       className="h-[200px] my-10 "
                     />
