@@ -500,7 +500,7 @@ function AboutAdmin() {
                         dataAboutFacebook.map((data, i) => {
                           return (
                             <>
-                              <p>{data.link}</p>
+                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
                             </>
                           );
                         })}
@@ -531,7 +531,7 @@ function AboutAdmin() {
                         dataAboutWechat.map((data, i) => {
                           return (
                             <>
-                              <p>{data.link}</p>
+                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
                             </>
                           );
                         })}
@@ -562,7 +562,7 @@ function AboutAdmin() {
                         dataAboutLinkedin.map((data, i) => {
                           return (
                             <>
-                              <p>{data.link}</p>
+                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
                             </>
                           );
                         })}
