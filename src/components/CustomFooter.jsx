@@ -1,16 +1,12 @@
+
 import React from "react";
 import Image from "next/image";
 import {
-  collection,
-  addDoc,
-  getDocs,
-  where,
-  query,
+
   getDoc,
-  deleteDoc,
-  updateDoc,
+
   doc,
-  Firestore,
+
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
 
@@ -154,7 +150,7 @@ const CustomFooter = async () => {
                   className=" w-6 h-6 hover:scale-110 my-5"
                 />
               </a>
-              <a href={`https:/www.instagram.com/` + dataIg[0].link}>
+              <a href={dataIg[0].link}>
                 <img
                   src="/assets/images/instagram (2).png"
                   alt=""
