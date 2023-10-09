@@ -4,8 +4,52 @@ import Image from "next/image";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase/page";
 import { useRouter } from "next/navigation";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+
+
 
 function Navigation() {
+
+
+  const [dataLogoWhite, setDataLogoWhite] = useState([]);
+  useEffect(() => {
+
+    getDataHomeLogoWhite();
+
+  }, []);
+  const getDataHomeLogoWhite = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoWhite");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setDataLogoWhite(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
   const [bar, setBar] = useState(1);
   const toggleBar = () => {
     setBar((prevBar) => (prevBar === 1 ? 0 : 1));
@@ -28,11 +72,14 @@ function Navigation() {
                 className="mx-5 w-6/12 opacity-100"
               />
             ) : (
-              <img
-                src="/assets/images/tys-logo.png"
-                alt=""
-                className="mx-5 w-10/12 opacity-100"
-              />
+              <>
+                {
+
+                  dataLogoWhite.map((data, i) => {
+                    return <img className="h-14" src={data.img}></img>;
+                  })
+                }
+              </>
             )}
           </button>
         </div>
