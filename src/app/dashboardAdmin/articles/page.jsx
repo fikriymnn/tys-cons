@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
+import htmr from "htmr";
 import { useState, useEffect } from "react";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 import Navigation from "@/components/admin/navigation";
 import {
   collection,
@@ -110,7 +111,7 @@ function ArticlesAdmin() {
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
-                                  <p>{parse(data.content[0].contentIng)}</p>
+                                  <p>{htmr(data.content[0].contentIng)}</p>
                                   <p>{parse(data.content[0].contentChi)}</p>
                                 </div>
                               </div>
