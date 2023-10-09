@@ -7,16 +7,8 @@ import Image from "next/image";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import { useSearchParams } from "next/navigation";
 import {
-  collection,
-  addDoc,
-  getDocs,
-  where,
-  query,
   getDoc,
-  deleteDoc,
-  updateDoc,
   doc,
-  Firestore,
 } from "firebase/firestore";
 import { db, storage } from "../../../../firebase/page";
 import parse from 'html-react-parser';
@@ -58,7 +50,7 @@ async function Article() {
               <div className="bg-blue-500 h-[500px] relative">
                 <div
                   className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
-                  style={{ backgroundImage: "url(/assets/images/article.png)" }}
+                  style={{ backgroundImage: `url(${dataArticle[0].img})` }}
                 >
                   {/* <Image
                                     src={'/assets/images/article.png'}
@@ -81,9 +73,8 @@ async function Article() {
                         </h2>
                       </div>
                     </div>
-                    <div className="py-5">
-                      {parse(data.contentIng)}
-                    </div>
+                    <div className="py-5" dangerouslySetInnerHTML={{ __html: data.contentIng }} />
+
                   </>
                 )
               })}
