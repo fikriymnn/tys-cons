@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { useState } from "react";
+
 import { Tabs } from "flowbite-react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
@@ -12,41 +12,48 @@ import ConstructionCertificationsPage from "@/components/ServicesSub/BasicEstabl
 import FactoryLicensesPage from "@/components/ServicesSub/BasicEstablishmentServices/FactoryLicensesPage";
 import {
   collection,
-  addDoc,
   getDocs,
   where,
-  query,
-  getDoc,
-  deleteDoc,
-  updateDoc,
-  doc,
-  Firestore,
+  query
+
 } from "firebase/firestore";
+import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 
-async function getDataService() {
-  let data = [];
-  try {
+
+function Events() {
+  const components = [<CompanyRegistrationPage />];
+  const [comp, setComp] = useState(0);
+  const [dataService, setDataService] = useState([]);
+
+  useEffect(() => {
+    getDataService();
+  }, []);
+
+  //get data about
+  const getDataService = async () => {
+
     try {
-      const querySnapshot = await getDocs(collection(db, "service"));
-      console.log(querySnapshot);
+      const q = query(collection(db, "service"), where("service", "==", "Basic Establishment Services"), where("subService", "==", "Company Registration"));
+
+      const querySnapshot = await getDocs(q);
+
+      // const querySnapshot = await getDocs(collection(db, "service"), where("service", "==", "Establishment Services"), where("subService", "==", "Company Registration"));
+      // let data = [];
+      // console.log(querySnapshot);
+      let data = [];
       querySnapshot.forEach((doc) => {
-
-
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
         data.push({ ...doc.data(), id: doc.id });
       });
       setDataService(data);
-    } catch (error) {
+      console.log(dataService)
+    }
+    catch (error) {
       console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-};
-async function Events() {
-  const components = [<CompanyRegistrationPage />];
-  const [comp, setComp] = useState(0);
-  const dataService = await getDataService();
+  };
 
   return (
 
@@ -121,7 +128,21 @@ async function Events() {
           {comp == 0 ? (
             <>
               <div className="grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5">
-                <CompanyRegistrationPage />
+
+                {dataService.map((data, i) => {
+                  return (
+                    <>
+
+                      <CompanyRegistrationPage
+                        key={i}
+                        price={data.price[0].price}
+                        id={data.id}
+                        img={data.img}
+                        title={data.titleEnglish}
+                      />
+                    </>
+                  );
+                })}
               </div>
             </>
           ) : comp == 1 ? (
@@ -161,7 +182,7 @@ async function Events() {
           )}
         </div>
       </div>
-      <CustomFooter />
+      {/* <CustomFooter /> */}
     </>
   );
 }
