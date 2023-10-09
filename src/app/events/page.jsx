@@ -18,13 +18,12 @@ async function getDataEvents() {
 
   try {
     const querySnapshot = await getDocs(collection(db, "events"));
-    console.log(querySnapshot);
+
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+
       data.push({ ...doc.data(), id: doc.id });
     });
-    setDataEvents(data);
   } catch (error) {
     console.log(error);
   }

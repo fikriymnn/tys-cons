@@ -24,7 +24,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 function CreatePackage() {
-
   const [isHidden, setIsHidden] = useState(true);
 
   const toggleHidden = () => {
@@ -36,7 +35,6 @@ function CreatePackage() {
   useEffect(() => {
     getDataService();
   }, []);
-
 
   //get data about
   const getDataService = async () => {
@@ -165,6 +163,13 @@ function CreatePackage() {
 
   const addData = async (e) => {
     e.preventDefault();
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
     const docRef = await addDoc(collection(db, "package"), {
       content: data,
       img: downloadURL,
@@ -172,6 +177,7 @@ function CreatePackage() {
       services: dataServiceId,
       titleChinese: titleChi,
       titleEnglish: titleIng,
+      date: date,
     });
 
     alert("success");
@@ -449,7 +455,6 @@ function CreatePackage() {
                     </div>
                   )}
                 </div>
-
               </>
             );
           })}
@@ -487,8 +492,9 @@ function CreatePackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic English For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic English For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -505,8 +511,9 @@ function CreatePackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic Mandarin For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -530,8 +537,9 @@ function CreatePackage() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
                       maxLength={1000}
                       className="h-[200px] w-full   "
                     />
@@ -552,8 +560,9 @@ function CreatePackage() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
                       maxLength={1000}
                       className="h-[200px] my-10 "
                     />
