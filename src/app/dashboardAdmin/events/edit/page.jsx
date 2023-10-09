@@ -23,6 +23,7 @@ import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import MyEditor from "@/components/admin/quilltext";
 
 function EditEvent() {
   const [isAlert, setIsAlert] = useState(false);
@@ -486,7 +487,7 @@ function EditEvent() {
                   onClick={(e) => addData(e)}
                   className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
                 >
-                  Create Event
+                  Edit Event
                 </button>
               )}
             </div>

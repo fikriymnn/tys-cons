@@ -15,7 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 function EventsAdmin() {
   const [dataEvents, setDataEvents] = useState([]);
@@ -48,7 +48,7 @@ function EventsAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation events="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">
@@ -106,14 +106,18 @@ function EventsAdmin() {
                               <div className="w-full flex">
                                 <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                                   <div className="flex flex-col">
-                                    <p>{data.titleChinese}</p>
                                     <p>{data.titleEnglish}</p>
+                                    <p>{data.titleChinese}</p>
                                   </div>
                                 </div>
                                 <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                   <div className="flex flex-col">
-                                    <p>{data.content[0].contentIng}</p>
-                                    <p>{data.content[0].contentChi}</p>
+                                    <div className="line-clamp-3">
+                                      {parse(data.content[0].contentIng)}
+                                    </div>
+                                    <div className="line-clamp-3">
+                                      {parse(data.content[0].contentChi)}
+                                    </div>
                                   </div>
                                 </div>
                                 <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">

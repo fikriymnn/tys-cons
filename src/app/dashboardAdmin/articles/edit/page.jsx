@@ -353,7 +353,8 @@ function EditArticle() {
                     <p>English :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <MyEditor
+                    <ReactQuill
+                      theme="snow"
                       value={val.contentIng}
                       onChange={(e) =>
                         handleChange(
@@ -364,9 +365,11 @@ function EditArticle() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description English For Description ${
+                      placeholder={`Input Description Mandarin For Description ${
                         i + 1
                       }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
                     />
                   </div>
                 </div>
