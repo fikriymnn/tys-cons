@@ -469,7 +469,7 @@ function AboutAdmin() {
                         dataAboutIg.map((data, i) => {
                           return (
                             <>
-                              <p>{data.link}</p>
+                              <a className="hover:text-blue-600" href={`https://www.instagram.com/${data.link}`}>https://www.instagram.com/{data.link}</a>
                             </>
                           );
                         })}
