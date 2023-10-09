@@ -193,7 +193,7 @@ export default function LoginPage() {
                 <input
                   id="password"
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="Input your Password"
                   className="text-black my-3 w-full"
                   onChange={(e) => setPassword(e.target.value)}
