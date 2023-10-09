@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import htmr from "htmr";
+
 import { useState, useEffect } from "react";
 import parse from "html-react-parser";
 import Navigation from "@/components/admin/navigation";
@@ -95,7 +95,7 @@ function ArticlesAdmin() {
                     dataArticles.map((data, i) => {
                       return (
                         <>
-                          <div className="flex bg-slate-300 rounded-md mb-3">
+                          <div className="flex bg-slate-300 rounded-md">
                             <div className="p-2 h-full w-[50px] flex justify-start items-center ">
                               <p>{i + 1}</p>
                             </div>
@@ -110,10 +110,10 @@ function ArticlesAdmin() {
                                 </div>
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col">
+                                <div className="flex flex-col content">
 
-                                  <p className="line-clamp-2">{parse(data.content[0].contentIng)}</p>
-                                  <p className="line-clamp-2">{parse(data.content[0].contentChi)}</p>
+                                  <div className="line-clamp-2">{parse(data.content[0].contentIng)}</div>
+                                  <div className="line-clamp-2">{parse(data.content[0].contentChi)}</div>
 
                                 </div>
                               </div>

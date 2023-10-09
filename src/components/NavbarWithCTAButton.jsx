@@ -126,7 +126,7 @@ export default function NavbarWithCTAButton({ height }) {
             </Navbar.Link>
           </div>
           <div className=" my-auto">
-            <Navbar.Link href="/about">
+            <Navbar.Link href="/about" className="navbar-link">
               <span
                 className={
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "

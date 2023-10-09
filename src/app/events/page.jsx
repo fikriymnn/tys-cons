@@ -70,8 +70,8 @@ async function Events() {
                   <div key={i}>
                     <a href={`/events/event?id=${data.id}`}>
                       <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1">
-                        <div className="h-28 md:h-36">
-                          <img src={data.img} alt="" />
+                        <div className="h-28 md:h-36 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${data.img})` }}>
+
                         </div>
                         <div className="p-3 ">
                           <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">

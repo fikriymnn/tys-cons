@@ -11,6 +11,7 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
+import parse from "html-react-parser";
 import {
   getStorage,
   ref,
@@ -69,11 +70,7 @@ function DetailServices() {
               <div className="bg-white">
                 <div className="relative p-5 pt-10">
                   <p>{data.date}</p>
-                  <div className="flex gap-1 mt-5">
-                    <p className="text-sm">Basic Establishment Services</p>
-                    <p className="text-sm">&gt;</p>
-                    <p className="text-sm ">Company Registration</p>
-                  </div>
+
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
                     <div className="bg-gray-100 md:w-[400px] md:h-[350px] ms:w-full ms:h-full mt-2">
                       <img
@@ -126,7 +123,10 @@ function DetailServices() {
                             {data.topicIng}
                           </p>
                         </div>
-                        <p>{data.contentIng}</p>
+                        <div className="content">
+
+                          <p>{parse(data.contentIng)}</p>
+                        </div>
                       </>
                     );
                   })}
@@ -137,7 +137,7 @@ function DetailServices() {
         );
       })}
 
-      {/* <CustomFooter /> */}
+      <CustomFooter />
     </>
   );
 }

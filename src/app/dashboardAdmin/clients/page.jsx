@@ -60,7 +60,11 @@ function ClientAdmin() {
                   return (
                     <>
                       <div key={i} className="border-2 p-2">
-                        <img src={data.img} alt="" />
+                        <div className="h-32 bg-contain bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url(${data.img})` }}>
+
+
+                        </div>
                         <div className=" flex gap-2 w-24 pt-2">
                           <a
                             href={`/dashboardAdmin/clients/edit?id=${data.id}`}
