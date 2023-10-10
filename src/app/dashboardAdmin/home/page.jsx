@@ -252,7 +252,7 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoWhite.length > 0 &&
                           dataLogoWhite.map((data, i) => {
-                            return <img src={data.img}></img>;
+                            return <img className="h-14" src={data.img}></img>;
                           })}
                       </div>
                     </div>
@@ -282,7 +282,7 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoNav.length > 0 &&
                           dataLogoNav.map((data, i) => {
-                            return <img src={data.img}></img>;
+                            return <img className="h-14" src={data.img}></img>;
                           })}
                       </div>
                     </div>
