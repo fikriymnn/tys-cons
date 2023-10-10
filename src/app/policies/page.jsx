@@ -174,7 +174,7 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategory}
+                          {data.subCategoryEnglish}
                         </p>
                       </div>
                     </>
@@ -233,7 +233,7 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategory}
+                          {data.subCategoryEnglish}
                         </p>
                       </div>
                     </>
@@ -292,7 +292,7 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategory}
+                          {data.subCategoryEnglish}
                         </p>
                       </div>
                     </>
@@ -351,7 +351,7 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategory}
+                          {data.subCategoryEnglish}
                         </p>
                       </div>
                     </>

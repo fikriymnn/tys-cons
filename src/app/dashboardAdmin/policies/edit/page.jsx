@@ -37,7 +37,8 @@ function EditPolicies() {
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategoryIng, setSubCategoryIng] = useState("");
+  const [subCategoryChi, setSubCategoryChi] = useState("");
   const [contentIng, setContentIng] = useState("");
   const [contentChi, setContentChi] = useState("");
 
@@ -51,12 +52,12 @@ function EditPolicies() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDataEventse();
-  }, []);
+    getDataEvents(id);
+  }, [id]);
 
-  const getDataEventse = async () => {
+  async function getDataEvents(idd) {
     try {
-      const docRef = doc(db, "policies", id);
+      const docRef = doc(db, "policies", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -74,13 +75,14 @@ function EditPolicies() {
       setTitleIng(data[0].titleEnglish);
       setTitleChi(data[0].titleChinese);
       setCategory(data[0].category);
-      setSubCategory(data[0].subCategory);
+      setSubCategoryIng(data[0].subCategoryEnglish);
+      setSubCategoryChi(data[0].subCategoryChinese);
       setContentIng(data[0].contentEnglish);
       setContentChi(data[0].contentChinese);
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   const handleUpload = async (filess) => {
     const files = filess;
@@ -139,7 +141,8 @@ function EditPolicies() {
         titleEnglish: titleIng,
         titleChinese: titleChi,
         category: category,
-        subCategory: subCategory,
+        subCategoryEnglish: subCategoryIng,
+        subCategoryChinese: subCategoryChi,
 
         img: downloadURL,
 
@@ -305,10 +308,18 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
               <input
-                value={subCategory ?? ""}
-                onChange={(e) => setSubCategory(e.target.value)}
+                value={subCategoryIng}
+                onChange={(e) => setSubCategoryIng(e.target.value)}
                 type="text"
-                placeholder="This will be a Dropdown"
+                placeholder="Sub category english"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+              <input
+                value={subCategoryChi}
+                onChange={(e) => setSubCategoryChi(e.target.value)}
+                type="text"
+                placeholder="Sub category chinese"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
               />

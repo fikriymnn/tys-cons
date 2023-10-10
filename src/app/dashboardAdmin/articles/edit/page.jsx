@@ -51,12 +51,12 @@ function EditArticle() {
   const id = searchParams.get("id");
 
   useEffect(() => {
-    getDataArticles();
-  }, []);
+    getDataArticles(id);
+  }, [id]);
 
-  const getDataArticles = async () => {
+  const getDataArticles = async (idd) => {
     try {
-      const docRef = doc(db, "articles", id);
+      const docRef = doc(db, "articles", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {

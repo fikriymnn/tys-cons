@@ -63,9 +63,12 @@ function EditPackage() {
   };
 
   useEffect(() => {
-    getDataPackage();
     getDataService();
   }, []);
+
+  useEffect(() => {
+    getDataPackage(id);
+  }, [id]);
 
   //get data about
   const getDataService = async () => {
@@ -89,9 +92,9 @@ function EditPackage() {
   };
 
   //get data about
-  const getDataPackage = async () => {
+  async function getDataPackage(idd) {
     try {
-      const docRef = doc(db, "package", id);
+      const docRef = doc(db, "package", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -114,7 +117,7 @@ function EditPackage() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   const handleUpload = async (filess) => {
     const files = filess;
