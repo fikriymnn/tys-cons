@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+
 import SolidBackground from '@/components/BreadcrumbArticle'
 import CustomFooter from '@/components/CustomFooter';
 import BreadcrumbArticle from '@/components/BreadcrumbArticle'
@@ -20,40 +20,44 @@ import {
 } from "firebase/firestore";
 import { db, storage } from "../../../../firebase/page";
 import parse from 'html-react-parser';
+import { useState, useEffect } from "react";
 
-async function getDataEvents() {
+
+
+ function Event() {
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
-    let data = [];
-    try {
+    const [dataEvents, setDataEvents]= useState([])
+  
+  
+    useEffect(() => {
+      getDataEventse();
+    }, []);
+  
+    const getDataEventse = async () => {
+      try {
         const docRef = doc(db, "events", id);
         const querySnapshot = await getDoc(docRef);
-
+  
         // if (querySnapshot.exists()) {
         //   console.log("Document data:", querySnapshot.data());
         // } else {
         //   // docSnap.data() will be undefined in this case
         //   console.log("No such document!");
         // }
-
+        let data = [];
+  
         // doc.data() is never undefined for query doc snapshots
-
+  
         data.push(querySnapshot.data());
-        setImg(data(0).img)
-        setDate(data[0].date);
-        setTitleIng(data[0].titleEnglish);
-        setTitleChi(data[0].titleChinese);
-        setData(data[0].content);
-        setDurationFrom(data[0].durationFrom);
-        setDurationTo(data[0].durationTo);
-    } catch (error) {
-        console.log(error);
-    }
-    return data;
-};
+  
+        setDataEvents(data)
+      } catch (error) {
+        alert(error);
+      }
+    };
 
-async function Event() {
-    const dataEvent = await getDataEvents();
+    
     return (
         <>
             <NavbarWithCTAButton />
@@ -63,16 +67,20 @@ async function Event() {
                 />
                 <div className='bg-white'>
                     <div className="relative p-5 mt-20 md:mt-10">
-                        <div className='w-full'>
+                        {
+                            dataEvents.map((data,i)=>{
+                                return(
+                                    <>
+                                    <div className='w-full'>
                             <div className='flex md:flex-row flex-col'>
                                 <p>Posted at: </p>
-                                <p>{dataEvent[0].date}</p>
+                                <p>{data.date}</p>
                             </div>
-                            <h1 className='text-4xl text-center p-5 font-semibold'>{dataEvent[0].titleEnglish}</h1>
+                            <h1 className='text-4xl text-center p-5 font-semibold'>{data.titleEnglish}</h1>
                             <div className='bg-blue-500 h-[200px] md:h-[500px] relative'>
                                 <div
                                     className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-fill"
-                                    style={{ backgroundImage: `url(${dataEvent[0].img})` }}
+                                    style={{ backgroundImage: `url(${data.img})` }}
                                 >
                                     {/* <Image
                                     src={'/assets/images/article.png'}
@@ -82,8 +90,8 @@ async function Event() {
                                 /> */}
                                 </div>
                             </div>
-                            <h3 className='my-3'>Duration: {dataEvent[0].durationFrom} - {dataEvent[0].durationTo}</h3>
-                            {dataEvent[0].content.map((data, i) => {
+                            <h3 className='my-3'>Duration: {data.durationFrom} - {data.durationTo}</h3>
+                            {data.content.map((data, i) => {
                                 return (
                                     <>
 
@@ -100,11 +108,16 @@ async function Event() {
                                 )
                             })}
                         </div>
+                                    </>
+                                )
+                            })
+                        }
+                        
                     </div>
 
                 </div>
             </div>
-            <CustomFooter />
+            {/* <CustomFooter /> */}
         </>
     )
 }

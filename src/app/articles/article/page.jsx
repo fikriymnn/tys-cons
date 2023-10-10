@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useState,useEffect } from "react";
 import SolidBackground from "@/components/BreadcrumbArticle";
 import CustomFooter from "@/components/CustomFooter";
 import BreadcrumbArticle from "@/components/BreadcrumbArticle";
@@ -10,31 +10,35 @@ import {
   getDoc,
   doc,
 } from "firebase/firestore";
-import { db, storage } from "../../../../firebase/page";
+import { db,  } from "../../../../firebase/page";
 import parse from 'html-react-parser';
 
-async function getDataArticles() {
+
+ function Article() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  let data = [];
-  try {
-    const docRef = doc(db, "articles", id);
-    const querySnapshot = await getDoc(docRef);
+  const [dataArticle, setDataArticle]= useState([]);
+  useEffect(() => {
+    getDataArticles();
+  }, []);
 
+  const getDataArticles = async () => {
+    try {
+      const docRef = doc(db, "articles", id);
+      const querySnapshot = await getDoc(docRef);
 
+     
+      let data = [];
 
-    data.push(querySnapshot.data());
+      
 
-    setTitleIng(data[0].titleEnglish);
-    setTitleChi(data[0].titleChinese);
-    setData(data[0].content);
-  } catch (error) {
-    console.log(error);
-  }
-  return data;
-};
-async function Article() {
-  const dataArticle = await getDataArticles();
+      data.push(querySnapshot.data());
+
+      setDataArticle(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <>
       <NavbarWithCTAButton />
@@ -42,15 +46,19 @@ async function Article() {
         <BreadcrumbArticle className="ps-0" />
         <div className="bg-white">
           <div className="relative p-5">
-            <div className="w-full h-1000px">
-              <h3>{dataArticle[0].date}</h3>
+            {
+              dataArticle.map((data,i)=>{
+                return (
+                  <>
+                  <div className="w-full h-1000px">
+              <h3>{data.date}</h3>
               <h1 className="text-4xl text-center p-5 font-semibold">
-                {dataArticle[0].titleEnglish}
+                {data.titleEnglish}
               </h1>
               <div className="bg-blue-500 h-[500px] relative">
                 <div
                   className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
-                  style={{ backgroundImage: `url(${dataArticle[0].img})` }}
+                  style={{ backgroundImage: `url(${data.img})` }}
                 >
                   {/* <Image
                                     src={'/assets/images/article.png'}
@@ -79,10 +87,16 @@ async function Article() {
                 )
               })}
             </div>
+                  
+                  </>
+                )
+              })
+            }
+            
           </div>
         </div>
       </div>
-      <CustomFooter />
+      {/* <CustomFooter /> */}
     </>
   );
 }

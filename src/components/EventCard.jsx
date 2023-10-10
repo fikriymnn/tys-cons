@@ -1,7 +1,8 @@
 import React from 'react'
 
-function EventCard({ id, img, title, date }) {
+function EventCard({ id, img, title, date,key }) {
     return (
+        <div key={key}>
         <a href={`/events/event?id=${id}`}>
             <div className='bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1'>
                 <div className='h-28 md:h-36'>
@@ -14,6 +15,7 @@ function EventCard({ id, img, title, date }) {
 
             </div>
         </a>
+        </div>
     )
 }
 
