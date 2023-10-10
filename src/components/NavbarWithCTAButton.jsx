@@ -12,8 +12,10 @@ export default function NavbarWithCTAButton({ height }) {
   const [navbar, SetNavbar] = useState(false);
   const ChangeBG = () => {
     if (window.scrollY <= height) {
+      localStorage.setItem("bhs", "ing");
       SetNavbar(true);
     } else {
+      localStorage.setItem("bhs", "chi");
       SetNavbar(false);
     }
   };
@@ -95,6 +97,7 @@ export default function NavbarWithCTAButton({ height }) {
               EN
             </p>
           </div>
+
           <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
             <Image src={"/assets/images/China.png"} width={40} height={10} />
             <p
@@ -107,6 +110,7 @@ export default function NavbarWithCTAButton({ height }) {
               语言
             </p>
           </div>
+
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse className=" md:order-1 z-40  ">
@@ -122,7 +126,7 @@ export default function NavbarWithCTAButton({ height }) {
             </Navbar.Link>
           </div>
           <div className=" my-auto">
-            <Navbar.Link href="/about">
+            <Navbar.Link href="/about" className="navbar-link">
               <span
                 className={
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "

@@ -17,11 +17,15 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-
+import DropdownDef1 from "@/components/dropdownDef";
+import DropdownDef2 from "@/components/dropdownDef2";
+import { Dropdown } from "flowbite-react";
 function EditService() {
   const [isAlert, setIsAlert] = useState(false);
   const openAlert = () => {
@@ -225,6 +229,119 @@ function EditService() {
     deleteVal.splice(i, 1);
     setDataOption(deleteVal);
   };
+
+  let Drop;
+
+  if (service == "Basic Establishment Services") {
+    Drop = (
+      <>
+        <div className="flex items-start justify-start">
+          <div className="grid grid-cols-1">
+            <button onClick={() => setSubService("Company Registration")}>
+              <div className="p-2">Company Registration</div>
+            </button>
+            <button onClick={() => setSubService("Visa Registration")}>
+              <div className="p-2">Visa Registration</div>
+            </button>
+            <button onClick={() => setSubService("Trademark")}>
+              <div className="p-2">Trademark</div>
+            </button>
+            <button onClick={() => setSubService("Office Administration")}>
+              <div className="p-2">Office Administration</div>
+            </button>
+            <button
+              onClick={() => setSubService("Construction Certifications")}
+            >
+              <div className="p-2">Construction Certifications</div>
+            </button>
+            <button onClick={() => setSubService("Factory Licenses")}>
+              <div className="p-2">Factory Licenses</div>
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  } else if (service == "Product Certifications") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("BPOM Food and Drug")}>
+            <div className="p-2">BPOM Food and Drug</div>
+          </button>
+          <button onClick={() => setSubService("ISO Management System")}>
+            <div className="p-2">ISO Management System</div>
+          </button>
+          <button onClick={() => setSubService("SNI National Standard")}>
+            <div className="p-2">SNI National Standard</div>
+          </button>
+          <button onClick={() => setSubService("Medical and Hygiene")}>
+            <div className="p-2">Medical and Hygiene</div>
+          </button>
+          <button onClick={() => setSubService("POSTEL Telecommunication")}>
+            <div className="p-2">POSTEL Telecommunication</div>
+          </button>
+          <button onClick={() => setSubService("Alcohol and Cigarette")}>
+            <div className="p-2">Alcohol and Cigarette</div>
+          </button>
+          <button onClick={() => setSubService("Other Certification")}>
+            <div className="p-2">Other Certification</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Finance Accounting Tax") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Finance Services")}>
+            <div className="p-2">Finance Services</div>
+          </button>
+          <button onClick={() => setSubService("Accounting Services")}>
+            <div className="p-2">Accounting Services</div>
+          </button>
+          <button onClick={() => setSubService("Tax Services")}>
+            <div className="p-2">Tax Services</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Talent Recruitment HR") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Translator Assistant")}>
+            <div className="p-2">Translator Assistant</div>
+          </button>
+          <button onClick={() => setSubService("Finance Accounting Tax")}>
+            <div className="p-2">Finance Accounting Tax</div>
+          </button>
+          <button onClick={() => setSubService("Marketing Sales")}>
+            <div className="p-2">Marketing Sales</div>
+          </button>
+          <button onClick={() => setSubService("Management Candidate")}>
+            <div className="p-2">Management Candidate</div>
+          </button>
+          <button onClick={() => setSubService("HR Management Service")}>
+            <div className="p-2">HR Management Service</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  } else if (service == "Legal Services") {
+    Drop = (
+      <div className="flex items-start justify-start">
+        <div className="grid grid-cols-1">
+          <button onClick={() => setSubService("Legal Administration")}>
+            <div className="p-2">Legal Administration</div>
+          </button>
+        </div>
+      </div>
+    );
+    // button = <LoginButton onClick={this.handleLoginClick} />;
+  }
   return (
     <>
       {isAlert && (
@@ -250,7 +367,7 @@ function EditService() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -268,7 +385,7 @@ function EditService() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className=" ">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -329,6 +446,9 @@ function EditService() {
             return (
               <>
                 <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>English :</p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <input
                       type="text"
@@ -342,6 +462,9 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>Input Price :</p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <input
                       type="text"
@@ -352,19 +475,27 @@ function EditService() {
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
+                    {dataOption.length !== 1 && (
+                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                        <button onClick={(e) => handleDeleteOption(i)}>
+                          Delete option
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {dataOption.length !== 1 && (
-                  <button onClick={(e) => handleDeleteOption(i)}>
-                    Delete option
-                  </button>
-                )}
               </>
             );
           })}
-          <button onClick={handleClickOption}>Add More</button>
-          <p>{JSON.stringify(dataOption)}</p>
+
+          {/* <p>{JSON.stringify(dataOption)}</p> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClickOption} className="font-light">
+                Add Option
+              </button>
+            </div>
+          </div>
 
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 "></div>
@@ -375,25 +506,62 @@ function EditService() {
               <p>Service</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <input
-                type="text"
-                value={service ?? ""}
-                onChange={(e) => setService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-              <input
-                type="text"
-                value={subService ?? ""}
-                onChange={(e) => setSubService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
+              <Dropdown
+                className="bg-white"
+                label={service == "" ? "Categories" : service}
+              >
+                <div className="grid grid-cols-1 ">
+                  <button
+                    onClick={() => {
+                      setService("Basic Establishment Services");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Basic Establishment Services</div>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setService("Product Certifications");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Product Certifications</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Finance Accounting Tax");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2"> Finance Accounting Tax</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Talent Recruitment HR");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2"> Talent Recruitment HR</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setService("Legal Services");
+                      setSubService("");
+                    }}
+                  >
+                    <div className="p-2">Legal Services</div>
+                  </button>
+                </div>
+              </Dropdown>
+              <Dropdown
+                label={subService == "" ? "Sub Categories" : subService}
+              >
+                {Drop}
+              </Dropdown>
             </div>
           </div>
-          <div className=" flex py-1 px-20 ">
+          <div className=" flex py-1 ps-40 pt-32">
             <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
               <p>Content</p>
             </div>
@@ -419,7 +587,7 @@ function EditService() {
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
-                      rows="5"
+                      rows="1"
                       placeholder={`Input Topic English For Description ${
                         i + 1
                       }`}
@@ -438,7 +606,7 @@ function EditService() {
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
-                      rows="5"
+                      rows="1"
                       placeholder={`Input Topic Mandarin For Description ${
                         i + 1
                       }`}
@@ -453,42 +621,77 @@ function EditService() {
                     <p>Description :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentIng}
+                      // onChange={(e) => handleChange(e, i)}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentIng" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentIng"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px]  "
+                    />
+                    {/* <textarea
                       name="contentIng"
                       value={val.contentIng}
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description English For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
-                    ></textarea>
+                    ></textarea> */}
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5"></div>
                   <div className=" w-10/12 p-3">
-                    <textarea
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentChi}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentChi" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px] my-10 "
+                    />
+                    {/* <textarea
                       name="contentChi"
                       value={val.contentChi}
                       onChange={(e) => handleChange(e, i)}
                       id=""
                       cols="20"
                       rows="5"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
-                    ></textarea>
+                    ></textarea> */}
                   </div>
                 </div>
-                <div className=" w-10/12 p-3">
+                <div className=" w-10/12 p-3   ps-72">
                   <input
                     type="file"
                     name="img"
@@ -496,17 +699,28 @@ function EditService() {
                       handleUpload2(event.target.files[0], event, i)
                     }
                   />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
                 </div>
-                {data.length !== 1 && (
+                {/* {data.length !== 1 && (
                   <button onClick={(e) => handleDelete(i)}>
                     Delete option
-                  </button>
-                )}
+                  </button> */}
               </>
             );
           })}
-          <p>{JSON.stringify(data)}</p>
-          <button onClick={handleClick}>Add More</button>
+          {/* <p>{JSON.stringify(data)}</p>
+          <button onClick={handleClick}>Add More</button> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
+            </div>
+          </div>
 
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">

@@ -121,7 +121,7 @@ function EditInstagram() {
         <div className="max-h-[500px] overflow-y-auto">
           <div className=" flex p-5 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>Link Instagram :</p>
+              <p>Username Instagram :</p>
             </div>
             <div className=" w-10/12 p-3">
               <textarea
@@ -130,8 +130,8 @@ function EditInstagram() {
                 name=""
                 id=""
                 cols="20"
-                rows="5"
-                placeholder="Enter New Text"
+                rows="1"
+                placeholder="Enter Instagram Username"
                 color=" bg-transparent"
                 className=" w-full resize-none rounded-lg border-slate-300 "
                 maxLength={1000}

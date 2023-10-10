@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
+import { Dropdown } from "flowbite-react";
 import { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   collection,
   addDoc,
@@ -19,6 +22,8 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
+import DropdownDef1 from "@/components/dropdownDef";
+import DropdownDef2 from "@/components/dropdownDef2";
 
 function CreatePolicies() {
   const [isAlert, setIsAlert] = useState(false);
@@ -101,6 +106,23 @@ function CreatePolicies() {
 
     alert("success");
   };
+  const handleClick = () => {
+    setData([
+      ...data,
+      { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+    ]);
+  };
+  const handleChange = (e, i) => {
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+    onchangeVal[i][name] = value;
+    setData(onchangeVal);
+  };
+  const handleDelete = (i) => {
+    const deleteVal = [...data];
+    deleteVal.splice(i, 1);
+    setData(deleteVal);
+  };
 
   return (
     <>
@@ -127,7 +149,7 @@ function CreatePolicies() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -145,7 +167,7 @@ function CreatePolicies() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -201,13 +223,51 @@ function CreatePolicies() {
               <p>Category</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <input
+              <Dropdown
+                className="bg-white"
+                label={category == "" ? "Categories" : category}
+              >
+                <div className="grid grid-cols-1 ">
+                  <button
+                    onClick={() => {
+                      setCategory("Foreign Company Registration");
+                    }}
+                  >
+                    <div className="p-2">Foreign Company Registration</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Tax Regulation");
+                    }}
+                  >
+                    <div className="p-2">Tax Regulation</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Labor Policy");
+                    }}
+                  >
+                    <div className="p-2">Labor Policy</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Import Export Procedures & Policies");
+                    }}
+                  >
+                    <div className="p-2">
+                      Import Export Procedures & Policies
+                    </div>
+                  </button>
+                </div>
+              </Dropdown>
+
+              {/* <input
                 onChange={(e) => setCategory(e.target.value)}
                 type="text"
                 placeholder="This will be a Dropdown"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
-              />
+              /> */}
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -233,38 +293,32 @@ function CreatePolicies() {
           </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+              <p>Description :</p>
             </div>
             <div className=" w-10/12 p-3">
-              <textarea
-                onChange={(e) => setContentIng(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentIng}
+                onChange={(e) => setContentIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description`}
+                maxLength={2000}
+                className="h-[200px] "
+              />
             </div>
           </div>
           <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
+            <div className=" w-2/12 text-end p-3 py-5"></div>
             <div className=" w-10/12 p-3">
-              <textarea
-                onChange={(e) => setContentChi(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentChi}
+                onChange={(e) => setContentChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description`}
+                maxLength={2000}
+                className="h-[200px] my-10 "
+              />
             </div>
           </div>
 

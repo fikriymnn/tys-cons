@@ -1,6 +1,27 @@
 "use client";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  deleteDoc,
+  getDoc,
+  updateDoc,
+  doc,
+  Firestore,
+} from "firebase/firestore";
+import { Dropdown } from "flowbite-react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 function EditPolicies() {
   const [isAlert, setIsAlert] = useState(false);
@@ -52,8 +73,8 @@ function EditPolicies() {
       setTitleChi(data[0].titleChinese);
       setCategory(data[0].category);
       setSubCategory(data[0].subCategory);
-      setContentIng(date[0].contentEnglish);
-      setContentChi(date[0].contentChinese);
+      setContentIng(data[0].contentEnglish);
+      setContentChi(data[0].contentChinese);
     } catch (error) {
       alert(error);
     }
@@ -99,7 +120,7 @@ function EditPolicies() {
 
   const addData = async (e) => {
     e.preventDefault();
-    const todoRef = doc(db, "events", id);
+    const todoRef = doc(db, "policies", id);
 
     if (file == "") {
       await updateDoc(todoRef, {
@@ -107,8 +128,9 @@ function EditPolicies() {
         titleChinese: titleChi,
         category: category,
         subCategory: subCategory,
+
+        contentEnglish: contentIng,
         contentChinese: contentChi,
-        contentIng: contentIng,
       });
     } else {
       await updateDoc(todoRef, {
@@ -116,10 +138,11 @@ function EditPolicies() {
         titleChinese: titleChi,
         category: category,
         subCategory: subCategory,
-        contentChinese: contentChi,
-        contentIng: contentIng,
 
         img: downloadURL,
+
+        contentEnglish: contentIng,
+        contentChinese: contentChi,
       });
     }
 
@@ -150,7 +173,7 @@ function EditPolicies() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -168,7 +191,7 @@ function EditPolicies() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -226,14 +249,52 @@ function EditPolicies() {
               <p>Category</p>
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
-              <input
+              <Dropdown
+                className="bg-white"
+                label={category == "" ? "Categories" : category}
+              >
+                <div className="grid grid-cols-1 ">
+                  <button
+                    onClick={() => {
+                      setCategory("Foreign Company Registration");
+                    }}
+                  >
+                    <div className="p-2">Foreign Company Registration</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Tax Regulation");
+                    }}
+                  >
+                    <div className="p-2">Tax Regulation</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Labor Policy");
+                    }}
+                  >
+                    <div className="p-2">Labor Policy</div>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCategory("Import Export Procedures & Policies");
+                    }}
+                  >
+                    <div className="p-2">
+                      Import Export Procedures & Policies
+                    </div>
+                  </button>
+                </div>
+              </Dropdown>
+
+              {/* <input
                 value={category ?? ""}
                 onChange={(e) => setCategory(e.target.value)}
                 type="text"
                 placeholder="This will be a Dropdown"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
-              />
+              /> */}
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -306,7 +367,7 @@ function EditPolicies() {
                   onClick={(e) => addData(e)}
                   className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
                 >
-                  Create New Policies and Regulations
+                  Edit Policies and Regulations
                 </button>
               )}
             </div>

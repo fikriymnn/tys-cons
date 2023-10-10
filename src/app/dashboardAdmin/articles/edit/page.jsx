@@ -11,6 +11,8 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   getStorage,
   ref,
@@ -21,6 +23,7 @@ import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import MyEditor from "@/components/admin/quilltext";
 
 function EditArticle() {
   const [isAlert, setIsAlert] = useState(false);
@@ -31,7 +34,6 @@ function EditArticle() {
     setIsAlert(false);
   };
   const searchParams = useSearchParams();
-  const [dataArticles, setDataArticles] = useState("");
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
@@ -221,7 +223,7 @@ function EditArticle() {
         </div>
       )}
 
-      <div className="w-full min-h-screen fixed z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -239,7 +241,7 @@ function EditArticle() {
           </div>
         </div>
 
-        <div className="max-h-[500px] overflow-y-auto">
+        <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
               <p>Image</p>
@@ -351,18 +353,24 @@ function EditArticle() {
                     <p>English :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
-                      name="contentIng"
+                    <ReactQuill
+                      theme="snow"
                       value={val.contentIng}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder="Enter New Text"
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentIng" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentIng"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
+                    />
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
@@ -370,21 +378,27 @@ function EditArticle() {
                     <p>Chinese :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <textarea
-                      name="contentChi"
+                    <ReactQuill
+                      theme="snow"
                       value={val.contentChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder="Enter New Text"
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentChi" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
+                    />
                   </div>
                 </div>
-                <div className=" w-10/12 p-3">
+                <div className=" w-10/12 p-3 ps-72">
                   <input
                     type="file"
                     name="img"
@@ -392,17 +406,24 @@ function EditArticle() {
                       handleUpload2(event.target.files[0], event, i)
                     }
                   />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
                 </div>
-                {data.length !== 1 && (
-                  <button onClick={(e) => handleDelete(i)}>
-                    Delete option
-                  </button>
-                )}
               </>
             );
           })}
 
-          <button onClick={handleClick}>Add More</button>
+          {/* <button onClick={handleClick}>Add More</button> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
+            </div>
+          </div>
 
           <div className="mx-20">
             <div className=" flex items-end justify-end mx-3">

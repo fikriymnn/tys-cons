@@ -1,19 +1,40 @@
 'use client';
 import React from 'react'
 import CompanyRegistrationPage from '@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CustomFooter from '@/components/CustomFooter';
 
 import LegalAdministration from '../../../components/ServicesSub/LegalServices/LegalAdministration';
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
+import { data } from 'autoprefixer';
 
 function ProductCertifications() {
-    const components = [
-        <CompanyRegistrationPage />,
-
-
-    ]
+    const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
     const [comp, setComp] = useState(0);
+
+    useEffect(() => {
+        getDataLegalAdministration();
+    })
+    const getDataLegalAdministration = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Legal Services"),
+                where("subService", "==", "Legal Administration")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataLegalAdministration(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <>
             <NavbarWithCTAButton />
@@ -34,8 +55,29 @@ function ProductCertifications() {
                         comp == 0 ? <>
 
                             <div className='grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5'>
-                                <LegalAdministration />
+                                {dataLegalAdministration.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
 
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    )
+                                })}
 
 
                             </div>

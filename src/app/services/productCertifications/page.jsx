@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import CompanyRegistrationPage from '@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tabs } from 'flowbite-react';
 
 import BPOMFoodDrug from '../../../components/ServicesSub/ProductCertificationsServices/BPOMFoodDrug';
@@ -15,12 +15,165 @@ import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 import CustomFooter from '@/components/CustomFooter';
 
 function ProductCertifications() {
-    const components = [
-        <CompanyRegistrationPage />,
-
-
-    ]
     const [comp, setComp] = useState(0);
+    const [dataProductBPOM, setDataProductBPOM] = useState([]);
+    const [dataProductISO, setDataProductISO] = useState([]);
+    const [dataProductSNI, setDataProductSNI] = useState([]);
+    const [dataProductMedical, setDataProductMedical] = useState([]);
+    const [dataProductPostel, setDataProductPostel] = useState([]);
+    const [dataProductAlcohol, setDataProductAlcohol] = useState([]);
+    const [dataProductOther, setDataProductOther] = useState([]);
+
+    useEffect(() => {
+        getDataProductBPOM();
+        getDataProductISO();
+        getDataProductSNI();
+        getDataProductMedical();
+        getDataProductPostel();
+        getDataProductAlcohol();
+        getDataProductOther();
+
+    }, []);
+    const getDataProductBPOM = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "BPOM Food and Drug")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductISO = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "ISO Management System")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductSNI = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "SNI National Standard")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductMedical = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "Medical and Hygiene  ")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductPostel = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "POSTEL Telecommunication")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductAlcohol = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "Alcohol and Cigarette")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getDataProductOther = async () => {
+        try {
+            const q = query(
+                collection(db, "service"),
+                where("service", "==", "Product Sertifications"),
+                where("subService", "==", "Other Certification")
+            );
+
+            const querySnapshot = await getDocs(q);
+            let data = [];
+            querySnapshot.forEach((doc) => {
+
+                // console.log(doc.id, " => ", doc.data());
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            setDataProduct(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <>
             <NavbarWithCTAButton />
@@ -45,7 +198,29 @@ function ProductCertifications() {
                         comp == 0 ? <>
 
                             <div className='grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5'>
-                                <BPOMFoodDrug />
+                                {dataProductBPOM.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
 
@@ -53,7 +228,29 @@ function ProductCertifications() {
                         </> : comp == 1 ? <>
 
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                <ISOManagementSystem />
+                                {dataProductISO.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
 
@@ -61,7 +258,29 @@ function ProductCertifications() {
                         </> : comp == 2 ? <>
 
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                <SNINationalStandard />
+                                {dataProductSNI.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
 
@@ -69,14 +288,58 @@ function ProductCertifications() {
                         </> : comp == 3 ? <>
 
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                <MedicalAndHygiene />
+                                {dataProductMedical.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
                             </div>
                         </> : comp == 4 ? <>
 
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                <POSTELTelecommunication />
+                                {dataProductPostel.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
 
@@ -84,7 +347,29 @@ function ProductCertifications() {
                         </> : comp == 5 ? <>
 
                             <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                <AlcoholAndCigarette />
+                                {dataProductAlcohol.map((data, i) => {
+                                    return (
+                                        <>
+                                            <div key={i}>
+                                                <a href={`/services/detail?id=${data.id}`}>
+                                                    <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                        <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                        </div>
+                                                        <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                            <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                {data.titleEnglish}
+                                                            </h1>
+                                                            <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                {data.price[0].price}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })}
 
 
 
@@ -93,7 +378,29 @@ function ProductCertifications() {
                             <>
 
                                 <div className='grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5'>
-                                    <OtherCer />
+                                    {dataProductOther.map((data, i) => {
+                                        return (
+                                            <>
+                                                <div key={i}>
+                                                    <a href={`/services/detail?id=${data.id}`}>
+                                                        <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                                            <div className=" bg-blue-700 h-48 bg-cover bg-center" style={{ backgroundImage: `url(${data.img})` }} >
+
+                                                            </div>
+                                                            <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                                                <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                                                    {data.titleEnglish}
+                                                                </h1>
+                                                                <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                                                    {data.price[0].price}
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </>
+                                        );
+                                    })}
 
 
 
