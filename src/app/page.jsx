@@ -358,6 +358,7 @@ const Home = async () => {
                   price={data.price[0].price + "元"}
                   text1={"Package Includes:"}
                   text2={data.services}
+                  id={data.id}
                   text3={"Daily Prices Change Notifications"}
                   text4={"Marketplace Price Tracking"}
                   text5={"Stock Availability Monitoring"}

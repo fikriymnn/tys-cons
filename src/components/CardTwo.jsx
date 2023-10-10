@@ -16,46 +16,44 @@ import {
 } from "firebase/firestore";
 
 import { db } from ".././../firebase/page";
+import Link from "next/link";
 
-function CardTwo({ title, price, text1, text2, text3, text4, text5, text6 }) {
+function CardTwo({
+  title,
+  price,
+  text1,
+  id,
+  text2,
+  text3,
+  text4,
+  text5,
+  text6,
+}) {
   const [dataService, setDataService] = useState([]);
-  // const id = { text2 };
+  const idd = text2;
 
   // useEffect(() => {
   //   getDataService();
   // }, []);
 
   // const getDataService = async () => {
+  //   let data = [];
   //   try {
-  //     let data = [];
   //     for (let i = 0; i < id.length; i++) {
   //       const docRef = doc(db, "service", id[i].id);
   //       const querySnapshot = await getDoc(docRef);
 
-  //       // if (querySnapshot.exists()) {
-  //       //   console.log("Document data:", querySnapshot.data());
-  //       // } else {
-  //       //   // docSnap.data() will be undefined in this case
-  //       //   console.log("No such document!");
-  //       // }
-
-  //       // doc.data() is never undefined for query doc snapshots
-
   //       data.push(querySnapshot.data());
+  //       console.log(data);
   //     }
-
   //     setDataService(data);
-  //     console.log(dataService);
   //   } catch (error) {
   //     alert(error);
   //   }
   // };
   return (
     <Card>
-      <h5
-        onClick={() => console.log(id)}
-        className="mb-4 text-lg text-black font-medium text-center"
-      >
+      <h5 className="mb-4 text-lg text-black font-medium text-center">
         {title}
       </h5>
       <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -97,7 +95,7 @@ function CardTwo({ title, price, text1, text2, text3, text4, text5, text6 }) {
       </ol>
       <a
         className=' className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900'
-        href="/packages/details"
+        href={`/packages/details?id=${id}`}
       >
         <p>DETAILS</p>
       </a>

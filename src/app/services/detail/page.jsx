@@ -31,6 +31,8 @@ function DetailServices() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataService, setDataService] = useState([]);
+  const [firsIndex, setFirsIndex] = useState([]);
+  const [lastIndex, setLastIndex] = useState([]);
 
   const [Index, setIndex] = useState();
 
@@ -48,8 +50,9 @@ function DetailServices() {
       data.push(querySnapshot.data());
 
       setDataService(data);
-
-      console.log(data);
+      setFirsIndex(data[0].price[0].price);
+      const le = data[0].price;
+      setLastIndex(le[le.length - 1].price);
     } catch (error) {
       alert(error);
     }
@@ -63,7 +66,8 @@ function DetailServices() {
           <>
             <div key={i} className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
               <div className="flex pb-5 gap-1">
-                <p>Services </p> <p>&gt;</p>
+                <p onClick={() => console.log(lastIndex)}>Services </p>{" "}
+                <p>&gt;</p>
                 <p className="text-blue-600">{data.titleEnglish}</p>
               </div>
               <div className="bg-white">
@@ -89,7 +93,7 @@ function DetailServices() {
                       <div className="flex pb-4">
                         <p className="text-blue-600 text-xl">
                           {Index == null
-                            ? "Coming Soon"
+                            ? `${firsIndex} - ${lastIndex}`
                             : data.price[Index].price}{" "}
                         </p>
                         <p className="">元</p>

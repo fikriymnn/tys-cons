@@ -30,7 +30,7 @@ function MultipleCarousel() {
       className="mb-10 pb-24 md:w-full"
       responsive={responsive}
       autoPlay={true}
-      infinite="true"
+      infinite={"true"}
       showDots={true}
     >
       <div className="text-white">
