@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import SolidBackground from "@/components/BreadcrumbArticle";
 import CustomFooter from "@/components/CustomFooter";
 import BreadcrumbArticle from "@/components/BreadcrumbArticle";
