@@ -4,43 +4,6 @@ import CompanyRegistrationCard from '../../CompanyRegistrationCard'
 function CompanyRegistrationPage({ title, img, price, id, key }) {
 
 
-    const Card1 = (
-
-        <CompanyRegistrationCard src={img}
-            title={title}
-            price={
-                price
-            } />
-    );
-    const Card2 = (
-
-        <CompanyRegistrationCard src={"/foto.jpg"}
-            title={"dakjnlk Basic Regulation"}
-            price={
-                "2000-2000"
-            } />
-    );
-    const Card3 = (
-
-        <CompanyRegistrationCard src={"/foto.jpg"}
-            title={"Company Registration Basic Regulation Company Registration Basic RegulationCompany Registration Basic RegulationCompany Registration Basic Regulation"}
-            price={
-                "2000-2000"
-            } />
-    );
-    const Card4 = (
-
-        <CompanyRegistrationCard src={"/foto.jpg"}
-            title={"Company Registration Basic Regulation"}
-            price={
-                "2000-2000"
-            } />
-
-    );
-
-    const CompanyReg = [
-        Card1, Card2, Card3, Card4
-    ]
     return (
         <>
             <a key={key} href="/services/detail">
