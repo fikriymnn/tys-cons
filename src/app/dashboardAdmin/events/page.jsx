@@ -115,6 +115,12 @@ function EventsAdmin() {
                                     {parse(data.content[0].contentIng)}
 
                                     <p>{data.content[0].contentChi}</p>
+                                    <p className="line-clamp-2">
+                                      {parse(data.content[0].contentIng)}
+                                    </p>
+                                    <p className="line-clamp-2">
+                                      {parse(data.content[0].contentChi)}
+                                    </p>
                                   </div>
                                 </div>
                                 <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
