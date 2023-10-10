@@ -47,10 +47,12 @@ function ServicesAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation services="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
-            <p className="pt-5 text-center font-bold text-3xl text-white">Services</p>
+            <p className="pt-5 text-center font-bold text-3xl text-white">
+              Services
+            </p>
             <div className="p-5">
               <div className="flex py-5">
                 <a
@@ -137,7 +139,9 @@ function ServicesAdmin() {
                                 onClick={async (e) => {
                                   try {
                                     // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                    await deleteDoc(doc(db, "service", data.id));
+                                    await deleteDoc(
+                                      doc(db, "service", data.id)
+                                    );
                                     alert("delete success");
                                     location.reload();
                                     console.log("Deleted successfully");

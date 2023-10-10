@@ -11,8 +11,8 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   getStorage,
   ref,
@@ -23,6 +23,7 @@ import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import MyEditor from "@/components/admin/quilltext";
 
 function EditArticle() {
   const [isAlert, setIsAlert] = useState(false);
@@ -352,7 +353,9 @@ function EditArticle() {
                     <p>English :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentIng}
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentIng}
                       onChange={(e) =>
                         handleChange(
                           {
@@ -361,9 +364,13 @@ function EditArticle() {
                           i
                         )
                       }
-                      name="contentIng" placeholder={`Input Description English For Description ${i + 1
-                        }`} maxLength={2000} className="h-[200px] " />
-
+                      name="contentIng"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
+                    />
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
@@ -371,7 +378,9 @@ function EditArticle() {
                     <p>Chinese :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentChi}
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentChi}
                       onChange={(e) =>
                         handleChange(
                           {
@@ -380,9 +389,13 @@ function EditArticle() {
                           i
                         )
                       }
-                      name="contentChi" placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`} maxLength={2000} className="h-[200px] my-10 " />
-
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
+                    />
                   </div>
                 </div>
                 <div className=" w-10/12 p-3 ps-72">

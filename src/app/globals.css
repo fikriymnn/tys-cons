@@ -33,3 +33,19 @@
 .currentColor {
   fill: currentColor;
 }
+.content ul {
+  list-style-type: disc;
+  list-style: disc;
+  margin-left: 30px;
+  /* Add any other necessary styles here */
+}
+.content ol {
+  list-style-type: decimal;
+  list-style: decimal;
+  margin-left: 20px;
+}
+
+ul, ol {
+  list-style: none ;
+  margin-left: 0;
+}

@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
+
 import { useState, useEffect } from "react";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 import Navigation from "@/components/admin/navigation";
 import {
   collection,
@@ -48,7 +49,7 @@ function ArticlesAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation articles="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">
@@ -94,7 +95,7 @@ function ArticlesAdmin() {
                     dataArticles.map((data, i) => {
                       return (
                         <>
-                          <div className="flex bg-slate-300 rounded-md mb-3">
+                          <div className="flex bg-slate-300 rounded-md">
                             <div className="p-2 h-full w-[50px] flex justify-start items-center ">
                               <p>{i + 1}</p>
                             </div>
@@ -109,9 +110,11 @@ function ArticlesAdmin() {
                                 </div>
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col">
-                                  <p className="line-clamp-2">{parse(data.content[0].contentIng)}</p>
-                                  <p className="line-clamp-2">{parse(data.content[0].contentChi)}</p>
+                                <div className="flex flex-col content">
+
+                                  <div className="line-clamp-2">{parse(data.content[0].contentIng)}</div>
+                                  <div className="line-clamp-2">{parse(data.content[0].contentChi)}</div>
+
                                 </div>
                               </div>
                               <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">

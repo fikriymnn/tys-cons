@@ -241,6 +241,7 @@ export default function Policies() {
 
         </div>
       </div>
+      <CustomFooter />
     </>
   );
 }

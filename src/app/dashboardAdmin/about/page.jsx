@@ -274,7 +274,7 @@ function AboutAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation about="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">
@@ -469,7 +469,12 @@ function AboutAdmin() {
                         dataAboutIg.map((data, i) => {
                           return (
                             <>
-                              <a className="hover:text-blue-600" href={`https://www.instagram.com/${data.link}`}>https://www.instagram.com/{data.link}</a>
+                              <a
+                                className="hover:text-blue-600"
+                                href={`https://www.instagram.com/${data.link}`}
+                              >
+                                https://www.instagram.com/{data.link}
+                              </a>
                             </>
                           );
                         })}
@@ -500,7 +505,12 @@ function AboutAdmin() {
                         dataAboutFacebook.map((data, i) => {
                           return (
                             <>
-                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
+                              <a
+                                className="hover:text-blue-600"
+                                href={`${data.link}`}
+                              >
+                                {data.link}
+                              </a>
                             </>
                           );
                         })}
@@ -531,7 +541,12 @@ function AboutAdmin() {
                         dataAboutWechat.map((data, i) => {
                           return (
                             <>
-                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
+                              <a
+                                className="hover:text-blue-600"
+                                href={`${data.link}`}
+                              >
+                                {data.link}
+                              </a>
                             </>
                           );
                         })}
@@ -562,7 +577,12 @@ function AboutAdmin() {
                         dataAboutLinkedin.map((data, i) => {
                           return (
                             <>
-                              <a className="hover:text-blue-600" href={`${data.link}`}>{data.link}</a>
+                              <a
+                                className="hover:text-blue-600"
+                                href={`${data.link}`}
+                              >
+                                {data.link}
+                              </a>
                             </>
                           );
                         })}

@@ -47,7 +47,7 @@ function ClientAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation clients="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">
@@ -60,7 +60,11 @@ function ClientAdmin() {
                   return (
                     <>
                       <div key={i} className="border-2 p-2">
-                        <img src={data.img} alt="" />
+                        <div className="h-32 bg-contain bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url(${data.img})` }}>
+
+
+                        </div>
                         <div className=" flex gap-2 w-24 pt-2">
                           <a
                             href={`/dashboardAdmin/clients/edit?id=${data.id}`}
