@@ -7,7 +7,7 @@ function EditData() {
       <div>EditData</div>
       <div>EditData</div>
       <div className="flex justify-center items-center text-2xl font-semibold py-7 text-white bg-[#007aff]">
-        <p>Edit "Component Name"</p>
+        <p>Edit Component Name</p>
       </div>
       {/* <div className="flex px-20">
         <div className=" w-2/12 text-end text-xl font-medium pe-3">
