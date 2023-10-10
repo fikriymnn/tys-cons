@@ -38,12 +38,12 @@ function DetailServices() {
   const [Index, setIndex] = useState();
 
   useEffect(() => {
-    getDataService();
-  }, []);
+    getDataService(id);
+  }, [id]);
 
-  const getDataService = async () => {
+  async function getDataService(idd) {
     try {
-      const docRef = doc(db, "service", id);
+      const docRef = doc(db, "service", idd);
       const querySnapshot = await getDoc(docRef);
 
       let data = [];
@@ -57,7 +57,7 @@ function DetailServices() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   return (
     <>
@@ -128,7 +128,6 @@ function DetailServices() {
                           </p>
                         </div>
                         <div className="content">
-
                           <p>{parse(data.contentIng)}</p>
                         </div>
                       </>

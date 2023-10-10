@@ -34,7 +34,7 @@ const CustomFooter = () => {
     getDataLogoFooter();
   }, []);
 
-  const getDataAboutWechat = async () => {
+  async function getDataAboutWechat() {
     try {
       const docRef = doc(db, "editAbout", "wechat");
       const querySnapshot = await getDoc(docRef);
@@ -55,9 +55,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutPhone = async () => {
+  async function getDataAboutPhone() {
     try {
       const docRef = doc(db, "editAbout", "phone");
       const querySnapshot = await getDoc(docRef);
@@ -78,9 +78,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataHomeParagraph = async () => {
+  async function getDataHomeParagraph() {
     try {
       const docRef = doc(db, "editAbout", "paragraph");
       const querySnapshot = await getDoc(docRef);
@@ -102,9 +102,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutLinkedin = async () => {
+  async function getDataAboutLinkedin() {
     try {
       const docRef = doc(db, "editAbout", "linkedin");
       const querySnapshot = await getDoc(docRef);
@@ -125,9 +125,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutIg = async () => {
+  async function getDataAboutIg() {
     try {
       const docRef = doc(db, "editAbout", "ig");
       const querySnapshot = await getDoc(docRef);
@@ -148,9 +148,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataHomeHeading = async () => {
+  async function getDataHomeHeading() {
     try {
       const docRef = doc(db, "editAbout", "heading");
       const querySnapshot = await getDoc(docRef);
@@ -172,9 +172,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutAdress = async () => {
+  async function getDataAboutAdress() {
     try {
       const docRef = doc(db, "editAbout", "address");
       const querySnapshot = await getDoc(docRef);
@@ -189,8 +189,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataAboutBarcode = async () => {
+  }
+  async function getDataAboutBarcode() {
     try {
       const docRef = doc(db, "editAbout", "barcode");
       const querySnapshot = await getDoc(docRef);
@@ -205,8 +205,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataAboutEmail = async () => {
+  }
+  async function getDataAboutEmail() {
     try {
       const docRef = doc(db, "editAbout", "email");
       const querySnapshot = await getDoc(docRef);
@@ -227,9 +227,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutFb = async () => {
+  async function getDataAboutFb() {
     try {
       const docRef = doc(db, "editAbout", "facebook");
       const querySnapshot = await getDoc(docRef);
@@ -250,8 +250,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataLogoFooter = async () => {
+  }
+  async function getDataLogoFooter() {
     try {
       const docRef = doc(db, "editHomePage", "logoFooter");
       const querySnapshot = await getDoc(docRef);
@@ -272,7 +272,7 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
   return (
     <div className=" w-full bg-[#031530] ">
       <div className=" md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center">

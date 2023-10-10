@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import MainCard from "@/components/MainCard";
 import CustomCard from "@/components/CustomCard";
-import CardTwo from "@/components/CardTwo";
+// import CardTwo from "@/components/CardTwo";
 import MultipleCarousel from "@/components/MultipleCarousel";
 import Link from "next/link";
 import Hidden from "@/components/hidden";
@@ -23,93 +24,100 @@ import {
   limit,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
+import { useLanguage } from "@/context/LanguageContext";
+import { useState, useEffect } from "react";
 
-async function getHeading() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editHomePage", "heading");
-    const querySnapshot = await getDoc(docRef);
+const Home = () => {
+  const { language, changeLanguage } = useLanguage();
+  const [dataHeading, setDataHeading] = useState([]);
+  const [dataParagraph, setDataParagraph] = useState([]);
+  const [dataArticle, setDataArticle] = useState([]);
+  const [dataArticle4, setDataArticle4] = useState([]);
+  const [dataPackage, setDataPackage] = useState([]);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  useEffect(() => {
+    getHeading();
+    getDataHomeParagraph();
+    getDataArticles();
+    getDataArticles4();
+    getDataPackage();
+  }, []);
+
+  async function getHeading() {
+    try {
+      const docRef = doc(db, "editHomePage", "heading");
+      const querySnapshot = await getDoc(docRef);
+      let data = [];
+      data.push(querySnapshot.data());
+      setDataHeading(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataHomeParagraph() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editHomePage", "paragraph");
-    const querySnapshot = await getDoc(docRef);
-
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  async function getDataHomeParagraph() {
+    try {
+      const docRef = doc(db, "editHomePage", "paragraph");
+      const querySnapshot = await getDoc(docRef);
+      let data = [];
+      data.push(querySnapshot.data());
+      setDataParagraph(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataArticles() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "articles");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(2));
-    const querySnapshot = await getDocs(q);
+  async function getDataArticles() {
+    try {
+      const ordersRef = collection(db, "articles");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(2));
+      const querySnapshot = await getDocs(q);
+      let data = [];
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataArticle(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataArticles4() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "articles");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(4));
-    const querySnapshot = await getDocs(q);
+  async function getDataArticles4() {
+    try {
+      const ordersRef = collection(db, "articles");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(4));
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataArticle4(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
-async function getDataPackage() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "package");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(3));
-    const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
+  async function getDataPackage() {
+    try {
+      const ordersRef = collection(db, "package");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(3));
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach(async (doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataPackage(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
-
-const Home = async () => {
-  const dataHeading = await getHeading();
-
-  const dataParagraph = await getDataHomeParagraph();
-  const dataArticle = await getDataArticles();
-  const dataArticle4 = await getDataArticles4();
-  const dataPackage = await getDataPackage();
 
   return (
     <>
@@ -121,13 +129,26 @@ const Home = async () => {
         <div className="w-full h-[800px] md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
-              <p className="leading-relaxed tracking-wide">
-                {dataHeading[0].english}
-              </p>
+              {dataHeading.map((data, i) => {
+                return (
+                  <>
+                    <p className="leading-relaxed tracking-wide">
+                      {language == "en" ? data.english : data.chinese}
+                    </p>
+                  </>
+                );
+              })}
             </div>
-            <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
-              {dataParagraph[0].english}
-            </div>
+            {dataParagraph.map((data, i) => {
+              return (
+                <>
+                  <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
+                    {language == "en" ? data.english : data.chinese}
+                  </div>
+                </>
+              );
+            })}
+
             <a className="py-10" href="">
               <div className="text-white bg-primary p-3 w-36 mt-5 flex items-center justify-center">
                 <p className=" my-auto text-center ">GET STARTED</p>
@@ -296,13 +317,15 @@ const Home = async () => {
         {dataArticle.map((data, i) => {
           return (
             <>
-              <CustomCard
-                text={data.titleEnglish}
-                isi={data.date}
-                isi2={data.content[0].contentIng}
-                id={data.id}
-                img={data.img}
-              />
+              <div key={i}>
+                <CustomCard
+                  text={data.titleEnglish}
+                  isi={data.date}
+                  isi2={data.content[0].contentIng}
+                  id={data.id}
+                  img={data.img}
+                />
+              </div>
             </>
           );
         })}
@@ -310,7 +333,7 @@ const Home = async () => {
         {dataArticle4.map((data, i) => {
           return (
             <>
-              <a href={`/articles/article?id=${data.id}`}>
+              <a key={i} href={`/articles/article?id=${data.id}`}>
                 <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3">
                   <div className="font-semibold text-xl hover:underline">
                     {data.titleEnglish}
@@ -353,17 +376,40 @@ const Home = async () => {
           {dataPackage.map((data, i) => {
             return (
               <>
-                <CardTwo
-                  title={data.titleEnglish}
-                  price={data.price[0].price + "元"}
-                  text1={"Package Includes:"}
-                  text2={data.services}
-                  id={data.id}
-                  text3={"Daily Prices Change Notifications"}
-                  text4={"Marketplace Price Tracking"}
-                  text5={"Stock Availability Monitoring"}
-                  text6={"Marketplace Price Tracking"}
-                />
+                <div key={i}>
+                  <h5 className="mb-4 text-lg text-black font-medium text-center">
+                    {data.titleEnglish}
+                  </h5>
+                  <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                    {data.price[0].price} 元
+                  </p>
+
+                  <ol className="my-7 space-y-5">
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">Package Include :</span>
+                      </p>
+                    </li>
+                    {data.services.map((data, i) => {
+                      return (
+                        <>
+                          <li key={i} className="flex space-x-3">
+                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                              &bull;{" "}
+                              <span className="px-2">{data.nameIng}</span>
+                            </p>
+                          </li>
+                        </>
+                      );
+                    })}
+                  </ol>
+                  <a
+                    className=' className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900'
+                    href={`/packages/details?id=${data.id}`}
+                  >
+                    <p>DETAILS</p>
+                  </a>
+                </div>
               </>
             );
           })}
@@ -393,6 +439,7 @@ const Home = async () => {
         <p className="font-semibold text-3xl text-center py-10 pb-10">
           Our Clients
         </p>
+
         <MultipleCarousel />
       </div>
       <CustomFooter />

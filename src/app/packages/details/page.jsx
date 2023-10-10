@@ -32,13 +32,13 @@ function DetailPackages() {
   const [lastIndex, setLastIndex] = useState([]);
 
   useEffect(() => {
-    getDataPackage();
-  }, []);
+    getDataPackage(id);
+  }, [id]);
 
   //get data about
-  const getDataPackage = async () => {
+  async function getDataPackage(idd) {
     try {
-      const docRef = doc(db, "package", id);
+      const docRef = doc(db, "package", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -60,7 +60,7 @@ function DetailPackages() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   return (
     <>
@@ -129,29 +129,32 @@ function DetailPackages() {
                     <p>Services: / 服务:</p>
                   </div>
                   <div className="grid grid-cols-5 gap-5 py-10">
-                    <CompanyRegistrationCard
-                      src={"/foto.jpg"}
-                      title={"Company Registration Basic Regulation"}
-                      price={"3000-2000"}
-                    />
-
-                    <CompanyRegistrationCard
-                      src={"/foto.jpg"}
-                      title={"Company Registration Basic Regulation"}
-                      price={"3000-2000"}
-                    />
-
-                    <CompanyRegistrationCard
-                      src={"/foto.jpg"}
-                      title={"Company Registration Basic Regulation"}
-                      price={"3000-2000"}
-                    />
-
-                    <CompanyRegistrationCard
-                      src={"/foto.jpg"}
-                      title={"Company Registration Basic Regulation"}
-                      price={"3000-2000"}
-                    />
+                    {data.services.map((data, i) => {
+                      return (
+                        <>
+                          <div key={i}>
+                            <a href={`/services/detail?id=${data.id}`}>
+                              <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                                <div
+                                  className=" bg-blue-700 h-48 bg-cover bg-center"
+                                  style={{
+                                    backgroundImage: `url(${data.img})`,
+                                  }}
+                                ></div>
+                                <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
+                                  <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                    {data.nameIng}
+                                  </h1>
+                                  <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                    {data.price[0].price}
+                                  </h2>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </>
+                      );
+                    })}
                   </div>
                   <div className="h-[2px] w-full bg-gray-300 "></div>
                   {data.content.map((data, i) => {

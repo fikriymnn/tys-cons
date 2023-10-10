@@ -28,12 +28,12 @@ function Event() {
   const [dataEvents, setDataEvents] = useState([]);
 
   useEffect(() => {
-    getDataEventse();
-  }, []);
+    getDataEventse(id);
+  }, [id]);
 
-  const getDataEventse = async () => {
+  async function getDataEventse(idd) {
     try {
-      const docRef = doc(db, "events", id);
+      const docRef = doc(db, "events", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -52,7 +52,7 @@ function Event() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   return (
     <>

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Iframe from "react-iframe";
 import CustomFooter from "@/components/CustomFooter";
@@ -16,90 +17,150 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+import { useState, useEffect } from "react";
 
-async function getDataAboutHeading() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "heading");
-    const querySnapshot = await getDoc(docRef);
+const About = () => {
+  const [address, setAddress] = useState("");
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  const [email, setEmail] = useState("");
+
+  const [chinaHeading, setChinaHeading] = useState("");
+  const [inggrisHeading, setInggrisHeading] = useState("");
+
+  const [chinaParagraph, setChinaParagraph] = useState("");
+  const [inggrisParagraph, setInggrisParagraph] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    getDataAboutAdress();
+
+    getDataAboutEmail();
+
+    getDataHomeHeading();
+
+    getDataHomeParagraph();
+    getDataAboutPhone();
+  }, []);
+
+  async function getDataAboutPhone() {
+    try {
+      const docRef = doc(db, "editAbout", "phone");
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setPhone(data[0].no);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutParagraph() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "paragraph");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataHomeParagraph() {
+    try {
+      const docRef = doc(db, "editAbout", "paragraph");
+      const querySnapshot = await getDoc(docRef);
 
-    // doc.data() is never undefined for query doc snapshots
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setChinaParagraph(data[0].chinese);
+      setInggrisParagraph(data[0].english);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
-async function getDataAboutAdrress() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "address");
-    const querySnapshot = await getDoc(docRef);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  async function getDataHomeHeading() {
+    try {
+      const docRef = doc(db, "editAbout", "heading");
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setChinaHeading(data[0].chinese);
+      setInggrisHeading(data[0].english);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutPhone() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "phone");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataAboutAdress() {
+    try {
+      const docRef = doc(db, "editAbout", "address");
+      const querySnapshot = await getDoc(docRef);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setAddress(data[0].address);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutEmail() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "email");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataAboutEmail() {
+    try {
+      const docRef = doc(db, "editAbout", "email");
+      const querySnapshot = await getDoc(docRef);
 
-    // doc.data() is never undefined for query doc snapshots
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setEmail(data[0].email);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
-
-const About = async () => {
-  const dataHeading = await getDataAboutHeading();
-  const dataParagraph = await getDataAboutParagraph();
-  const dataAddress = await getDataAboutAdrress();
-  const dataPhone = await getDataAboutPhone();
-  const dataEmail = await getDataAboutEmail();
 
   return (
     <>
       <NavbarWithCTAButton />
       <div className=" px-5 md:px-16 sm:px-10 pt-24 ">
         <p className="text-blue-800 text-3xl font-semibold pb-4 font-sans">
-          {dataHeading[0].english}
+          {inggrisHeading}
         </p>
-        <p className=" text-lg font-sans">{dataParagraph[0].english}</p>
+        <p className=" text-lg font-sans">{inggrisParagraph}</p>
         <div className="md:grid md:grid-cols-2 py-10 gap-2 ">
           <div>
             <Iframe
@@ -119,7 +180,7 @@ const About = async () => {
                 alt=""
                 className="py-4"
               />
-              <p className=" my-auto">{dataAddress[0].address}</p>
+              <p className=" my-auto">{address}</p>
             </div>
             <div className="flex gap-4">
               <Image
@@ -129,7 +190,7 @@ const About = async () => {
                 alt=""
                 className=" py-4"
               />
-              <p className=" my-auto">{dataPhone[0].no}</p>
+              <p className=" my-auto">{phone}</p>
             </div>
             <div className="flex gap-4">
               <Image
@@ -139,7 +200,7 @@ const About = async () => {
                 alt=""
                 className=" py-4"
               />
-              <p className=" my-auto">{dataEmail[0].email}</p>
+              <p className=" my-auto">{email}</p>
             </div>
           </div>
           <div>

@@ -3,8 +3,48 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../firebase/page";
 
 function MultipleCarousel() {
+  const [dataClient, setDataClient] = useState([]);
+
+  useEffect(() => {
+    getDataClient();
+  }, []);
+
+  async function getDataClient() {
+    let data = [];
+
+    try {
+      const querySnapshot = await getDocs(collection(db, "clients"));
+
+      console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setDataClient(data);
+    } catch (error) {
+      alert(error);
+    }
+    return data;
+  }
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -33,51 +73,22 @@ function MultipleCarousel() {
       infinite={"true"}
       showDots={true}
     >
-      <div className="text-white">
-        <Image
-          className="md:w-[200px] w-32"
-          src={"/assets/images/lionair2.jpg"}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </div>
-      <div className="text-white">
-        <Image
-          className="md:w-[200px] w-32"
-          src={"/assets/images/kommpas.png"}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </div>
-      <div className="text-white">
-        <Image
-          className="md:w-[200px] w-32"
-          src={"/assets/images/kelase.png"}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </div>
-      <div className="text-white">
-        <Image
-          className="md:w-[200px] w-32"
-          src={"/assets/images/lotte.jpg"}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </div>
-      <div className="text-white">
-        <Image
-          className="md:w-[200px] w-32"
-          src={"/assets/images/ikip.jpg"}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </div>
+      {dataClient.map((data, i) => {
+        return (
+          <>
+            <div className="text-white">
+              <Image
+                key={i}
+                className="md:w-[200px] w-32"
+                src={data.img}
+                width={200}
+                height={200}
+                alt=""
+              />
+            </div>
+          </>
+        );
+      })}
     </Carousel>
   );
 }

@@ -1,108 +1,122 @@
 "use client";
-import { useState } from "react";
+import { collection, getDocs, where, query } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import PoliciesDetail from "@/components/PoliciesDetail";
-import Image from "next/image"; import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
+import Image from "next/image";
+import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 
 export default function Policies() {
   const [dropdown, setDropdown] = useState(true);
-  const [selectedDetail, setSelectedDetail] = useState(1);
+  const [dropdown2, setDropdown2] = useState(false);
+  const [dropdown3, setDropdown3] = useState(false);
+  const [dropdown4, setDropdown4] = useState(false);
+  const [titleIng, setTitleIng] = useState("");
+  const [titleChi, setTitleChi] = useState("");
+  const [contentIng, setContentIng] = useState("");
+  const [contentChi, setContentChi] = useState("");
+  const [dataimg, setDataImg] = useState("");
+  const [selectedDetail1, setSelectedDetail1] = useState();
+  const [selectedDetail2, setSelectedDetail2] = useState();
+  const [selectedDetail3, setSelectedDetail3] = useState();
+  const [selectedDetail4, setSelectedDetail4] = useState();
+  const [dataForeigen, setDataForeigen] = useState([]);
+  const [dataTak, setDataTak] = useState([]);
+  const [dataLabor, setDataLabor] = useState([]);
+  const [dataImport, setDataImport] = useState([]);
+
+  useEffect(() => {
+    getDataFo();
+    getDataTak();
+    getDataLabor();
+    getDataImport();
+  }, []);
+
+  const getDataFo = async () => {
+    try {
+      const q = query(
+        collection(db, "policies"),
+        where("category", "==", "Foreign Company Registration")
+      );
+
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setDataForeigen(data);
+      setContentChi(data[0].contentChinese);
+      setContentIng(data[0].contentEnglish);
+      setTitleChi(data[0].titleChi);
+      setTitleIng(data[0].titleEnglish);
+      setDataImg(data[0].img);
+      setSelectedDetail1(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDataTak = async () => {
+    try {
+      const q = query(
+        collection(db, "policies"),
+        where("category", "==", "Tax Regulation")
+      );
+
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setDataTak(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDataLabor = async () => {
+    try {
+      const q = query(
+        collection(db, "policies"),
+        where("category", "==", "Labor Policy")
+      );
+
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setDataLabor(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDataImport = async () => {
+    try {
+      const q = query(
+        collection(db, "policies"),
+        where("category", "==", "Import Export Procedures & Policies")
+      );
+
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setDataImport(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const defaultDetail = <PoliciesDetail />;
   const defaultDetail2 = <PoliciesDetail />;
-
-  const CRBR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Company Registration Basic Regulation"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const TCR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Trading Company Regulation"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const ROR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Representative Office Regulations"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const CCR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Construction Company Regulation"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const FCR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Foreign Company Registration"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const TR = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Tax Regulation"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const LP = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Labor Policy"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const IEPP = (
-    <PoliciesDetail
-      src={"/foto.jpg"}
-      title={"Import Export Procedures & Policies"}
-      content={
-        "lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da lorema sdkjaosd asodkas odoas doasjdo asodjas da"
-      }
-    />
-  );
-
-  const componentDetail = [
-    defaultDetail,
-    CRBR,
-    TCR,
-    ROR,
-    CCR,
-    FCR,
-    TR,
-    LP,
-    IEPP,
-    defaultDetail2,
-  ];
 
   return (
     <>
@@ -111,8 +125,9 @@ export default function Policies() {
         <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center   pt-24">
           <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown ? "bg-blue-700" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
                 setDropdown(!dropdown);
               }}
@@ -139,106 +154,214 @@ export default function Policies() {
             {/* dropdown */}
             {dropdown && (
               <div className="border-y border-white">
-                <div
-                  className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 1 ? "bg-blue-900" : ""
-                    }`}
-                  onClick={() => {
-                    setSelectedDetail(1);
-                  }}
-                >
-                  <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                    Company Registration Basic Regulation
-                  </p>
-                </div>
-                <div
-                  className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 2 ? "bg-blue-900" : ""
-                    }`}
-                  onClick={() => {
-                    setSelectedDetail(2);
-                  }}
-                >
-                  <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                    Trading Company Regulation
-                  </p>
-                </div>
-                <div
-                  className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 3 ? "bg-blue-900" : ""
-                    }`}
-                  onClick={() => {
-                    setSelectedDetail(3);
-                  }}
-                >
-                  <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                    Representative Office Regulations
-                  </p>
-                </div>
-                <div
-                  className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 4 ? "bg-blue-900" : ""
-                    }`}
-                  onClick={() => {
-                    setSelectedDetail(4);
-                  }}
-                >
-                  <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                    Construction Company Regulation
-                  </p>
-                </div>
-                <div
-                  className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail == 5 ? "bg-blue-900" : ""
-                    }`}
-                  onClick={() => {
-                    setSelectedDetail(5);
-                  }}
-                >
-                  <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                    Factory Company Regulation
-                  </p>
-                </div>
+                {dataForeigen.map((data, i) => {
+                  return (
+                    <>
+                      <div
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail1 == i ? "bg-blue-900" : ""
+                        }`}
+                        onClick={() => {
+                          setContentChi(data.contentChinese);
+                          setContentIng(data.contentEnglish);
+                          setTitleChi(data.titleChi);
+                          setTitleIng(data.titleEnglish);
+                          setDataImg(data.img);
+                          setSelectedDetail1(i);
+                          setSelectedDetail2();
+                          setSelectedDetail3();
+                          setSelectedDetail4();
+                        }}
+                      >
+                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                          {data.subCategory}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })}
               </div>
             )}
 
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 6 ? "bg-blue-900" : ""
-                }`}
-            >
-              <p
-                className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full"
-                onClick={() => {
-                  setSelectedDetail(6);
-                }}
-              >
-                Tax Regulation
-              </p>
-            </div>
-            <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 7 ? "bg-blue-900" : ""
-                }`}
-            >
-              <p
-                className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm w-full"
-                onClick={() => {
-                  setSelectedDetail(7);
-                }}
-              >
-                Labor Policy
-              </p>
-            </div>
-            <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${selectedDetail == 8 ? "bg-blue-900" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown2 ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
-                setSelectedDetail(8);
+                setDropdown2(!dropdown2);
               }}
             >
-              <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+              <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
+                Tak Regulation
+              </p>
+              {dropdown2 ? (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5 rotate-180"
+                />
+              ) : (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5"
+                />
+              )}
+            </div>
+            {/* dropdown */}
+            {dropdown2 && (
+              <div className="border-y border-white">
+                {dataTak.map((data, i) => {
+                  return (
+                    <>
+                      <div
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail2 == i ? "bg-blue-900" : ""
+                        }`}
+                        onClick={() => {
+                          setContentChi(data.contentChinese);
+                          setContentIng(data.contentEnglish);
+                          setTitleChi(data.titleChi);
+                          setTitleIng(data.titleEnglish);
+                          setDataImg(data.img);
+                          setSelectedDetail2(i);
+                          setSelectedDetail3();
+                          setSelectedDetail4();
+                          setSelectedDetail1();
+                        }}
+                      >
+                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                          {data.subCategory}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            )}
+
+            <div
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown3 ? "bg-blue-700" : ""
+              }`}
+              onClick={() => {
+                setDropdown3(!dropdown3);
+              }}
+            >
+              <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
+                Labor Policy
+              </p>
+              {dropdown3 ? (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5 rotate-180"
+                />
+              ) : (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5"
+                />
+              )}
+            </div>
+            {/* dropdown */}
+            {dropdown3 && (
+              <div className="border-y border-white">
+                {dataLabor.map((data, i) => {
+                  return (
+                    <>
+                      <div
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail3 == i ? "bg-blue-900" : ""
+                        }`}
+                        onClick={() => {
+                          setContentChi(data.contentChinese);
+                          setContentIng(data.contentEnglish);
+                          setTitleChi(data.titleChi);
+                          setTitleIng(data.titleEnglish);
+                          setDataImg(data.img);
+                          setSelectedDetail3(i);
+                          setSelectedDetail2();
+                          setSelectedDetail1();
+                          setSelectedDetail4();
+                        }}
+                      >
+                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                          {data.subCategory}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            )}
+
+            <div
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown4 ? "bg-blue-700" : ""
+              }`}
+              onClick={() => {
+                setDropdown4(!dropdown4);
+              }}
+            >
+              <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
                 Import Export Procedures & Policies
               </p>
+              {dropdown4 ? (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5 rotate-180"
+                />
+              ) : (
+                <Image
+                  src={"/dropdown.png"}
+                  width={15}
+                  height={15}
+                  className="mr-5"
+                />
+              )}
             </div>
-
+            {/* dropdown */}
+            {dropdown4 && (
+              <div className="border-y border-white">
+                {dataImport.map((data, i) => {
+                  return (
+                    <>
+                      <div
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail4 == i ? "bg-blue-900" : ""
+                        }`}
+                        onClick={() => {
+                          setContentChi(data.contentChinese);
+                          setContentIng(data.contentEnglish);
+                          setTitleChi(data.titleChi);
+                          setTitleIng(data.titleEnglish);
+                          setDataImg(data.img);
+                          setSelectedDetail4(i);
+                          setSelectedDetail1();
+                          setSelectedDetail2();
+                          setSelectedDetail3();
+                        }}
+                      >
+                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                          {data.subCategory}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          {componentDetail[selectedDetail]}
-
+          <PoliciesDetail src={dataimg} title={titleIng} content={contentIng} />
         </div>
       </div>
       <CustomFooter />

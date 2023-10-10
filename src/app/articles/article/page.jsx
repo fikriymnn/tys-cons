@@ -15,12 +15,12 @@ function Article() {
   const id = searchParams.get("id");
   const [dataArticle, setDataArticle] = useState([]);
   useEffect(() => {
-    getDataArticles();
-  }, []);
+    getDataArticles(id);
+  }, [id]);
 
-  const getDataArticles = async () => {
+  async function getDataArticles(idd) {
     try {
-      const docRef = doc(db, "articles", id);
+      const docRef = doc(db, "articles", idd);
       const querySnapshot = await getDoc(docRef);
 
       let data = [];
@@ -31,7 +31,7 @@ function Article() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
   return (
     <>
       <NavbarWithCTAButton />

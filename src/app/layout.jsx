@@ -1,26 +1,23 @@
-import './globals.css'
+import "./globals.css";
 
-import CustomFooter from '@/components/CustomFooter';
+import CustomFooter from "@/components/CustomFooter";
 
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
+import { LanguageProvider } from "@/context/LanguageContext";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'TYS Consultant',
-  description: 'TYS Consulting, Business Consultant',
-}
+  title: "TYS Consultant",
+  description: "TYS Consulting, Business Consultant",
+};
 
-export default function RootLayout({
-  children,
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-
-        {children}
-
-      </body>
-    </html>
-  )
+    <LanguageProvider>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </LanguageProvider>
+  );
 }

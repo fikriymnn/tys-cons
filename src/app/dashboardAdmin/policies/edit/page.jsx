@@ -22,6 +22,8 @@ import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function EditPolicies() {
   const [isAlert, setIsAlert] = useState(false);
@@ -321,40 +323,32 @@ function EditPolicies() {
           </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+              <p>Description :</p>
             </div>
             <div className=" w-10/12 p-3">
-              <textarea
-                value={contentIng ?? ""}
-                onChange={(e) => setContentIng(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentIng}
+                onChange={(e) => setContentIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description`}
+                maxLength={2000}
+                className="h-[200px] "
+              />
             </div>
           </div>
           <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
+            <div className=" w-2/12 text-end p-3 py-5"></div>
             <div className=" w-10/12 p-3">
-              <textarea
-                value={contentChi ?? ""}
-                onChange={(e) => setContentChi(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentChi}
+                onChange={(e) => setContentChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description`}
+                maxLength={2000}
+                className="h-[200px] my-10 "
+              />
             </div>
           </div>
 

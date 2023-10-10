@@ -4,10 +4,19 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button, Navbar, Dropdown, Item } from "flowbite-react";
 import { useRouter } from "next/router";
+import { useLanguage } from "@/context/LanguageContext";
+import Cookies from "js-cookie";
 
 export default function NavbarWithCTAButton({ height }) {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const { language, changeLanguage } = useLanguage();
+
+  const handleChangeLanguage = (newLanguage) => {
+    changeLanguage(newLanguage);
+    sessionStorage.setItem("language", newLanguage);
+    // Cookies.set("language", newLanguage);
+  };
 
   const [navbar, SetNavbar] = useState(false);
   const ChangeBG = () => {
@@ -81,35 +90,38 @@ export default function NavbarWithCTAButton({ height }) {
           )}
         </Navbar.Brand>
         <div className="flex md:order-3 gap-1 z-40 ">
-          <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
-            <Image
-              src={"/assets/images/united-states.png"}
-              width={40}
-              height={10}
-            />
-            <p
-              className={
-                navbar
-                  ? "text-white text-base my-auto"
-                  : "  text-black my-auto text-base  "
-              }
-            >
-              EN
-            </p>
-          </div>
-
-          <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
-            <Image src={"/assets/images/China.png"} width={40} height={10} />
-            <p
-              className={
-                navbar
-                  ? "text-white text-base my-auto"
-                  : "  text-black my-auto text-base  "
-              }
-            >
-              语言
-            </p>
-          </div>
+          <button onClick={() => handleChangeLanguage("en")}>
+            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+              <Image
+                src={"/assets/images/united-states.png"}
+                width={40}
+                height={10}
+              />
+              <p
+                className={
+                  navbar
+                    ? "text-white text-base my-auto"
+                    : "  text-black my-auto text-base  "
+                }
+              >
+                EN
+              </p>
+            </div>
+          </button>
+          <button onClick={() => handleChangeLanguage("chi")}>
+            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+              <Image src={"/assets/images/China.png"} width={40} height={10} />
+              <p
+                className={
+                  navbar
+                    ? "text-white text-base my-auto"
+                    : "  text-black my-auto text-base  "
+                }
+              >
+                语言
+              </p>
+            </div>
+          </button>
 
           <Navbar.Toggle />
         </div>
@@ -121,7 +133,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Home
+                {language == "en" ? "Home" : "首页"}
               </span>
             </Navbar.Link>
           </div>
@@ -132,7 +144,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                About Us
+                {language == "en" ? "About Us" : "关于我们"}
               </span>
             </Navbar.Link>
           </div>
@@ -146,7 +158,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Services
+                {language == "en" ? "Services" : "服务"}
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +188,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Articles
+                {language == "en" ? "Articles" : "必读"}
               </span>
             </Navbar.Link>
           </div>
@@ -187,7 +199,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Events
+                {language == "en" ? "Events" : "活动"}
               </span>
             </Navbar.Link>
           </div>
@@ -198,7 +210,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Policies & Regulations
+                {language == "en" ? "Policies & Regulations" : "政策法规"}
               </span>
             </Navbar.Link>
           </div>

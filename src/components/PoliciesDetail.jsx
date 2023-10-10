@@ -11,7 +11,13 @@ export default function PoliciesDetail({ title, src, content }) {
         </h1>
         <div className="flex items-center w-full">
           {src && (
-            <Image src={src} width={800} height={400} className="m-auto" />
+            <Image
+              src={src}
+              width={800}
+              height={400}
+              className="m-auto"
+              alt="Image"
+            />
           )}
         </div>
 

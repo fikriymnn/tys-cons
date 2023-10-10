@@ -45,7 +45,7 @@ function EditPackage() {
 
   const [dataOption, setDataOption] = useState([{ option: "", price: "" }]);
   const [dataServiceId, setDataServiceId] = useState([
-    { id: "", nameIng: "", nameChi: "" },
+    { id: "", nameIng: "", nameChi: "", img: "", price: [] },
   ]);
 
   const [downloadURL, setDownloadURL] = useState("");
@@ -241,7 +241,10 @@ function EditPackage() {
   };
 
   const handleClickService = () => {
-    setDataServiceId([...dataServiceId, { id: "", nameIng: "", nameChi: "" }]);
+    setDataServiceId([
+      ...dataServiceId,
+      { id: "", nameIng: "", nameChi: "", img: "", price: [] },
+    ]);
   };
   const handleChangeService = (namee, val, i) => {
     const name = namee;
@@ -464,6 +467,8 @@ function EditPackage() {
                                   data.titleChinese,
                                   ii
                                 );
+                                handleChangeService("img", data.img, ii);
+                                handleChangeService("price", data.price, ii);
                                 toggleHidden();
                               }}
                             >
@@ -496,7 +501,6 @@ function EditPackage() {
                     </div>
                   )}
                 </div>
-
               </>
             );
           })}
@@ -534,8 +538,9 @@ function EditPackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic English For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic English For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -552,8 +557,9 @@ function EditPackage() {
                       id=""
                       cols="20"
                       rows="1"
-                      placeholder={`Input Topic Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Topic Mandarin For Description ${
+                        i + 1
+                      }`}
                       color=" bg-transparent"
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
@@ -577,8 +583,9 @@ function EditPackage() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
                       maxLength={1000}
                       className="h-[200px] w-full   "
                     />
@@ -599,8 +606,9 @@ function EditPackage() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
                       maxLength={1000}
                       className="h-[200px] my-10 "
                     />
