@@ -49,7 +49,7 @@ function ArticlesAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation articles="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">

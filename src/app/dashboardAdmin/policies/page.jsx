@@ -46,7 +46,7 @@ function PoliciesAdmin() {
   return (
     <>
       <div className="flex">
-        <Navigation />
+        <Navigation policies="ps-3 text-[#0d3064] bg-white rounded-sm" />
         <div className="p-5 w-full h-screen overflow-y-scroll">
           <div className="w-full bg-[#0d3064] ">
             <p className="pt-5 text-center font-bold text-3xl text-white">
@@ -144,7 +144,9 @@ function PoliciesAdmin() {
                                 onClick={async (e) => {
                                   try {
                                     // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                    await deleteDoc(doc(db, "policies", data.id));
+                                    await deleteDoc(
+                                      doc(db, "policies", data.id)
+                                    );
                                     alert("delete success");
                                     location.reload();
                                     console.log("Deleted successfully");
