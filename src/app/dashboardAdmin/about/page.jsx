@@ -15,6 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import Image from "next/image";
 
 function AboutAdmin() {
   //get data about
@@ -320,7 +321,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editHeading"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -355,7 +358,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editParagraph"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -387,7 +392,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editAddress"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -419,7 +426,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editPhone"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -450,7 +459,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editEmail"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -486,7 +497,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editInstagram"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -522,7 +535,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editFacebook"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -558,7 +573,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editWechat"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -594,7 +611,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editLinkedin"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -612,7 +631,7 @@ function AboutAdmin() {
                       {dataAboutBarcode.length > 0 &&
                         dataAboutBarcode.map((data, i) => {
                           // eslint-disable-next-line react/jsx-key
-                          return <img className="w-20" src={data.img} alt="" />;
+                          return <Image width={100} height={100} src={data.img} alt="" />;
                         })}
                     </div>
                   </div>
@@ -622,7 +641,9 @@ function AboutAdmin() {
                       href="/dashboardAdmin/about/editBarcode"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
