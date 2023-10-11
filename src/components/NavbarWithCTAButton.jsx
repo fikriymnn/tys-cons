@@ -1,16 +1,32 @@
 "use client";
 import Image from "next/image";
 
-import { useState } from "react";
 import { Button, Navbar, Dropdown, Item } from "flowbite-react";
 import { useRouter } from "next/router";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../firebase/page";
 import { useLanguage } from "@/context/LanguageContext";
-import Cookies from "js-cookie";
+import { useState, useEffect } from "react";
 
 export default function NavbarWithCTAButton({ height }) {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const { language, changeLanguage } = useLanguage();
+  const [logo, setLogo] = useState([]);
+  const [logoWhite, setLogoWhite] = useState([]);
 
   const handleChangeLanguage = (newLanguage) => {
     changeLanguage(newLanguage);
@@ -33,6 +49,56 @@ export default function NavbarWithCTAButton({ height }) {
     window.addEventListener("scroll", ChangeBG);
   }
 
+  useEffect(() => {
+    getDataHomeLogoNav();
+    getDataHomeLogoWhite();
+  }, []);
+
+  const getDataHomeLogoWhite = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoWhite");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setLogoWhite(data[0].img);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getDataHomeLogoNav = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoNav");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setLogo(data[0].img);
+    } catch (error) {
+      alert(error);
+    }
+  };
   const DropdownServices = () => {
     return (
       <div className=" bg-white absolute mt-10 shadow-md z-10">
@@ -77,13 +143,13 @@ export default function NavbarWithCTAButton({ height }) {
         <Navbar.Brand href="/" className="z-40  opacity-100">
           {navbar ? (
             <img
-              src="/assets/images/tys-logo.png"
+              src={logoWhite}
               alt=""
               className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           ) : (
             <img
-              src="/assets/images/tys-logo-blue.png"
+              src={logo}
               alt=""
               className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
