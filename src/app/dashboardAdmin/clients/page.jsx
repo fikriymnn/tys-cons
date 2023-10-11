@@ -15,6 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import Image from "next/image";
 
 function ClientAdmin() {
   const [dataClient, setDataClient] = useState([]);
@@ -59,23 +60,26 @@ function ClientAdmin() {
                 {dataClient.map((data, i) => {
                   return (
                     <>
-                      <div key={i} className="border-2 p-2">
-                        <div className="h-32 bg-contain bg-center bg-no-repeat"
+                      <div key={i} className="border-2 p-2 rounded-md">
+                        <div className="h-32 bg-white rounded-md p-2 bg-contain bg-center bg-no-repeat"
                           style={{ backgroundImage: `url(${data.img})` }}>
 
 
                         </div>
-                        <div className=" flex gap-2 w-24 pt-2">
+                        <div className=" flex gap-2 pt-2">
                           <a
                             href={`/dashboardAdmin/clients/edit?id=${data.id}`}
-                            className="bg-yellow-400 h-10 rounded-md p-3"
+                            className="bg-yellow-400 h-10 rounded-md w-3/6 p-3 flex items-center justify-center"
                           >
-                            <button className="">
-                              <img
-                                src="/assets/images/edit-svgrepo-com.svg"
-                                alt=""
-                              />
-                            </button>
+
+                            <Image
+
+                              src="/assets/images/edit-svgrepo-com.svg"
+                              width={25}
+                              height={25}
+                              alt=""
+                            />
+
                           </a>
                           <button
                             onClick={async (e) => {
@@ -88,10 +92,13 @@ function ClientAdmin() {
                                 console.error("An error occured", error);
                               }
                             }}
-                            className="bg-red-600 h-10 rounded-md p-3"
+                            className="bg-red-600 h-10 rounded-md w-3/6 p-3 flex items-center justify-center"
                           >
-                            <img
+                            <Image
+
                               src="/assets/images/delete-1-svgrepo-com.svg"
+                              width={25}
+                              height={25}
                               alt=""
                             />
                           </button>
@@ -103,12 +110,12 @@ function ClientAdmin() {
 
                 <a
                   href="/dashboardAdmin/clients/create/"
-                  className="flex justify-center items-center bg-slate-300 hover:translate-y-[-10px]"
+                  className="flex h-44 justify-center items-center p-2 hover:text-xl hover:p-0 border-2 duration-100 rounded-md"
                 >
-                  <button>
-                    <div>
+                  <button className="bg-white rounded-md h-full w-full ">
+                    <div className="py-5">
                       <p className="text-5xl text-center">+</p>
-                      <p className="font-extralight text-sm">Add New Logo</p>
+                      <p className=" ">Add New Logo</p>
                     </div>
                   </button>
                 </a>

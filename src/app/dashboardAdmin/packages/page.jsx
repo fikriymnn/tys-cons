@@ -15,6 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import Image from "next/image";
 
 function PackageAdmin() {
   const [dataPackage, setDataPackage] = useState([]);
@@ -84,7 +85,7 @@ function PackageAdmin() {
                   </div>
                 </div>
 
-                <div className=" h-[500px] overflow-y-auto">
+                <div className=" h-[450px] overflow-y-auto">
                   {dataPackage.map((data, i) => {
                     return (
                       <>
@@ -110,17 +111,17 @@ function PackageAdmin() {
                           </div>
                           <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
                             <a
-                              className="bg-yellow-400  rounded-md p-1"
+                              className="bg-yellow-400  rounded-md p-2"
                               href={`/dashboardAdmin/packages/edit?id=${data.id}`}
                             >
-                              <button
-                              //onClick={openEditService}
-                              >
-                                <img
-                                  src="/assets/images/edit-svgrepo-com.svg"
-                                  alt=""
-                                />
-                              </button>
+
+                              <Image
+                                width={35}
+                                height={35}
+                                src="/assets/images/edit-svgrepo-com.svg"
+                                alt=""
+                              />
+
                             </a>
                             <button
                               onClick={async (e) => {
@@ -134,9 +135,11 @@ function PackageAdmin() {
                                   console.error("An error occured", error);
                                 }
                               }}
-                              className="bg-red-600  rounded-md p-1"
+                              className="bg-red-600  rounded-md p-2"
                             >
-                              <img
+                              <Image
+                                width={35}
+                                height={35}
                                 src="/assets/images/delete-1-svgrepo-com.svg"
                                 alt=""
                               />
@@ -146,6 +149,7 @@ function PackageAdmin() {
                       </>
                     );
                   })}
+
                 </div>
               </div>
             </div>

@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import parse from "html-react-parser";
+import Image from "next/image";
 
 function PoliciesAdmin() {
   const [dataPolicies, setDataPolicies] = useState([]);
@@ -91,7 +92,7 @@ function PoliciesAdmin() {
                   </div>
                 </div>
 
-                <div className=" h-[500px] overflow-y-auto">
+                <div className=" h-[450px] overflow-y-auto">
                   {dataPolicies.length > 0 &&
                     dataPolicies.map((data, i) => {
                       return (
@@ -127,19 +128,19 @@ function PoliciesAdmin() {
                                 <p>{data.date}</p>
                               </div>
                             </div>
-                            <div className="w-36  flex gap-3 m-3 my-auto">
+                            <div className="w-44  flex gap-3 m-3 my-auto">
                               <a
-                                className="bg-yellow-400 h-10 rounded-md p-3"
+                                className="bg-yellow-400 h-10 rounded-md p-2"
                                 href={`/dashboardAdmin/policies/edit?id=${data.id}`}
                               >
-                                <button
-                                // onClick={openEditPolicies}
-                                >
-                                  <img
-                                    src="/assets/images/edit-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </button>
+
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  alt=""
+                                />
+
                               </a>
                               <button
                                 onClick={async (e) => {
@@ -155,9 +156,11 @@ function PoliciesAdmin() {
                                     console.error("An error occured", error);
                                   }
                                 }}
-                                className="bg-red-600 h-10 rounded-md p-3"
+                                className="bg-red-600 h-10 rounded-md p-2"
                               >
-                                <img
+                                <Image
+                                  width={35}
+                                  height={35}
                                   src="/assets/images/delete-1-svgrepo-com.svg"
                                   alt=""
                                 />
@@ -167,6 +170,7 @@ function PoliciesAdmin() {
                         </>
                       );
                     })}
+
                 </div>
               </div>
             </div>
