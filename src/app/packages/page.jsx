@@ -52,37 +52,40 @@ function Packages() {
           {dataPackage.map((data, i) => {
             return (
               <>
-                <h5 className="mb-4 text-lg text-black font-medium text-center">
-                  {data.titleEnglish}
-                </h5>
-                <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                  {data.price[0].price} 元
-                </p>
+                <div className="bg-white p-10 rounded-lg shadow-lg">
+                  <h5 className="mb-4 text-lg text-black font-medium text-center">
+                    {data.titleEnglish}
+                  </h5>
+                  <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                    {data.price[0].price} 元
+                  </p>
 
-                <ol className="my-7 space-y-5">
-                  <li className="flex space-x-3">
-                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      &bull; <span className="px-2">Package Include :</span>
-                    </p>
-                  </li>
-                  {data.services.map((data, i) => {
-                    return (
-                      <>
-                        <li className="flex space-x-3">
-                          <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                            &bull; <span className="px-2">{data.nameIng}</span>
-                          </p>
-                        </li>
-                      </>
-                    );
-                  })}
-                </ol>
-                <a
-                  className=' className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900'
-                  href={`/packages/details?id=${data.id}`}
-                >
-                  <p>DETAILS</p>
-                </a>
+                  <ol className="my-7 space-y-5">
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">Package Include :</span>
+                      </p>
+                    </li>
+                    {data.services.map((data, i) => {
+                      return (
+                        <>
+                          <li className="flex space-x-3">
+                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                              &bull;{" "}
+                              <span className="px-2">{data.nameIng}</span>
+                            </p>
+                          </li>
+                        </>
+                      );
+                    })}
+                  </ol>
+                  <a
+                    className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                    href={`/packages/details?id=${data.id}`}
+                  >
+                    <p>DETAILS</p>
+                  </a>
+                </div>
               </>
             );
           })}

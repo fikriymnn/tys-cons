@@ -276,12 +276,12 @@ const CustomFooter = () => {
   return (
     <div className=" w-full bg-[#031530] ">
       <div className=" md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center">
-        <div>
+        <div className="bg-red-900 ">
           <img src={logo} width={200} height={75} />
           {/* <Image src={logo} width={200} height={75} /> */}
           <p className=" py-4 text-white text-[15px]">{inggrisParagraph}</p>
         </div>
-        <div>
+        <div className="bg-red-900">
           <p className=" uppercase font-bold text-white">Contact Us</p>
           <p className=" text-white pt-3 pb-2">{address}</p>
           <div className=" flex gap-3 py-2">
@@ -301,7 +301,7 @@ const CustomFooter = () => {
             <p className=" text-white my-auto">{email}</p>
           </div>
         </div>
-        <div className=" py-4 md:py-0">
+        <div className=" py-4 md:py-0 bg-red-900 ps">
           <p className=" text-white font-bold">Our Social Media</p>
           <div className=" flex gap-4">
             <img src="/assets/images/qr-tys.jpg" alt="" className=" w-40" />
@@ -320,7 +320,7 @@ const CustomFooter = () => {
                   className=" w-6 h-6 hover:scale-110 my-5"
                 />
               </a>
-              <a href={ig}>
+              <a href={`https://www.instagram.com/${ig}`}>
                 <img
                   src="/assets/images/instagram (2).png"
                   alt=""

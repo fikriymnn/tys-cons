@@ -15,6 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import parse from "html-react-parser";
 
 function PoliciesAdmin() {
   const [dataPolicies, setDataPolicies] = useState([]);
@@ -111,7 +112,7 @@ function PoliciesAdmin() {
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
-                                  <p>{data.contentEnglish}</p>
+                                  <div>{parse(data.contentEnglish)}</div>
                                 </div>
                               </div>
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">

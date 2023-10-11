@@ -6,9 +6,10 @@ import CustomCard from "@/components/CustomCard";
 // import CardTwo from "@/components/CardTwo";
 import MultipleCarousel from "@/components/MultipleCarousel";
 import Link from "next/link";
-import Hidden from "@/components/hidden";
+
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
+import { Carousel } from "flowbite-react";
 import {
   collection,
   addDoc,
@@ -313,7 +314,8 @@ const Home = () => {
       <p className="font-semibold text-3xl text-center py-5 ">
         Latest Articles
       </p>
-      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10">
+
+      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
@@ -329,54 +331,161 @@ const Home = () => {
             </>
           );
         })}
-
-        {dataArticle4.map((data, i) => {
-          return (
-            <>
-              <a key={i} href={`/articles/article?id=${data.id}`}>
-                <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3">
-                  <div className="font-semibold text-xl hover:underline">
-                    {data.titleEnglish}
+        <div>
+          {dataArticle4.map((data, i) => {
+            return (
+              <>
+                <a key={i} href={`/articles/article?id=${data.id}`}>
+                  <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3 my-5 md:my-0">
+                    <div className="font-semibold text-xl hover:underline">
+                      {data.titleEnglish}
+                    </div>
+                    <h1>{data.date}</h1>
                   </div>
-                  <h1>{data.date}</h1>
-                </div>
-              </a>
-            </>
-          );
-        })}
-        <a href="/articles">
-          <div className="mt-2 lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 p-28">
-            <p>View More Articles </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-              className="h-[1rem] w-auto mt-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              ></path>
-            </svg>
-          </div>
-        </a>
+                </a>
+              </>
+            );
+          })}
+
+          <a href="/articles">
+            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-20">
+              <p>View More Articles </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-[1rem] w-auto mt-1 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                ></path>
+              </svg>
+            </div>
+          </a>
+        </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
         <p className="font-semibold text-3xl text-center pt-10 ">
           Choose The Best Package You Need
         </p>
         <div className="md:hidden sm:hidden visible p-5">
-          <Hidden />
+          <Carousel
+            indicators={true}
+            autoPlay={true}
+            infinite="true"
+            showDots={true}
+            arrows="true"
+          >
+            {dataPackage.map((data, i) => {
+              return (
+                <>
+                  <div key={i} className="bg-white p-10 rounded-lg shadow-lg">
+                    <h5 className="mb-4 text-lg text-black font-medium text-center">
+                      {data.titleEnglish}
+                    </h5>
+                    <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                      {data.price[0].price} 元
+                    </p>
+
+                    <ol className="my-7 space-y-5">
+                      <li className="flex space-x-3">
+                        <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                          &bull; <span className="px-2">Package Include :</span>
+                        </p>
+                      </li>
+                      {data.services.map((data, i) => {
+                        return (
+                          <>
+                            <li key={i} className="flex space-x-3">
+                              <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                                &bull;{" "}
+                                <span className="px-2">{data.nameIng}</span>
+                              </p>
+                            </li>
+                          </>
+                        );
+                      })}
+                    </ol>
+                    <a
+                      className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
+                  </div>
+                </>
+              );
+            })}
+            <>
+              <div className="bg-white p-10 shadow-lg">
+                <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  asdasdasd
+                </h5>
+                <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                  asdasd
+                </p>
+
+                <ol className="my-7 space-y-5">
+                  <li className="flex space-x-3">
+                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                      &bull; <span className="px-2">Package Include :</span>
+                    </p>
+                  </li>
+
+                  <>
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">asdasd</span>
+                      </p>
+                    </li>
+                  </>
+                </ol>
+                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
+                  <p>DETAILS</p>
+                </a>
+              </div>
+            </>
+            <>
+              <div className="bg-white p-10 shadow-lg">
+                <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  asdasdasd
+                </h5>
+                <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                  asdasd
+                </p>
+
+                <ol className="my-7 space-y-5">
+                  <li className="flex space-x-3">
+                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                      &bull; <span className="px-2">Package Include :</span>
+                    </p>
+                  </li>
+
+                  <>
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">asdasd</span>
+                      </p>
+                    </li>
+                  </>
+                </ol>
+                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
+                  <p>DETAILS</p>
+                </a>
+              </div>
+            </>
+          </Carousel>
         </div>
         <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           {dataPackage.map((data, i) => {
             return (
               <>
-                <div key={i}>
+                <div key={i} className="bg-white p-10 shadow-lg">
                   <h5 className="mb-4 text-lg text-black font-medium text-center">
                     {data.titleEnglish}
                   </h5>
@@ -404,7 +513,7 @@ const Home = () => {
                     })}
                   </ol>
                   <a
-                    className=' className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900'
+                    className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                     href={`/packages/details?id=${data.id}`}
                   >
                     <p>DETAILS</p>

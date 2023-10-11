@@ -76,7 +76,7 @@ function MultipleCarousel() {
       {dataClient.map((data, i) => {
         return (
           <>
-            <div className="text-white">
+            <div className="text-white flex justify-center items-center h-[100px]">
               <Image
                 key={i}
                 className="md:w-[200px] w-32"

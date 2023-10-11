@@ -21,6 +21,7 @@ import {
 import { db } from "../../../../firebase/page";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import parse from "html-react-parser";
 
 function DetailPackages() {
   const searchParams = useSearchParams();
@@ -83,10 +84,12 @@ function DetailPackages() {
                   </div>
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
                     <div className="bg-gray-100 md:w-[400px] md:h-[350px] ms:w-full ms:h-full mt-2">
-                      <img
+                      <Image
                         src="/assets/images/trademark.jpg"
                         alt=""
                         className="md:w-[350px] md:h-[350px]"
+                        width={350}
+                        height={350}
                       />
                     </div>
                     <div className="md:ps-10 ps-">
@@ -160,12 +163,13 @@ function DetailPackages() {
                   {data.content.map((data, i) => {
                     return (
                       <>
-                        <div className=" bg-blue-600  w-40 mb-2">
-                          <p className="text-center text-white text-base font-semibold p-3">
+                        <div className=" flex mb-2">
+                          <p className="bg-blue-600 text-white text-base font-semibold p-3">
                             {data.topicIng}
                           </p>
+                          <div className=""></div>
                         </div>
-                        <p>{data.contentIng}</p>
+                        <div>{parse(data.contentIng)}</div>
                       </>
                     );
                   })}
