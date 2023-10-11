@@ -18,18 +18,21 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useState, useEffect } from "react";
-
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 const About = () => {
   const [address, setAddress] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [chinaHeading, setChinaHeading] = useState("");
   const [inggrisHeading, setInggrisHeading] = useState("");
-
   const [chinaParagraph, setChinaParagraph] = useState("");
   const [inggrisParagraph, setInggrisParagraph] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [sendEmail, setSendEmail] = useState("");
+  const [name, setName] = useState("");
+  const [sendPhone, setSendPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getDataAboutAdress();
@@ -152,6 +155,26 @@ const About = () => {
       alert(error);
     }
   }
+  const form = useRef();
+
+  const sendMail = async (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_lu2s5ci",
+        "template_9nqk4cb",
+        form.current,
+        "-Ogru2wb76QTdI6Ci"
+      )
+      .then(
+        (result) => {
+          alert("message send");
+        },
+        (error) => {
+          alert("message error");
+        }
+      );
+  };
 
   return (
     <>
@@ -203,54 +226,68 @@ const About = () => {
               <p className=" my-auto">{email}</p>
             </div>
           </div>
+          {/* <form ref={form} onSubmit={sendEmail}>
+            <label>Name</label>
+            <input type="text" name="user_name" />
+            <label>Email</label>
+            <input type="email" name="user_email" />
+            <label>Message</label>
+            <textarea name="message" />
+            <input type="submit" value="Send" />
+          </form> */}
           <div>
-            <div className="">
-              <h1 className=" text-md pb-3">Name</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className=" py-5">
-              <h1 className=" text-md pb-3">Email</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className="">
-              <h1 className=" text-md pb-3">Phone Number</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className=" py-5">
-              <h1 className=" text-md pb-3">Message</h1>
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-                placeholder="Input your message"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={100}
-              ></textarea>
-            </div>
-            <a href="">
-              <div className=" w-full h-12 bg-blue-600 hover:bg-blue-500">
-                <p className=" text-white text-center my-auto py-3">
-                  Send Message
-                </p>
+            <form ref={form} onSubmit={(e) => sendMail(e)}>
+              <div className="">
+                <h1 className=" text-md pb-3">Name</h1>
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
               </div>
-            </a>
+              <div className=" py-5">
+                <h1 className=" text-md pb-3">Email</h1>
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+              <div className="">
+                <h1 className=" text-md pb-3">Phone Number</h1>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+              <div className=" py-5">
+                <h1 className=" text-md pb-3">Message</h1>
+                <textarea
+                  name="message"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Input your message"
+                  color=" bg-transparent"
+                  className=" w-full resize-none rounded-lg border-slate-300 "
+                  maxLength={100}
+                ></textarea>
+              </div>
+              <button type="submit" value="Send">
+                <div className=" w-full h-12 bg-blue-600 hover:bg-blue-500 py-3 px-5 rounded-md">
+                  <p className=" text-white text-center my-auto ">
+                    Send Message
+                  </p>
+                </div>
+              </button>
+            </form>
           </div>
         </div>
       </div>
