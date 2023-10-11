@@ -18,8 +18,10 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const About = () => {
+  const { language, changeLanguage } = useLanguage();
   const [address, setAddress] = useState("");
 
   const [email, setEmail] = useState("");
@@ -158,9 +160,9 @@ const About = () => {
       <NavbarWithCTAButton />
       <div className=" px-5 md:px-16 sm:px-10 pt-24 ">
         <p className="text-blue-800 text-3xl font-semibold pb-4 font-sans">
-          {inggrisHeading}
+          {language == "en" ? inggrisHeading : chinaHeading}
         </p>
-        <p className=" text-lg font-sans">{inggrisParagraph}</p>
+        <p className=" text-lg font-sans">{language == "en" ? inggrisParagraph : chinaHeading}</p>
         <div className="md:grid md:grid-cols-2 py-10 gap-2 ">
           <div>
             <Iframe

@@ -8,10 +8,11 @@ import CustomFooter from '@/components/CustomFooter';
 import FinanceServices from '../../../components/ServicesSub/FinanceAccountingTax/FinanceServices';
 import AccountingServices from '@/components/ServicesSub/FinanceAccountingTax/AcountingServices'
 import TaxServices from '@/components/ServicesSub/FinanceAccountingTax/TaxServices'
-
+import { useLanguage } from "@/context/LanguageContext";
 
 function FinanceAccountingTax() {
 
+    const { language, changeLanguage } = useLanguage();
     const [comp, setComp] = useState(0);
     const [dataFinanceServices, setDataFinanceServices] = useState([]);
     const [dataFinanceAccounting, setDataFinanceAccounting] = useState([]);
@@ -90,14 +91,14 @@ function FinanceAccountingTax() {
         <>
             <NavbarWithCTAButton />
             <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
-                <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Finance Accounting Tax</p></div>
+                <div className='flex pb-5'><p>{language == "en" ? "Services" : "服务"}</p> <p className='text-blue-600 ml-1'>/ Finance Accounting Tax</p></div>
                 <div className='bg-white'>
                     <div className="p-5 pt-3">
                         <div className='overflow-auto w-full'>
                             <div className='flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 '>
-                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Finance Services</button>
-                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Accounting Services</button>
-                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Tax Services</button>
+                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}> {language == "en" ? "Finance Services" : "财务服务"}</button>
+                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Accounting Services" : "会计服务"}</button>
+                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Tax Services" : "税务服务"}</button>
 
                             </div>
                         </div>
@@ -118,7 +119,7 @@ function FinanceAccountingTax() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -148,7 +149,7 @@ function FinanceAccountingTax() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -177,7 +178,7 @@ function FinanceAccountingTax() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}

@@ -11,9 +11,10 @@ import CustomFooter from '@/components/CustomFooter';
 import MarketingSales from '../../../components/ServicesSub/TalentRecruitmentHR/MarketingSales';
 import ManagementCandidate from '../../../components/ServicesSub/TalentRecruitmentHR/ManagementCandidate';
 import HRManagementService from '../../../components/ServicesSub/TalentRecruitmentHR/HRManagementService';
-
+import { useLanguage } from "@/context/LanguageContext";
 
 function ProductTalent() {
+    const { language, changeLanguage } = useLanguage();
     const [comp, setComp] = useState(0);
     const [dataTalentTranslator, setDataTalentTranslator] = useState([]);
     const [dataTalentFinance, setDataTalentFinance] = useState([]);
@@ -136,16 +137,16 @@ function ProductTalent() {
         <>
             <NavbarWithCTAButton />
             <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
-                <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Talent Recruitment HR</p></div>
+                <div className='flex pb-5'><p>{language == "en" ? "Services" : "服务"} </p> <p className='text-blue-600 ml-1'>/ Talent Recruitment HR</p></div>
                 <div className='bg-white'>
                     <div className="p-5 pt-3">
                         <div className='overflow-auto w-full'>
                             <div className='flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 '>
-                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Translator Assistant</button>
-                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Finance Accounting Tax</button>
-                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Marketing Sales</button>
-                                <button onClick={() => setComp(3)} className={`${comp == 3 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Management Candidate</button>
-                                <button onClick={() => setComp(4)} className={`${comp == 4 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>HR Management Service</button>
+                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Translator Assistant" : "翻译助理"}</button>
+                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Finance Accounting Tax" : "财税会计"}</button>
+                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Marketing Sales" : "销售和营销"}</button>
+                                <button onClick={() => setComp(3)} className={`${comp == 3 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Management Candidate" : "管理人选"}</button>
+                                <button onClick={() => setComp(4)} className={`${comp == 4 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "HR Management Service" : "人事管理服务"}</button>
 
                             </div>
                         </div>
@@ -166,7 +167,7 @@ function ProductTalent() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -196,7 +197,7 @@ function ProductTalent() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -226,7 +227,7 @@ function ProductTalent() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -256,7 +257,7 @@ function ProductTalent() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -285,7 +286,7 @@ function ProductTalent() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}

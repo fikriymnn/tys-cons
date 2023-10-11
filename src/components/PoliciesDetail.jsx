@@ -1,4 +1,5 @@
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function PoliciesDetail({ title, src, content }) {
   return (
@@ -22,7 +23,7 @@ export default function PoliciesDetail({ title, src, content }) {
         </div>
 
         <div className="w-10/12 m-auto mt-7 mb-7">
-          <p className="md:text-base sm:text-sm text-xs">{content}</p>
+          <p className="md:text-base sm:text-sm text-xs">{parse(content)}</p>
         </div>
       </div>
     </>

@@ -14,8 +14,12 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 function Events() {
+  const { language, changeLanguage } = useLanguage();
+
+
   const [dataEvents, setDataEvents] = useState([]);
   useEffect(() => {
     getDataEvents();
@@ -78,7 +82,7 @@ function Events() {
                         ></div>
                         <div className="p-3 ">
                           <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">
-                            {data.titleEnglish}
+                            {language == "en" ? data.titleEnglish : data.titleChinese}
                           </h1>
                           <h2>{data.date}</h2>
                         </div>

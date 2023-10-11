@@ -21,8 +21,12 @@ import {
 import { db, storage } from "../../../../firebase/page";
 import parse from "html-react-parser";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
 
 function Event() {
+  const { language, changeLanguage } = useLanguage();
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataEvents, setDataEvents] = useState([]);
@@ -78,7 +82,7 @@ function Event() {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   ></path>
                 </svg>
-                <p className="text-blue-500"> {data.titleEnglish}</p>
+                <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
               </div>
               <div className="bg-white">
                 <div className="relative p-5  ">
@@ -88,7 +92,7 @@ function Event() {
                       <p>{data.date}</p>
                     </div>
                     <h1 className="text-4xl text-center p-5 font-semibold">
-                      {data.titleEnglish}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h1>
                     <div className="bg-blue-500 h-[200px] md:h-[500px] relative">
                       <div
@@ -113,12 +117,12 @@ function Event() {
                           <div className="w-100px flex">
                             <div className="bg-blue-600 h-[50px] flex items-center">
                               <h2 className="mx-5 text-xl text-center font-semibold text-white">
-                                {data.topicIng}
+                                {language == "en" ? data.topicIng : data.topicChi}
                               </h2>
                             </div>
                           </div>
                           <div className="py-5 content">
-                            <p>{parse(data.contentIng)}</p>
+                            <p>{parse(language == "en" ? data.contentIng : data.contentChi)}</p>
                           </div>
                           {data.img == "" ? (
                             <></>
