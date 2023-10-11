@@ -36,12 +36,30 @@ function Article() {
     <>
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
-        <BreadcrumbArticle className="ps-0" />
-        <div className="bg-white">
-          <div className="relative p-5">
-            {dataArticle.map((data, i) => {
-              return (
-                <>
+        {dataArticle.map((data, i) => {
+          return (
+            <>
+              <div className="py-2 flex gap-1">
+                <a href="/articles">Articles</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="h-[1rem] w-auto mt-1 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  ></path>
+                </svg>
+                <p className="text-blue-500">{data.titleEnglish}</p>
+              </div>
+              <div className="bg-white">
+                <div className="relative p-5">
                   <div className="w-full h-1000px">
                     <h3>{data.date}</h3>
                     <h1 className="text-4xl text-center p-5 font-semibold">
@@ -94,11 +112,11 @@ function Article() {
                       );
                     })}
                   </div>
-                </>
-              );
-            })}
-          </div>
-        </div>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </div>
       {/* <CustomFooter /> */}
     </>

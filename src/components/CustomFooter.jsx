@@ -275,15 +275,19 @@ const CustomFooter = () => {
   }
   return (
     <div className=" w-full bg-[#031530] ">
-      <div className=" md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center">
-        <div className="bg-red-900 ">
+      <div className=" md:flex grid p-5 sm:p-8 md:p-12 gap-10 items-center">
+        <div className=" md:w-5/12">
           <img src={logo} width={200} height={75} />
           {/* <Image src={logo} width={200} height={75} /> */}
           <p className=" py-4 text-white text-[15px]">{inggrisParagraph}</p>
         </div>
-        <div className="bg-red-900">
+        <div className="">
           <p className=" uppercase font-bold text-white">Contact Us</p>
-          <p className=" text-white pt-3 pb-2">{address}</p>
+          <a href={`https://www.google.com/maps/search/${address}`}>
+            <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200">
+              {address}
+            </p>
+          </a>
           <div className=" flex gap-3 py-2">
             <img
               src="/assets/images/call (2).png"
@@ -298,10 +302,14 @@ const CustomFooter = () => {
               alt=""
               className="w-5 h-5 my-auto"
             />
-            <p className=" text-white my-auto">{email}</p>
+            <a href={`mailto:${email}`}>
+              <p className=" text-white my-auto hover:translate-x-1 duration-100 hover:text-blue-200">
+                {email}
+              </p>
+            </a>
           </div>
         </div>
-        <div className=" py-4 md:py-0 bg-red-900 ps">
+        <div className=" py-4 md:py-0 ">
           <p className=" text-white font-bold">Our Social Media</p>
           <div className=" flex gap-4">
             <img src="/assets/images/qr-tys.jpg" alt="" className=" w-40" />
@@ -329,9 +337,9 @@ const CustomFooter = () => {
               </a>
               <a href={wechat}>
                 <img
-                  src="/assets/images/youtube.png"
+                  src="/assets/images/we.png"
                   alt=""
-                  className=" w-6 h-6 hover:scale-110"
+                  className=" h-6 hover:scale-110"
                 />
               </a>
             </div>

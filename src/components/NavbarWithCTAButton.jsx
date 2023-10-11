@@ -79,17 +79,17 @@ export default function NavbarWithCTAButton({ height }) {
             <img
               src="/assets/images/tys-logo.png"
               alt=""
-              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 opacity-100"
+              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           ) : (
             <img
               src="/assets/images/tys-logo-blue.png"
               alt=""
-              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 opacity-100"
+              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           )}
         </Navbar.Brand>
-        <div className="flex md:order-3 gap-1 z-40 ">
+        <div className="flex md:w-60 w-44 md:order-3 gap-1 z-40 ">
           <button onClick={() => handleChangeLanguage("en")}>
             <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
               <Image
@@ -100,8 +100,8 @@ export default function NavbarWithCTAButton({ height }) {
               <p
                 className={
                   navbar
-                    ? "text-white text-base my-auto"
-                    : "  text-black my-auto text-base  "
+                    ? "text-white text-base my-auto md:opacity-100 opacity-0"
+                    : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
                 }
               >
                 EN
@@ -114,8 +114,8 @@ export default function NavbarWithCTAButton({ height }) {
               <p
                 className={
                   navbar
-                    ? "text-white text-base my-auto"
-                    : "  text-black my-auto text-base  "
+                    ? "text-white text-base my-auto md:opacity-100 opacity-0"
+                    : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
                 }
               >
                 语言
