@@ -395,6 +395,7 @@ const Home = () => {
             indicators={true}
             autoPlay={true}
             infinite="true"
+            showDots="true"
             arrows="true"
           >
             {dataPackage.map((data, i) => {
