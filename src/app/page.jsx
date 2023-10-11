@@ -161,7 +161,10 @@ const Home = () => {
       <p className="font-semibold text-3xl text-center pt-14 pb">
         {language == "en" ? "What Services We Offer" : "我们提供的服务"}
       </p>
-      <div id="getstart" className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7">
+      <div
+        id="getstart"
+        className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7"
+      >
         <Link href="/services/basicEstablish">
           <MainCard
             icon1={
@@ -181,15 +184,17 @@ const Home = () => {
                 ></path>
               </svg>
             }
-            title={language == "en" ? "Basic Establishment Services" : "基础服务"}
-
+            title={
+              language == "en" ? "Basic Establishment Services" : "基础服务"
+            }
             text1={language == "en" ? "Company Registration" : "公司注册"}
             text2={language == "en" ? "Visa Registration" : "签证办理"}
             text3={language == "en" ? "Trademark" : "商标"}
             text4={language == "en" ? "Office Administration" : "行政办公"}
-            text5={language == "en" ? "Construction Certifications" : "建筑工程"}
+            text5={
+              language == "en" ? "Construction Certifications" : "建筑工程"
+            }
             text6={language == "en" ? "Factory Licenses" : "工厂许可"}
-
           />
         </Link>
         <Link href="/services/productCertifications">
@@ -223,7 +228,9 @@ const Home = () => {
             text2={language == "en" ? "ISO Management System" : "ISO 管理体系"}
             text3={language == "en" ? "SNI National Standard" : "SNI 国家标准"}
             text4={language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
-            text5={language == "en" ? "POSTEL Telecommunication" : "POSTEL 电通信"}
+            text5={
+              language == "en" ? "POSTEL Telecommunication" : "POSTEL 电通信"
+            }
             text6={language == "en" ? "Alcohol And Cigarette" : "酒和烟证"}
             text7={language == "en" ? "Other Certification" : "其他证"}
           />
@@ -275,7 +282,9 @@ const Home = () => {
                 ></path>
               </svg>
             }
-            title={language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
+            title={
+              language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"
+            }
             clickText1={"/services/basicEstablish/"}
             clickText2={"/services/basicEstablish/"}
             clickText3={"/services/basicEstablish/"}
@@ -323,7 +332,9 @@ const Home = () => {
             <>
               <div key={i}>
                 <CustomCard
-                  text={language == "en" ? data.titleEnglish : data.titleChinese}
+                  text={
+                    language == "en" ? data.titleEnglish : data.titleChinese
+                  }
                   isi={data.date}
                   isi2={data.content[0].contentIng}
                   id={data.id}
@@ -373,7 +384,11 @@ const Home = () => {
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
         <div className="font-semibold text-3xl text-center pt-10 ">
-          <p>{language == "en" ? "Choose The Best Package You Need" : "选择您需要的服务包"}</p>
+          <p>
+            {language == "en"
+              ? "Choose The Best Package You Need"
+              : "选择您需要的服务包"}
+          </p>
         </div>
         <div className="md:hidden sm:hidden visible p-5">
           <Carousel
@@ -527,7 +542,9 @@ const Home = () => {
         </div>
         <div className="pb-24 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
-            <a href="/packages">{language == "en" ? "See More Packages" : "See More Packages"}</a>{" "}
+            <a href="/packages">
+              {language == "en" ? "See More Packages" : "See More Packages"}
+            </a>{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
