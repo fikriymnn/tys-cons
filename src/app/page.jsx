@@ -1,13 +1,15 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import MainCard from "@/components/MainCard";
 import CustomCard from "@/components/CustomCard";
-import CardTwo from "@/components/CardTwo";
+// import CardTwo from "@/components/CardTwo";
 import MultipleCarousel from "@/components/MultipleCarousel";
 import Link from "next/link";
-import Hidden from "@/components/hidden";
+
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
+import { Carousel } from "flowbite-react";
 import {
   collection,
   addDoc,
@@ -23,93 +25,100 @@ import {
   limit,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
+import { useLanguage } from "@/context/LanguageContext";
+import { useState, useEffect } from "react";
 
-async function getHeading() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editHomePage", "heading");
-    const querySnapshot = await getDoc(docRef);
+const Home = () => {
+  const { language, changeLanguage } = useLanguage();
+  const [dataHeading, setDataHeading] = useState([]);
+  const [dataParagraph, setDataParagraph] = useState([]);
+  const [dataArticle, setDataArticle] = useState([]);
+  const [dataArticle4, setDataArticle4] = useState([]);
+  const [dataPackage, setDataPackage] = useState([]);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  useEffect(() => {
+    getHeading();
+    getDataHomeParagraph();
+    getDataArticles();
+    getDataArticles4();
+    getDataPackage();
+  }, []);
+
+  async function getHeading() {
+    try {
+      const docRef = doc(db, "editHomePage", "heading");
+      const querySnapshot = await getDoc(docRef);
+      let data = [];
+      data.push(querySnapshot.data());
+      setDataHeading(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataHomeParagraph() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editHomePage", "paragraph");
-    const querySnapshot = await getDoc(docRef);
-
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  async function getDataHomeParagraph() {
+    try {
+      const docRef = doc(db, "editHomePage", "paragraph");
+      const querySnapshot = await getDoc(docRef);
+      let data = [];
+      data.push(querySnapshot.data());
+      setDataParagraph(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataArticles() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "articles");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(2));
-    const querySnapshot = await getDocs(q);
+  async function getDataArticles() {
+    try {
+      const ordersRef = collection(db, "articles");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(2));
+      const querySnapshot = await getDocs(q);
+      let data = [];
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataArticle(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
 
-async function getDataArticles4() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "articles");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(4));
-    const querySnapshot = await getDocs(q);
+  async function getDataArticles4() {
+    try {
+      const ordersRef = collection(db, "articles");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(4));
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataArticle4(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
-async function getDataPackage() {
-  let data = [];
-  try {
-    const ordersRef = collection(db, "package");
-    const q = query(ordersRef, orderBy("date", "desc"), limit(3));
-    const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
+  async function getDataPackage() {
+    try {
+      const ordersRef = collection(db, "package");
+      const q = query(ordersRef, orderBy("date", "desc"), limit(3));
+      const querySnapshot = await getDocs(q);
+      let data = [];
+      querySnapshot.forEach(async (doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataPackage(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  return data;
-}
-
-const Home = async () => {
-  const dataHeading = await getHeading();
-
-  const dataParagraph = await getDataHomeParagraph();
-  const dataArticle = await getDataArticles();
-  const dataArticle4 = await getDataArticles4();
-  const dataPackage = await getDataPackage();
 
   return (
     <>
@@ -121,14 +130,27 @@ const Home = async () => {
         <div className="w-full h-[800px] md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
-              <p className="leading-relaxed tracking-wide">
-                {dataHeading[0].english}
-              </p>
+              {dataHeading.map((data, i) => {
+                return (
+                  <>
+                    <p className="leading-relaxed tracking-wide">
+                      {language == "en" ? data.english : data.chinese}
+                    </p>
+                  </>
+                );
+              })}
             </div>
-            <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
-              {dataParagraph[0].english}
-            </div>
-            <a className="py-10" href="">
+            {dataParagraph.map((data, i) => {
+              return (
+                <>
+                  <div className="text-white flex items-center pb-5 leading-relaxed tracking-wide md:text-[17.2px]">
+                    {language == "en" ? data.english : data.chinese}
+                  </div>
+                </>
+              );
+            })}
+
+            <a className="py-10" href="#getstart">
               <div className="text-white bg-primary p-3 w-36 mt-5 flex items-center justify-center">
                 <p className=" my-auto text-center ">GET STARTED</p>
               </div>
@@ -137,9 +159,12 @@ const Home = async () => {
         </div>
       </div>
       <p className="font-semibold text-3xl text-center pt-14 pb">
-        What Services We Offer
+        {language == "en" ? "What Services We Offer" : "我们提供的服务"}
       </p>
-      <div className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7">
+      <div
+        id="getstart"
+        className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7"
+      >
         <Link href="/services/basicEstablish">
           <MainCard
             icon1={
@@ -159,13 +184,17 @@ const Home = async () => {
                 ></path>
               </svg>
             }
-            title={"Basic Establishment Services"}
-            text1={"Company Registration"}
-            text2={"Visa Registration"}
-            text3={"Trademark"}
-            text4={"Office Administration"}
-            text5={"Construction Certifications"}
-            text6={"Factory Licenses"}
+            title={
+              language == "en" ? "Basic Establishment Services" : "基础服务"
+            }
+            text1={language == "en" ? "Company Registration" : "公司注册"}
+            text2={language == "en" ? "Visa Registration" : "签证办理"}
+            text3={language == "en" ? "Trademark" : "商标"}
+            text4={language == "en" ? "Office Administration" : "行政办公"}
+            text5={
+              language == "en" ? "Construction Certifications" : "建筑工程"
+            }
+            text6={language == "en" ? "Factory Licenses" : "工厂许可"}
           />
         </Link>
         <Link href="/services/productCertifications">
@@ -187,7 +216,7 @@ const Home = async () => {
                 ></path>
               </svg>
             }
-            title={"Product Certifications"}
+            title={language == "en" ? "Product Certification" : "产品认证"}
             clickText1={"/services/basicEstablish/"}
             clickText2={"/services/basicEstablish/"}
             clickText3={"/services/basicEstablish/"}
@@ -195,13 +224,15 @@ const Home = async () => {
             clickText5={"/services/basicEstablish/"}
             clickText6={"/services/basicEstablish/"}
             clickText7={"/services/basicEstablish/"}
-            text1={"BPOM Food and Drug"}
-            text2={"ISO Management System"}
-            text3={"SNI National Standard"}
-            text4={"Medical and Hygiene"}
-            text5={"POSTEL Telecommunication"}
-            text6={"Alcohol And Cigarette"}
-            text7={"Other Certification"}
+            text1={language == "en" ? "BPOM Food and Drug" : "BPOM 食药化妆"}
+            text2={language == "en" ? "ISO Management System" : "ISO 管理体系"}
+            text3={language == "en" ? "SNI National Standard" : "SNI 国家标准"}
+            text4={language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
+            text5={
+              language == "en" ? "POSTEL Telecommunication" : "POSTEL 电通信"
+            }
+            text6={language == "en" ? "Alcohol And Cigarette" : "酒和烟证"}
+            text7={language == "en" ? "Other Certification" : "其他证"}
           />
         </Link>
         <Link href="/services/financeAccountingTax">
@@ -223,13 +254,13 @@ const Home = async () => {
                 ></path>
               </svg>
             }
-            title={"Finance Accounting Tax"}
+            title={language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
             clickText1={"/services/basicEstablish/"}
             clickText2={"/services/basicEstablish/"}
             clickText3={"/services/basicEstablish/"}
-            text1={"Finance Services"}
-            text2={"Accounting Services"}
-            text3={"Tax Services"}
+            text1={language == "en" ? "Finance Services" : "财务服务"}
+            text2={language == "en" ? "Accounting Services" : "会计服务"}
+            text3={language == "en" ? "Tax Services" : "税务服务"}
           />
         </Link>
         <Link href="/services/TalentRecruitmentHR">
@@ -251,17 +282,19 @@ const Home = async () => {
                 ></path>
               </svg>
             }
-            title={"Talent Recruitment HR"}
+            title={
+              language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"
+            }
             clickText1={"/services/basicEstablish/"}
             clickText2={"/services/basicEstablish/"}
             clickText3={"/services/basicEstablish/"}
             clickText4={"/services/basicEstablish/"}
             clickText5={"/services/basicEstablish/"}
-            text1={"Translator Assistant"}
-            text2={"Finance Accounting Tax"}
-            text3={"Marketing Sales"}
-            text4={"Management Candidate"}
-            text5={"HR Management Service"}
+            text1={language == "en" ? "Translator Assistant" : "翻译助理"}
+            text2={language == "en" ? "Finance Accounting Tax" : "财税会计"}
+            text3={language == "en" ? "Marketing Sales" : "销售和营销"}
+            text4={language == "en" ? "Management Candidate" : "管理人选"}
+            text5={language == "en" ? "THR Management Service" : "人事管理服务"}
           />
         </Link>
         <Link href="/services/LegalServeces">
@@ -284,93 +317,234 @@ const Home = async () => {
               </svg>
             }
             clickText1={"/services/basicEstablish/"}
-            title={"Legal Services"}
-            text1={"Legal Administration"}
+            title={language == "en" ? "Legal Services" : "法律服务"}
+            text1={language == "en" ? "Legal Administration" : "法律行政"}
           />
         </Link>
       </div>
       <p className="font-semibold text-3xl text-center py-5 ">
-        Latest Articles
+        {language == "en" ? "Latest Articles" : "最新文章"}
       </p>
-      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10">
+
+      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
-              <CustomCard
-                text={data.titleEnglish}
-                isi={data.date}
-                isi2={data.content[0].contentIng}
-                id={data.id}
-                img={data.img}
-              />
+              <div key={i}>
+                <CustomCard
+                  text={
+                    language == "en" ? data.titleEnglish : data.titleChinese
+                  }
+                  isi={data.date}
+                  isi2={data.content[0].contentIng}
+                  id={data.id}
+                  img={data.img}
+                />
+              </div>
             </>
           );
         })}
-
-        {dataArticle4.map((data, i) => {
-          return (
-            <>
-              <a href={`/articles/article?id=${data.id}`}>
-                <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3">
-                  <div className="font-semibold text-xl hover:underline">
-                    {data.titleEnglish}
+        <div>
+          {dataArticle4.map((data, i) => {
+            return (
+              <>
+                <a key={i} href={`/articles/article?id=${data.id}`}>
+                  <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3 my-5 md:my-0">
+                    <div className="font-semibold text-xl hover:underline">
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </div>
+                    <h1>{data.date}</h1>
                   </div>
-                  <h1>{data.date}</h1>
-                </div>
-              </a>
-            </>
-          );
-        })}
-        <a href="/articles">
-          <div className="mt-2 lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 p-28">
-            <p>View More Articles </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-              className="h-[1rem] w-auto mt-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              ></path>
-            </svg>
-          </div>
-        </a>
+                </a>
+              </>
+            );
+          })}
+
+          <a href="/articles">
+            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-20">
+              <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-[1rem] w-auto mt-1 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                ></path>
+              </svg>
+            </div>
+          </a>
+        </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <p className="font-semibold text-3xl text-center pt-10 ">
-          Choose The Best Package You Need
-        </p>
+        <div className="font-semibold text-3xl text-center pt-10 ">
+          <p>
+            {language == "en"
+              ? "Choose The Best Package You Need"
+              : "选择您需要的服务包"}
+          </p>
+        </div>
         <div className="md:hidden sm:hidden visible p-5">
-          <Hidden />
+          <Carousel
+            indicators={true}
+            autoPlay={true}
+            infinite="true"
+            showDots="true"
+            arrows="true"
+          >
+            {dataPackage.map((data, i) => {
+              return (
+                <>
+                  <div key={i} className="bg-white p-10 rounded-lg shadow-lg">
+                    <h5 className="mb-4 text-lg text-black font-medium text-center">
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </h5>
+                    <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                      {data.price[0].price} 元
+                    </p>
+
+                    <ol className="my-7 space-y-5">
+                      <li className="flex space-x-3">
+                        <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                          &bull; <span className="px-2">Package Include :</span>
+                        </p>
+                      </li>
+                      {data.services.map((data, i) => {
+                        return (
+                          <>
+                            <li key={i} className="flex space-x-3">
+                              <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                                &bull;{" "}
+                                <span className="px-2">{data.nameIng}</span>
+                              </p>
+                            </li>
+                          </>
+                        );
+                      })}
+                    </ol>
+                    <a
+                      className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
+                  </div>
+                </>
+              );
+            })}
+            <>
+              <div className="bg-white p-10 shadow-lg">
+                <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  asdasdasd
+                </h5>
+                <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                  asdasd
+                </p>
+
+                <ol className="my-7 space-y-5">
+                  <li className="flex space-x-3">
+                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                      &bull; <span className="px-2">Package Include :</span>
+                    </p>
+                  </li>
+
+                  <>
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">asdasd</span>
+                      </p>
+                    </li>
+                  </>
+                </ol>
+                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
+                  <p>DETAILS</p>
+                </a>
+              </div>
+            </>
+            <>
+              <div className="bg-white p-10 shadow-lg">
+                <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  asdasdasd
+                </h5>
+                <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                  asdasd
+                </p>
+
+                <ol className="my-7 space-y-5">
+                  <li className="flex space-x-3">
+                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                      &bull; <span className="px-2">Package Include :</span>
+                    </p>
+                  </li>
+
+                  <>
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">asdasd</span>
+                      </p>
+                    </li>
+                  </>
+                </ol>
+                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
+                  <p>DETAILS</p>
+                </a>
+              </div>
+            </>
+          </Carousel>
         </div>
         <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           {dataPackage.map((data, i) => {
             return (
               <>
-                <CardTwo
-                  title={data.titleEnglish}
-                  price={data.price[0].price + "元"}
-                  text1={"Package Includes:"}
-                  text2={data.services}
-                  id={data.id}
-                  text3={"Daily Prices Change Notifications"}
-                  text4={"Marketplace Price Tracking"}
-                  text5={"Stock Availability Monitoring"}
-                  text6={"Marketplace Price Tracking"}
-                />
+                <div key={i} className="bg-white p-10 shadow-lg">
+                  <h5 className="mb-4 text-lg text-black font-medium text-center">
+                    {data.titleEnglish}
+                  </h5>
+                  <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                    {data.price[0].price} 元
+                  </p>
+
+                  <ol className="my-7 space-y-5">
+                    <li className="flex space-x-3">
+                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                        &bull; <span className="px-2">Package Include :</span>
+                      </p>
+                    </li>
+                    {data.services.map((data, i) => {
+                      return (
+                        <>
+                          <li key={i} className="flex space-x-3">
+                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                              &bull;{" "}
+                              <span className="px-2">{data.nameIng}</span>
+                            </p>
+                          </li>
+                        </>
+                      );
+                    })}
+                  </ol>
+                  <a
+                    className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                    href={`/packages/details?id=${data.id}`}
+                  >
+                    <p>DETAILS</p>
+                  </a>
+                </div>
               </>
             );
           })}
         </div>
         <div className="pb-24 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
-            <a href="/packages">See More Packages</a>{" "}
+            <a href="/packages">
+              {language == "en" ? "See More Packages" : "See More Packages"}
+            </a>{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -391,8 +565,9 @@ const Home = async () => {
       </div>
       <div className="bg-white w-full">
         <p className="font-semibold text-3xl text-center py-10 pb-10">
-          Our Clients
+          {language == "en" ? "Clients" : "我们客户"}
         </p>
+
         <MultipleCarousel />
       </div>
       <CustomFooter />

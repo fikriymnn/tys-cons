@@ -21,19 +21,23 @@ import {
 import { db, storage } from "../../../../firebase/page";
 import parse from "html-react-parser";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
 
 function Event() {
+  const { language, changeLanguage } = useLanguage();
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataEvents, setDataEvents] = useState([]);
 
   useEffect(() => {
-    getDataEventse();
-  }, []);
+    getDataEventse(id);
+  }, [id]);
 
-  const getDataEventse = async () => {
+  async function getDataEventse(idd) {
     try {
-      const docRef = doc(db, "events", id);
+      const docRef = doc(db, "events", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -52,25 +56,43 @@ function Event() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   return (
     <>
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
-        <BreadcrumbArticle className="ps-0" />
-        <div className="bg-white">
-          <div className="relative p-5 mt-20 md:mt-10">
-            {dataEvents.map((data, i) => {
-              return (
-                <>
+        {dataEvents.map((data, i) => {
+          return (
+            <>
+              <div className="py-2 flex gap-1 ">
+                <a href="/events">Events</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="h-[1rem] w-auto mt-1 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  ></path>
+                </svg>
+                <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
+              </div>
+              <div className="bg-white">
+                <div className="relative p-5  ">
                   <div className="w-full">
                     <div className="flex md:flex-row flex-col">
                       <p>Posted at: </p>
                       <p>{data.date}</p>
                     </div>
                     <h1 className="text-4xl text-center p-5 font-semibold">
-                      {data.titleEnglish}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h1>
                     <div className="bg-blue-500 h-[200px] md:h-[500px] relative">
                       <div
@@ -95,12 +117,12 @@ function Event() {
                           <div className="w-100px flex">
                             <div className="bg-blue-600 h-[50px] flex items-center">
                               <h2 className="mx-5 text-xl text-center font-semibold text-white">
-                                {data.topicIng}
+                                {language == "en" ? data.topicIng : data.topicChi}
                               </h2>
                             </div>
                           </div>
                           <div className="py-5 content">
-                            <p>{parse(data.contentIng)}</p>
+                            <p>{parse(language == "en" ? data.contentIng : data.contentChi)}</p>
                           </div>
                           {data.img == "" ? (
                             <></>
@@ -117,11 +139,11 @@ function Event() {
                       );
                     })}
                   </div>
-                </>
-              );
-            })}
-          </div>
-        </div>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </div>
       {/* <CustomFooter /> */}
     </>

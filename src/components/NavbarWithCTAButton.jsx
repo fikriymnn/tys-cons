@@ -1,13 +1,38 @@
 "use client";
 import Image from "next/image";
 
-import { useState } from "react";
 import { Button, Navbar, Dropdown, Item } from "flowbite-react";
 import { useRouter } from "next/router";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  Firestore,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+import { db, storage, firebaseAnalytics } from "../../firebase/page";
+import { useLanguage } from "@/context/LanguageContext";
+import { useState, useEffect } from "react";
 
 export default function NavbarWithCTAButton({ height }) {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const { language, changeLanguage } = useLanguage();
+  const [logo, setLogo] = useState([]);
+  const [logoWhite, setLogoWhite] = useState([]);
+
+  const handleChangeLanguage = (newLanguage) => {
+    changeLanguage(newLanguage);
+    sessionStorage.setItem("language", newLanguage);
+    // Cookies.set("language", newLanguage);
+  };
 
   const [navbar, SetNavbar] = useState(false);
   const ChangeBG = () => {
@@ -24,6 +49,56 @@ export default function NavbarWithCTAButton({ height }) {
     window.addEventListener("scroll", ChangeBG);
   }
 
+  useEffect(() => {
+    getDataHomeLogoNav();
+    getDataHomeLogoWhite();
+  }, []);
+
+  const getDataHomeLogoWhite = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoWhite");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setLogoWhite(data[0].img);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const getDataHomeLogoNav = async () => {
+    try {
+      const docRef = doc(db, "editHomePage", "logoNav");
+      const querySnapshot = await getDoc(docRef);
+
+      if (querySnapshot.exists()) {
+        console.log("Document data:", querySnapshot.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setLogo(data[0].img);
+    } catch (error) {
+      alert(error);
+    }
+  };
   const DropdownServices = () => {
     return (
       <div className=" bg-white absolute mt-10 shadow-md z-10">
@@ -68,48 +143,51 @@ export default function NavbarWithCTAButton({ height }) {
         <Navbar.Brand href="/" className="z-40  opacity-100">
           {navbar ? (
             <img
-              src="/assets/images/tys-logo.png"
+              src={logoWhite}
               alt=""
-              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 opacity-100"
+              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           ) : (
             <img
-              src="/assets/images/tys-logo-blue.png"
+              src={logo}
               alt=""
-              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-44 opacity-100"
+              className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           )}
         </Navbar.Brand>
-        <div className="flex md:order-3 gap-1 z-40 ">
-          <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
-            <Image
-              src={"/assets/images/united-states.png"}
-              width={40}
-              height={10}
-            />
-            <p
-              className={
-                navbar
-                  ? "text-white text-base my-auto"
-                  : "  text-black my-auto text-base  "
-              }
-            >
-              EN
-            </p>
-          </div>
-
-          <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
-            <Image src={"/assets/images/China.png"} width={40} height={10} />
-            <p
-              className={
-                navbar
-                  ? "text-white text-base my-auto"
-                  : "  text-black my-auto text-base  "
-              }
-            >
-              语言
-            </p>
-          </div>
+        <div className="flex md:w-60 w-44 md:order-3 gap-1 z-40 ">
+          <button onClick={() => handleChangeLanguage("en")}>
+            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+              <Image
+                src={"/assets/images/united-states.png"}
+                width={40}
+                height={10}
+              />
+              <p
+                className={
+                  navbar
+                    ? "text-white text-base my-auto md:opacity-100 opacity-0"
+                    : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
+                }
+              >
+                EN
+              </p>
+            </div>
+          </button>
+          <button onClick={() => handleChangeLanguage("chi")}>
+            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+              <Image src={"/assets/images/China.png"} width={40} height={10} />
+              <p
+                className={
+                  navbar
+                    ? "text-white text-base my-auto md:opacity-100 opacity-0"
+                    : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
+                }
+              >
+                语言
+              </p>
+            </div>
+          </button>
 
           <Navbar.Toggle />
         </div>
@@ -121,7 +199,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Home
+                {language == "en" ? "Home" : "首页"}
               </span>
             </Navbar.Link>
           </div>
@@ -132,7 +210,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                About Us
+                {language == "en" ? "About Us" : "关于我们"}
               </span>
             </Navbar.Link>
           </div>
@@ -146,7 +224,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Services
+                {language == "en" ? "Services" : "服务"}
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +254,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Articles
+                {language == "en" ? "Articles" : "必读"}
               </span>
             </Navbar.Link>
           </div>
@@ -187,7 +265,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Events
+                {language == "en" ? "Events" : "活动"}
               </span>
             </Navbar.Link>
           </div>
@@ -198,7 +276,7 @@ export default function NavbarWithCTAButton({ height }) {
                   navbar ? "text-white" : "  text-black my-auto md:text-sm  "
                 }
               >
-                Policies & Regulations
+                {language == "en" ? "Policies & Regulations" : "政策法规"}
               </span>
             </Navbar.Link>
           </div>

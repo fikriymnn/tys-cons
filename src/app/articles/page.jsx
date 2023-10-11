@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import ArticleCard from "@/components/ArticleCard";
@@ -16,25 +17,49 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+import { useEffect, useState } from "react";
 
-async function getDataArticles() {
-  let data = [];
-  try {
-    const querySnapshot = await getDocs(collection(db, "articles"));
+import { useLanguage } from "@/context/LanguageContext";
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      //   console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log("error");
+
+// async function getDataArticles() {
+//   let data = [];
+//   try {
+//     const querySnapshot = await getDocs(collection(db, "articles"));
+
+//     querySnapshot.forEach((doc) => {
+//       // doc.data() is never undefined for query doc snapshots
+//       //   console.log(doc.id, " => ", doc.data());
+//       data.push({ ...doc.data(), id: doc.id });
+//     });
+//   } catch (error) {
+//     console.log("error");
+//   }
+//   return data;
+// }
+
+function Articles() {
+  const [dataArticle, setDataArticle] = useState([]);
+  const { language, changeLanguage } = useLanguage();
+
+
+  useEffect(() => {
+    getDataArticles();
+  }, []);
+  async function getDataArticles() {
+    try {
+      const querySnapshot = await getDocs(collection(db, "articles"));
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        //   console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+        setDataArticle(data);
+      });
+    } catch (error) {
+      console.log("error");
+    }
   }
-  return data;
-}
-
-async function Articles() {
-  const dataArticle = await getDataArticles();
   return (
     <>
       <NavbarWithCTAButton />
@@ -74,7 +99,7 @@ async function Articles() {
                   date={data.date}
                   id={data.id}
                   img={data.img}
-                  title={data.titleEnglish}
+                  title={language == "en" ? data.titleEnglish : data.titleChinese}
                 />
               );
             })}

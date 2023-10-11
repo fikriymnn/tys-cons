@@ -7,8 +7,10 @@ import CustomFooter from '@/components/CustomFooter';
 import LegalAdministration from '../../../components/ServicesSub/LegalServices/LegalAdministration';
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 import { data } from 'autoprefixer';
+import { useLanguage } from "@/context/LanguageContext";
 
 function ProductCertifications() {
+    const { language, changeLanguage } = useLanguage();
     const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
     const [comp, setComp] = useState(0);
 
@@ -39,12 +41,12 @@ function ProductCertifications() {
         <>
             <NavbarWithCTAButton />
             <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5 '>
-                <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Legal Services</p></div>
+                <div className='flex pb-5'><p>{language == "en" ? "Services" : "服务"} </p> <p className='text-blue-600 ml-1'>/ Legal Services</p></div>
                 <div className='bg-white'>
                     <div className="p-5 pt-3">
                         <div className='overflow-auto w-full'>
                             <div className='flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 '>
-                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Legal Administration</button>
+                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Legal Administration" : "法律行政"}</button>
 
 
                             </div>
@@ -66,7 +68,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}

@@ -4,8 +4,10 @@ import Image from "next/image";
 import { getDoc, doc } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CustomFooter = () => {
+  const { language, changeLanguage } = useLanguage();
   const [address, setAddress] = useState("");
   const [barcode, setBarcode] = useState("");
   const [email, setEmail] = useState("");
@@ -34,7 +36,7 @@ const CustomFooter = () => {
     getDataLogoFooter();
   }, []);
 
-  const getDataAboutWechat = async () => {
+  async function getDataAboutWechat() {
     try {
       const docRef = doc(db, "editAbout", "wechat");
       const querySnapshot = await getDoc(docRef);
@@ -55,9 +57,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutPhone = async () => {
+  async function getDataAboutPhone() {
     try {
       const docRef = doc(db, "editAbout", "phone");
       const querySnapshot = await getDoc(docRef);
@@ -78,9 +80,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataHomeParagraph = async () => {
+  async function getDataHomeParagraph() {
     try {
       const docRef = doc(db, "editAbout", "paragraph");
       const querySnapshot = await getDoc(docRef);
@@ -102,9 +104,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutLinkedin = async () => {
+  async function getDataAboutLinkedin() {
     try {
       const docRef = doc(db, "editAbout", "linkedin");
       const querySnapshot = await getDoc(docRef);
@@ -125,9 +127,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutIg = async () => {
+  async function getDataAboutIg() {
     try {
       const docRef = doc(db, "editAbout", "ig");
       const querySnapshot = await getDoc(docRef);
@@ -148,9 +150,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataHomeHeading = async () => {
+  async function getDataHomeHeading() {
     try {
       const docRef = doc(db, "editAbout", "heading");
       const querySnapshot = await getDoc(docRef);
@@ -172,9 +174,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutAdress = async () => {
+  async function getDataAboutAdress() {
     try {
       const docRef = doc(db, "editAbout", "address");
       const querySnapshot = await getDoc(docRef);
@@ -189,8 +191,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataAboutBarcode = async () => {
+  }
+  async function getDataAboutBarcode() {
     try {
       const docRef = doc(db, "editAbout", "barcode");
       const querySnapshot = await getDoc(docRef);
@@ -205,8 +207,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataAboutEmail = async () => {
+  }
+  async function getDataAboutEmail() {
     try {
       const docRef = doc(db, "editAbout", "email");
       const querySnapshot = await getDoc(docRef);
@@ -227,9 +229,9 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
-  const getDataAboutFb = async () => {
+  async function getDataAboutFb() {
     try {
       const docRef = doc(db, "editAbout", "facebook");
       const querySnapshot = await getDoc(docRef);
@@ -250,8 +252,8 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
-  const getDataLogoFooter = async () => {
+  }
+  async function getDataLogoFooter() {
     try {
       const docRef = doc(db, "editHomePage", "logoFooter");
       const querySnapshot = await getDoc(docRef);
@@ -272,18 +274,22 @@ const CustomFooter = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  }
   return (
     <div className=" w-full bg-[#031530] ">
-      <div className=" md:grid md:grid-cols-3 p-5 sm:p-8 md:p-12 gap-10 items-center">
-        <div>
+      <div className=" md:flex grid p-5 sm:p-8 md:p-12 gap-10 items-center">
+        <div className=" md:w-5/12">
           <img src={logo} width={200} height={75} />
           {/* <Image src={logo} width={200} height={75} /> */}
-          <p className=" py-4 text-white text-[15px]">{inggrisParagraph}</p>
+          <p className=" py-4 text-white text-[15px]">{language == "en" ? inggrisParagraph : chinaParagraph}</p>
         </div>
-        <div>
-          <p className=" uppercase font-bold text-white">Contact Us</p>
-          <p className=" text-white pt-3 pb-2">{address}</p>
+        <div className="">
+          <p className=" uppercase font-bold text-white"> {language == "en" ? "Contact Us" : "联系我们"}</p>
+          <a href={`https://www.google.com/maps/search/${address}`}>
+            <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200">
+              {address}
+            </p>
+          </a>
           <div className=" flex gap-3 py-2">
             <img
               src="/assets/images/call (2).png"
@@ -298,11 +304,15 @@ const CustomFooter = () => {
               alt=""
               className="w-5 h-5 my-auto"
             />
-            <p className=" text-white my-auto">{email}</p>
+            <a href={`mailto:${email}`}>
+              <p className=" text-white my-auto hover:translate-x-1 duration-100 hover:text-blue-200">
+                {email}
+              </p>
+            </a>
           </div>
         </div>
-        <div className=" py-4 md:py-0">
-          <p className=" text-white font-bold">Our Social Media</p>
+        <div className=" py-4 md:py-0 ">
+          <p className=" text-white font-bold">{language == "en" ? "Our Social Media" : "我们的社交媒体"}</p>
           <div className=" flex gap-4">
             <img src="/assets/images/qr-tys.jpg" alt="" className=" w-40" />
             <div className=" ">
@@ -320,7 +330,7 @@ const CustomFooter = () => {
                   className=" w-6 h-6 hover:scale-110 my-5"
                 />
               </a>
-              <a href={ig}>
+              <a href={`https://www.instagram.com/${ig}`}>
                 <img
                   src="/assets/images/instagram (2).png"
                   alt=""
@@ -329,9 +339,9 @@ const CustomFooter = () => {
               </a>
               <a href={wechat}>
                 <img
-                  src="/assets/images/youtube.png"
+                  src="/assets/images/we.png"
                   alt=""
-                  className=" w-6 h-6 hover:scale-110"
+                  className=" h-6 hover:scale-110"
                 />
               </a>
             </div>

@@ -9,18 +9,21 @@ import { useSearchParams } from "next/navigation";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firebase/page";
 import parse from "html-react-parser";
+import { useLanguage } from "@/context/LanguageContext";
 
 function Article() {
+  const { language, changeLanguage } = useLanguage();
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataArticle, setDataArticle] = useState([]);
   useEffect(() => {
-    getDataArticles();
-  }, []);
+    getDataArticles(id);
+  }, [id]);
 
-  const getDataArticles = async () => {
+  async function getDataArticles(idd) {
     try {
-      const docRef = doc(db, "articles", id);
+      const docRef = doc(db, "articles", idd);
       const querySnapshot = await getDoc(docRef);
 
       let data = [];
@@ -31,21 +34,39 @@ function Article() {
     } catch (error) {
       alert(error);
     }
-  };
+  }
   return (
     <>
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
-        <BreadcrumbArticle className="ps-0" />
-        <div className="bg-white">
-          <div className="relative p-5">
-            {dataArticle.map((data, i) => {
-              return (
-                <>
+        {dataArticle.map((data, i) => {
+          return (
+            <>
+              <div className="py-2 flex gap-1">
+                <a href="/articles">{language == "en" ? "Articles" : "文章"}</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="h-[1rem] w-auto mt-1 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  ></path>
+                </svg>
+                <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
+              </div>
+              <div className="bg-white">
+                <div className="relative p-5">
                   <div className="w-full h-1000px">
                     <h3>{data.date}</h3>
                     <h1 className="text-4xl text-center p-5 font-semibold">
-                      {data.titleEnglish}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h1>
                     <div className="bg-blue-500 h-[500px] relative">
                       <div
@@ -68,17 +89,15 @@ function Article() {
                           <div className="w-100px flex items-center justify-center">
                             <div className="bg-blue-600 h-[50px] flex items-center">
                               <h2 className="mx-5 text-xl text-center font-semibold text-white ">
-                                {data.topicIng}
+                                {language == "en" ? data.topicIng : data.topicChi}
                               </h2>
                             </div>
                           </div>
 
                           <div
                             className="py-5 content"
-                            dangerouslySetInnerHTML={{
-                              __html: data.contentIng,
-                            }}
-                          />
+
+                          > {parse(language == "en" ? data.contentIng : data.contentChi)}</div>
                           {data.img == "" ? (
                             <></>
                           ) : (
@@ -94,11 +113,11 @@ function Article() {
                       );
                     })}
                   </div>
-                </>
-              );
-            })}
-          </div>
-        </div>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </div>
       {/* <CustomFooter /> */}
     </>

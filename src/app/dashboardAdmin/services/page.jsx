@@ -15,6 +15,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import Image from "next/image";
 
 function ServicesAdmin() {
   const [dataService, setDataService] = useState([]);
@@ -88,7 +89,7 @@ function ServicesAdmin() {
                   </div>
                 </div>
 
-                <div className=" h-[500px] overflow-y-auto">
+                <div className=" h-[450px] overflow-y-auto">
                   {dataService.length > 0 &&
                     dataService.map((data, i) => {
                       return (
@@ -98,7 +99,7 @@ function ServicesAdmin() {
                               <p>{i + 1}</p>
                             </div>
                             <div className="p-2 h-full w-[209px] border-s-2">
-                              <img src={data.img} alt="" />
+                              <Image width={100} height={100} src={data.img} alt="" />
                             </div>
                             <div className="w-full flex">
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
@@ -123,17 +124,17 @@ function ServicesAdmin() {
                             </div>
                             <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
                               <a
-                                className="bg-yellow-400  rounded-md p-1"
+                                className="bg-yellow-400  rounded-md p-2"
                                 href={`/dashboardAdmin/services/edit?id=${data.id}`}
                               >
-                                <button
-                                //onClick={openEditService}
-                                >
-                                  <img
-                                    src="/assets/images/edit-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </button>
+
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  alt=""
+                                />
+
                               </a>
                               <button
                                 onClick={async (e) => {
@@ -149,9 +150,11 @@ function ServicesAdmin() {
                                     console.error("An error occured", error);
                                   }
                                 }}
-                                className="bg-red-600  rounded-md p-1"
+                                className="bg-red-600  rounded-md p-2"
                               >
-                                <img
+                                <Image
+                                  width={35}
+                                  height={35}
                                   src="/assets/images/delete-1-svgrepo-com.svg"
                                   alt=""
                                 />
@@ -161,6 +164,7 @@ function ServicesAdmin() {
                         </>
                       );
                     })}
+
                 </div>
               </div>
             </div>

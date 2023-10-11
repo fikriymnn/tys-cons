@@ -16,6 +16,7 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import Image from "next/image";
 
 function HomeAdmin() {
   //get data home page
@@ -198,7 +199,9 @@ function HomeAdmin() {
                       href="/dashboardAdmin/home/editHeading"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -233,7 +236,9 @@ function HomeAdmin() {
                       href="/dashboardAdmin/home/editParagraph"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -252,7 +257,8 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoWhite.length > 0 &&
                           dataLogoWhite.map((data, i) => {
-                            return <img className="h-14" src={data.img}></img>;
+                            return <>
+                              <Image width={220} height={100} src={data.img} alt="" /></>;
                           })}
                       </div>
                     </div>
@@ -263,7 +269,9 @@ function HomeAdmin() {
                       href="/dashboardAdmin/home/editLogoWhite"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -282,7 +290,8 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoNav.length > 0 &&
                           dataLogoNav.map((data, i) => {
-                            return <img className="h-14" src={data.img}></img>;
+                            return <>
+                              <Image width={220} height={100} src={data.img} alt="" /></>;
                           })}
                       </div>
                     </div>
@@ -293,7 +302,9 @@ function HomeAdmin() {
                       href="/dashboardAdmin/home/editLogoNavbar"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""
@@ -312,7 +323,7 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoFoot.length > 0 &&
                           dataLogoFoot.map((data, i) => {
-                            return <img src={data.img}></img>;
+                            return <><Image width={220} height={100} className="h-14" src={data.img} alt="" /></>;
                           })}
                       </div>
                     </div>
@@ -323,7 +334,9 @@ function HomeAdmin() {
                       href="/dashboardAdmin/home/editLogoFooter"
                     >
                       <button>
-                        <img
+                        <Image
+                          width={35}
+                          height={35}
                           className="w-8"
                           src="/assets/images/edit-svgrepo-com.svg"
                           alt=""

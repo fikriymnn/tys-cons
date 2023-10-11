@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Iframe from "react-iframe";
 import CustomFooter from "@/components/CustomFooter";
@@ -16,90 +17,177 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+const About = () => {
+  const { language, changeLanguage } = useLanguage();
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [chinaHeading, setChinaHeading] = useState("");
+  const [inggrisHeading, setInggrisHeading] = useState("");
+  const [chinaParagraph, setChinaParagraph] = useState("");
+  const [inggrisParagraph, setInggrisParagraph] = useState("");
+  const [phone, setPhone] = useState("");
 
-async function getDataAboutHeading() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "heading");
-    const querySnapshot = await getDoc(docRef);
+  const [sendEmail, setSendEmail] = useState("");
+  const [name, setName] = useState("");
+  const [sendPhone, setSendPhone] = useState("");
+  const [message, setMessage] = useState("");
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  useEffect(() => {
+    getDataAboutAdress();
+
+    getDataAboutEmail();
+
+    getDataHomeHeading();
+
+    getDataHomeParagraph();
+    getDataAboutPhone();
+  }, []);
+
+  async function getDataAboutPhone() {
+    try {
+      const docRef = doc(db, "editAbout", "phone");
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setPhone(data[0].no);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutParagraph() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "paragraph");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataHomeParagraph() {
+    try {
+      const docRef = doc(db, "editAbout", "paragraph");
+      const querySnapshot = await getDoc(docRef);
 
-    // doc.data() is never undefined for query doc snapshots
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setChinaParagraph(data[0].chinese);
+      setInggrisParagraph(data[0].english);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
-async function getDataAboutAdrress() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "address");
-    const querySnapshot = await getDoc(docRef);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+  async function getDataHomeHeading() {
+    try {
+      const docRef = doc(db, "editAbout", "heading");
+      const querySnapshot = await getDoc(docRef);
+
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setChinaHeading(data[0].chinese);
+      setInggrisHeading(data[0].english);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutPhone() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "phone");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataAboutAdress() {
+    try {
+      const docRef = doc(db, "editAbout", "address");
+      const querySnapshot = await getDoc(docRef);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      let data = [];
+
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setAddress(data[0].address);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
 
-async function getDataAboutEmail() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "email");
-    const querySnapshot = await getDoc(docRef);
+  async function getDataAboutEmail() {
+    try {
+      const docRef = doc(db, "editAbout", "email");
+      const querySnapshot = await getDoc(docRef);
 
-    // doc.data() is never undefined for query doc snapshots
+      // if (querySnapshot.exists()) {
+      //   console.log("Document data:", querySnapshot.data());
+      // } else {
+      //   // docSnap.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
+      let data = [];
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
+      // doc.data() is never undefined for query doc snapshots
+
+      data.push(querySnapshot.data());
+
+      setEmail(data[0].email);
+    } catch (error) {
+      alert(error);
+    }
   }
-  return data;
-}
+  const form = useRef();
 
-const About = async () => {
-  const dataHeading = await getDataAboutHeading();
-  const dataParagraph = await getDataAboutParagraph();
-  const dataAddress = await getDataAboutAdrress();
-  const dataPhone = await getDataAboutPhone();
-  const dataEmail = await getDataAboutEmail();
+  const sendMail = async (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_lu2s5ci",
+        "template_9nqk4cb",
+        form.current,
+        "-Ogru2wb76QTdI6Ci"
+      )
+      .then(
+        (result) => {
+          alert("message send");
+        },
+        (error) => {
+          alert("message error");
+        }
+      );
+  };
 
   return (
     <>
       <NavbarWithCTAButton />
       <div className=" px-5 md:px-16 sm:px-10 pt-24 ">
         <p className="text-blue-800 text-3xl font-semibold pb-4 font-sans">
-          {dataHeading[0].english}
+          {language == "en" ? inggrisHeading : chinaHeading}
         </p>
-        <p className=" text-lg font-sans">{dataParagraph[0].english}</p>
+        <p className=" text-lg font-sans">
+          {language == "en" ? inggrisParagraph : chinaHeading}
+        </p>
         <div className="md:grid md:grid-cols-2 py-10 gap-2 ">
           <div>
             <Iframe
@@ -119,7 +207,7 @@ const About = async () => {
                 alt=""
                 className="py-4"
               />
-              <p className=" my-auto">{dataAddress[0].address}</p>
+              <p className=" my-auto">{address}</p>
             </div>
             <div className="flex gap-4">
               <Image
@@ -129,7 +217,7 @@ const About = async () => {
                 alt=""
                 className=" py-4"
               />
-              <p className=" my-auto">{dataPhone[0].no}</p>
+              <p className=" my-auto">{phone}</p>
             </div>
             <div className="flex gap-4">
               <Image
@@ -139,57 +227,71 @@ const About = async () => {
                 alt=""
                 className=" py-4"
               />
-              <p className=" my-auto">{dataEmail[0].email}</p>
+              <p className=" my-auto">{email}</p>
             </div>
           </div>
+          {/* <form ref={form} onSubmit={sendEmail}>
+            <label>Name</label>
+            <input type="text" name="user_name" />
+            <label>Email</label>
+            <input type="email" name="user_email" />
+            <label>Message</label>
+            <textarea name="message" />
+            <input type="submit" value="Send" />
+          </form> */}
           <div>
-            <div className="">
-              <h1 className=" text-md pb-3">Name</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className=" py-5">
-              <h1 className=" text-md pb-3">Email</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className="">
-              <h1 className=" text-md pb-3">Phone Number</h1>
-              <input
-                type="text"
-                placeholder="Input your name"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-            <div className=" py-5">
-              <h1 className=" text-md pb-3">Message</h1>
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-                placeholder="Input your message"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={100}
-              ></textarea>
-            </div>
-            <a href="">
-              <div className=" w-full h-12 bg-blue-600 hover:bg-blue-500">
-                <p className=" text-white text-center my-auto py-3">
-                  Send Message
-                </p>
+            <form ref={form} onSubmit={(e) => sendMail(e)}>
+              <div className="">
+                <h1 className=" text-md pb-3">Name</h1>
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
               </div>
-            </a>
+              <div className=" py-5">
+                <h1 className=" text-md pb-3">Email</h1>
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+              <div className="">
+                <h1 className=" text-md pb-3">Phone Number</h1>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Input your name"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+              <div className=" py-5">
+                <h1 className=" text-md pb-3">Message</h1>
+                <textarea
+                  name="message"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Input your message"
+                  color=" bg-transparent"
+                  className=" w-full resize-none rounded-lg border-slate-300 "
+                  maxLength={100}
+                ></textarea>
+              </div>
+              <button type="submit" value="Send">
+                <div className=" w-full h-12 bg-blue-600 hover:bg-blue-500 py-3 px-5 rounded-md">
+                  <p className=" text-white text-center my-auto ">
+                    Send Message
+                  </p>
+                </div>
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import parse from "html-react-parser";
+import Image from "next/image";
 
 function EventsAdmin() {
   const [dataEvents, setDataEvents] = useState([]);
@@ -90,82 +91,85 @@ function EventsAdmin() {
                   </div>
                 </div>
 
-                <div className=" h-[500px] overflow-y-auto">
-                  <div className=" h-[500px] overflow-y-auto">
-                    {dataEvents.length > 0 &&
-                      dataEvents.map((data, i) => {
-                        return (
-                          <>
-                            <div className="flex bg-slate-300 rounded-md mb-3">
-                              <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                                <p>{i + 1}</p>
+
+                <div className=" h-[450px] overflow-y-auto">
+                  {dataEvents.length > 0 &&
+                    dataEvents.map((data, i) => {
+                      return (
+                        <>
+                          <div className="flex bg-slate-300 rounded-md mb-3">
+                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                              <p>{i + 1}</p>
+                            </div>
+                            <div className="p-2 h-full w-[220px] border-s-2">
+                              <img src={data.img} alt="" />
+                            </div>
+                            <div className="w-full flex">
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.titleEnglish}</p>
+                                  <p>{data.titleChinese}</p>
+                                </div>
                               </div>
-                              <div className="p-2 h-full w-[220px] border-s-2">
-                                <img src={data.img} alt="" />
-                              </div>
-                              <div className="w-full flex">
-                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.titleEnglish}</p>
-                                    <p>{data.titleChinese}</p>
+                              <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <div className="line-clamp-3">
+                                    {parse(data.content[0].contentIng)}
+                                  </div>
+                                  <div className="line-clamp-3">
+                                    {parse(data.content[0].contentChi)}
                                   </div>
                                 </div>
-                                <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <div className="line-clamp-3">
-                                      {parse(data.content[0].contentIng)}
-                                    </div>
-                                    <div className="line-clamp-3">
-                                      {parse(data.content[0].contentChi)}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
-                                  <p>{data.date}</p>
-                                </div>
                               </div>
-                              <div className="w-36  flex gap-3 m-3 my-auto">
-                                <a
-                                  className="bg-yellow-400 h-10 rounded-md p-3"
-                                  href={`/dashboardAdmin/events/edit?id=${data.id}`}
-                                >
-                                  <button
-                                  // onClick={openEditEvent}
-                                  >
-                                    <img
-                                      src="/assets/images/edit-svgrepo-com.svg"
-                                      alt=""
-                                    />
-                                  </button>
-                                </a>
-                                <button
-                                  onClick={async (e) => {
-                                    try {
-                                      // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                      await deleteDoc(
-                                        doc(db, "events", data.id)
-                                      );
-                                      alert("delete success");
-                                      location.reload();
-                                      console.log("Deleted successfully");
-                                    } catch (error) {
-                                      console.error("An error occured", error);
-                                    }
-                                  }}
-                                  className="bg-red-600 h-10 rounded-md p-3"
-                                >
-                                  <img
-                                    src="/assets/images/delete-1-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </button>
+                              <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
+                                <p>{data.date}</p>
                               </div>
                             </div>
-                          </>
-                        );
-                      })}
-                  </div>
+                            <div className="w-36  flex gap-3 m-3 my-auto">
+                              <a
+                                className="bg-yellow-400 rounded-md p-2"
+                                href={`/dashboardAdmin/events/edit?id=${data.id}`}
+                              >
+
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  alt=""
+                                />
+
+                              </a>
+                              <button
+                                onClick={async (e) => {
+                                  try {
+                                    // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                    await deleteDoc(
+                                      doc(db, "events", data.id)
+                                    );
+                                    alert("delete success");
+                                    location.reload();
+                                    console.log("Deleted successfully");
+                                  } catch (error) {
+                                    console.error("An error occured", error);
+                                  }
+                                }}
+                                className="bg-red-600 rounded-md p-2"
+                              >
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/delete-1-svgrepo-com.svg"
+                                  alt=""
+                                />
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+
                 </div>
+
               </div>
             </div>
           </div>

@@ -57,12 +57,12 @@ function EditService() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDataService();
-  }, []);
+    getDataService(id);
+  }, [id]);
 
-  const getDataService = async () => {
+  const getDataService = async (idd) => {
     try {
-      const docRef = doc(db, "service", id);
+      const docRef = doc(db, "service", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {

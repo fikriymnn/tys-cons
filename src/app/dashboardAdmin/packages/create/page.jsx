@@ -66,7 +66,7 @@ function CreatePackage() {
 
   const [dataOption, setDataOption] = useState([{ option: "", price: "" }]);
   const [dataServiceId, setDataServiceId] = useState([
-    { id: "", nameIng: "", nameChi: "" },
+    { id: "", nameIng: "", nameChi: "", img: "", price: [] },
   ]);
 
   const [downloadURL, setDownloadURL] = useState("");
@@ -202,7 +202,10 @@ function CreatePackage() {
   };
 
   const handleClickService = () => {
-    setDataServiceId([...dataServiceId, { id: "", nameIng: "", nameChi: "" }]);
+    setDataServiceId([
+      ...dataServiceId,
+      { id: "", nameIng: "", nameChi: "", img: "", price: [] },
+    ]);
   };
   const handleChangeService = (namee, val, i) => {
     const name = namee;
@@ -423,6 +426,8 @@ function CreatePackage() {
                                   data.titleChinese,
                                   ii
                                 );
+                                handleChangeService("img", data.img, ii);
+                                handleChangeService("price", data.price, ii);
                                 toggleHidden();
                               }}
                             >

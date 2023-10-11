@@ -37,7 +37,8 @@ function CreatePolicies() {
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategoryIng, setSubCategoryIng] = useState("");
+  const [subCategoryChi, setSubCategoryChi] = useState("");
   const [contentIng, setContentIng] = useState("");
   const [contentChi, setContentChi] = useState("");
   const [downloadURL, setDownloadURL] = useState("");
@@ -96,7 +97,8 @@ function CreatePolicies() {
       titleEnglish: titleIng,
       titleChinese: titleChi,
       category: category,
-      subCategory: subCategory,
+      subCategoryEnglish: subCategoryIng,
+      subCategoryChinese: subCategoryChi,
 
       img: downloadURL,
       date: date,
@@ -276,9 +278,16 @@ function CreatePolicies() {
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
               <input
-                onChange={(e) => setSubCategory(e.target.value)}
+                onChange={(e) => setSubCategoryIng(e.target.value)}
                 type="text"
-                placeholder="This will be a Dropdown"
+                placeholder="Sub category english"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+              <input
+                onChange={(e) => setSubCategoryChi(e.target.value)}
+                type="text"
+                placeholder="Sub category chinese"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
               />

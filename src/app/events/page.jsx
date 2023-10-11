@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import EventCard from "@/components/EventCard";
 import CustomFooter from "@/components/CustomFooter";
@@ -12,26 +13,31 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
-async function getDataEvents() {
-  let data = [];
+function Events() {
+  const { language, changeLanguage } = useLanguage();
 
-  try {
-    const querySnapshot = await getDocs(collection(db, "events"));
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
+  const [dataEvents, setDataEvents] = useState([]);
+  useEffect(() => {
+    getDataEvents();
+  }, []);
+  async function getDataEvents() {
+    try {
+      const querySnapshot = await getDocs(collection(db, "events"));
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
 
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
+        data.push({ ...doc.data(), id: doc.id });
+        setDataEvents(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-
-  return data;
-}
-async function Events() {
-  const dataEvents = await getDataEvents();
   return (
     <>
       <NavbarWithCTAButton />
@@ -70,12 +76,13 @@ async function Events() {
                   <div key={i}>
                     <a href={`/events/event?id=${data.id}`}>
                       <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1">
-                        <div className="h-28 md:h-36 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${data.img})` }}>
-
-                        </div>
+                        <div
+                          className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
+                          style={{ backgroundImage: `url(${data.img})` }}
+                        ></div>
                         <div className="p-3 ">
                           <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">
-                            {data.titleEnglish}
+                            {language == "en" ? data.titleEnglish : data.titleChinese}
                           </h1>
                           <h2>{data.date}</h2>
                         </div>

@@ -57,12 +57,12 @@ function EditEvent() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDataEventse();
-  }, []);
+    getDataEvents(id);
+  }, [id]);
 
-  const getDataEventse = async () => {
+  const getDataEvents = async (idd) => {
     try {
-      const docRef = doc(db, "events", id);
+      const docRef = doc(db, "events", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {

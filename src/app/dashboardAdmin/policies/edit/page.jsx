@@ -22,6 +22,8 @@ import { db, storage } from "../../../../../firebase/page";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function EditPolicies() {
   const [isAlert, setIsAlert] = useState(false);
@@ -35,7 +37,8 @@ function EditPolicies() {
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategoryIng, setSubCategoryIng] = useState("");
+  const [subCategoryChi, setSubCategoryChi] = useState("");
   const [contentIng, setContentIng] = useState("");
   const [contentChi, setContentChi] = useState("");
 
@@ -49,12 +52,12 @@ function EditPolicies() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDataEventse();
-  }, []);
+    getDataEvents(id);
+  }, [id]);
 
-  const getDataEventse = async () => {
+  async function getDataEvents(idd) {
     try {
-      const docRef = doc(db, "policies", id);
+      const docRef = doc(db, "policies", idd);
       const querySnapshot = await getDoc(docRef);
 
       // if (querySnapshot.exists()) {
@@ -72,13 +75,14 @@ function EditPolicies() {
       setTitleIng(data[0].titleEnglish);
       setTitleChi(data[0].titleChinese);
       setCategory(data[0].category);
-      setSubCategory(data[0].subCategory);
+      setSubCategoryIng(data[0].subCategoryEnglish);
+      setSubCategoryChi(data[0].subCategoryChinese);
       setContentIng(data[0].contentEnglish);
       setContentChi(data[0].contentChinese);
     } catch (error) {
       alert(error);
     }
-  };
+  }
 
   const handleUpload = async (filess) => {
     const files = filess;
@@ -137,7 +141,8 @@ function EditPolicies() {
         titleEnglish: titleIng,
         titleChinese: titleChi,
         category: category,
-        subCategory: subCategory,
+        subCategoryEnglish: subCategoryIng,
+        subCategoryChinese: subCategoryChi,
 
         img: downloadURL,
 
@@ -151,7 +156,7 @@ function EditPolicies() {
   return (
     <>
       {isAlert && (
-        <div className="bgtr w-screen h-screen fixed top-0 flex items-center justify-center gap-5 z-50">
+        <div className="bg-white w-screen h-screen fixed top-0 flex items-center justify-center gap-5 z-50">
           <div className="flex-col">
             <div className=" text-2xl mb-5">Change Will not be saved</div>
             <div className="flex justify-between">
@@ -173,7 +178,7 @@ function EditPolicies() {
         </div>
       )}
 
-      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -303,10 +308,18 @@ function EditPolicies() {
             </div>
             <div className=" w-10/12 p-3 flex gap-3">
               <input
-                value={subCategory ?? ""}
-                onChange={(e) => setSubCategory(e.target.value)}
+                value={subCategoryIng}
+                onChange={(e) => setSubCategoryIng(e.target.value)}
                 type="text"
-                placeholder="This will be a Dropdown"
+                placeholder="Sub category english"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+              <input
+                value={subCategoryChi}
+                onChange={(e) => setSubCategoryChi(e.target.value)}
+                type="text"
+                placeholder="Sub category chinese"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
               />
@@ -321,40 +334,32 @@ function EditPolicies() {
           </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+              <p>Description :</p>
             </div>
             <div className=" w-10/12 p-3">
-              <textarea
-                value={contentIng ?? ""}
-                onChange={(e) => setContentIng(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentIng}
+                onChange={(e) => setContentIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description`}
+                maxLength={2000}
+                className="h-[200px] "
+              />
             </div>
           </div>
           <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
+            <div className=" w-2/12 text-end p-3 py-5"></div>
             <div className=" w-10/12 p-3">
-              <textarea
-                value={contentChi ?? ""}
-                onChange={(e) => setContentChi(e.target.value)}
-                name=""
-                id=""
-                cols="20"
-                rows="5"
-                placeholder="Enter New Text"
-                color=" bg-transparent"
-                className=" w-full resize-none rounded-lg border-slate-300 "
-                maxLength={1000}
-              ></textarea>
+              <ReactQuill
+                theme="snow"
+                value={contentChi}
+                onChange={(e) => setContentChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description`}
+                maxLength={2000}
+                className="h-[200px] my-10 "
+              />
             </div>
           </div>
 

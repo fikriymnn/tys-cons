@@ -1,4 +1,5 @@
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function PoliciesDetail({ title, src, content }) {
   return (
@@ -11,12 +12,18 @@ export default function PoliciesDetail({ title, src, content }) {
         </h1>
         <div className="flex items-center w-full">
           {src && (
-            <Image src={src} width={800} height={400} className="m-auto" />
+            <Image
+              src={src}
+              width={800}
+              height={400}
+              className="m-auto"
+              alt="Image"
+            />
           )}
         </div>
 
         <div className="w-10/12 m-auto mt-7 mb-7">
-          <p className="md:text-base sm:text-sm text-xs">{content}</p>
+          <p className="md:text-base sm:text-sm text-xs">{parse(content)}</p>
         </div>
       </div>
     </>
