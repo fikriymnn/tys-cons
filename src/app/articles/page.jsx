@@ -19,6 +19,9 @@ import {
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useEffect, useState } from "react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
+
 // async function getDataArticles() {
 //   let data = [];
 //   try {
@@ -37,6 +40,8 @@ import { useEffect, useState } from "react";
 
 function Articles() {
   const [dataArticle, setDataArticle] = useState([]);
+  const { language, changeLanguage } = useLanguage();
+
 
   useEffect(() => {
     getDataArticles();
@@ -94,7 +99,7 @@ function Articles() {
                   date={data.date}
                   id={data.id}
                   img={data.img}
-                  title={data.titleEnglish}
+                  title={language == "en" ? data.titleEnglish : data.titleChinese}
                 />
               );
             })}

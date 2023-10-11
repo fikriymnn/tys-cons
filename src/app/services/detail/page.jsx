@@ -27,8 +27,10 @@ import CustomFooter from "@/components/CustomFooter";
 import Image from "next/image";
 import { Label, Radio } from "flowbite-react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
+import { useLanguage } from "@/context/LanguageContext";
 
 function DetailServices() {
+  const { language, changeLanguage } = useLanguage();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataService, setDataService] = useState([]);
@@ -67,9 +69,9 @@ function DetailServices() {
           <>
             <div key={i} className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
               <div className="flex pb-5 gap-1">
-                <p onClick={() => console.log(lastIndex)}>Services </p>{" "}
+                <p onClick={() => console.log(lastIndex)}>{language == "en" ? "Services" : "服务"} </p>{" "}
                 <p>&gt;</p>
-                <p className="text-blue-600">{data.titleEnglish}</p>
+                <p className="text-blue-600">{language == "en" ? data.titleEnglish : data.titleChinese}</p>
               </div>
               <div className="bg-white">
                 <div className="relative p-5 pt-10">
@@ -85,7 +87,7 @@ function DetailServices() {
                     </div>
                     <div className="md:ps-10 ps-">
                       <p className="md:text-2xl text-2xl pb-4">
-                        {data.titleEnglish}
+                        {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                       </p>
                       <div className="flex pb-4">
                         <p className="text-blue-600 text-xl">
@@ -95,7 +97,7 @@ function DetailServices() {
                         </p>
                         <p className="">元</p>
                       </div>
-                      <p className="pb-4">Options:</p>
+                      <p className="pb-4">{language == "en" ? "Options:" : "选项"}</p>
                       <fieldset className="flex gap-3 pb-4" id="radio">
                         {data.price.map((data, i) => {
                           return (
@@ -124,11 +126,11 @@ function DetailServices() {
                       <>
                         <div className=" bg-blue-600  w-40 mb-2">
                           <p className="text-center text-white text-base font-semibold p-3">
-                            {data.topicIng}
+                            {language == "en" ? data.topicIng : data.topicChi}
                           </p>
                         </div>
                         <div className="content">
-                          <p>{parse(data.contentIng)}</p>
+                          <p>  {parse(language == "en" ? data.contentIng : data.contentChi)} </p>
                         </div>
                       </>
                     );

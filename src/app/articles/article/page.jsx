@@ -9,8 +9,11 @@ import { useSearchParams } from "next/navigation";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firebase/page";
 import parse from "html-react-parser";
+import { useLanguage } from "@/context/LanguageContext";
 
 function Article() {
+  const { language, changeLanguage } = useLanguage();
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [dataArticle, setDataArticle] = useState([]);
@@ -40,7 +43,7 @@ function Article() {
           return (
             <>
               <div className="py-2 flex gap-1">
-                <a href="/articles">Articles</a>
+                <a href="/articles">{language == "en" ? "Articles" : "文章"}</a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -56,14 +59,14 @@ function Article() {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   ></path>
                 </svg>
-                <p className="text-blue-500">{data.titleEnglish}</p>
+                <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
               </div>
               <div className="bg-white">
                 <div className="relative p-5">
                   <div className="w-full h-1000px">
                     <h3>{data.date}</h3>
                     <h1 className="text-4xl text-center p-5 font-semibold">
-                      {data.titleEnglish}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h1>
                     <div className="bg-blue-500 h-[500px] relative">
                       <div
@@ -86,17 +89,15 @@ function Article() {
                           <div className="w-100px flex items-center justify-center">
                             <div className="bg-blue-600 h-[50px] flex items-center">
                               <h2 className="mx-5 text-xl text-center font-semibold text-white ">
-                                {data.topicIng}
+                                {language == "en" ? data.topicIng : data.topicChi}
                               </h2>
                             </div>
                           </div>
 
                           <div
                             className="py-5 content"
-                            dangerouslySetInnerHTML={{
-                              __html: data.contentIng,
-                            }}
-                          />
+
+                          > {parse(language == "en" ? data.contentIng : data.contentChi)}</div>
                           {data.img == "" ? (
                             <></>
                           ) : (

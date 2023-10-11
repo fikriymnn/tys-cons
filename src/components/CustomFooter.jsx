@@ -4,8 +4,10 @@ import Image from "next/image";
 import { getDoc, doc } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CustomFooter = () => {
+  const { language, changeLanguage } = useLanguage();
   const [address, setAddress] = useState("");
   const [barcode, setBarcode] = useState("");
   const [email, setEmail] = useState("");
@@ -279,10 +281,10 @@ const CustomFooter = () => {
         <div className=" md:w-5/12">
           <img src={logo} width={200} height={75} />
           {/* <Image src={logo} width={200} height={75} /> */}
-          <p className=" py-4 text-white text-[15px]">{inggrisParagraph}</p>
+          <p className=" py-4 text-white text-[15px]">{language == "en" ? inggrisParagraph : chinaParagraph}</p>
         </div>
         <div className="">
-          <p className=" uppercase font-bold text-white">Contact Us</p>
+          <p className=" uppercase font-bold text-white"> {language == "en" ? "Contact Us" : "联系我们"}</p>
           <a href={`https://www.google.com/maps/search/${address}`}>
             <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200">
               {address}
@@ -310,7 +312,7 @@ const CustomFooter = () => {
           </div>
         </div>
         <div className=" py-4 md:py-0 ">
-          <p className=" text-white font-bold">Our Social Media</p>
+          <p className=" text-white font-bold">{language == "en" ? "Our Social Media" : "我们的社交媒体"}</p>
           <div className=" flex gap-4">
             <img src="/assets/images/qr-tys.jpg" alt="" className=" w-40" />
             <div className=" ">

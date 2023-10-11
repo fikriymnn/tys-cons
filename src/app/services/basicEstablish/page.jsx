@@ -4,9 +4,10 @@ import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import { db, storage, firebaseAnalytics } from "../../../../firebase/page"; import { useLanguage } from "@/context/LanguageContext";
 
 function Events() {
+  const { language, changeLanguage } = useLanguage();
   const [comp, setComp] = useState(0);
   const [dataServiceCompany, setDataServiceCompany] = useState([]);
   const [dataServiceVisa, setDataServiceVisa] = useState([]);
@@ -145,7 +146,7 @@ function Events() {
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
         <div className="flex pb-5">
-          <p>Services </p>{" "}
+          <p> {language == "en" ? "Services" : "服务"}</p>{" "}
           <p className="text-blue-600 ml-1">/ Basic Establishment Services</p>
         </div>
         <div className="bg-white">
@@ -154,63 +155,57 @@ function Events() {
               <div className="flex gap-9 border-b w-full overflow-auto md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${
-                    comp == 0
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 0
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  Company Registration
+                  {language == "en" ? " Company Registration" : "公司注册"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${
-                    comp == 1
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 1
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  Visa Registration
+                  {language == "en" ? " Visa Registration" : "签证办理"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${
-                    comp == 2
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 2
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  Trademark
+                  {language == "en" ? " Trademark" : "商标"}
                 </button>
                 <button
                   onClick={() => setComp(3)}
-                  className={`${
-                    comp == 3
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 3
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  OfficeAdministration
+                  {language == "en" ? " OfficeAdministration " : "行政办公"}
                 </button>
                 <button
                   onClick={() => setComp(4)}
-                  className={`${
-                    comp == 4
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 4
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  Construction Certifications
+                  {language == "en" ? "Construction Certifications" : "建筑工程"}
                 </button>
                 <button
                   onClick={() => setComp(5)}
-                  className={`${
-                    comp == 5
-                      ? "text-blue-600 border-b pb-2 border-blue-600"
-                      : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                  className={`${comp == 5
+                    ? "text-blue-600 border-b pb-2 border-blue-600"
+                    : "text-black border-0"
+                    } md:text-base sm:text-sm text-sm`}
                 >
-                  Factory Licenses
+                  {language == "en" ? " Factory Licenses" : "工厂许可"}
                 </button>
               </div>
             </div>
@@ -230,7 +225,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}
@@ -259,7 +254,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}
@@ -288,7 +283,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}
@@ -317,7 +312,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}
@@ -346,7 +341,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}
@@ -375,7 +370,7 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {data.titleEnglish}
+                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {data.price[0].price}

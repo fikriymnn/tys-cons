@@ -13,8 +13,11 @@ import AlcoholAndCigarette from '@/components/ServicesSub/ProductCertificationsS
 import OtherCer from '@/components/ServicesSub/ProductCertificationsServices/OtherCer'
 import NavbarWithCTAButton from '@/components/NavbarWithCTAButton';
 import CustomFooter from '@/components/CustomFooter';
+import { useLanguage } from "@/context/LanguageContext";
+
 
 function ProductCertifications() {
+    const { language, changeLanguage } = useLanguage();
     const [comp, setComp] = useState(0);
     const [dataProductBPOM, setDataProductBPOM] = useState([]);
     const [dataProductISO, setDataProductISO] = useState([]);
@@ -178,18 +181,18 @@ function ProductCertifications() {
         <>
             <NavbarWithCTAButton />
             <div className='bg-gray-200 pt-24 pb-5 ps-5 pe-5'>
-                <div className='flex pb-5'><p>Services </p> <p className='text-blue-600 ml-1'>/ Product Certifications</p></div>
+                <div className='flex pb-5'><p>{language == "en" ? "Services" : "服务"}</p> <p className='text-blue-600 ml-1'>/ Product Certifications</p></div>
                 <div className='bg-white'>
                     <div className="p-5 pt-3">
                         <div className='overflow-auto w-full'>
                             <div className='flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 '>
-                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>BPOM Food & Drug</button>
-                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>ISO Management System</button>
-                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>SNI National Standard</button>
-                                <button onClick={() => setComp(3)} className={`${comp == 3 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Medical and Hygiene</button>
-                                <button onClick={() => setComp(4)} className={`${comp == 4 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>POSTEL Telecommunication</button>
-                                <button onClick={() => setComp(5)} className={`${comp == 5 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Alcohol and Cigarette</button>
-                                <button onClick={() => setComp(6)} className={`${comp == 6 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>Other Certification</button>
+                                <button onClick={() => setComp(0)} className={`${comp == 0 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "BPOM Food & Drug " : "BPOM 食药化妆"}</button>
+                                <button onClick={() => setComp(1)} className={`${comp == 1 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}> {language == "en" ? "ISO Management System" : "ISO 管理体系"}</button>
+                                <button onClick={() => setComp(2)} className={`${comp == 2 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}> {language == "en" ? "SNI National Standard" : "SNI 国家标准"}</button>
+                                <button onClick={() => setComp(3)} className={`${comp == 3 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}> {language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}</button>
+                                <button onClick={() => setComp(4)} className={`${comp == 4 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "POSTEL Telecommunication" : "POSTEL 电通信"}</button>
+                                <button onClick={() => setComp(5)} className={`${comp == 5 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Alcohol and Cigarette" : "酒和烟证"}</button>
+                                <button onClick={() => setComp(6)} className={`${comp == 6 ? "text-blue-600 border-b pb-2 border-blue-600" : "text-black border-0"} md:text-base sm:text-sm text-sm`}>{language == "en" ? "Other Certification" : "其他证"}</button>
                             </div>
                         </div>
 
@@ -209,7 +212,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -239,7 +242,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -269,7 +272,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -299,7 +302,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -328,7 +331,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -358,7 +361,7 @@ function ProductCertifications() {
                                                         </div>
                                                         <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                             <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                {data.titleEnglish}
+                                                                {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                             </h1>
                                                             <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                 {data.price[0].price}
@@ -389,7 +392,7 @@ function ProductCertifications() {
                                                             </div>
                                                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                                                                 <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                                                    {data.titleEnglish}
+                                                                    {language == "chi" ? data.titleChinese : ""}{language == "en" ? data.titleEnglish : data.titleEnglish}
                                                                 </h1>
                                                                 <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                                                     {data.price[0].price}
