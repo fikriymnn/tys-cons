@@ -79,7 +79,13 @@ function Navigation({
             ) : (
               <>
                 {dataLogoWhite.map((data, i) => {
-                  return <img className="mx-5 w-[160px]" src={data.img}></img>;
+                  return (
+                    <img
+                      key={i}
+                      className="mx-5 w-[160px]"
+                      src={data.img}
+                    ></img>
+                  );
                 })}
               </>
             )}
