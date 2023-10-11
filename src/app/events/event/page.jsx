@@ -58,12 +58,30 @@ function Event() {
     <>
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
-        <BreadcrumbArticle className="ps-0" />
-        <div className="bg-white">
-          <div className="relative p-5 mt-20 md:mt-10">
-            {dataEvents.map((data, i) => {
-              return (
-                <>
+        {dataEvents.map((data, i) => {
+          return (
+            <>
+              <div className="py-2 flex gap-1 ">
+                <a href="/events">Events</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="h-[1rem] w-auto mt-1 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  ></path>
+                </svg>
+                <p className="text-blue-500"> {data.titleEnglish}</p>
+              </div>
+              <div className="bg-white">
+                <div className="relative p-5  ">
                   <div className="w-full">
                     <div className="flex md:flex-row flex-col">
                       <p>Posted at: </p>
@@ -117,11 +135,11 @@ function Event() {
                       );
                     })}
                   </div>
-                </>
-              );
-            })}
-          </div>
-        </div>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </div>
       {/* <CustomFooter /> */}
     </>
