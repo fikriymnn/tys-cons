@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
 
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   collection,
   addDoc,
@@ -26,6 +23,9 @@ import { db, storage } from "../../../../../firebase/page";
 import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
 import { Dropdown } from "flowbite-react";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");
@@ -394,51 +394,52 @@ function CreateService() {
             <div className=" w-10/12 "></div>
           </div>
 
-          {dataOption.map((val, i) => {
-            return (
-              <>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>English :</p>
+          {dataOption.length > 0 &&
+            dataOption.map((val, i) => {
+              return (
+                <div key={i}>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>English :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <input
+                        type="text"
+                        name="option"
+                        value={val.option}
+                        onChange={(e) => handleChangeOption(e, i)}
+                        placeholder={`Option ${i + 1}`}
+                        color=" bg-transparent"
+                        className=" rounded-lg w-full border-slate-300 "
+                      />
+                    </div>
                   </div>
-                  <div className=" w-10/12 p-3">
-                    <input
-                      type="text"
-                      name="option"
-                      value={val.option}
-                      onChange={(e) => handleChangeOption(e, i)}
-                      placeholder={`Option ${i + 1}`}
-                      color=" bg-transparent"
-                      className=" rounded-lg w-full border-slate-300 "
-                    />
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>Input Price :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <input
+                        type="text"
+                        name="price"
+                        value={val.price}
+                        onChange={(e) => handleChangeOption(e, i)}
+                        placeholder={`Input Price 元 for option ${i + 1}`}
+                        color=" bg-transparent"
+                        className=" rounded-lg w-full border-slate-300 "
+                      />
+                      {dataOption.length !== 1 && (
+                        <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                          <button onClick={(e) => handleDeleteOption(i)}>
+                            Delete option
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Input Price :</p>
-                  </div>
-                  <div className=" w-10/12 p-3">
-                    <input
-                      type="text"
-                      name="price"
-                      value={val.price}
-                      onChange={(e) => handleChangeOption(e, i)}
-                      placeholder={`Input Price 元 for option ${i + 1}`}
-                      color=" bg-transparent"
-                      className=" rounded-lg w-full border-slate-300 "
-                    />
-                    {dataOption.length !== 1 && (
-                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDeleteOption(i)}>
-                          Delete option
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </>
-            );
-          })}
+              );
+            })}
           <div className="flex justify-center items-center gap-10 mb-20">
             <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
               <button onClick={handleClickOption} className="font-light">
@@ -531,102 +532,101 @@ function CreateService() {
               <p>Content</p>
             </div>
           </div>
-          {data.map((val, i) => {
-            return (
-              <>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
-                    <p>{i + 1}</p>
+          {data.length > 0 &&
+            data.map((val, i) => {
+              return (
+                <div key={val.id}>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                      <p>{i + 1}</p>
+                    </div>
+                    <div className=" w-10/12 "></div>
                   </div>
-                  <div className=" w-10/12 "></div>
-                </div>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>Topic :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicIng"
+                        value={val.topicIng}
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="1"
+                        placeholder={`Input Topic English For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
                   </div>
-                  <div className=" w-10/12 p-3">
-                    <textarea
-                      name="topicIng"
-                      value={val.topicIng}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="1"
-                      placeholder={`Input Topic English For Description ${
-                        i + 1
-                      }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicChi"
+                        value={val.topicChi}
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="1"
+                        placeholder={`Input Topic Mandarin For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
                   </div>
-                </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
-                  <div className=" w-10/12 p-3">
-                    <textarea
-                      name="topicChi"
-                      value={val.topicChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="1"
-                      placeholder={`Input Topic Mandarin For Description ${
-                        i + 1
-                      }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>Description :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        value={val.contentIng}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentIng" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentIng"
+                        placeholder={`Input Description Mandarin For Description ${
+                          i + 1
+                        }`}
+                        maxLength={1000}
+                        className="h-[200px] w-full   "
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
-                  </div>
-                  <div className=" w-10/12 p-3">
-                    <ReactQuill
-                      theme="snow"
-                      value={val.contentIng}
-                      onChange={(e) =>
-                        handleChange(
-                          {
-                            target: { value: e, name: "contentIng" },
-                          },
-                          i
-                        )
-                      }
-                      name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
-                      maxLength={1000}
-                      className="h-[200px] w-full   "
-                    />
-                  </div>
-                </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
-                  <div className=" w-10/12 p-3">
-                    <ReactQuill
-                      theme="snow"
-                      value={val.contentChi}
-                      onChange={(e) =>
-                        handleChange(
-                          {
-                            target: { value: e, name: "contentChi" },
-                          },
-                          i
-                        )
-                      }
-                      name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
-                      maxLength={1000}
-                      className="h-[200px] my-10 "
-                    />
-                    {/* <textarea
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        value={val.contentChi}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentChi" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentChi"
+                        placeholder={`Input Description Mandarin For Description ${
+                          i + 1
+                        }`}
+                        maxLength={1000}
+                        className="h-[200px] my-10 "
+                      />
+                      {/* <textarea
                       name="contentChi"
                       value={val.contentChi}
                       onChange={(e) => handleChange(e, i)}
@@ -639,25 +639,25 @@ function CreateService() {
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
                     ></textarea> */}
+                    </div>
+                  </div>
+                  <div className=" w-10/12 p-3 ps-72">
+                    <input
+                      type="file"
+                      name="img"
+                      onChange={(event) =>
+                        handleUpload2(event.target.files[0], event, i)
+                      }
+                    />
+                    {data.length !== 1 && (
+                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className=" w-10/12 p-3 ps-72">
-                  <input
-                    type="file"
-                    name="img"
-                    onChange={(event) =>
-                      handleUpload2(event.target.files[0], event, i)
-                    }
-                  />
-                  {data.length !== 1 && (
-                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                      <button onClick={(e) => handleDelete(i)}>Delete</button>
-                    </div>
-                  )}
-                </div>
-              </>
-            );
-          })}
+              );
+            })}
           {/* <p>{JSON.stringify(data)}</p> */}
           <div className="flex justify-center items-center gap-10 mb-20">
             <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">

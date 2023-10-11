@@ -22,7 +22,8 @@ import {
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
 import { useSearchParams } from "next/navigation";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
 function EditPackage() {
