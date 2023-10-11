@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
 import {
   collection,
   addDoc,
@@ -315,7 +316,9 @@ function CreateArticle() {
                     <p>English :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentIng}
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentIng}
                       onChange={(e) =>
                         handleChange(
                           {
@@ -324,9 +327,13 @@ function CreateArticle() {
                           i
                         )
                       }
-                      name="contentIng" placeholder={`Input Description English For Description ${i + 1
-                        }`} maxLength={2000} className="h-[200px] " />
-
+                      name="contentIng"
+                      placeholder={`Input Description English For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] "
+                    />
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
@@ -334,7 +341,9 @@ function CreateArticle() {
                     <p>Chinese :</p>
                   </div>
                   <div className=" w-10/12 p-3">
-                    <ReactQuill theme="snow" value={val.contentChi}
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentChi}
                       onChange={(e) =>
                         handleChange(
                           {
@@ -343,9 +352,13 @@ function CreateArticle() {
                           i
                         )
                       }
-                      name="contentChi" placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`} maxLength={2000} className="h-[200px] my-10 " />
-
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={2000}
+                      className="h-[200px] my-10 "
+                    />
                   </div>
                 </div>
 
