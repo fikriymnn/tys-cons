@@ -391,6 +391,7 @@ function Events() {
           )}
         </div>
       </div>
+      
       <CustomFooter />
     </>
   );
