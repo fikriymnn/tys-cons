@@ -13,7 +13,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
         imgAlt="Meaningful alt text for an image that is not purely decorative"
       >
           <Image src={img} alt="" height={400} width={520} />
-        <div className="m-2 mb-2">
+        <div className="m-2 mb-4">
           <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1">
             {text}
           </h5>
