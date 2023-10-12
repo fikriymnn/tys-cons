@@ -155,7 +155,7 @@ export default function NavbarWithCTAButton({ height }) {
             />
           )}
         </Navbar.Brand>
-        <div className="flex md:w-60 w-44 md:order-3 gap-1 z-40 ">
+        <div className="flex md:w-72 w-44 md:order-3 gap-1 z-40 ">
           <button onClick={() => handleChangeLanguage("en")}>
             <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
               <Image
@@ -170,7 +170,7 @@ export default function NavbarWithCTAButton({ height }) {
                     : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
                 }
               >
-                EN
+                English
               </p>
             </div>
           </button>
@@ -184,7 +184,7 @@ export default function NavbarWithCTAButton({ height }) {
                     : "  text-black my-auto text-base  md:opacity-100 opacity-0 "
                 }
               >
-                语言
+                简体中文
               </p>
             </div>
           </button>
