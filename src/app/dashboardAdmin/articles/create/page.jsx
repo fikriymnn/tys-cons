@@ -22,6 +22,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
+import { format } from "date-fns";
 
 function CreateArticle() {
   const [isAlert, setIsAlert] = useState(false);
@@ -127,12 +128,7 @@ function CreateArticle() {
   const addData = async (e) => {
     e.preventDefault();
     var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
+    var date = today.getDate() + " " + format(today, "MMMM yyyy");
     const docRef = await addDoc(collection(db, "articles"), {
       titleEnglish: titleIng,
       titleChinese: titleChi,
@@ -328,9 +324,8 @@ function CreateArticle() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description English For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description English For Description ${i + 1
+                        }`}
                       maxLength={2000}
                       className="h-[200px] "
                     />
@@ -353,9 +348,8 @@ function CreateArticle() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
+                      placeholder={`Input Description Mandarin For Description ${i + 1
+                        }`}
                       maxLength={2000}
                       className="h-[200px] my-10 "
                     />
@@ -370,12 +364,12 @@ function CreateArticle() {
                       handleUpload2(event.target.files[0], event, i)
                     }
                   />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
                 </div>
-                {data.length !== 1 && (
-                  <button onClick={(e) => handleDelete(i)}>
-                    Delete option
-                  </button>
-                )}
               </>
             );
           })}

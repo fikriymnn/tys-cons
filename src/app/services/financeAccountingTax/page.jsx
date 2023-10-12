@@ -28,8 +28,8 @@ function FinanceAccountingTax() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Finance Sertifications"),
-        where("subService", "==", "BPOM Food and Drug")
+        where("service", "==", "Finance Accounting Tax"),
+        where("subService", "==", "Finance Services")
       );
 
       const querySnapshot = await getDocs(q);
@@ -47,8 +47,8 @@ function FinanceAccountingTax() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Finance Sertifications"),
-        where("subService", "==", "ISO Management System")
+        where("service", "==", "Finance Accounting Tax"),
+        where("subService", "==", "Accounting Services")
       );
 
       const querySnapshot = await getDocs(q);
@@ -66,8 +66,8 @@ function FinanceAccountingTax() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Finance Sertifications"),
-        where("subService", "==", "SNI National Standard")
+        where("service", "==", "Finance Accounting Tax"),
+        where("subService", "==", "Tax Services")
       );
 
       const querySnapshot = await getDocs(q);
@@ -132,6 +132,13 @@ function FinanceAccountingTax() {
             <>
               <div className="grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5">
                 {dataFinanceServices.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -149,7 +156,7 @@ function FinanceAccountingTax() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -164,6 +171,13 @@ function FinanceAccountingTax() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataFinanceAccounting.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -181,7 +195,7 @@ function FinanceAccountingTax() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -196,6 +210,13 @@ function FinanceAccountingTax() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataFinanceTax.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -213,7 +234,7 @@ function FinanceAccountingTax() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>

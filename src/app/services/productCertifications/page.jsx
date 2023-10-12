@@ -41,7 +41,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "BPOM Food and Drug")
       );
 
@@ -60,7 +60,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "ISO Management System")
       );
 
@@ -79,7 +79,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "SNI National Standard")
       );
 
@@ -98,7 +98,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "Medical and Hygiene  ")
       );
 
@@ -117,7 +117,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "POSTEL Telecommunication")
       );
 
@@ -136,7 +136,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "Alcohol and Cigarette")
       );
 
@@ -155,7 +155,7 @@ function ProductCertifications() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Product Sertifications"),
+        where("service", "==", "Product Certifications"),
         where("subService", "==", "Other Certification")
       );
 
@@ -264,6 +264,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5">
                 {dataProductBPOM.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -281,7 +288,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -296,6 +303,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductISO.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -313,7 +327,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -328,6 +342,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductSNI.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -345,7 +366,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -360,6 +381,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductMedical.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -377,7 +405,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -392,6 +420,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductPostel.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -409,7 +444,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -424,6 +459,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductAlcohol.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -441,7 +483,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -456,6 +498,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataProductOther.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -473,7 +522,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>

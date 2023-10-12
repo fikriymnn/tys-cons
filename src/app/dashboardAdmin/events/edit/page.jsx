@@ -26,6 +26,7 @@ import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
+import { format } from "date-fns";
 
 function EditEvent() {
   const [isAlert, setIsAlert] = useState(false);
@@ -42,6 +43,11 @@ function EditEvent() {
 
   const [durationFrom, setDurationFrom] = useState("");
   const [durationTo, setDurationTo] = useState("");
+  const [timeFrom, setTimeFrom] = useState("");
+  const [timeTo, setTimeTo] = useState("");
+
+  const [parsedDateFrom, setParsedDateFrom] = useState("");
+  const [parsedDateTo, setParsedDateTo] = useState("");
 
   const [data, setData] = useState([
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
@@ -82,8 +88,12 @@ function EditEvent() {
       setTitleIng(data[0].titleEnglish);
       setTitleChi(data[0].titleChinese);
       setData(data[0].content);
-      setDurationFrom(data[0].durationFrom);
-      setDurationTo(data[0].durationTo);
+      setParsedDateFrom(data[0].durationFrom);
+      setParsedDateTo(data[0].durationTo);
+      setDurationFrom(data[0].durationFromValue);
+      setDurationTo(data[0].durationToValue);
+      setTimeFrom(data[0].timeFrom);
+      setTimeTo(data[0].timeTo);
     } catch (error) {
       alert(error);
     }
@@ -177,17 +187,25 @@ function EditEvent() {
       await updateDoc(todoRef, {
         titleEnglish: titleIng,
         titleChinese: titleChi,
-        durationFrom: durationFrom,
-        durationTo: durationTo,
+        durationFrom: parsedDateFrom,
+        durationTo: parsedDateTo,
+        durationFromValue: durationFrom,
+        durationToValue: durationTo,
+        timeFrom: timeFrom,
+        timeTo: timeTo,
 
         content: data,
       });
     } else {
       await updateDoc(todoRef, {
-        itleEnglish: titleIng,
+        titleEnglish: titleIng,
         titleChinese: titleChi,
-        durationFrom: durationFrom,
-        durationTo: durationTo,
+        durationFrom: parsedDateFrom,
+        durationTo: parsedDateTo,
+        durationFromValue: durationFrom,
+        durationToValue: durationTo,
+        timeFrom: timeFrom,
+        timeTo: timeTo,
 
         img: downloadURL,
 
@@ -198,6 +216,31 @@ function EditEvent() {
     alert("success");
   };
 
+  const dateFrom = (e) => {
+    const dateValue = e.target.value;
+    setDurationFrom(dateValue);
+
+    // Parsing tanggal menggunakan Date Object
+    const date = new Date(dateValue);
+    const year = format(date, "MMMM yyyy");
+    // Bulan dimulai dari 0, jadi tambahkan 1
+    const day = date.getDate();
+
+    setParsedDateFrom(day + " " + year);
+  };
+
+  const dateTo = (e) => {
+    const dateValue = e.target.value;
+    setDurationTo(dateValue);
+
+    // Parsing tanggal menggunakan Date Object
+    const date = new Date(dateValue);
+    const year = format(date, "MMMM yyyy");
+    // Bulan dimulai dari 0, jadi tambahkan 1
+    const day = date.getDate();
+
+    setParsedDateTo(day + " " + year);
+  };
   const handleClick = () => {
     setData([
       ...data,
@@ -334,7 +377,7 @@ function EditEvent() {
             <div className=" w-10/12 p-3">
               <input
                 value={durationFrom ?? ""}
-                onChange={(e) => setDurationFrom(e.target.value)}
+                onChange={dateFrom}
                 type="date"
                 placeholder="Insert Duration"
                 color=" bg-transparent"
@@ -349,13 +392,55 @@ function EditEvent() {
             <div className=" w-10/12 p-3">
               <input
                 value={durationTo ?? ""}
-                onChange={(e) => setDurationTo(e.target.value)}
+                onChange={dateTo}
                 type="date"
                 placeholder="Insert Duration"
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
               />
             </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+              <p>Time</p>
+            </div>
+            <div className=" w-10/12 "></div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>From :</p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <input
+                value={timeFrom}
+                onChange={(e) => setTimeFrom(e.target.value)}
+                type="text"
+                placeholder="Insert Duration"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>To :</p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <input
+                value={timeTo}
+                onChange={(e) => setTimeTo(e.target.value)}
+                type="text"
+                placeholder="Insert Duration"
+                color=" bg-transparent"
+                className=" rounded-lg w-full border-slate-300 "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+              <p>Content</p>
+            </div>
+            <div className=" w-10/12 "></div>
           </div>
           {data.map((val, i) => {
             return (

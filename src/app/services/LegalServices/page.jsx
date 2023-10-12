@@ -66,6 +66,13 @@ function ProductCertifications() {
             <>
               <div className="grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5">
                 {dataLegalAdministration.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -83,7 +90,7 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
