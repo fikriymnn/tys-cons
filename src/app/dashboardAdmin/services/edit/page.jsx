@@ -46,7 +46,9 @@ function EditService() {
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
   ]);
 
-  const [dataOption, setDataOption] = useState([{ option: "", price: "" }]);
+  const [dataOption, setDataOption] = useState([
+    { option: "", priceYuan: "", priceRupiah: "" },
+  ]);
 
   const [downloadURL, setDownloadURL] = useState("");
   const [file, setFile] = useState("");
@@ -217,7 +219,10 @@ function EditService() {
   };
 
   const handleClickOption = () => {
-    setDataOption([...dataOption, { option: "", price: "" }]);
+    setDataOption([
+      ...dataOption,
+      { option: "", priceYuan: "", priceRupiah: "" },
+    ]);
   };
   const handleChangeOption = (e, i) => {
     const { name, value } = e.target;
@@ -448,7 +453,7 @@ function EditService() {
               <>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>English :</p>
+                    <p>Option :</p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <input
@@ -469,10 +474,19 @@ function EditService() {
                   <div className=" w-10/12 p-3">
                     <input
                       type="text"
-                      name="price"
-                      value={val.price}
+                      name="priceYuan"
+                      value={val.priceYuan}
                       onChange={(e) => handleChangeOption(e, i)}
                       placeholder={`Input Price 元 for option ${i + 1}`}
+                      color=" bg-transparent"
+                      className=" rounded-lg w-full border-slate-300 "
+                    />
+                    <input
+                      type="text"
+                      name="priceRupiah"
+                      value={val.priceRupiah}
+                      onChange={(e) => handleChangeOption(e, i)}
+                      placeholder={`Input Price Rp for option ${i + 1}`}
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />

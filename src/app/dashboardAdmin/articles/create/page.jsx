@@ -22,6 +22,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
+import { format } from "date-fns";
 
 function CreateArticle() {
   const [isAlert, setIsAlert] = useState(false);
@@ -127,12 +128,7 @@ function CreateArticle() {
   const addData = async (e) => {
     e.preventDefault();
     var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
+    var date = today.getDate() + " " + format(today, "MMMM yyyy");
     const docRef = await addDoc(collection(db, "articles"), {
       titleEnglish: titleIng,
       titleChinese: titleChi,
