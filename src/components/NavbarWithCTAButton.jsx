@@ -176,7 +176,7 @@ export default function NavbarWithCTAButton({ height }) {
           </button>
           <button onClick={() => handleChangeLanguage("chi")}>
             <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
-              <Image src={"/assets/images/China.png"} width={40} height={10} />
+              <Image src={"/assets/images/china.png"} width={40} height={10} />
               <p
                 className={
                   navbar
