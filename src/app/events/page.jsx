@@ -19,8 +19,19 @@ import { useLanguage } from "@/context/LanguageContext";
 function Events() {
   const { language, changeLanguage } = useLanguage();
 
-
   const [dataEvents, setDataEvents] = useState([]);
+  const [dataEventsResult, setDataEventsResult] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e);
+    const results = dataEvents.filter((item) =>
+      language == "en"
+        ? item.titleEnglish.toLowerCase().includes(search.toLowerCase())
+        : item.titleChinese.toLowerCase().includes(search.toLowerCase())
+    );
+    setDataEventsResult(results);
+  };
   useEffect(() => {
     getDataEvents();
   }, []);
@@ -47,6 +58,7 @@ function Events() {
             <div className="relative">
               <input
                 type="text"
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search by title..."
                 className="w-full h-12 pl-4 pr-10 rounded-md border-none bg-gray-200 focus:outline-none !important"
               />
@@ -70,28 +82,55 @@ function Events() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
-            {dataEvents.map((data, i) => {
-              return (
-                <>
-                  <div key={i}>
-                    <a href={`/events/event?id=${data.id}`}>
-                      <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1">
-                        <div
-                          className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
-                          style={{ backgroundImage: `url(${data.img})` }}
-                        ></div>
-                        <div className="p-3 ">
-                          <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">
-                            {language == "en" ? data.titleEnglish : data.titleChinese}
-                          </h1>
-                          <h2>{data.date}</h2>
-                        </div>
+            {search == ""
+              ? dataEvents.map((data, i) => {
+                  return (
+                    <>
+                      <div key={i}>
+                        <a href={`/events/event?id=${data.id}`}>
+                          <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1">
+                            <div
+                              className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
+                              style={{ backgroundImage: `url(${data.img})` }}
+                            ></div>
+                            <div className="p-3 ">
+                              <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">
+                                {language == "en"
+                                  ? data.titleEnglish
+                                  : data.titleChinese}
+                              </h1>
+                              <h2>{data.date}</h2>
+                            </div>
+                          </div>
+                        </a>
                       </div>
-                    </a>
-                  </div>
-                </>
-              );
-            })}
+                    </>
+                  );
+                })
+              : dataEventsResult.map((data, i) => {
+                  return (
+                    <>
+                      <div key={i}>
+                        <a href={`/events/event?id=${data.id}`}>
+                          <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1">
+                            <div
+                              className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
+                              style={{ backgroundImage: `url(${data.img})` }}
+                            ></div>
+                            <div className="p-3 ">
+                              <h1 className="font-medium md:text-xl text-gray-900 line-clamp-2 ">
+                                {language == "en"
+                                  ? data.titleEnglish
+                                  : data.titleChinese}
+                              </h1>
+                              <h2>{data.date}</h2>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </>
+                  );
+                })}
           </div>
         </div>
       </div>

@@ -23,7 +23,6 @@ import parse from "html-react-parser";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
-
 function Event() {
   const { language, changeLanguage } = useLanguage();
 
@@ -67,34 +66,40 @@ function Event() {
             <>
               <div className="md:flex justify-center items-center">
                 <div></div>
-                <div className="md:w-4/6"> <div className="py-2 flex gap-1 ">
-                  <a href="/events">Events</a>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    className="h-[1rem] w-auto mt-1 "
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    ></path>
-                  </svg>
-                  <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
-                </div>
+                <div className="md:w-4/6">
+                  {" "}
+                  <div className="py-2 flex gap-1 ">
+                    <a href="/events">Events</a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                      className="h-[1rem] w-auto mt-1 "
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      ></path>
+                    </svg>
+                    <p className="text-blue-500">
+                      {" "}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </p>
+                  </div>
                   <div className="bg-white">
                     <div className="relative p-5  ">
                       <div className="w-full">
                         <div className="">
                           <p>Posted at: {data.date}</p>
-
                         </div>
                         <h1 className="text-4xl text-center p-5 font-semibold">
-                          {language == "en" ? data.titleEnglish : data.titleChinese}
+                          {language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese}
                         </h1>
                         <div className="bg-blue-500 h-[200px] md:h-[500px] relative">
                           <div
@@ -112,6 +117,9 @@ function Event() {
                         <h3 className="my-3">
                           Duration: {data.durationFrom} - {data.durationTo}
                         </h3>
+                        <h3 className="my-3">
+                          Time: {data.timeFrom} - {data.timeTo}
+                        </h3>
                         {data.content.map((data, i) => {
                           return (
                             <>
@@ -119,12 +127,20 @@ function Event() {
                               <div className="w-100px flex">
                                 <div className="bg-blue-600 h-[50px] flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white">
-                                    {language == "en" ? data.topicIng : data.topicChi}
+                                    {language == "en"
+                                      ? data.topicIng
+                                      : data.topicChi}
                                   </h2>
                                 </div>
                               </div>
                               <div className="py-5 content">
-                                <p>{parse(language == "en" ? data.contentIng : data.contentChi)}</p>
+                                <p>
+                                  {parse(
+                                    language == "en"
+                                      ? data.contentIng
+                                      : data.contentChi
+                                  )}
+                                </p>
                               </div>
                               {data.img == "" ? (
                                 <></>
@@ -142,7 +158,8 @@ function Event() {
                         })}
                       </div>
                     </div>
-                  </div></div>
+                  </div>
+                </div>
                 <div></div>
               </div>
             </>

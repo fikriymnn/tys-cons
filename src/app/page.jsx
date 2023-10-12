@@ -35,11 +35,8 @@ const Home = () => {
   const [dataArticle, setDataArticle] = useState([]);
   const [dataArticle4, setDataArticle4] = useState([]);
   const [dataPackage, setDataPackage] = useState([]);
-  const [firsIndex, setFirsIndex] = useState([]);
-  const [lastIndex, setLastIndex] = useState([]);
 
   const [Index, setIndex] = useState();
-
 
   useEffect(() => {
     getHeading();
@@ -404,6 +401,11 @@ const Home = () => {
             arrows="true"
           >
             {dataPackage.map((data, i) => {
+              const le = data;
+              const firsPriceRp = data.price[0].priceRupiah;
+              const lastPriceRp = data.price[data.price.length - 1].priceRupiah;
+              const firsPriceYuan = data.price[0].priceYuan;
+              const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
               return (
                 <>
                   <div key={i} className="bg-white p-10 rounded-lg shadow-lg">
@@ -411,9 +413,7 @@ const Home = () => {
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
                     <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                      {Index == null
-                        ? `${firsIndex} - ${lastIndex}`
-                        : data.price[Index].price}{" "} 元
+                      {firsPriceYuan + "-" + lastPriceYuan} 元
                     </p>
 
                     <ol className="my-7 space-y-5">
@@ -509,6 +509,11 @@ const Home = () => {
         {/* desktop */}
         <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           {dataPackage.map((data, i) => {
+            const le = data;
+            const firsPriceRp = data.price[0].priceRupiah;
+            const lastPriceRp = data.price[data.price.length - 1].priceRupiah;
+            const firsPriceYuan = data.price[0].priceYuan;
+            const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
             return (
               <>
                 <div key={i} className="bg-white p-14 shadow-lg rounded-xl">
@@ -516,14 +521,12 @@ const Home = () => {
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                    {data.price[0].price} 元
+                    {firsPriceYuan + "-" + lastPriceYuan} 元
                   </p>
                   <ol className="my-7 space-y-5">
                     <p className="text-base font-normal leading-tight text-black dark:text-gray-400">
                       <span className="">Package Include :</span>
                     </p>
-
-
 
                     {data.services.map((data, i) => {
                       return (

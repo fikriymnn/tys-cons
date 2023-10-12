@@ -35,8 +35,8 @@ function ProductTalent() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Talent Sertifications"),
-        where("subService", "==", "BPOM Food and Drug")
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", "Translator Assistant")
       );
 
       const querySnapshot = await getDocs(q);
@@ -54,8 +54,8 @@ function ProductTalent() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Talent Sertifications"),
-        where("subService", "==", "ISO Management System")
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", "Finance Accounting Tax")
       );
 
       const querySnapshot = await getDocs(q);
@@ -73,8 +73,8 @@ function ProductTalent() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Talent Sertifications"),
-        where("subService", "==", "SNI National Standard")
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", "Marketing Sales")
       );
 
       const querySnapshot = await getDocs(q);
@@ -92,8 +92,8 @@ function ProductTalent() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Talent Sertifications"),
-        where("subService", "==", "Medical and Hygiene  ")
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", "Management Candidate")
       );
 
       const querySnapshot = await getDocs(q);
@@ -111,8 +111,8 @@ function ProductTalent() {
     try {
       const q = query(
         collection(db, "service"),
-        where("service", "==", "Talent Sertifications"),
-        where("subService", "==", "POSTEL Telecommunication")
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", "HR Management Service")
       );
 
       const querySnapshot = await getDocs(q);
@@ -196,6 +196,13 @@ function ProductTalent() {
             <>
               <div className="grid md:grid-cols-5 md:grid sm:grid sm:grid-cols-3 grid-cols-1  gap-5 px-5 pb-5">
                 {dataTalentTranslator.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -213,7 +220,7 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -228,6 +235,13 @@ function ProductTalent() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataTalentFinance.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -245,7 +259,7 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -260,6 +274,13 @@ function ProductTalent() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataTalentMarketing.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -277,7 +298,7 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -292,6 +313,13 @@ function ProductTalent() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataTalentMenagement.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -309,7 +337,7 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
@@ -324,6 +352,13 @@ function ProductTalent() {
             <>
               <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1   gap-5 px-5 pb-5">
                 {dataTalentHR.map((data, i) => {
+                  const le = data;
+                  const firsPriceRp = data.price[0].priceRupiah;
+                  const lastPriceRp =
+                    data.price[data.price.length - 1].priceRupiah;
+                  const firsPriceYuan = data.price[0].priceYuan;
+                  const lastPriceYuan =
+                    data.price[data.price.length - 1].priceYuan;
                   return (
                     <>
                       <div key={i}>
@@ -341,7 +376,7 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {data.price[0].price}
+                                {firsPriceYuan + "-" + lastPriceYuan} 元
                               </h2>
                             </div>
                           </div>
