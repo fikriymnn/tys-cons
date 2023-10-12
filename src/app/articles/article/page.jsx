@@ -42,9 +42,9 @@ function Article() {
         {dataArticle.map((data, i) => {
           return (
             <>
-              <div className="flex justify-center items-center">
+              <div className="md:flex justify-center items-center">
                 <div></div>
-                <div className="w-4/6">
+                <div className="md:w-4/6">
                   <div className="py-2 flex gap-1">
                     <a href="/articles">{language == "en" ? "Articles" : "文章"}</a>
                     <svg
