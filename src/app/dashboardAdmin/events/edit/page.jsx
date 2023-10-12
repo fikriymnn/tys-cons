@@ -198,7 +198,7 @@ function EditEvent() {
       });
     } else {
       await updateDoc(todoRef, {
-        tileEnglish: titleIng,
+        titleEnglish: titleIng,
         titleChinese: titleChi,
         durationFrom: parsedDateFrom,
         durationTo: parsedDateTo,
