@@ -102,7 +102,7 @@ function EventsAdmin() {
                               <p>{i + 1}</p>
                             </div>
                             <div className="p-2 h-full w-[220px] border-s-2">
-                              <img src={data.img} alt="" />
+                              <Image src={data.img} alt="" width={150} height={150} />
                             </div>
                             <div className="w-full flex">
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">

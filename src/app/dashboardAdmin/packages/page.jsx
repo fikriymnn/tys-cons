@@ -94,7 +94,7 @@ function PackageAdmin() {
                             <p>{i + 1}</p>
                           </div>
                           <div className="p-2 h-full w-[209px] border-s-2">
-                            <img src={data.img} alt="" />
+                            <Image src={data.img} alt="" height={150} width={150} />
                           </div>
                           <div className="w-full flex">
                             <div className="w-[400px] border-s-2  flex justify-start items-center p-2">

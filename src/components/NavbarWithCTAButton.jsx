@@ -104,27 +104,31 @@ export default function NavbarWithCTAButton({ height }) {
       <div className=" bg-white absolute mt-10 shadow-md z-10">
         <a href="/services/basicEstablish">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
-            <p className="">Basic Eshtablishment Services</p>
+            <p className="">{
+              language == "en" ? "Basic Establishment Services" : "基础服务"
+            }</p>
           </div>
         </a>
         <a href="/services/productCertifications">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
-            <p className="">Product Certifications</p>
+            <p className="">{language == "en" ? "Product Certification" : "产品认证"}</p>
           </div>
         </a>
         <a href="/services/financeAccountingTax">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
-            <p className="">Finance Accounting Tax</p>
+            <p className="">{language == "en" ? "Finance Acounting Tax" : "财税会计服务"}</p>
           </div>
         </a>
         <a href="/services/TalentRecruitmentHR">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
-            <p className="">Talent Recruitment HR</p>
+            <p className="">{
+              language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"
+            }</p>
           </div>
         </a>
         <a href="/services/LegalServices">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
-            <p className="">Legal Services</p>
+            <p className="">{language == "en" ? "Legal Services" : "法律服务"}</p>
           </div>
         </a>
       </div>

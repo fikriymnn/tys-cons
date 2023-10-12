@@ -35,6 +35,11 @@ const Home = () => {
   const [dataArticle, setDataArticle] = useState([]);
   const [dataArticle4, setDataArticle4] = useState([]);
   const [dataPackage, setDataPackage] = useState([]);
+  const [firsIndex, setFirsIndex] = useState([]);
+  const [lastIndex, setLastIndex] = useState([]);
+
+  const [Index, setIndex] = useState();
+
 
   useEffect(() => {
     getHeading();
@@ -402,11 +407,13 @@ const Home = () => {
               return (
                 <>
                   <div key={i} className="bg-white p-10 rounded-lg shadow-lg">
-                    <h5 className="mb-4 text-lg text-black font-medium text-center">
+                    <h5 className="mb-4 text-2xl text-black font-semibold text-center">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
                     <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                      {data.price[0].price} 元
+                      {Index == null
+                        ? `${firsIndex} - ${lastIndex}`
+                        : data.price[Index].price}{" "} 元
                     </p>
 
                     <ol className="my-7 space-y-5">
@@ -418,12 +425,12 @@ const Home = () => {
                       {data.services.map((data, i) => {
                         return (
                           <>
-                            <li key={i} className="flex space-x-3">
+                            <p key={i} className="flex space-x-3">
                               <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
                                 &bull;{" "}
                                 <span className="px-2">{data.nameIng}</span>
                               </p>
-                            </li>
+                            </p>
                           </>
                         );
                       })}
@@ -499,7 +506,7 @@ const Home = () => {
           </Carousel>
         </div>
 
-       {/* desktop */}
+        {/* desktop */}
         <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           {dataPackage.map((data, i) => {
             return (
@@ -512,12 +519,12 @@ const Home = () => {
                     {data.price[0].price} 元
                   </p>
                   <ol className="my-7 space-y-5">
-                  <p className="text-base font-normal leading-tight text-black dark:text-gray-400">
-                         <span className="">Package Include :</span>
-                      </p>
-                    
-                      
-                    
+                    <p className="text-base font-normal leading-tight text-black dark:text-gray-400">
+                      <span className="">Package Include :</span>
+                    </p>
+
+
+
                     {data.services.map((data, i) => {
                       return (
                         <>
