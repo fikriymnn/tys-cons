@@ -131,21 +131,21 @@ function DetailPackages() {
                   <div className="text-2xl font-medium">
                     <p>Services: / 服务:</p>
                   </div>
-                  <div className="grid grid-cols-5 gap-5 py-10">
-                    {data.services.map((data, i) => {
+                  <div className="grid grid-cols-1 md:grid-cols-5 py-10">
+                    {data.services.map((data, i, arr) => {
                       return (
-                        <>
-                          <div key={i}>
+                        <div className="md:flex" >
+                          <div className="md:w-60 " key={i}>
                             <a href={`/services/detail?id=${data.id}`}>
-                              <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
+                              <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 ">
                                 <div
-                                  className=" bg-blue-700 h-48 bg-cover bg-center"
+                                  className="bg-blue-700 h-48 bg-cover bg-center"
                                   style={{
                                     backgroundImage: `url(${data.img})`,
                                   }}
                                 ></div>
                                 <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
-                                  <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                  <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 md:line-clamp-1 line-clamp-3 ">
                                     {data.nameIng}
                                   </h1>
                                   <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
@@ -155,9 +155,15 @@ function DetailPackages() {
                               </div>
                             </a>
                           </div>
-                        </>
+                          {i < arr.length - 1 && (
+                            <div className=" flex items-center justify-center text-center m-2">
+                              <span className="text-5xl font-bold">+</span>
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
+
                   </div>
                   <div className="h-[2px] w-full bg-gray-300 "></div>
                   {data.content.map((data, i) => {

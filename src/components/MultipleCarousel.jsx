@@ -72,24 +72,27 @@ function MultipleCarousel() {
       autoPlay={true}
       infinite={"true"}
       showDots={true}
+      autoPlaySpeed={1000}
     >
-      {dataClient.map((data, i) => {
-        return (
-          <>
-            <div className="text-white flex justify-center items-center h-[100px]">
-              <Image
-                key={i}
-                className="md:w-[200px] w-32"
-                src={data.img}
-                width={200}
-                height={200}
-                alt=""
-              />
-            </div>
-          </>
-        );
-      })}
-    </Carousel>
+      {
+        dataClient.map((data, i) => {
+          return (
+            <>
+              <div className="text-white flex justify-center items-center h-[100px]">
+                <Image
+                  key={i}
+                  className="md:w-[200px] w-32"
+                  src={data.img}
+                  width={200}
+                  height={200}
+                  alt=""
+                />
+              </div>
+            </>
+          );
+        })
+      }
+    </Carousel >
   );
 }
 
