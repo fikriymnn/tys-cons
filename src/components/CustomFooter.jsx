@@ -349,7 +349,7 @@ const CustomFooter = () => {
         </div>
       </div>
       <hr className=" w-full bg-white " />
-      <div className=" md:flex lg:justify-between md:p-5 pt-5  text-center">
+      <div className=" md:flex lg:justify-between md:p-5 pt-5  text-center ">
         <span className=" text-white ">
           Copyright &copy; 2022 tysconsultant.com
         </span>

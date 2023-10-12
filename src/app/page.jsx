@@ -126,8 +126,8 @@ const Home = () => {
         <NavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full h-[800px] bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
-        <div className="w-full h-[800px] md:grid md:grid-cols-2 flex items-center justify-center ">
+        <div className='w-full h-screen bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className="w-full h-screen md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="md:ml-14 md:pl-20 sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
               {dataHeading.map((data, i) => {
@@ -349,7 +349,7 @@ const Home = () => {
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
-                  <div className="cursor-pointer border-b-[2px] border-[#031530] pb-3 my-5 md:my-0">
+                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-4">
                     <div className="font-semibold text-xl hover:underline">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
@@ -361,7 +361,7 @@ const Home = () => {
           })}
 
           <a href="/articles">
-            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-20">
+            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-32">
               <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -412,7 +412,7 @@ const Home = () => {
                     <ol className="my-7 space-y-5">
                       <li className="flex space-x-3">
                         <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                          &bull; <span className="px-2">Package Include :</span>
+                          <span className="">Package Include :</span>
                         </p>
                       </li>
                       {data.services.map((data, i) => {
@@ -498,29 +498,31 @@ const Home = () => {
             </>
           </Carousel>
         </div>
+
+       {/* desktop */}
         <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
           {dataPackage.map((data, i) => {
             return (
               <>
-                <div key={i} className="bg-white p-10 shadow-lg">
+                <div key={i} className="bg-white p-14 shadow-lg rounded-xl">
                   <h5 className="mb-4 text-lg text-black font-medium text-center">
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
                     {data.price[0].price} 元
                   </p>
-
                   <ol className="my-7 space-y-5">
-                    <li className="flex space-x-3">
-                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                        &bull; <span className="px-2">Package Include :</span>
+                  <p className="text-base font-normal leading-tight text-black dark:text-gray-400">
+                         <span className="">Package Include :</span>
                       </p>
-                    </li>
+                    
+                      
+                    
                     {data.services.map((data, i) => {
                       return (
                         <>
                           <li key={i} className="flex space-x-3">
-                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                            <p className="text-base font-normal  text-black dark:text-gray-400">
                               &bull;{" "}
                               <span className="px-2">{data.nameIng}</span>
                             </p>
@@ -530,7 +532,7 @@ const Home = () => {
                     })}
                   </ol>
                   <a
-                    className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                    className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                     href={`/packages/details?id=${data.id}`}
                   >
                     <p>DETAILS</p>
@@ -564,8 +566,8 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-white w-full">
-        <p className="font-semibold text-3xl text-center py-10 pb-10">
-          {language == "en" ? "Clients" : "我们客户"}
+        <p className="font-semibold text-3xl text-center py-10">
+          {language == "en" ? "Our Clients" : "我们客户"}
         </p>
 
         <MultipleCarousel />

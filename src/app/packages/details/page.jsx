@@ -96,7 +96,7 @@ function DetailPackages() {
                       <p className="md:text-2xl text-2xl pb-4">
                         {data.titleEnglish}
                       </p>
-                      <div className="flex pb-4">
+                      <div className="flex ">
                         <p className="text-blue-600 text-xl">
                           {" "}
                           {Index == null
