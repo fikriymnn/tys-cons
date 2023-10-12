@@ -62,29 +62,32 @@ function Navigation({
   return (
     <div className="z-40 ">
       <div
-        className={`${
-          bar == 1
-            ? " w-[200px] duration-100 ease-in-out"
-            : " w-[80px] duration-100 ease-in-out"
-        } h-screen shadow-md flex-col text-[#ffffff] bg-[#0d3064]`}
+        className={`${bar == 1
+          ? " w-[200px] duration-100 ease-in-out"
+          : " w-[80px] duration-100 ease-in-out"
+          } h-screen shadow-md flex-col text-[#ffffff] bg-[#0d3064]`}
       >
         <div className="w-full h-[80px] mb-5 shadow-md  ">
           <button className="w-full h-full" onClick={toggleBar}>
             {bar === 0 ? (
-              <img
+              <Image
                 src="/assets/images/tyssquare.png"
                 alt=""
-                className="mx-5 w-6/12 opacity-100"
+                className="mx-5  opacity-100"
+                width={40}
+                height={40}
               />
             ) : (
               <>
                 {dataLogoWhite.map((data, i) => {
                   return (
-                    <img
+                    <Image
                       key={i}
-                      className="mx-5 w-[160px]"
+                      className="mx-5 "
                       src={data.img}
-                    ></img>
+                      width={160}
+                      height={50}
+                    />
                   );
                 })}
               </>
@@ -93,11 +96,10 @@ function Navigation({
         </div>
         <a href="/dashboardAdmin/home">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${homepage}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${homepage}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -129,11 +131,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/about">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${about}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${about}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -169,11 +170,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/services">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${services}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${services}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -207,11 +207,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/packages">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${packages}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${packages}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -243,11 +242,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/articles">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${articles}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${articles}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -279,11 +277,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/events">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${events}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${events}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -317,11 +314,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/policies">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${policies}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${policies}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -353,11 +349,10 @@ function Navigation({
         </a>
         <a href="/dashboardAdmin/clients">
           <button
-            className={`${
-              bar == 1
-                ? "ms-5 justify-start items-center"
-                : " justify-center items-center"
-            } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${clients}`}
+            className={`${bar == 1
+              ? "ms-5 justify-start items-center"
+              : " justify-center items-center"
+              } w-full h-10 flex my-3 hover:text-[#0d3064] hover:ps-3 hover:bg-white rounded-sm duration-200 ease-in-out ${clients}`}
           >
             {bar === 0 ? (
               <div className="w-10">
@@ -389,11 +384,10 @@ function Navigation({
         </a>
 
         <button
-          className={`${
-            bar == 1
-              ? "ms-5 justify-start items-center"
-              : " justify-center items-center"
-          } w-full h-10 flex my-5 `}
+          className={`${bar == 1
+            ? "ms-5 justify-start items-center"
+            : " justify-center items-center"
+            } w-full h-10 flex my-5 `}
           onClick={() => {
             signOut(auth);
             localStorage.removeItem("auth");

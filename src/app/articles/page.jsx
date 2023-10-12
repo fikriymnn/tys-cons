@@ -63,7 +63,7 @@ function Articles() {
   return (
     <>
       <NavbarWithCTAButton />
-      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
+      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="bg-white ">
           <div className="relative p-5 pt-10">
             <div className="relative">
@@ -94,13 +94,18 @@ function Articles() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
             {dataArticle.map((data, i) => {
               return (
-                <ArticleCard
-                  key={i}
-                  date={data.date}
-                  id={data.id}
-                  img={data.img}
-                  title={language == "en" ? data.titleEnglish : data.titleChinese}
-                />
+                <>
+
+                  <ArticleCard
+                    key={i}
+                    date={data.date}
+                    id={data.id}
+                    img={data.img}
+                    title={language == "en" ? data.titleEnglish : data.titleChinese}
+                  />
+
+                </>
+
               );
             })}
           </div>

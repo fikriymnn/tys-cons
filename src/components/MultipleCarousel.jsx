@@ -67,29 +67,32 @@ function MultipleCarousel() {
 
   return (
     <Carousel
-      className="mb-10 pb-24 md:w-full"
+      className="pb-16 mb-10 md:w-full"
       responsive={responsive}
       autoPlay={true}
       infinite={"true"}
       showDots={true}
+      autoPlaySpeed={1000}
     >
-      {dataClient.map((data, i) => {
-        return (
-          <>
-            <div className="text-white flex justify-center items-center h-[100px]">
-              <Image
-                key={i}
-                className="md:w-[200px] w-32"
-                src={data.img}
-                width={200}
-                height={200}
-                alt=""
-              />
-            </div>
-          </>
-        );
-      })}
-    </Carousel>
+      {
+        dataClient.map((data, i) => {
+          return (
+            <>
+              <div className="text-white flex justify-center items-center h-[80px]">
+                <Image
+                  key={i}
+                  className="md:w-[200px] w-32"
+                  src={data.img}
+                  width={200}
+                  height={200}
+                  alt=""
+                />
+              </div>
+            </>
+          );
+        })
+      }
+    </Carousel >
   );
 }
 
