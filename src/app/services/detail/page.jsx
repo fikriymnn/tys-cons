@@ -192,6 +192,17 @@ function DetailServices() {
                             )}{" "}
                           </p>
                         </div>
+                        {data.img == "" ? (
+                                <></>
+                              ) : (
+                                <>
+                                  <img
+                                    width={500}
+                                    height={300}
+                                    src={data.img}
+                                  ></img>
+                                </>
+                              )}
                       </>
                     );
                   })}
