@@ -99,7 +99,7 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Medical and Hygiene  ")
+        where("subService", "==", "Medical and Hygiene")
       );
 
       const querySnapshot = await getDocs(q);

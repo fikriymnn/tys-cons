@@ -143,7 +143,7 @@ function DetailPackages() {
                         </>
                       </fieldset>
                       <p className="pb-4">
-                        {language == "en" ? "Options Currency:" : "选项"}
+                        {language == "en" ? "Options:" : "选项"}
                       </p>
                       <fieldset className="flex gap-3 pb-4" id="radio">
                         {data.price.map((data, i) => {
@@ -238,16 +238,12 @@ function DetailPackages() {
                           )}
                         </div>
                         {data.img == "" ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <img
-                                    width={500}
-                                    height={300}
-                                    src={data.img}
-                                  ></img>
-                                </>
-                              )}
+                          <></>
+                        ) : (
+                          <>
+                            <img width={500} height={300} src={data.img}></img>
+                          </>
+                        )}
                       </>
                     );
                   })}

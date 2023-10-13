@@ -319,13 +319,14 @@ function EditEvent() {
         <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Image</p>
+              <p>Image Banner</p>
             </div>
             <div className=" w-10/12 p-3">
               <input
                 type="file"
                 onChange={(event) => handleUpload(event.target.files[0])}
               />
+              <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
