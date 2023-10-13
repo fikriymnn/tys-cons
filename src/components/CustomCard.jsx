@@ -9,7 +9,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
   return (
     <Link href={`/articles/article?id=${id}`}>
       <div
-        className="transform md:hover:-translate-y-4 duration-100 ease-in-out my-0 h-full border-gray-50 border-2 shadow-lg"
+        className="transform md:hover:-translate-y-4 duration-100 ease-in-out my-0 h-full border-gray-50 border-2 shadow-lg rounded-md"
         imgAlt="Meaningful alt text for an image that is not purely decorative"
       >
           <Image src={img} alt="" height={400} width={520} />
