@@ -94,7 +94,12 @@ function PackageAdmin() {
                             <p>{i + 1}</p>
                           </div>
                           <div className="p-2 h-full w-[209px] border-s-2">
-                            <Image src={data.img} alt="" height={150} width={150} />
+                            <Image
+                              src={data.img}
+                              alt=""
+                              height={150}
+                              width={150}
+                            />
                           </div>
                           <div className="w-full flex">
                             <div className="w-[400px] border-s-2  flex justify-start items-center p-2">
@@ -105,7 +110,7 @@ function PackageAdmin() {
                             </div>
                             <div className=" border-s-2  flex justify-start items-center p-2">
                               <div className="flex flex-col">
-                                <p>{data.price[0].price} 元</p>
+                                <p>{data.price[0].priceYuan} 元</p>
                               </div>
                             </div>
                           </div>
@@ -114,14 +119,12 @@ function PackageAdmin() {
                               className="bg-yellow-400  rounded-md p-2"
                               href={`/dashboardAdmin/packages/edit?id=${data.id}`}
                             >
-
                               <Image
                                 width={35}
                                 height={35}
                                 src="/assets/images/edit-svgrepo-com.svg"
                                 alt=""
                               />
-
                             </a>
                             <button
                               onClick={async (e) => {
@@ -149,7 +152,6 @@ function PackageAdmin() {
                       </>
                     );
                   })}
-
                 </div>
               </div>
             </div>
