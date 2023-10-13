@@ -166,7 +166,7 @@ function Event() {
           );
         })}
       </div>
-      {/* <CustomFooter /> */}
+      <CustomFooter />
     </>
   );
 }

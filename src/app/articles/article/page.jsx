@@ -125,7 +125,7 @@ function Article() {
           );
         })}
       </div>
-      {/* <CustomFooter /> */}
+      <CustomFooter />
     </>
   );
 }
