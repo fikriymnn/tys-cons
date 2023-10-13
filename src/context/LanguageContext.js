@@ -22,26 +22,26 @@ export function LanguageProvider({ children }) {
     //         console.log(languagee)
     //       }
     // }
-// let data;
-//     if (typeof window !== 'undefined') {
-//         console.log('You are on the browser')
-//         // 👉️ can use localStorage here
+let data;
+    if (typeof window !== 'undefined') {
+        // console.log('You are on the browser')
+        // 👉️ can use localStorage here
       
-//          data=  sessionStorage.getItem('language');
+         data=  sessionStorage.getItem('language');
          
       
         
        
-//       } else {
-//         console.log('You are on the server');
+      } else {
+        // console.log('You are on the server');
         
 
-//       }
+      }
      // const lang=  sessionStorage.getItem('language');
 
     // console.log(data);
   // Bahasa Inggris (default)
-  const [language, setLanguage] = useState("en"); 
+  const [language, setLanguage] = useState(data||"en"); 
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
