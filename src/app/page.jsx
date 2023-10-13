@@ -385,7 +385,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <div className="font-semibold text-3xl text-center pt-7 pb-6 ">
+        <div className="font-semibold text-3xl text-center pt-9 pb-4 ">
           <p>
             {language == "en"
               ? "Choose The Best Package You Need"
@@ -435,7 +435,7 @@ const Home = () => {
                         );
                       })}
                     </ol>
-                    
+
                     <a
                       className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                       href={`/packages/details?id=${data.id}`}
@@ -447,7 +447,7 @@ const Home = () => {
               );
             })}
             <>
-              
+
             </>
           </Carousel>
         </div>
@@ -489,19 +489,19 @@ const Home = () => {
                   </ol>
                   <div className="mt-auto">
 
-                  <a
-                    className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900 "
-                    href={`/packages/details?id=${data.id}`}
-                  >
-                    <p>DETAILS</p>
-                  </a>
+                    <a
+                      className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900 "
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
                   </div>
                 </div>
               </>
             );
           })}
         </div>
-        <div className="pb-24 pt-10 px-12">
+        <div className="pb-16 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
             <a href="/packages">
               {language == "en" ? "See More Packages" : "See More Packages"}
