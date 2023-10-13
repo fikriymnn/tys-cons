@@ -99,7 +99,12 @@ function ServicesAdmin() {
                               <p>{i + 1}</p>
                             </div>
                             <div className="p-2 h-full w-[209px] border-s-2">
-                              <Image width={100} height={100} src={data.img} alt="" />
+                              <Image
+                                width={100}
+                                height={100}
+                                src={data.img}
+                                alt=""
+                              />
                             </div>
                             <div className="w-full flex">
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
@@ -110,7 +115,7 @@ function ServicesAdmin() {
                               </div>
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
-                                  <p>{data.price[0].price} 元</p>
+                                  <p>{data.price[0].priceYuan} 元</p>
                                 </div>
                               </div>
                               <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
@@ -127,14 +132,12 @@ function ServicesAdmin() {
                                 className="bg-yellow-400  rounded-md p-2"
                                 href={`/dashboardAdmin/services/edit?id=${data.id}`}
                               >
-
                                 <Image
                                   width={35}
                                   height={35}
                                   src="/assets/images/edit-svgrepo-com.svg"
                                   alt=""
                                 />
-
                               </a>
                               <button
                                 onClick={async (e) => {
@@ -164,7 +167,6 @@ function ServicesAdmin() {
                         </>
                       );
                     })}
-
                 </div>
               </div>
             </div>

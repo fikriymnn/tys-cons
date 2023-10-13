@@ -21,7 +21,6 @@ import { useEffect, useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
 
-
 // async function getDataArticles() {
 //   let data = [];
 //   try {
@@ -42,6 +41,18 @@ function Articles() {
   const [dataArticle, setDataArticle] = useState([]);
   const { language, changeLanguage } = useLanguage();
 
+  const [dataArticleResult, setDataArticleResult] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e);
+    const results = dataArticle.filter((item) =>
+      language == "en"
+        ? item.titleEnglish.toLowerCase().includes(search.toLowerCase())
+        : item.titleChinese.toLowerCase().includes(search.toLowerCase())
+    );
+    setDataArticleResult(results);
+  };
 
   useEffect(() => {
     getDataArticles();
@@ -69,6 +80,7 @@ function Articles() {
             <div className="relative">
               <input
                 type="text"
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search by title..."
                 className="w-full h-12 pl-4 pr-10 rounded-md border-none bg-gray-200 focus:outline-none !important"
               />
@@ -92,22 +104,41 @@ function Articles() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
-            {dataArticle.map((data, i) => {
-              return (
-                <>
-
-                  <ArticleCard
-                    key={i}
-                    date={data.date}
-                    id={data.id}
-                    img={data.img}
-                    title={language == "en" ? data.titleEnglish : data.titleChinese}
-                  />
-
-                </>
-
-              );
-            })}
+            {search == ""
+              ? dataArticle.map((data, i) => {
+                  return (
+                    <>
+                      <ArticleCard
+                        key={i}
+                        date={data.date}
+                        id={data.id}
+                        img={data.img}
+                        title={
+                          language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese
+                        }
+                      />
+                    </>
+                  );
+                })
+              : dataArticleResult.map((data, i) => {
+                  return (
+                    <>
+                      <ArticleCard
+                        key={i}
+                        date={data.date}
+                        id={data.id}
+                        img={data.img}
+                        title={
+                          language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese
+                        }
+                      />
+                    </>
+                  );
+                })}
           </div>
         </div>
       </div>

@@ -148,7 +148,9 @@ function Events() {
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
         <div className="flex pb-5">
           <p> {language == "en" ? "Services" : "服务"}</p>{" "}
-          <p className="text-blue-600 ml-1">/ Basic Establishment Services</p>
+          <p className="text-blue-600 ml-1">
+            {language == "en" ? "/ Basic Establishment Services" : "/基础服务"}
+          </p>
         </div>
         <div className="bg-white">
           <div className="p-5 pt-3">
@@ -241,10 +243,9 @@ function Events() {
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
                               <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                {language == "chi" ? data.titleChinese : ""}
                                 {language == "en"
                                   ? data.titleEnglish
-                                  : data.titleEnglish}
+                                  : data.titleChinese}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {firsPriceYuan + "-" + lastPriceYuan} 元

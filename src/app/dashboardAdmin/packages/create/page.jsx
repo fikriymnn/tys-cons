@@ -26,10 +26,10 @@ import "react-quill/dist/quill.snow.css";
 import { format } from "date-fns";
 
 function CreatePackage() {
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState([false]);
 
-  const toggleHidden = () => {
-    setIsHidden(!isHidden);
+  const toggleHidden = (i) => {
+    setIsHidden(!isHidden[i]);
   };
 
   const [dataService, setDataService] = useState([]);
@@ -205,6 +205,13 @@ function CreatePackage() {
       ...dataServiceId,
       { id: "", nameIng: "", nameChi: "", img: "", price: [] },
     ]);
+    setIsHidden([...isHidden, false]);
+  };
+  const handleChangeHiden = (val, i) => {
+    const onchangeVal = [...isHidden];
+
+    onchangeVal[i] = val;
+    setIsHidden(onchangeVal);
   };
   const handleChangeService = (namee, val, i) => {
     const name = namee;
@@ -262,17 +269,19 @@ function CreatePackage() {
                 </div>
             )} */}
 
-      <div className="w-full z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full z-40 rounded-xl border-[#007aff] border-2 top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
             <p>Create New Package</p>
           </div>
           <div className="w-1/12 flex items-center justify-center">
-            <a href="/dashboardAdmin/packages">
+            <a
+              className="bg-red-600 rounded-lg py-2 px-5 text-xl"
+              href="/dashboardAdmin/packages"
+            >
               <button
-                // onClick={openAlert}
-                className="bg-red-600 rounded-lg py-2 px-5 text-xl"
+              // onClick={openAlert}
               >
                 X
               </button>
@@ -283,13 +292,14 @@ function CreatePackage() {
         <div className="">
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Image</p>
+              <p>Image Banner</p>
             </div>
             <div className=" w-10/12 p-3">
               <input
                 type="file"
                 onChange={(event) => handleUpload(event.target.files[0])}
               />
+              <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -410,7 +420,12 @@ function CreatePackage() {
                   </div>
                   <div className=" w-10/12 p-3 flex gap-3">
                     <button
-                      onClick={toggleHidden}
+                      onClick={() =>
+                        handleChangeHiden(
+                          isHidden[ii] == true ? false : true,
+                          ii
+                        )
+                      }
                       className=" rounded-lg text-white px-10 p-3 bg-blue-700 border-slate-300 text-start"
                     >
                       {val.nameIng == "" ? "Add Service" : val.nameIng}
@@ -418,7 +433,7 @@ function CreatePackage() {
                   </div>
                 </div>
                 <div className=" px-32">
-                  {isHidden ? null : (
+                  {isHidden[ii] ? null : (
                     <div className="grid grid-cols-2 gap-5 p-5 bg-slate-300">
                       {dataService.map((data, i) => {
                         return (
@@ -439,7 +454,6 @@ function CreatePackage() {
                                 );
                                 handleChangeService("img", data.img, ii);
                                 handleChangeService("price", data.price, ii);
-                                toggleHidden();
                               }}
                             >
                               <div className="bg-white hover:bg-slate-200 flex">
@@ -464,7 +478,7 @@ function CreatePackage() {
                     </div>
                   )}
                   {dataServiceId.length !== 1 && (
-                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                    <div className="ms-32 w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
                       <button onClick={(e) => handleDeleteService(ii)}>
                         Delete
                       </button>

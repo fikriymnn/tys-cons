@@ -296,10 +296,10 @@ const Home = () => {
             text2={language == "en" ? "Finance Accounting Tax" : "财税会计"}
             text3={language == "en" ? "Marketing Sales" : "销售和营销"}
             text4={language == "en" ? "Management Candidate" : "管理人选"}
-            text5={language == "en" ? "THR Management Service" : "人事管理服务"}
+            text5={language == "en" ? "HR Management Service" : "人事管理服务"}
           />
         </Link>
-        <Link href="/services/LegalServeces">
+        <Link href="/services/LegalServices">
           <MainCard
             icon5={
               <svg
@@ -338,7 +338,11 @@ const Home = () => {
                     language == "en" ? data.titleEnglish : data.titleChinese
                   }
                   isi={data.date}
-                  isi2={data.content[0].contentIng}
+                  isi2={
+                    language == "en"
+                      ? data.content[0].contentIng
+                      : data.content[0].contentChi
+                  }
                   id={data.id}
                   img={data.img}
                 />
@@ -408,7 +412,10 @@ const Home = () => {
               const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
               return (
                 <>
-                  <div key={i} className="bg-white p-10 rounded-lg shadow-lg">
+                  <div
+                    key={i}
+                    className="bg-white p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                  >
                     <h5 className="mb-4 text-2xl text-black font-semibold text-center">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
@@ -419,7 +426,7 @@ const Home = () => {
                     <ol className="my-7 space-y-5">
                       <li className="flex space-x-3">
                         <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                          <span className="">Package Include :</span>
+                          <span className="">Package Includes :</span>
                         </p>
                       </li>
                       {data.services.map((data, i) => {
@@ -428,13 +435,18 @@ const Home = () => {
                             <p key={i} className="flex space-x-3">
                               <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
                                 &bull;{" "}
-                                <span className="px-2">{data.nameIng}</span>
+                                <span className="px-2">
+                                  {language == "en"
+                                    ? data.nameIng
+                                    : data.nameChi}
+                                </span>
                               </p>
                             </p>
                           </>
                         );
                       })}
                     </ol>
+
                     <a
                       className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                       href={`/packages/details?id=${data.id}`}
@@ -445,69 +457,12 @@ const Home = () => {
                 </>
               );
             })}
-            <>
-              <div className="bg-white p-10 shadow-lg">
-                <h5 className="mb-4 text-lg text-black font-medium text-center">
-                  asdasdasd
-                </h5>
-                <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                  asdasd
-                </p>
-
-                <ol className="my-7 space-y-5">
-                  <li className="flex space-x-3">
-                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      &bull; <span className="px-2">Package Include :</span>
-                    </p>
-                  </li>
-
-                  <>
-                    <li className="flex space-x-3">
-                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                        &bull; <span className="px-2">asdasd</span>
-                      </p>
-                    </li>
-                  </>
-                </ol>
-                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
-                  <p>DETAILS</p>
-                </a>
-              </div>
-            </>
-            <>
-              <div className="bg-white p-10 shadow-lg">
-                <h5 className="mb-4 text-lg text-black font-medium text-center">
-                  asdasdasd
-                </h5>
-                <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                  asdasd
-                </p>
-
-                <ol className="my-7 space-y-5">
-                  <li className="flex space-x-3">
-                    <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      &bull; <span className="px-2">Package Include :</span>
-                    </p>
-                  </li>
-
-                  <>
-                    <li className="flex space-x-3">
-                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                        &bull; <span className="px-2">asdasd</span>
-                      </p>
-                    </li>
-                  </>
-                </ol>
-                <a className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900">
-                  <p>DETAILS</p>
-                </a>
-              </div>
-            </>
+            <></>
           </Carousel>
         </div>
 
         {/* desktop */}
-        <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12">
+        <div className="md:visible sm:hidden hidden bg-slate-100 w-full pt-4  md:grid md:grid-cols-3 gap-5 px-12">
           {dataPackage.map((data, i) => {
             const le = data;
             const firsPriceRp = data.price[0].priceRupiah;
@@ -516,16 +471,19 @@ const Home = () => {
             const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
             return (
               <>
-                <div key={i} className="bg-white p-14 shadow-lg rounded-xl">
+                <div
+                  key={i}
+                  className="bg-white p-14 shadow-xl rounded-xl h-full flex-col flex"
+                >
                   <h5 className="mb-4 text-lg text-black font-medium text-center">
-                    {data.titleEnglish}
+                    {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
                     {firsPriceYuan + "-" + lastPriceYuan} 元
                   </p>
                   <ol className="my-7 space-y-5">
                     <p className="text-base font-normal leading-tight text-black dark:text-gray-400">
-                      <span className="">Package Include :</span>
+                      <span className="">Package Includes :</span>
                     </p>
 
                     {data.services.map((data, i) => {
@@ -534,25 +492,29 @@ const Home = () => {
                           <li key={i} className="flex space-x-3">
                             <p className="text-base font-normal  text-black dark:text-gray-400">
                               &bull;{" "}
-                              <span className="px-2">{data.nameIng}</span>
+                              <span className="px-2">
+                                {language == "en" ? data.nameIng : data.nameChi}
+                              </span>
                             </p>
                           </li>
                         </>
                       );
                     })}
                   </ol>
-                  <a
-                    className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                    href={`/packages/details?id=${data.id}`}
-                  >
-                    <p>DETAILS</p>
-                  </a>
+                  <div className="mt-auto">
+                    <a
+                      className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900 "
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
+                  </div>
                 </div>
               </>
             );
           })}
         </div>
-        <div className="pb-24 pt-10 px-12">
+        <div className="pb-16 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
             <a href="/packages">
               {language == "en" ? "See More Packages" : "See More Packages"}

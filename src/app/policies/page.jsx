@@ -128,14 +128,17 @@ export default function Policies() {
         <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center   pt-24">
           <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown ? "bg-blue-700" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
                 setDropdown(!dropdown);
               }}
             >
               <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
-                {language == "en" ? " Foreign Company Registration" : "外资公司注册"}
+                {language == "en"
+                  ? " Foreign Company Registration"
+                  : "外资公司注册"}
               </p>
               {dropdown ? (
                 <Image
@@ -160,8 +163,9 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail1 == i ? "bg-blue-900" : ""
-                          }`}
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail1 == i ? "bg-blue-900" : ""
+                        }`}
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
@@ -175,7 +179,9 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategoryEnglish}
+                          {language == "en"
+                            ? data.subCategoryEnglish
+                            : data.subCategoryChinese}
                         </p>
                       </div>
                     </>
@@ -185,8 +191,9 @@ export default function Policies() {
             )}
 
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown2 ? "bg-blue-700" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown2 ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
                 setDropdown2(!dropdown2);
               }}
@@ -217,8 +224,9 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail2 == i ? "bg-blue-900" : ""
-                          }`}
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail2 == i ? "bg-blue-900" : ""
+                        }`}
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
@@ -232,7 +240,9 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategoryEnglish}
+                          {language == "en"
+                            ? data.subCategoryEnglish
+                            : data.subCategoryChinese}
                         </p>
                       </div>
                     </>
@@ -242,8 +252,9 @@ export default function Policies() {
             )}
 
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown3 ? "bg-blue-700" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown3 ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
                 setDropdown3(!dropdown3);
               }}
@@ -274,8 +285,9 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail3 == i ? "bg-blue-900" : ""
-                          }`}
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail3 == i ? "bg-blue-900" : ""
+                        }`}
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
@@ -289,7 +301,9 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategoryEnglish}
+                          {language == "en"
+                            ? data.subCategoryEnglish
+                            : data.subCategoryChinese}
                         </p>
                       </div>
                     </>
@@ -299,14 +313,17 @@ export default function Policies() {
             )}
 
             <div
-              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${dropdown4 ? "bg-blue-700" : ""
-                }`}
+              className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
+                dropdown4 ? "bg-blue-700" : ""
+              }`}
               onClick={() => {
                 setDropdown4(!dropdown4);
               }}
             >
               <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
-                {language == "en" ? "   Import Export Procedures & Policies" : "进出口手续政策"}
+                {language == "en"
+                  ? "   Import Export Procedures & Policies"
+                  : "进出口手续政策"}
               </p>
               {dropdown4 ? (
                 <Image
@@ -331,8 +348,9 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${selectedDetail4 == i ? "bg-blue-900" : ""
-                          }`}
+                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                          selectedDetail4 == i ? "bg-blue-900" : ""
+                        }`}
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
@@ -346,7 +364,9 @@ export default function Policies() {
                         }}
                       >
                         <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {data.subCategoryEnglish}
+                          {language == "en"
+                            ? data.subCategoryEnglish
+                            : data.subCategoryChinese}
                         </p>
                       </div>
                     </>
@@ -356,7 +376,11 @@ export default function Policies() {
             )}
           </div>
 
-          <PoliciesDetail src={dataimg} title={language == "en" ? titleIng : titleChi} content={language == "en" ? contentIng : contentChi} />
+          <PoliciesDetail
+            src={dataimg}
+            title={language == "en" ? titleIng : titleChi}
+            content={language == "en" ? contentIng : contentChi}
+          />
         </div>
       </div>
       <CustomFooter />
