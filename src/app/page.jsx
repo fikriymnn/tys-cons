@@ -324,11 +324,11 @@ const Home = () => {
           />
         </Link>
       </div>
-      <p className="font-semibold text-3xl text-center py-5 ">
+      <p className="font-semibold text-3xl text-center pt-3 pb-6 ">
         {language == "en" ? "Latest Articles" : "最新文章"}
       </p>
 
-      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10 ">
+      <div className="md:grid md:grid-cols-3 gap-4 px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
@@ -338,11 +338,7 @@ const Home = () => {
                     language == "en" ? data.titleEnglish : data.titleChinese
                   }
                   isi={data.date}
-                  isi2={
-                    language == "en"
-                      ? data.content[0].contentIng
-                      : data.content[0].contentChi
-                  }
+                  isi2={data.content[0].contentIng}
                   id={data.id}
                   img={data.img}
                 />
@@ -350,12 +346,12 @@ const Home = () => {
             </>
           );
         })}
-        <div>
+        <div className="flex flex-col h-full">
           {dataArticle4.map((data, i) => {
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
-                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-4">
+                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:mb-4 md:mt-1">
                     <div className="font-semibold text-xl hover:underline">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
@@ -367,7 +363,7 @@ const Home = () => {
           })}
 
           <a href="/articles">
-            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-32">
+            <div className="mt-auto md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-48">
               <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -389,7 +385,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <div className="font-semibold text-3xl text-center pt-10 ">
+        <div className="font-semibold text-3xl text-center pt-7 pb-6 ">
           <p>
             {language == "en"
               ? "Choose The Best Package You Need"
@@ -435,11 +431,7 @@ const Home = () => {
                             <p key={i} className="flex space-x-3">
                               <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
                                 &bull;{" "}
-                                <span className="px-2">
-                                  {language == "en"
-                                    ? data.nameIng
-                                    : data.nameChi}
-                                </span>
+                                <span className="px-2">{data.nameIng}</span>
                               </p>
                             </p>
                           </>
@@ -476,7 +468,7 @@ const Home = () => {
                   className="bg-white p-14 shadow-xl rounded-xl h-full flex-col flex"
                 >
                   <h5 className="mb-4 text-lg text-black font-medium text-center">
-                    {language == "en" ? data.titleEnglish : data.titleChinese}
+                    {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
                     {firsPriceYuan + "-" + lastPriceYuan} 元
@@ -492,9 +484,7 @@ const Home = () => {
                           <li key={i} className="flex space-x-3">
                             <p className="text-base font-normal  text-black dark:text-gray-400">
                               &bull;{" "}
-                              <span className="px-2">
-                                {language == "en" ? data.nameIng : data.nameChi}
-                              </span>
+                              <span className="px-2">{data.nameIng}</span>
                             </p>
                           </li>
                         </>
@@ -514,7 +504,7 @@ const Home = () => {
             );
           })}
         </div>
-        <div className="pb-16 pt-10 px-12">
+        <div className="pb-24 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
             <a href="/packages">
               {language == "en" ? "See More Packages" : "See More Packages"}
