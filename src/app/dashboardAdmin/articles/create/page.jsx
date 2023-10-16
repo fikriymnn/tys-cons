@@ -274,7 +274,7 @@ function CreateArticle() {
                       value={val.topicIng}
                       onChange={(e) => handleChange(e, i)}
                       type="text"
-                      placeholder="Insert Price"
+                      placeholder="input head topic"
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
@@ -290,7 +290,7 @@ function CreateArticle() {
                       value={val.topicChi}
                       onChange={(e) => handleChange(e, i)}
                       type="text"
-                      placeholder="Insert Price"
+                      placeholder="input head topic"
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
@@ -324,8 +324,9 @@ function CreateArticle() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description English For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description English For Description ${
+                        i + 1
+                      }`}
                       maxLength={2000}
                       className="h-[200px] "
                     />
@@ -348,8 +349,9 @@ function CreateArticle() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
                       maxLength={2000}
                       className="h-[200px] my-10 "
                     />

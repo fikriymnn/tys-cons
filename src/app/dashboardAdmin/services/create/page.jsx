@@ -25,7 +25,7 @@ import DropdownDef2 from "@/components/dropdownDef2";
 import { Dropdown } from "flowbite-react";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.snow.css";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");

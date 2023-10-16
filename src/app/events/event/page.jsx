@@ -96,7 +96,7 @@ function Event() {
                         <div className="">
                           <p>Posted at: {data.date}</p>
                         </div>
-                        <h1 className="text-4xl text-center p-5 font-semibold">
+                        <h1 className="md:text-4xl sm:text-2xl text-2xl text-center p-5 font-semibold">
                           {language == "en"
                             ? data.titleEnglish
                             : data.titleChinese}

@@ -28,7 +28,7 @@ function Packages() {
   async function getDataPackage() {
     try {
       const ordersRef = collection(db, "package");
-      const q = query(ordersRef, orderBy("date", "desc"), );
+      const q = query(ordersRef, orderBy("date", "desc"));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach(async (doc) => {
@@ -48,12 +48,12 @@ function Packages() {
         <p className="font-semibold text-3xl text-center pt-10 ">
           Choose The Best Package
         </p>
-        <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 gap-3 px-12 h-full ">
+        <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 grid grid-cols-1  gap-3 px-12 h-full ">
           {dataPackage.map((data, i) => {
             return (
               <>
                 <div className="bg-white p-10 rounded-lg shadow-lg flex flex-col">
-                  <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  <h5 className="mb-4 text-lg text-black font-medium text-center line-clamp-2">
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -70,7 +70,7 @@ function Packages() {
                       return (
                         <>
                           <li className="flex space-x-3">
-                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 line-clamp-1">
                               &bull;{" "}
                               <span className="px-2">{data.nameIng}</span>
                             </p>
@@ -80,14 +80,12 @@ function Packages() {
                     })}
                   </ol>
                   <div className="mt-auto">
-
-
-                  <a
-                    className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                    href={`/packages/details?id=${data.id}`}
-                  >
-                    <p>DETAILS</p>
-                  </a>
+                    <a
+                      className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
                   </div>
                 </div>
               </>

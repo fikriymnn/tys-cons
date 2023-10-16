@@ -145,8 +145,8 @@ export default function NavbarWithCTAButton({ height }) {
       <Navbar
         className={
           navbar
-            ? "bg-[#d9d9d943] fixed w-full md:py-5 sm:py-5 py-7 z-30 shadow-md top-0 "
-            : " fixed w-full md:py-5 sm:py-5 py-7 z-30 shadow-md top-0 bg-white"
+            ? "bg-[#d9d9d943] fixed w-full md:py-5 sm:py-5 py-2 z-30 shadow-md top-0 "
+            : " fixed w-full md:py-5 sm:py-5 py-2 z-30 shadow-md top-0 bg-white"
         }
         fluid
       >
@@ -165,9 +165,9 @@ export default function NavbarWithCTAButton({ height }) {
             />
           )}
         </Navbar.Brand>
-        <div className="flex md:w-72 w-44 md:order-3 gap-1 z-40 ">
+        <div className="flex md:w-72 w-52 md:order-3 gap-1 z-40 ">
           <button onClick={() => handleChangeLanguage("en")}>
-            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+            <div className=" my-auto w-auto cursor-pointer flex  gap-2 md:mr-3 ">
               <Image
                 src={"/assets/images/united-states.png"}
                 width={40}
@@ -185,7 +185,7 @@ export default function NavbarWithCTAButton({ height }) {
             </div>
           </button>
           <button onClick={() => handleChangeLanguage("chi")}>
-            <div className=" my-auto w-auto cursor-pointer flex px-2 gap-2 md:mr-3 ">
+            <div className=" my-auto w-auto cursor-pointer flex  gap-2 md:mr-3 ">
               <Image src={"/assets/images/china.png"} width={40} height={10} />
               <p
                 className={

@@ -197,7 +197,7 @@ function DetailPackages() {
                                         ? data.nameIng
                                         : data.nameChi}
                                     </h1>
-                                    <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                    <h2 className="md:text-sm sm:text-sm text-sm text-blue-600 line-clamp-1">
                                       {currency == 1
                                         ? "RP. " +
                                           firsPriceRp +

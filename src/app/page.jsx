@@ -324,11 +324,11 @@ const Home = () => {
           />
         </Link>
       </div>
-      <p className="font-semibold text-3xl text-center py-5 ">
+      <p className="font-semibold text-3xl text-center pt-3 pb-6 ">
         {language == "en" ? "Latest Articles" : "最新文章"}
       </p>
 
-      <div className="md:grid md:grid-cols-3 gap-4 py-4 px-10 ">
+      <div className="md:grid md:grid-cols-3 gap-4  px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
@@ -367,7 +367,7 @@ const Home = () => {
           })}
 
           <a href="/articles">
-            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-32">
+            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-52">
               <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -389,7 +389,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <div className="font-semibold text-3xl text-center pt-10 ">
+        <div className="font-semibold text-3xl text-center pt-9 pb-4 ">
           <p>
             {language == "en"
               ? "Choose The Best Package You Need"
@@ -475,7 +475,7 @@ const Home = () => {
                   key={i}
                   className="bg-white p-14 shadow-xl rounded-xl h-full flex-col flex"
                 >
-                  <h5 className="mb-4 text-lg text-black font-medium text-center">
+                  <h5 className="mb-4 text-lg text-black font-medium text-center line-clamp-2">
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -490,7 +490,7 @@ const Home = () => {
                       return (
                         <>
                           <li key={i} className="flex space-x-3">
-                            <p className="text-base font-normal  text-black dark:text-gray-400">
+                            <p className="text-base font-normal  text-black dark:text-gray-400 line-clamp-1">
                               &bull;{" "}
                               <span className="px-2">
                                 {language == "en" ? data.nameIng : data.nameChi}

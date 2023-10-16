@@ -285,7 +285,7 @@ const CustomFooter = () => {
             {language == "en" ? inggrisParagraph : chinaParagraph}
           </p>
         </div>
-        <div className="">
+        <div className="md:w-4/12">
           <p className=" uppercase font-bold text-white">
             {" "}
             {language == "en" ? "Contact Us" : "联系我们"}

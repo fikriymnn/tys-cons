@@ -33,6 +33,17 @@ function CreatePackage() {
   };
 
   const [dataService, setDataService] = useState([]);
+  const [dataServiceResult, setDataServiceResult] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e);
+    const results = dataService.filter(
+      (item) => item.titleEnglish.toLowerCase().includes(search.toLowerCase())
+      // : item.titleChinese.toLowerCase().includes(search.toLowerCase())
+    );
+    setDataServiceResult(results);
+  };
 
   useEffect(() => {
     getDataService();
@@ -433,49 +444,127 @@ function CreatePackage() {
                   </div>
                 </div>
                 <div className=" px-32">
-                  {isHidden[ii] ? null : (
-                    <div className="grid grid-cols-2 gap-5 p-5 bg-slate-300">
-                      {dataService.map((data, i) => {
-                        return (
-                          <>
-                            <button
-                              name="id"
-                              onClick={(e) => {
-                                handleChangeService("id", data.id, ii),
-                                  handleChangeService(
-                                    "nameIng",
-                                    data.titleEnglish,
-                                    ii
-                                  );
-                                handleChangeService(
-                                  "nameChi",
-                                  data.titleChinese,
-                                  ii
-                                );
-                                handleChangeService("img", data.img, ii);
-                                handleChangeService("price", data.price, ii);
-                              }}
-                            >
-                              <div className="bg-white hover:bg-slate-200 flex">
-                                <img
-                                  className="w-[80px] h-[80px]"
-                                  src={data.img}
-                                  alt=""
-                                />
-                                <div className="p-3">
-                                  <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                    {data.titleEnglish}
-                                  </h1>
-                                  <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                    {data.price[0].price} 元
-                                  </h2>
-                                </div>
-                              </div>
-                            </button>
-                          </>
-                        );
-                      })}
-                    </div>
+                  {isHidden[ii] == false ? null : (
+                    <>
+                      <div className="relative p-5 pt-10 bg-gray-400">
+                        <div className="relative">
+                          <input
+                            type="text"
+                            onChange={(e) => handleSearch(e.target.value)}
+                            placeholder="Search by title..."
+                            className="w-full h-12 pl-4 pr-10 rounded-md border-none bg-gray-200 focus:outline-none !important"
+                          />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-600 pointer-events-none"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M14.293 13.293a6 6 0 111.414-1.414l5 5a1 1 0 01-1.414 1.414l-5-5z"
+                              clipRule="evenodd"
+                            />
+                            <path
+                              fillRule="evenodd"
+                              d="M10 16a6 6 0 100-12 6 6 0 000 12z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-5 p-5 bg-slate-300 max-h-[400px] overflow-y-scroll pb-10">
+                        {search == ""
+                          ? dataService.map((data, i) => {
+                              return (
+                                <>
+                                  <button
+                                    name="id"
+                                    onClick={(e) => {
+                                      handleChangeService("id", data.id, ii),
+                                        handleChangeService(
+                                          "nameIng",
+                                          data.titleEnglish,
+                                          ii
+                                        );
+                                      handleChangeService(
+                                        "nameChi",
+                                        data.titleChinese,
+                                        ii
+                                      );
+                                      handleChangeService("img", data.img, ii);
+                                      handleChangeService(
+                                        "price",
+                                        data.price,
+                                        ii
+                                      );
+                                    }}
+                                  >
+                                    <div className="bg-white hover:bg-slate-200 flex">
+                                      <img
+                                        className="w-[80px] h-[80px]"
+                                        src={data.img}
+                                        alt=""
+                                      />
+                                      <div className="p-3">
+                                        <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                          {data.titleEnglish}
+                                        </h1>
+                                        <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                          {data.price[0].priceYuan} 元
+                                        </h2>
+                                      </div>
+                                    </div>
+                                  </button>
+                                </>
+                              );
+                            })
+                          : dataServiceResult.map((data, i) => {
+                              return (
+                                <>
+                                  <button
+                                    name="id"
+                                    onClick={(e) => {
+                                      handleChangeService("id", data.id, ii),
+                                        handleChangeService(
+                                          "nameIng",
+                                          data.titleEnglish,
+                                          ii
+                                        );
+                                      handleChangeService(
+                                        "nameChi",
+                                        data.titleChinese,
+                                        ii
+                                      );
+                                      handleChangeService("img", data.img, ii);
+                                      handleChangeService(
+                                        "price",
+                                        data.price,
+                                        ii
+                                      );
+                                    }}
+                                  >
+                                    <div className="bg-white hover:bg-slate-200 flex">
+                                      <img
+                                        className="w-[80px] h-[80px]"
+                                        src={data.img}
+                                        alt=""
+                                      />
+                                      <div className="p-3">
+                                        <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                          {data.titleEnglish}
+                                        </h1>
+                                        <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                          {data.price[0].price} 元
+                                        </h2>
+                                      </div>
+                                    </div>
+                                  </button>
+                                </>
+                              );
+                            })}
+                      </div>
+                    </>
                   )}
                   {dataServiceId.length !== 1 && (
                     <div className="ms-32 w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
@@ -567,7 +656,7 @@ function CreatePackage() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${
+                      placeholder={`Input Description english For Description ${
                         i + 1
                       }`}
                       maxLength={1000}
