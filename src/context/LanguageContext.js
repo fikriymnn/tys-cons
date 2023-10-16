@@ -10,12 +10,10 @@ export function LanguageProvider({ children }) {
   const [languagee, setLanguagee] = useState("");
   let data;
   if (typeof window !== "undefined") {
-    console.log("You are on the browser");
     // 👉️ can use localStorage here
 
     data = sessionStorage.getItem("language");
   } else {
-    console.log("You are on the server");
   }
 
   const [language, setLanguage] = useState(data || "en");
