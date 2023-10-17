@@ -258,16 +258,25 @@ function ArticlesAdmin() {
                                 </a>
                                 <button
                                   onClick={async (e) => {
-                                    try {
-                                      // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                      await deleteDoc(
-                                        doc(db, "articles", data.id)
-                                      );
-                                      alert("delete success");
-                                      location.reload();
-                                      console.log("Deleted successfully");
-                                    } catch (error) {
-                                      console.error("An error occured", error);
+                                    const confirmed = window.confirm(
+                                      "Are you sure you want to delete this item?"
+                                    );
+
+                                    if (confirmed) {
+                                      try {
+                                        // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                        await deleteDoc(
+                                          doc(db, "articles", data.id)
+                                        );
+                                        alert("delete success");
+                                        location.reload();
+                                        console.log("Deleted successfully");
+                                      } catch (error) {
+                                        console.error(
+                                          "An error occured",
+                                          error
+                                        );
+                                      }
                                     }
                                   }}
                                   className="bg-red-600 rounded-md p-2"

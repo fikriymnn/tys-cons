@@ -27,7 +27,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
 function EditPackage() {
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState([]);
 
   const toggleHidden = () => {
     setIsHidden(!isHidden);
@@ -128,6 +128,10 @@ function EditPackage() {
       setData(data[0].content);
       setDataOption(data[0].price);
       setDataServiceId(data[0].services);
+
+      for (let i = 0; i < data[0].services.length; i++) {
+        setIsHidden([...isHidden, false]);
+      }
     } catch (error) {
       alert(error);
     }
@@ -257,12 +261,18 @@ function EditPackage() {
     deleteVal.splice(i, 1);
     setData(deleteVal);
   };
+  const handleChangeHiden = (val, i) => {
+    const onchangeVal = [...isHidden];
 
+    onchangeVal[i] = val;
+    setIsHidden(onchangeVal);
+  };
   const handleClickService = () => {
     setDataServiceId([
       ...dataServiceId,
       { id: "", nameIng: "", nameChi: "", img: "", price: [] },
     ]);
+    setIsHidden([...isHidden, false]);
   };
   const handleChangeService = (namee, val, i) => {
     const name = namee;
@@ -471,7 +481,12 @@ function EditPackage() {
                   </div>
                   <div className=" w-10/12 p-3 flex gap-3">
                     <button
-                      onClick={toggleHidden}
+                      onClick={() =>
+                        handleChangeHiden(
+                          isHidden[ii] == true ? false : true,
+                          ii
+                        )
+                      }
                       className=" rounded-lg text-white px-10 p-3 bg-blue-700 border-slate-300 text-start"
                     >
                       {val.nameIng == "" ? "Add Service" : val.nameIng}
@@ -479,7 +494,7 @@ function EditPackage() {
                   </div>
                 </div>
                 <div className=" px-32">
-                  {isHidden ? null : (
+                  {isHidden[ii] == false ? null : (
                     <>
                       <div className="relative p-5 pt-10 bg-gray-400">
                         <div className="relative">
@@ -533,7 +548,6 @@ function EditPackage() {
                                         data.price,
                                         ii
                                       );
-                                      toggleHidden();
                                     }}
                                   >
                                     <div className="bg-white hover:bg-slate-200 flex">
@@ -578,7 +592,6 @@ function EditPackage() {
                                         data.price,
                                         ii
                                       );
-                                      toggleHidden();
                                     }}
                                   >
                                     <div className="bg-white hover:bg-slate-200 flex">
@@ -604,7 +617,7 @@ function EditPackage() {
                     </>
                   )}
                   {dataServiceId.length !== 1 && (
-                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                    <div className="w-32 mt-5 ms-40 bg-red-700 text-center rounded-sm text-white">
                       <button onClick={(e) => handleDeleteService(ii)}>
                         Delete
                       </button>
