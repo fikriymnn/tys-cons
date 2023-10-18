@@ -125,7 +125,7 @@ function Event() {
                             <>
                               <div className="bg-gray-400 h-[2px] "></div>
                               <div className="w-100px flex">
-                                <div className="bg-blue-600 h-[50px] flex items-center">
+                                <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white">
                                     {language == "en"
                                       ? data.topicIng

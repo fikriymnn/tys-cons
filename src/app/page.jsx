@@ -328,7 +328,7 @@ const Home = () => {
         {language == "en" ? "Latest Articles" : "最新文章"}
       </p>
 
-      <div className="md:grid md:grid-cols-3 gap-4  px-10 ">
+      <div className="md:grid md:grid-cols-3 gap-4 px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
@@ -350,7 +350,7 @@ const Home = () => {
             </>
           );
         })}
-        <div>
+        <div className=" flex flex-col">
           {dataArticle4.map((data, i) => {
             return (
               <>
@@ -365,27 +365,28 @@ const Home = () => {
               </>
             );
           })}
-
-          <a href="/articles">
-            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-52">
-              <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="h-[1rem] w-auto mt-1 "
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                ></path>
-              </svg>
-            </div>
-          </a>
+          <div className="mt-auto pb-3">
+            <a href="/articles">
+              <div className=" md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600  ">
+                <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="h-[1rem] w-auto mt-1 "
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  ></path>
+                </svg>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">

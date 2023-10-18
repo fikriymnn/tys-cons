@@ -200,7 +200,7 @@ const About = () => {
               display="block"
               position=""
             />
-            <div className="flex gap-4">
+            <div className="flex gap-4  pt-3">
               <Image
                 src={"/assets/images/map (1).png"}
                 width={25}

@@ -78,7 +78,7 @@ function Article() {
                             ? data.titleEnglish
                             : data.titleChinese}
                         </h1>
-                        <div className="bg-blue-500 h-[500px] relative">
+                        <div className="bg-blue-500 md:h-[500px] h-[200px] relative">
                           <div
                             className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
                             style={{ backgroundImage: `url(${data.img})` }}
@@ -97,7 +97,7 @@ function Article() {
                             <>
                               <div className="bg-gray-400 h-[2px] mt-5  "></div>
                               <div className="w-100px flex items-center justify-center">
-                                <div className="bg-blue-600 h-[50px] flex items-center">
+                                <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white ">
                                     {language == "en"
                                       ? data.topicIng

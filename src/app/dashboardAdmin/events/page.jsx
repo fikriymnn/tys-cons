@@ -149,14 +149,18 @@ function EventsAdmin() {
                               </div>
                               <div className="w-full flex">
                                 <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.titleEnglish}</p>
-                                    <p>{data.titleChinese}</p>
+                                  <div className="flex flex-col ">
+                                    <p className="line-clamp-2">
+                                      {data.titleEnglish}
+                                    </p>
+                                    <p className="line-clamp-2">
+                                      {data.titleChinese}
+                                    </p>
                                   </div>
                                 </div>
                                 <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                   <div className="flex flex-col">
-                                    <div className="line-clamp-3">
+                                    <div className="line-clamp-3 ">
                                       {parse(data.content[0].contentIng)}
                                     </div>
                                     <div className="line-clamp-3">
