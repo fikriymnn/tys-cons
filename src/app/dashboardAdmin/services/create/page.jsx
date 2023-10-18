@@ -343,190 +343,218 @@ function CreateService() {
             </a>
           </div>
         </div>
+        <form onSubmit={addData}>
+          <div className="">
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Image Banner</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  type="file"
+                  required
+                  onChange={(event) => handleUpload(event.target.files[0])}
+                />
+                <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
+              </div>
+              {loading ? <p>Loading</p> : <></>}
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Title</p>
+              </div>
+              <div className=" w-10/12 "></div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  {" "}
+                  Title <span className="text-red-600">English :</span>
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  type="text"
+                  required
+                  onChange={(e) => setTitleIng(e.target.value)}
+                  placeholder="Insert Title"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Title <span className="text-red-600">Chinese </span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  type="text"
+                  required
+                  onChange={(e) => setTitleChi(e.target.value)}
+                  placeholder="Insert Title"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
+            </div>
 
-        <div className="">
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Image Banner</p>
+            <div className=" flex py-5 px-20 ">
+              <div className=" w-3/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Price Option</p>
+              </div>
+              <div className=" w-10/12 "></div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                type="file"
-                onChange={(event) => handleUpload(event.target.files[0])}
-              />
-              <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
-            </div>
-            {loading ? <p>Loading</p> : <></>}
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Title</p>
-            </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                type="text"
-                onChange={(e) => setTitleIng(e.target.value)}
-                placeholder="Insert Title"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                type="text"
-                onChange={(e) => setTitleChi(e.target.value)}
-                placeholder="Insert Title"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
 
-          <div className=" flex py-5 px-20 ">
-            <div className=" w-3/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Price Option</p>
-            </div>
-            <div className=" w-10/12 "></div>
-          </div>
-
-          {dataOption.length > 0 &&
-            dataOption.map((val, i) => {
-              return (
-                <div key={i}>
-                  <div className=" flex py-1 px-20 ">
-                    <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Option :</p>
+            {dataOption.length > 0 &&
+              dataOption.map((val, i) => {
+                return (
+                  <div key={i}>
+                    <div className=" flex py-1 px-20 ">
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>Option :</p>
+                      </div>
+                      <div className=" w-10/12 p-3">
+                        <input
+                          type="text"
+                          required
+                          name="option"
+                          value={val.option}
+                          onChange={(e) => handleChangeOption(e, i)}
+                          placeholder={`Option ${i + 1}`}
+                          color=" bg-transparent"
+                          className=" rounded-lg w-full border-slate-300 "
+                        />
+                      </div>
                     </div>
-                    <div className=" w-10/12 p-3">
-                      <input
-                        type="text"
-                        name="option"
-                        value={val.option}
-                        onChange={(e) => handleChangeOption(e, i)}
-                        placeholder={`Option ${i + 1}`}
-                        color=" bg-transparent"
-                        className=" rounded-lg w-full border-slate-300 "
-                      />
-                    </div>
-                  </div>
-                  <div className=" flex py-1 px-20">
-                    <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Input Price :</p>
-                    </div>
-                    <div className=" w-10/12 p-3">
-                      <input
-                        type="text"
-                        name="priceYuan"
-                        value={val.priceYuan}
-                        onChange={(e) => handleChangeOption(e, i)}
-                        placeholder={`Input Price 元 for option ${i + 1}`}
-                        color=" bg-transparent"
-                        className=" rounded-lg w-full border-slate-300 "
-                      />
-                      <input
-                        type="text"
-                        name="priceRupiah"
-                        value={val.priceRupiah}
-                        onChange={(e) => handleChangeOption(e, i)}
-                        placeholder={`Input Price Rp for option ${i + 1}`}
-                        color=" bg-transparent"
-                        className=" rounded-lg w-full border-slate-300 "
-                      />
-                      {dataOption.length !== 1 && (
-                        <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                          <button onClick={(e) => handleDeleteOption(i)}>
-                            Delete option
-                          </button>
+                    <div className=" flex flex-col py-1 px-20">
+                      <div className="flex">
+                        <div className=" w-2/12 text-end p-3 py-5">
+                          <p>
+                            Input Price{" "}
+                            <span className="text-red-600">Yuan</span> :
+                          </p>
                         </div>
-                      )}
+                        <div className=" w-10/12 p-3">
+                          <input
+                            type="text"
+                            required
+                            name="priceYuan"
+                            value={val.priceYuan}
+                            onChange={(e) => handleChangeOption(e, i)}
+                            placeholder={`Input Price 元 for option ${i + 1}`}
+                            color=" bg-transparent"
+                            className=" rounded-lg w-full border-slate-300 "
+                          />
+                        </div>
+                      </div>
+                      <div className="flex">
+                        <div className=" w-2/12 text-end p-3 py-5">
+                          <p>
+                            Input Price{" "}
+                            <span className="text-red-600">Rupiah</span> :
+                          </p>
+                        </div>
+                        <div className=" w-10/12 p-3">
+                          <input
+                            type="text"
+                            name="priceRupiah"
+                            required
+                            value={val.priceRupiah}
+                            onChange={(e) => handleChangeOption(e, i)}
+                            placeholder={`Input Price Rp for option ${i + 1}`}
+                            color=" bg-transparent"
+                            className=" rounded-lg w-full border-slate-300 "
+                          />
+                          {dataOption.length !== 1 && (
+                            <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                              <button onClick={(e) => handleDeleteOption(i)}>
+                                Delete option
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          <div className="flex justify-center items-center gap-10 mb-20">
-            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-              <button onClick={handleClickOption} className="font-light">
-                Add Option
-              </button>
+                );
+              })}
+            <div className="flex justify-center items-center gap-10 mb-20">
+              <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                <button onClick={handleClickOption} className="font-light">
+                  Add Option
+                </button>
+              </div>
             </div>
-          </div>
-          {/* <p>{JSON.stringify(dataOption)}</p> */}
+            {/* <p>{JSON.stringify(dataOption)}</p> */}
 
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 "></div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 justify-center items-center">
-            <div className=" w-2/12 text-end p-3 py-3 text-2xl font-semibold">
-              <p>Service</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 "></div>
+              <div className=" w-10/12 "></div>
             </div>
-            <div className=" w-10/12 p-3 flex gap-3">
-              <Dropdown
-                className="bg-white"
-                label={service == "" ? "Categories" : service}
-              >
-                <div className="grid grid-cols-1 ">
-                  <button
-                    onClick={() => {
-                      setService("Basic Establishment Services");
-                      setSubService("");
-                    }}
-                  >
-                    <div className="p-2">Basic Establishment Services</div>
-                  </button>
+            <div className=" flex py-1 px-20 justify-center items-center">
+              <div className=" w-2/12 text-end p-3 py-3 text-2xl font-semibold">
+                <p>Service</p>
+              </div>
+              <div className=" w-10/12 p-3 flex gap-3">
+                <Dropdown
+                  required
+                  className="bg-white"
+                  label={service == "" ? "Categories" : service}
+                >
+                  <div className="grid grid-cols-1 ">
+                    <button
+                      onClick={() => {
+                        setService("Basic Establishment Services");
+                        setSubService("");
+                      }}
+                    >
+                      <div className="p-2">Basic Establishment Services</div>
+                    </button>
 
-                  <button
-                    onClick={() => {
-                      setService("Product Certifications");
-                      setSubService("");
-                    }}
-                  >
-                    <div className="p-2">Product Certifications</div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setService("Finance Accounting Tax");
-                      setSubService("");
-                    }}
-                  >
-                    <div className="p-2"> Finance Accounting Tax</div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setService("Talent Recruitment HR");
-                      setSubService("");
-                    }}
-                  >
-                    <div className="p-2"> Talent Recruitment HR</div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setService("Legal Services");
-                      setSubService("");
-                    }}
-                  >
-                    <div className="p-2">Legal Services</div>
-                  </button>
-                </div>
-              </Dropdown>
-              <Dropdown
-                label={subService == "" ? "Sub Categories" : subService}
-              >
-                {Drop}
-              </Dropdown>
-              {/* <input
+                    <button
+                      onClick={() => {
+                        setService("Product Certifications");
+                        setSubService("");
+                      }}
+                    >
+                      <div className="p-2">Product Certifications</div>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setService("Finance Accounting Tax");
+                        setSubService("");
+                      }}
+                    >
+                      <div className="p-2"> Finance Accounting Tax</div>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setService("Talent Recruitment HR");
+                        setSubService("");
+                      }}
+                    >
+                      <div className="p-2"> Talent Recruitment HR</div>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setService("Legal Services");
+                        setSubService("");
+                      }}
+                    >
+                      <div className="p-2">Legal Services</div>
+                    </button>
+                  </div>
+                </Dropdown>
+                <Dropdown
+                  required
+                  label={subService == "" ? "Sub Categories" : subService}
+                >
+                  {Drop}
+                </Dropdown>
+                {/* <input
                 type="text"
                 onChange={(e) => setService(e.target.value)}
                 placeholder="This will be a Dropdown"
@@ -540,108 +568,108 @@ function CreateService() {
                 color=" bg-transparent"
                 className=" rounded-lg w-full border-slate-300 "
               /> */}
+              </div>
             </div>
-          </div>
-          <div className=" flex py-1 ps-40 pt-32 ">
-            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
-              <p>Content</p>
+            <div className=" flex py-1 ps-40 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Content</p>
+              </div>
             </div>
-          </div>
-          {data.length > 0 &&
-            data.map((val, i) => {
-              return (
-                <div key={val.id}>
-                  <div className=" flex py-1 px-20 ">
-                    <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
-                      <p>{i + 1}</p>
+            {data.length > 0 &&
+              data.map((val, i) => {
+                return (
+                  <div key={val.id}>
+                    <div className=" flex py-1 px-20 ">
+                      <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                        <p>{i + 1}</p>
+                      </div>
+                      <div className=" w-10/12 "></div>
                     </div>
-                    <div className=" w-10/12 "></div>
-                  </div>
-                  <div className=" flex py-1 px-20 ">
-                    <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Topic :</p>
+                    <div className=" flex py-1 px-20 ">
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>Topic :</p>
+                      </div>
+                      <div className=" w-10/12 p-3">
+                        <textarea
+                          name="topicIng"
+                          value={val.topicIng}
+                          onChange={(e) => handleChange(e, i)}
+                          id=""
+                          cols="20"
+                          rows="1"
+                          placeholder={`Input Topic English For Description ${
+                            i + 1
+                          }`}
+                          color=" bg-transparent"
+                          className=" w-full resize-none rounded-lg border-slate-300 "
+                          maxLength={1000}
+                        ></textarea>
+                      </div>
                     </div>
-                    <div className=" w-10/12 p-3">
-                      <textarea
-                        name="topicIng"
-                        value={val.topicIng}
-                        onChange={(e) => handleChange(e, i)}
-                        id=""
-                        cols="20"
-                        rows="1"
-                        placeholder={`Input Topic English For Description ${
-                          i + 1
-                        }`}
-                        color=" bg-transparent"
-                        className=" w-full resize-none rounded-lg border-slate-300 "
-                        maxLength={1000}
-                      ></textarea>
+                    <div className=" flex py-1 px-20">
+                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-10/12 p-3">
+                        <textarea
+                          name="topicChi"
+                          value={val.topicChi}
+                          onChange={(e) => handleChange(e, i)}
+                          id=""
+                          cols="20"
+                          rows="1"
+                          placeholder={`Input Topic Mandarin For Description ${
+                            i + 1
+                          }`}
+                          color=" bg-transparent"
+                          className=" w-full resize-none rounded-lg border-slate-300 "
+                          maxLength={1000}
+                        ></textarea>
+                      </div>
                     </div>
-                  </div>
-                  <div className=" flex py-1 px-20">
-                    <div className=" w-2/12 text-end p-3 py-5"></div>
-                    <div className=" w-10/12 p-3">
-                      <textarea
-                        name="topicChi"
-                        value={val.topicChi}
-                        onChange={(e) => handleChange(e, i)}
-                        id=""
-                        cols="20"
-                        rows="1"
-                        placeholder={`Input Topic Mandarin For Description ${
-                          i + 1
-                        }`}
-                        color=" bg-transparent"
-                        className=" w-full resize-none rounded-lg border-slate-300 "
-                        maxLength={1000}
-                      ></textarea>
+                    <div className=" flex py-1 px-20 ">
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>Description :</p>
+                      </div>
+                      <div className=" w-10/12 p-3">
+                        <ReactQuill
+                          value={val.contentIng}
+                          onChange={(e) =>
+                            handleChange(
+                              {
+                                target: { value: e, name: "contentIng" },
+                              },
+                              i
+                            )
+                          }
+                          name="contentIng"
+                          placeholder={`Input Description english For Description ${
+                            i + 1
+                          }`}
+                          maxLength={1000}
+                          className="h-[200px] w-full   "
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className=" flex py-1 px-20 ">
-                    <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Description :</p>
-                    </div>
-                    <div className=" w-10/12 p-3">
-                      <ReactQuill
-                        value={val.contentIng}
-                        onChange={(e) =>
-                          handleChange(
-                            {
-                              target: { value: e, name: "contentIng" },
-                            },
-                            i
-                          )
-                        }
-                        name="contentIng"
-                        placeholder={`Input Description english For Description ${
-                          i + 1
-                        }`}
-                        maxLength={1000}
-                        className="h-[200px] w-full   "
-                      />
-                    </div>
-                  </div>
-                  <div className=" flex py-1 px-20">
-                    <div className=" w-2/12 text-end p-3 py-5"></div>
-                    <div className=" w-10/12 p-3">
-                      <ReactQuill
-                        value={val.contentChi}
-                        onChange={(e) =>
-                          handleChange(
-                            {
-                              target: { value: e, name: "contentChi" },
-                            },
-                            i
-                          )
-                        }
-                        name="contentChi"
-                        placeholder={`Input Description Mandarin For Description ${
-                          i + 1
-                        }`}
-                        maxLength={1000}
-                        className="h-[200px] my-10 "
-                      />
-                      {/* <textarea
+                    <div className=" flex py-1 px-20">
+                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-10/12 p-3">
+                        <ReactQuill
+                          value={val.contentChi}
+                          onChange={(e) =>
+                            handleChange(
+                              {
+                                target: { value: e, name: "contentChi" },
+                              },
+                              i
+                            )
+                          }
+                          name="contentChi"
+                          placeholder={`Input Description Mandarin For Description ${
+                            i + 1
+                          }`}
+                          maxLength={1000}
+                          className="h-[200px] my-10 "
+                        />
+                        {/* <textarea
                       name="contentChi"
                       value={val.contentChi}
                       onChange={(e) => handleChange(e, i)}
@@ -654,49 +682,52 @@ function CreateService() {
                       className=" w-full resize-none rounded-lg border-slate-300 "
                       maxLength={1000}
                     ></textarea> */}
+                      </div>
+                    </div>
+                    <div className=" w-10/12 p-3 ps-72">
+                      <input
+                        type="file"
+                        name="img"
+                        onChange={(event) =>
+                          handleUpload2(event.target.files[0], event, i)
+                        }
+                      />
+                      {data.length !== 1 && (
+                        <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                          <button onClick={(e) => handleDelete(i)}>
+                            Delete
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className=" w-10/12 p-3 ps-72">
-                    <input
-                      type="file"
-                      name="img"
-                      onChange={(event) =>
-                        handleUpload2(event.target.files[0], event, i)
-                      }
-                    />
-                    {data.length !== 1 && (
-                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          {/* <p>{JSON.stringify(data)}</p> */}
-          <div className="flex justify-center items-center gap-10 mb-20">
-            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-              <button onClick={handleClick} className="font-light">
-                Add More
-              </button>
-            </div>
-          </div>
-
-          <div className="mx-20">
-            <div className=" flex items-end justify-end mx-3">
-              {loading ? (
-                <p>Loading</p>
-              ) : (
-                <button
-                  onClick={(e) => addData(e)}
-                  className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
-                >
-                  Create New Service
+                );
+              })}
+            {/* <p>{JSON.stringify(data)}</p> */}
+            <div className="flex justify-center items-center gap-10 mb-20">
+              <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                <button onClick={handleClick} className="font-light">
+                  Add More
                 </button>
-              )}
+              </div>
+            </div>
+
+            <div className="mx-20">
+              <div className=" flex items-end justify-end mx-3">
+                {loading ? (
+                  <p>Loading</p>
+                ) : (
+                  <button
+                    type="submit"
+                    className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
+                  >
+                    Create New Service
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );

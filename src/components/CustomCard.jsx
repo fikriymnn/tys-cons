@@ -12,7 +12,12 @@ function CustomCard({ text, isi, isi2, img, id }) {
         className="transform md:hover:-translate-y-4 duration-100 ease-in-out my-0 h-full border-gray-50 border-2 shadow-lg rounded-md"
         imgAlt="Meaningful alt text for an image that is not purely decorative"
       >
-        <Image src={img} alt="" height={400} width={520} />
+        <div
+          className=" h-[230px] rounded-t-lg bg-cover bg-center"
+          style={{ backgroundImage: `url(${img})` }}
+        >
+          {/* <Image src={img} alt="" height={0} width={520} /> */}
+        </div>
         <div className="m-2 mb-4">
           <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1 line-clamp-2">
             {text}

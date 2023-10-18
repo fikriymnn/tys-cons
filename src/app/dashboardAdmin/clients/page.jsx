@@ -61,41 +61,41 @@ function ClientAdmin() {
                   return (
                     <>
                       <div key={i} className="border-2 p-2 rounded-md">
-                        <div className="h-32 bg-white rounded-md p-2 bg-contain bg-center bg-no-repeat"
-                          style={{ backgroundImage: `url(${data.img})` }}>
-
-
-                        </div>
+                        <div
+                          className="h-32 bg-white rounded-md p-2 bg-contain bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url(${data.img})` }}
+                        ></div>
                         <div className=" flex gap-2 pt-2">
                           <a
                             href={`/dashboardAdmin/clients/edit?id=${data.id}`}
                             className="bg-yellow-400 h-10 rounded-md w-3/6 p-3 flex items-center justify-center"
                           >
-
                             <Image
-
                               src="/assets/images/edit-svgrepo-com.svg"
                               width={25}
                               height={25}
                               alt=""
                             />
-
                           </a>
                           <button
                             onClick={async (e) => {
-                              try {
-                                // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                await deleteDoc(doc(db, "clients", data.id));
-                                alert("delete success");
-                                location.reload();
-                              } catch (error) {
-                                console.error("An error occured", error);
+                              const confirmed = window.confirm(
+                                "Are you sure you want to delete this item?"
+                              );
+                              if (confirmed) {
+                                try {
+                                  // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                  await deleteDoc(doc(db, "clients", data.id));
+                                  alert("delete success");
+                                  location.reload();
+                                } catch (error) {
+                                  console.error("An error occured", error);
+                                }
                               }
                             }}
                             className="bg-red-600 h-10 rounded-md w-3/6 p-3 flex items-center justify-center"
                           >
                             <Image
-
                               src="/assets/images/delete-1-svgrepo-com.svg"
                               width={25}
                               height={25}

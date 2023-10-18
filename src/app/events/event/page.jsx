@@ -96,7 +96,7 @@ function Event() {
                         <div className="">
                           <p>Posted at: {data.date}</p>
                         </div>
-                        <h1 className="text-4xl text-center p-5 font-semibold">
+                        <h1 className="md:text-4xl sm:text-2xl text-2xl text-center p-5 font-semibold">
                           {language == "en"
                             ? data.titleEnglish
                             : data.titleChinese}
@@ -125,7 +125,7 @@ function Event() {
                             <>
                               <div className="bg-gray-400 h-[2px] "></div>
                               <div className="w-100px flex">
-                                <div className="bg-blue-600 h-[50px] flex items-center">
+                                <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white">
                                     {language == "en"
                                       ? data.topicIng

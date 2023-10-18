@@ -169,7 +169,7 @@ export default function Policies() {
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
-                          setTitleChi(data.titleChi);
+                          setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
                           setSelectedDetail1(i);
@@ -230,7 +230,7 @@ export default function Policies() {
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
-                          setTitleChi(data.titleChi);
+                          setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
                           setSelectedDetail2(i);
@@ -291,7 +291,7 @@ export default function Policies() {
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
-                          setTitleChi(data.titleChi);
+                          setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
                           setSelectedDetail3(i);
@@ -354,7 +354,7 @@ export default function Policies() {
                         onClick={() => {
                           setContentChi(data.contentChinese);
                           setContentIng(data.contentEnglish);
-                          setTitleChi(data.titleChi);
+                          setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
                           setSelectedDetail4(i);

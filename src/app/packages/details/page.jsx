@@ -103,8 +103,8 @@ function DetailPackages() {
                       <p className="md:text-2xl text-2xl pb-4">
                         {data.titleChinese} {data.titleEnglish}
                       </p>
-                      <div className="flex pb-6">
-                        {currency == 1 ? <p>RP. </p> : ""}
+                      <div className="flex gap-1 pb-6">
+                        {currency == 1 ? <p className="text-2xl">RP. </p> : ""}
                         <p className="text-blue-600 text-2xl">
                           {currency == 1
                             ? Index == null
@@ -114,7 +114,7 @@ function DetailPackages() {
                             ? `${firsIndex} - ${lastIndex}`
                             : data.price[Index].priceYuan}
                         </p>
-                        {currency == 2 ? <p>元</p> : ""}
+                        {currency == 2 ? <p className="text-2xl"> 元</p> : ""}
                       </div>
                       <p className="pb-4">
                         {language == "en" ? "Options Currency:" : "选项"}
@@ -168,9 +168,9 @@ function DetailPackages() {
                     </div>
                   </div>
                   <div className="text-2xl font-medium">
-                    <p> {language == "en" ? "Services: " : "服务"}</p>
+                    <p> {language == "en" ? "Services: " : "服务: "}</p>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-5 py-10 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-4 py-10 gap-4">
                     {data.services.map((data, i, arr) => {
                       const le = data;
                       const firsPriceRp = data.price[0].priceRupiah;
@@ -182,7 +182,7 @@ function DetailPackages() {
                       return (
                         <>
                           <div className="md:flex">
-                            <div className="md:w-60 " key={i}>
+                            <div className="md:w-[250px] " key={i}>
                               <a href={`/services/detail?id=${data.id}`}>
                                 <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 ">
                                   <div
@@ -197,7 +197,7 @@ function DetailPackages() {
                                         ? data.nameIng
                                         : data.nameChi}
                                     </h1>
-                                    <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                    <h2 className="md:text-sm sm:text-sm text-sm text-blue-600 line-clamp-1">
                                       {currency == 1
                                         ? "RP. " +
                                           firsPriceRp +
