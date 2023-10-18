@@ -239,266 +239,276 @@ function CreateEvent() {
             </a>
           </div>
         </div>
-
-        <div className="">
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Image</p>
+        <form onSubmit={addData}>
+          <div className="">
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Image</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  type="file"
+                  required
+                  onChange={(event) => handleUpload(event.target.files[0])}
+                />
+              </div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                type="file"
-                onChange={(event) => handleUpload(event.target.files[0])}
-              />
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Title</p>
+              </div>
+              <div className=" w-10/12 "></div>
             </div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Title</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>English :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={(e) => setTitleIng(e.target.value)}
+                  type="text"
+                  required
+                  placeholder="Insert Title"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>Chinese :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={(e) => setTitleChi(e.target.value)}
+                  type="text"
+                  required
+                  placeholder="Insert Title"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={(e) => setTitleIng(e.target.value)}
-                type="text"
-                placeholder="Insert Title"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Duration</p>
+              </div>
+              <div className=" w-10/12 "></div>
             </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>From :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={dateFrom}
+                  type="date"
+                  required
+                  placeholder="Insert Duration"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={(e) => setTitleChi(e.target.value)}
-                type="text"
-                placeholder="Insert Title"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>To :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={dateTo}
+                  type="date"
+                  required
+                  placeholder="Insert Duration"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Duration</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
+                <p>Time</p>
+              </div>
+              <div className=" w-10/12 "></div>
             </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>From :</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>From :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={(e) => setTimeFrom(e.target.value)}
+                  type="text"
+                  required
+                  placeholder="Insert Duration"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={dateFrom}
-                type="date"
-                placeholder="Insert Duration"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>To :</p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <input
+                  onChange={(e) => setTimeTo(e.target.value)}
+                  type="text"
+                  required
+                  placeholder="Insert Duration"
+                  color=" bg-transparent"
+                  className=" rounded-lg w-full border-slate-300 "
+                />
+              </div>
             </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>To :</p>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Content</p>
+              </div>
+              <div className=" w-10/12 "></div>
             </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={dateTo}
-                type="date"
-                placeholder="Insert Duration"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-              <p>Time</p>
-            </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>From :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={(e) => setTimeFrom(e.target.value)}
-                type="text"
-                placeholder="Insert Duration"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>To :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <input
-                onChange={(e) => setTimeTo(e.target.value)}
-                type="text"
-                placeholder="Insert Duration"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
-              <p>Content</p>
-            </div>
-            <div className=" w-10/12 "></div>
-          </div>
-          {data.map((val, i) => {
-            return (
-              <>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
-                    <p>{i + 1}</p>
-                  </div>
-                  <div className=" w-10/12 "></div>
-                </div>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
-                  </div>
-                  <div className=" w-10/12 p-3">
-                    <textarea
-                      name="topicIng"
-                      value={val.topicIng}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Topic English For Description ${
-                        i + 1
-                      }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
-                  </div>
-                </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
-                  <div className=" w-10/12 p-3">
-                    <textarea
-                      name="topicChi"
-                      value={val.topicChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Topic Mandarin For Description ${
-                        i + 1
-                      }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea>
-                  </div>
-                </div>
-                <div className=" flex py-1 px-20 ">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
-                  </div>
-                  <div className=" w-10/12 p-3">
-                    <ReactQuill
-                      theme="snow"
-                      value={val.contentIng}
-                      onChange={(e) =>
-                        handleChange(
-                          {
-                            target: { value: e, name: "contentIng" },
-                          },
-                          i
-                        )
-                      }
-                      name="contentIng"
-                      placeholder={`Input Description English For Description ${
-                        i + 1
-                      }`}
-                      maxLength={2000}
-                      className="h-[200px] "
-                    />
-                  </div>
-                </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
-                  <div className=" w-10/12 p-3">
-                    <ReactQuill
-                      theme="snow"
-                      value={val.contentChi}
-                      onChange={(e) =>
-                        handleChange(
-                          {
-                            target: { value: e, name: "contentChi" },
-                          },
-                          i
-                        )
-                      }
-                      name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${
-                        i + 1
-                      }`}
-                      maxLength={2000}
-                      className="h-[200px] my-10 "
-                    />
-                  </div>
-                </div>
-                <div className=" w-10/12 p-3 ps-72">
-                  <input
-                    type="file"
-                    name="img"
-                    onChange={(event) =>
-                      handleUpload2(event.target.files[0], event, i)
-                    }
-                  />
-                  {data.length !== 1 && (
-                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+            {data.map((val, i) => {
+              return (
+                <>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                      <p>{i + 1}</p>
                     </div>
-                  )}
-                </div>
-              </>
-            );
-          })}
-          {/* <p>{JSON.stringify(data)}</p> */}
-          <div className="flex justify-center items-center gap-10 mb-20">
-            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-              <button onClick={handleClick} className="font-light">
-                Add More
-              </button>
-            </div>
-          </div>
-          {/* <button onClick={handleClick}>Add More</button> */}
-
-          <div className="mx-20">
-            <div className=" flex items-end justify-end mx-3">
-              {loading ? (
-                <p>Loading</p>
-              ) : (
-                <button
-                  onClick={(e) => addData(e)}
-                  className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
-                >
-                  Create New Event
+                    <div className=" w-10/12 "></div>
+                  </div>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>Topic :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicIng"
+                        required
+                        value={val.topicIng}
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="5"
+                        placeholder={`Input Topic English For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicChi"
+                        value={val.topicChi}
+                        required
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="5"
+                        placeholder={`Input Topic Mandarin For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>Description :</p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        theme="snow"
+                        value={val.contentIng}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentIng" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentIng"
+                        placeholder={`Input Description English For Description ${
+                          i + 1
+                        }`}
+                        maxLength={2000}
+                        className="h-[200px] "
+                      />
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        theme="snow"
+                        value={val.contentChi}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentChi" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentChi"
+                        placeholder={`Input Description Mandarin For Description ${
+                          i + 1
+                        }`}
+                        maxLength={2000}
+                        className="h-[200px] my-10 "
+                      />
+                    </div>
+                  </div>
+                  <div className=" w-10/12 p-3 ps-72">
+                    <input
+                      type="file"
+                      name="img"
+                      onChange={(event) =>
+                        handleUpload2(event.target.files[0], event, i)
+                      }
+                    />
+                    {data.length !== 1 && (
+                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            })}
+            {/* <p>{JSON.stringify(data)}</p> */}
+            <div className="flex justify-center items-center gap-10 mb-20">
+              <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                <button onClick={handleClick} className="font-light">
+                  Add More
                 </button>
-              )}
+              </div>
+            </div>
+            {/* <button onClick={handleClick}>Add More</button> */}
+
+            <div className="mx-20">
+              <div className=" flex items-end justify-end mx-3">
+                {loading ? (
+                  <p>Loading</p>
+                ) : (
+                  <button
+                    type="submit"
+                    className="p-3 px-7  rounded-lg mb-5 text-white bg-green-400"
+                  >
+                    Create New Event
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
