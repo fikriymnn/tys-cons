@@ -572,7 +572,6 @@ function CreateService() {
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicIng"
-                          required
                           value={val.topicIng}
                           onChange={(e) => handleChange(e, i)}
                           id=""
@@ -592,7 +591,6 @@ function CreateService() {
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicChi"
-                          required
                           value={val.topicChi}
                           onChange={(e) => handleChange(e, i)}
                           id=""

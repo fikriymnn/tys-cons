@@ -21,6 +21,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { LanguageProvider } from "@/context/LanguageContext";
 const About = () => {
   const { language, changeLanguage } = useLanguage();
   const [address, setAddress] = useState("");
@@ -186,7 +187,7 @@ const About = () => {
           {language == "en" ? inggrisHeading : chinaHeading}
         </p>
         <p className=" text-lg font-sans">
-          {language == "en" ? inggrisParagraph : chinaHeading}
+          {language == "en" ? inggrisParagraph : chinaParagraph}
         </p>
         <div className="md:grid md:grid-cols-2 py-10 gap-2 ">
           <div>

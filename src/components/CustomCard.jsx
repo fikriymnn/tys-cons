@@ -12,9 +12,9 @@ function CustomCard({ text, isi, isi2, img, id }) {
         className="transform md:hover:-translate-y-4 duration-100 ease-in-out my-0 h-full border-gray-50 border-2 shadow-lg rounded-md"
         imgAlt="Meaningful alt text for an image that is not purely decorative"
       >
-          <Image src={img} alt="" height={400} width={520} />
+        <Image src={img} alt="" height={400} width={520} />
         <div className="m-2 mb-4">
-          <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1">
+          <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1 line-clamp-2">
             {text}
           </h5>
           <div className="font-normal text-gray-700 dark:text-gray-400 line-clamp-2 mb-5">

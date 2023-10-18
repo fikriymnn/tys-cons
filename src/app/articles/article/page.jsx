@@ -46,7 +46,9 @@ function Article() {
                 <div></div>
                 <div className="md:w-4/6">
                   <div className="py-2 flex gap-1">
-                    <a href="/articles">{language == "en" ? "Articles" : "文章"}</a>
+                    <a href="/articles">
+                      {language == "en" ? "Articles" : "文章"}
+                    </a>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -62,14 +64,19 @@ function Article() {
                         d="M8.25 4.5l7.5 7.5-7.5 7.5"
                       ></path>
                     </svg>
-                    <p className="text-blue-500"> {language == "en" ? data.titleEnglish : data.titleChinese}</p>
+                    <p className="text-blue-500">
+                      {" "}
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </p>
                   </div>
                   <div className="bg-white ">
                     <div className="relative p-5">
                       <div className="w-full h-1000px">
                         <h3>{data.date}</h3>
-                        <h1 className="text-4xl text-center p-5 font-semibold">
-                          {language == "en" ? data.titleEnglish : data.titleChinese}
+                        <h1 className="md:text-4xl sm:text-2xl text-xl text-center p-5 font-semibold">
+                          {language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese}
                         </h1>
                         <div className="bg-blue-500 h-[500px] relative">
                           <div
@@ -92,15 +99,21 @@ function Article() {
                               <div className="w-100px flex items-center justify-center">
                                 <div className="bg-blue-600 h-[50px] flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white ">
-                                    {language == "en" ? data.topicIng : data.topicChi}
+                                    {language == "en"
+                                      ? data.topicIng
+                                      : data.topicChi}
                                   </h2>
                                 </div>
                               </div>
 
-                              <div
-                                className="py-5 content"
-
-                              > {parse(language == "en" ? data.contentIng : data.contentChi)}</div>
+                              <div className="py-5 content">
+                                {" "}
+                                {parse(
+                                  language == "en"
+                                    ? data.contentIng
+                                    : data.contentChi
+                                )}
+                              </div>
                               {data.img == "" ? (
                                 <></>
                               ) : (

@@ -328,7 +328,7 @@ const Home = () => {
         {language == "en" ? "Latest Articles" : "最新文章"}
       </p>
 
-      <div className="md:grid md:grid-cols-3 gap-4 px-10 ">
+      <div className="md:grid md:grid-cols-3 gap-4  px-10 ">
         {dataArticle.map((data, i) => {
           return (
             <>
@@ -338,7 +338,11 @@ const Home = () => {
                     language == "en" ? data.titleEnglish : data.titleChinese
                   }
                   isi={data.date}
-                  isi2={data.content[0].contentIng}
+                  isi2={
+                    language == "en"
+                      ? data.content[0].contentIng
+                      : data.content[0].contentChi
+                  }
                   id={data.id}
                   img={data.img}
                 />
@@ -351,7 +355,7 @@ const Home = () => {
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
-                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:mb-4 md:mt-1">
+                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-4">
                     <div className="font-semibold text-xl hover:underline">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
@@ -363,7 +367,7 @@ const Home = () => {
           })}
 
           <a href="/articles">
-            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-32">
+            <div className="mt-2 md:hover:translate-x-4 duration-100 ease-in-out lg:mt-auto text-primary font-medium cursor-pointer flex items-center lg:justify-center bottom-0 space-x-1 text-blue-600 md:pt-52">
               <p>{language == "en" ? "View More Articles" : "查看更多"}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -385,7 +389,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-slate-100 w-full py-4 mt-6">
-        <div className="font-semibold text-3xl text-center pt-7 pb-6 ">
+        <div className="font-semibold text-3xl text-center pt-9 pb-4 ">
           <p>
             {language == "en"
               ? "Choose The Best Package You Need"
@@ -408,7 +412,10 @@ const Home = () => {
               const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
               return (
                 <>
-                  <div key={i} className="bg-white p-10 rounded-lg shadow-lg h-full flex flex-col justify-between">
+                  <div
+                    key={i}
+                    className="bg-white p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                  >
                     <h5 className="mb-4 text-2xl text-black font-semibold text-center">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
@@ -428,14 +435,18 @@ const Home = () => {
                             <p key={i} className="flex space-x-3">
                               <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
                                 &bull;{" "}
-                                <span className="px-2">{data.nameIng}</span>
+                                <span className="px-2">
+                                  {language == "en"
+                                    ? data.nameIng
+                                    : data.nameChi}
+                                </span>
                               </p>
                             </p>
                           </>
                         );
                       })}
                     </ol>
-                    
+
                     <a
                       className=" inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                       href={`/packages/details?id=${data.id}`}
@@ -446,9 +457,7 @@ const Home = () => {
                 </>
               );
             })}
-            <>
-              
-            </>
+            <></>
           </Carousel>
         </div>
 
@@ -462,9 +471,12 @@ const Home = () => {
             const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
             return (
               <>
-                <div key={i} className="bg-white p-14 shadow-xl rounded-xl h-full flex-col flex">
-                  <h5 className="mb-4 text-lg text-black font-medium text-center">
-                    {data.titleEnglish}
+                <div
+                  key={i}
+                  className="bg-white p-14 shadow-xl rounded-xl h-full flex-col flex"
+                >
+                  <h5 className="mb-4 text-lg text-black font-medium text-center line-clamp-2">
+                    {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
                     {firsPriceYuan + "-" + lastPriceYuan} 元
@@ -478,9 +490,11 @@ const Home = () => {
                       return (
                         <>
                           <li key={i} className="flex space-x-3">
-                            <p className="text-base font-normal  text-black dark:text-gray-400">
+                            <p className="text-base font-normal  text-black dark:text-gray-400 line-clamp-1">
                               &bull;{" "}
-                              <span className="px-2">{data.nameIng}</span>
+                              <span className="px-2">
+                                {language == "en" ? data.nameIng : data.nameChi}
+                              </span>
                             </p>
                           </li>
                         </>
@@ -488,20 +502,19 @@ const Home = () => {
                     })}
                   </ol>
                   <div className="mt-auto">
-
-                  <a
-                    className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900 "
-                    href={`/packages/details?id=${data.id}`}
-                  >
-                    <p>DETAILS</p>
-                  </a>
+                    <a
+                      className=" inline-flex w-full justify-center bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900 "
+                      href={`/packages/details?id=${data.id}`}
+                    >
+                      <p>DETAILS</p>
+                    </a>
                   </div>
                 </div>
               </>
             );
           })}
         </div>
-        <div className="pb-24 pt-10 px-12">
+        <div className="pb-16 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
             <a href="/packages">
               {language == "en" ? "See More Packages" : "See More Packages"}

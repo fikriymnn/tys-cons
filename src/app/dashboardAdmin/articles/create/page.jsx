@@ -274,11 +274,10 @@ function CreateArticle() {
                     <div className=" w-10/12 p-3">
                       <input
                         name="topicIng"
-                        required
                         value={val.topicIng}
                         onChange={(e) => handleChange(e, i)}
                         type="text"
-                        placeholder="Insert Price"
+                        placeholder="input head topic"
                         color=" bg-transparent"
                         className=" rounded-lg w-full border-slate-300 "
                       />
@@ -291,11 +290,10 @@ function CreateArticle() {
                     <div className=" w-10/12 p-3">
                       <input
                         name="topicChi"
-                        required
                         value={val.topicChi}
                         onChange={(e) => handleChange(e, i)}
                         type="text"
-                        placeholder="Insert Price"
+                        placeholder="input head topic"
                         color=" bg-transparent"
                         className=" rounded-lg w-full border-slate-300 "
                       />

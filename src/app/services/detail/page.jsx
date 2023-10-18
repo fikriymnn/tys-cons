@@ -75,18 +75,18 @@ function DetailServices() {
           <>
             <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5">
               <div className="flex pb-5 gap-1">
-                <p onClick={() => console.log(lastIndex)}>
+                <a href="/services" onClick={() => console.log(lastIndex)}>
                   {language == "en" ? "Services" : "服务"}{" "}
-                </p>{" "}
+                </a>{" "}
                 <p>&gt;</p>
                 <p className="text-blue-600">
-                  {data.titleChinese} {data.titleEnglish}
+                  {language == "en" ? data.titleEnglish : data.titleChinese}{" "}
                 </p>
               </div>
               <div className="bg-white">
                 <div className="relative p-5 ">
                   <p>{data.date}</p>
-                  <div className="flex gap-1 my-2">
+                  <div className="flex gap-1 mb-2 md:text-base sm:text-sm text-xs">
                     <p>{data.service} </p>
                     <p>&gt;</p>
                     <p> {data.subService}</p>
@@ -102,11 +102,17 @@ function DetailServices() {
                     </div>
                     <div className="md:ps-4 ps-">
                       <p className="md:text-2xl text-2xl pb-4">
-                        {data.titleChinese} {data.titleEnglish}
+                        {language == "en"
+                          ? data.titleEnglish
+                          : data.titleChinese}{" "}
                       </p>
-                      <div className="flex pb-6">
-                        {currency == 1 ? <p>RP. </p> : ""}
-                        <p className="text-blue-600 text-2xl">
+                      <div className="flex pb-6 gap-1 ">
+                        {currency == 1 ? (
+                          <p className="md:text-2xl sm:text2xl text-xl">RP. </p>
+                        ) : (
+                          ""
+                        )}
+                        <p className="text-blue-600 md:text-2xl sm:text2xl text-xl">
                           {currency == 1
                             ? Index == null
                               ? `${firsIndexRp} - ${lastIndexRp}`
@@ -115,7 +121,11 @@ function DetailServices() {
                             ? `${firsIndex} - ${lastIndex}`
                             : data.price[Index].priceYuan}
                         </p>
-                        {currency == 2 ? <p>元</p> : ""}
+                        {currency == 2 ? (
+                          <p className="md:text-2xl sm:text2xl text-xl">元</p>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <p className="pb-4">
                         {language == "en" ? "Options Currency:" : "选项"}
@@ -130,7 +140,7 @@ function DetailServices() {
                               checked={currency === parseInt("1", 10)}
                               onChange={() => setCurrency(1)}
                             />
-                            <Label htmlFor="rupiah">rupiah</Label>
+                            <Label htmlFor="rupiah">Rupiah</Label>
                           </div>
                           <div className="flex items-center gap-2   border-gray-200  border p-3">
                             <Radio
@@ -192,16 +202,12 @@ function DetailServices() {
                           </p>
                         </div>
                         {data.img == "" ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <img
-                                    width={500}
-                                    height={300}
-                                    src={data.img}
-                                  ></img>
-                                </>
-                              )}
+                          <></>
+                        ) : (
+                          <>
+                            <img width={500} height={300} src={data.img}></img>
+                          </>
+                        )}
                       </>
                     );
                   })}
