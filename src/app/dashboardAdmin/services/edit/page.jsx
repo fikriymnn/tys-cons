@@ -413,7 +413,9 @@ function EditService() {
           </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+              <p>
+                Title <span className="text-red-400">English </span>:
+              </p>
             </div>
             <div className=" w-10/12 p-3">
               <input
@@ -428,7 +430,9 @@ function EditService() {
           </div>
           <div className=" flex py-1 px-20">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
+              <p>
+                Title <span className="text-red-400">Chinese </span>:
+              </p>
             </div>
             <div className=" w-10/12 p-3">
               <input
@@ -468,37 +472,51 @@ function EditService() {
                     />
                   </div>
                 </div>
-                <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Input Price :</p>
+                <div className=" flex flex-col py-1 px-20">
+                  <div className="flex">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>
+                        Input Price <span className="text-red-400">Yuan</span> :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <input
+                        type="text"
+                        name="priceYuan"
+                        value={val.priceYuan}
+                        onChange={(e) => handleChangeOption(e, i)}
+                        placeholder={`Input Price 元 for option ${i + 1}`}
+                        color=" bg-transparent"
+                        className=" rounded-lg w-full border-slate-300 "
+                      />
+                    </div>
                   </div>
-                  <div className=" w-10/12 p-3">
-                    <input
-                      type="text"
-                      name="priceYuan"
-                      value={val.priceYuan}
-                      onChange={(e) => handleChangeOption(e, i)}
-                      placeholder={`Input Price 元 for option ${i + 1}`}
-                      color=" bg-transparent"
-                      className=" rounded-lg w-full border-slate-300 "
-                    />
-                    <input
-                      type="text"
-                      name="priceRupiah"
-                      value={val.priceRupiah}
-                      onChange={(e) => handleChangeOption(e, i)}
-                      placeholder={`Input Price Rp for option ${i + 1}`}
-                      color=" bg-transparent"
-                      className=" rounded-lg w-full border-slate-300 "
-                    />
-                    {dataOption.length !== 1 && (
-                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDeleteOption(i)}>
-                          Delete option
-                        </button>
-                      </div>
-                    )}
+                  <div className="flex">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>
+                        Input Price <span className="text-red-400">Rupiah</span>{" "}
+                        :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <input
+                        type="text"
+                        name="priceRupiah"
+                        value={val.priceRupiah}
+                        onChange={(e) => handleChangeOption(e, i)}
+                        placeholder={`Input Price Rp for option ${i + 1}`}
+                        color=" bg-transparent"
+                        className=" rounded-lg w-full border-slate-300 "
+                      />
+                    </div>
                   </div>
+                  {dataOption.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDeleteOption(i)}>
+                        Delete option
+                      </button>
+                    </div>
+                  )}
                 </div>
               </>
             );
@@ -594,7 +612,9 @@ function EditService() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
+                    <p>
+                      Topic <span className="text-red-400">English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <textarea
@@ -614,7 +634,11 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Topic <span className="text-red-400">Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <textarea
                       name="topicChi"
@@ -634,7 +658,10 @@ function EditService() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
+                    <p>
+                      Description <span className="text-red-400">English</span>{" "}
+                      :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
@@ -672,7 +699,9 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    Description <span className="text-red-400">English</span> :
+                  </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
                       theme="snow"

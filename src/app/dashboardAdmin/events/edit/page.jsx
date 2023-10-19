@@ -337,7 +337,9 @@ function EditEvent() {
           </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>English :</p>
+              <p>
+                title <span className="text-red-400">English</span> :
+              </p>
             </div>
             <div className=" w-10/12 p-3">
               <input
@@ -352,7 +354,9 @@ function EditEvent() {
           </div>
           <div className=" flex py-1 px-20">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>Chinese :</p>
+              <p>
+                title <span className="text-red-400">Chinese</span> :
+              </p>
             </div>
             <div className=" w-10/12 p-3">
               <input
@@ -454,7 +458,9 @@ function EditEvent() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
+                    <p>
+                      Topic <span className="text-red-400">English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <textarea
@@ -474,7 +480,11 @@ function EditEvent() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Topic <span className="text-red-400">Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <textarea
                       name="topicChi"
@@ -494,7 +504,10 @@ function EditEvent() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
+                    <p>
+                      Description <span className="text-red-400">English</span>{" "}
+                      :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
@@ -518,7 +531,12 @@ function EditEvent() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Description <span className="text-red-400">Chinese</span>{" "}
+                      :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
                       theme="snow"
@@ -532,7 +550,7 @@ function EditEvent() {
                         )
                       }
                       name="contentChi"
-                      placeholder={`Input Description Mandarin For Description ${
+                      placeholder={`Input Description Chinese For Description ${
                         i + 1
                       }`}
                       maxLength={1000}

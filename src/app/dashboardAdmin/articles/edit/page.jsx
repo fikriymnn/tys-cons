@@ -317,7 +317,7 @@ function EditArticle() {
                       value={val.topicIng}
                       onChange={(e) => handleChange(e, i)}
                       type="text"
-                      placeholder="Insert Price"
+                      placeholder="input english head text"
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
@@ -333,7 +333,7 @@ function EditArticle() {
                       value={val.topicChi}
                       onChange={(e) => handleChange(e, i)}
                       type="text"
-                      placeholder="Insert Price"
+                      placeholder="input chinese head text"
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
