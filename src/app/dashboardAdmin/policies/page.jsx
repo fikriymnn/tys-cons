@@ -140,7 +140,9 @@ function PoliciesAdmin() {
                               </div>
                               <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                 <div className="flex flex-col">
-                                  <div>{parse(data.contentEnglish)}</div>
+                                  <div className="line-clamp-3">
+                                    {parse(data.contentEnglish)}
+                                  </div>
                                 </div>
                               </div>
                               <div className="w-[200px] border-s-2  flex justify-start items-center p-2">

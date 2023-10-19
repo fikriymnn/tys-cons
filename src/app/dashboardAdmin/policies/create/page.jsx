@@ -152,7 +152,7 @@ function CreatePolicies() {
         </div>
       )}
 
-      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full  z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
