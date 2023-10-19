@@ -101,7 +101,7 @@ function Event() {
                             ? data.titleEnglish
                             : data.titleChinese}
                         </h1>
-                        <div className="bg-blue-500 h-[200px] md:h-[500px] relative">
+                        <div className=" h-[200px] md:h-[500px] relative">
                           <div
                             className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-fill"
                             style={{ backgroundImage: `url(${data.img})` }}
