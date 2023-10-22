@@ -199,7 +199,7 @@ export default function Policies() {
               }}
             >
               <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm text-start w-full">
-                {language == "en" ? "  Tak Regulation" : "税务政策"}
+                {language == "en" ? "  Tax Regulation" : "税务政策"}
               </p>
               {dropdown2 ? (
                 <Image
