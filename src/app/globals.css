@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   scroll-behavior: smooth;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 .hideScroll {
   -ms-overflow-style: none;
@@ -48,8 +50,9 @@
   margin-left: 20px;
 }
 
-ul, ol {
-  list-style: none ;
+ul,
+ol {
+  list-style: none;
   margin-left: 0;
 }
 .error-message {

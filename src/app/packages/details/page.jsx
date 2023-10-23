@@ -168,7 +168,7 @@ function DetailPackages() {
                   <div className="text-2xl font-medium">
                     <p> {language == "en" ? "Services: " : "服务: "}</p>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 pb-10 pt-5">
+                  <div className="grid grid-cols-1 md:grid-cols-4 pb-10 pt-2">
                     {data.services.map((data, i, arr) => {
                       const le = data;
                       const firsPriceRp = data.price[0].priceRupiah;
@@ -180,9 +180,9 @@ function DetailPackages() {
                       return (
                         <>
                           <div className=" md:flex ">
-                            <div className="md:w-64 " key={i}>
+                            <div className="md:w-64 pt-3 " key={i}>
                               <a href={`/services/detail?id=${data.id}`}>
-                                <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 ">
+                                <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2  ">
                                   <div
                                     className="bg-blue-700 h-48 bg-cover bg-center"
                                     style={{

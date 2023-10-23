@@ -183,10 +183,10 @@ const About = () => {
     <>
       <NavbarWithCTAButton />
       <div className=" px-5 md:px-16 sm:px-10 pt-36 ">
-        <p className="text-blue-600 text-3xl font-semibold pb-4 font-sans">
+        <p className="text-blue-600 text-[32px] font-semibold pb-4 font-sans">
           {language == "en" ? inggrisHeading : chinaHeading}
         </p>
-        <p className=" text-[19px] font-sans">
+        <p className=" text-[18px] font-sans">
           {language == "en" ? inggrisParagraph : chinaParagraph}
         </p>
         <div className="md:grid md:grid-cols-2 py-10 gap-2 text-sm">
@@ -200,7 +200,7 @@ const About = () => {
               display="block"
               position=""
             />
-            <div className="flex gap-4  space-x-3 pt-6">
+            <div className="flex gap-4   pt-6">
               <Image
                 src={"/assets/images/map (1).png"}
                 width={20}
@@ -210,7 +210,7 @@ const About = () => {
               />
               <p className=" my-auto">{address}</p>
             </div>
-            <div className="flex gap-4 space-x-3 pt-6">
+            <div className="flex gap-4  pt-6">
               <Image
                 src={"/assets/images/call (1).png"}
                 width={20}
@@ -220,7 +220,7 @@ const About = () => {
               />
               <p className=" my-auto">{phone}</p>
             </div>
-            <div className="flex gap-4 space-x-3 pt-6">
+            <div className="flex gap-4  pt-6">
               <Image
                 src={"/assets/images/email (3).png"}
                 width={20}
@@ -249,7 +249,7 @@ const About = () => {
                   name="from_name"
                   placeholder="Input your name"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className=" py-5">
@@ -259,7 +259,7 @@ const About = () => {
                   name="from_email"
                   placeholder="Input your email"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className="">
@@ -269,7 +269,7 @@ const About = () => {
                   name="phone"
                   placeholder="Input your phone number"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className=" py-5">
@@ -281,12 +281,12 @@ const About = () => {
                   rows="10"
                   placeholder="Input your message"
                   color=" bg-transparent"
-                  className=" w-full resize-none rounded-lg border-slate-300 "
+                  className=" w-full resize-none rounded-md border-slate-300 "
                   maxLength={100}
                 ></textarea>
               </div>
               <button
-                className=" w-full h-12 bg-blue-600 py-3 px-5"
+                className=" w-full h-12 bg-blue-600 py-2 px-5"
                 type="submit"
                 value="Send"
               >

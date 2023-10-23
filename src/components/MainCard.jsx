@@ -28,57 +28,81 @@ function MainCard({
         {icon3}
         {icon4}
         {icon5}
-        <span className=" md:border-none ml-1 text-lg font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 ">
+        <a
+          href=""
+          className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+        >
           {title}
-        </span>
+        </a>
       </div>
       {title ? <hr className="" /> : <></>}
 
-      <ul className="my-7 space-y-5">
-        <li className="flex space-x-3 ">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+      <div className="my-7 space-y-5">
+        <div className="flex space-x-3 ">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text1}
-          </span>
-        </li>
+          </a>
+        </div>
         {text1 ? <hr className="" /> : <></>}
 
-        <li className="flex space-x-3 ">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+        <div className="flex space-x-3 ">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text2}
-          </span>
-        </li>
+          </a>
+        </div>
         {text2 ? <hr className="" /> : <></>}
-        <li className="flex space-x-3 ">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+        <div className="flex space-x-3 ">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text3}
-          </span>
-        </li>
+          </a>
+        </div>
         {text3 ? <hr className="" /> : <></>}
-        <li className="flex space-x-3 ">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+        <div className="flex space-x-3 ">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text4}
-          </span>
-        </li>
+          </a>
+        </div>
         {text4 ? <hr className="" /> : <></>}
-        <li className="flex space-x-3 ">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+        <div className="flex space-x-3 ">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text5}
-          </span>
-        </li>
+          </a>
+        </div>
         {text5 ? <hr className="" /> : <></>}
-        <li className="flex space-x-3">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white  group-hover:text-white pl-3">
+        <div className="flex space-x-3">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white  group-hover:text-white pl-3"
+          >
             {text6}
-          </span>
-        </li>
+          </a>
+        </div>
         {text6 ? <hr className="" /> : <></>}
-        <li className="flex space-x-3">
-          <span className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3">
+        <div className="flex space-x-3">
+          <a
+            href=""
+            className="text-base font-normal leading-tight md:text-black sm:text-black text-white group-hover:text-white pl-3"
+          >
             {text7}
-          </span>
-        </li>
+          </a>
+        </div>
         {text7 ? <hr className="" /> : <></>}
-      </ul>
+      </div>
     </div>
   );
 }

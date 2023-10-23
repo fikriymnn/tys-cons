@@ -277,7 +277,7 @@ const CustomFooter = () => {
   }
   return (
     <div className=" w-full bg-[#031530] ">
-      <div className="w-full md:flex grid p-5 sm:p-8 md:p-12 gap-10 items-center">
+      <div className="w-full md:flex grid p-5 sm:p-8 md:p-12 gap-10 ">
         <div className=" md:w-5/12">
           <img src={logo} width={200} height={75} />
           {/* <Image src={logo} width={200} height={75} /> */}
@@ -285,13 +285,13 @@ const CustomFooter = () => {
             {language == "en" ? inggrisParagraph : chinaParagraph}
           </p>
         </div>
-        <div className="md:w-4/12">
+        <div className="md:w-4/12 ">
           <p className=" uppercase font-bold text-white">
             {" "}
             {language == "en" ? "Contact Us" : "联系我们"}
           </p>
           <a href={`https://www.google.com/maps/search/${address}`}>
-            <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200">
+            <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200 ">
               {address}
             </p>
           </a>
