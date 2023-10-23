@@ -163,7 +163,7 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail1 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
@@ -224,7 +224,7 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail2 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
@@ -285,7 +285,7 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail3 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
@@ -348,7 +348,7 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail4 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {

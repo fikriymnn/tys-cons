@@ -124,7 +124,7 @@ function Event() {
                           return (
                             <>
                               <div className="bg-gray-400 h-[2px] "></div>
-                              <div className="w-100px flex">
+                              <div className="w-100px flex ">
                                 <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white">
                                     {language == "en"
@@ -150,6 +150,7 @@ function Event() {
                                     width={500}
                                     height={300}
                                     src={data.img}
+                                    className="mb-5"
                                   ></img>
                                 </>
                               )}
