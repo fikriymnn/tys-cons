@@ -87,8 +87,6 @@ function DetailPackages() {
               </div>
               <div className="bg-white">
                 <div className="relative p-5 pt-5">
-                  <p>{data.date}</p>
-
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
                     <div className="bg-gray-100 md:w-[500px] md:h-[300px] ms:w-full ms:h-full mt-2">
                       <Image
@@ -129,7 +127,7 @@ function DetailPackages() {
                               checked={currency === parseInt("1", 10)}
                               onChange={() => setCurrency(1)}
                             />
-                            <Label htmlFor="rupiah">rupiah</Label>
+                            <Label htmlFor="rupiah">Rupiah</Label>
                           </div>
                           <div className="flex items-center gap-2   border-gray-200  border p-3">
                             <Radio
@@ -170,7 +168,7 @@ function DetailPackages() {
                   <div className="text-2xl font-medium">
                     <p> {language == "en" ? "Services: " : "服务: "}</p>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 py-10 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-4 pb-10 pt-5">
                     {data.services.map((data, i, arr) => {
                       const le = data;
                       const firsPriceRp = data.price[0].priceRupiah;
@@ -181,8 +179,8 @@ function DetailPackages() {
                         data.price[data.price.length - 1].priceYuan;
                       return (
                         <>
-                          <div className="md:flex">
-                            <div className="md:w-[250px] " key={i}>
+                          <div className=" md:flex ">
+                            <div className="md:w-64 " key={i}>
                               <a href={`/services/detail?id=${data.id}`}>
                                 <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 ">
                                   <div
@@ -213,7 +211,7 @@ function DetailPackages() {
                               </a>
                             </div>
                             {i < arr.length - 1 && (
-                              <div className=" flex items-center justify-center text-center m-2">
+                              <div className=" flex items-center justify-center w-10 mx-auto  text-center m-2 ">
                                 <span className="text-5xl font-bold">+</span>
                               </div>
                             )}
