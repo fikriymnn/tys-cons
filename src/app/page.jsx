@@ -617,9 +617,7 @@ const Home = () => {
               const lastPriceRp = data.price[data.price.length - 1].priceRupiah;
               const firsPriceYuan = data.price[0].priceYuan;
               const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
-              const firsPriceRupiah = data.price[0].priceRupiah;
-              const lastPriceRupiah =
-                data.price[data.price.length - 1].priceRupiah;
+
               return (
                 <>
                   <div
@@ -630,10 +628,9 @@ const Home = () => {
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
                     <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                      {firsPriceYuan + "-" + lastPriceYuan} 元
-                      {/* {language == "en"
-                        ? firsPriceYuan + "-" + lastPriceYuan + "元"
-                        : firsPriceRupiah + "-" + lastPriceRupiah} */}
+                      {language == "en"
+                        ? firsPriceRp + "-" + lastPriceRp
+                        : firsPriceYuan + "-" + lastPriceYuan + "元"}
                     </p>
 
                     <ol className="my-7 space-y-5">
@@ -692,7 +689,9 @@ const Home = () => {
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                    {firsPriceYuan + "-" + lastPriceYuan} 元
+                    {language == "en"
+                      ? firsPriceRp + "-" + lastPriceRp
+                      : firsPriceYuan + "-" + lastPriceYuan + "元"}
                   </p>
                   <ol className="my-7 space-y-5">
                     <p className="text-base font-normal leading-3 text-black dark:text-gray-400">
