@@ -24,12 +24,15 @@ import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
 import { Dropdown } from "flowbite-react";
 import dynamic from "next/dynamic";
+import { format } from "date-fns";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [service, setService] = useState("");
   const [subService, setSubService] = useState("");
@@ -136,9 +139,13 @@ function CreateService() {
 
   const addData = async (e) => {
     e.preventDefault();
+    var today = new Date();
+    var date = today.getDate() + " " + format(today, "MMMM yyyy");
     const docRef = await addDoc(collection(db, "service"), {
       content: data,
-
+      descriptionEnglish: desIng,
+      descriptionChinese: desChi,
+      date: date,
       img: downloadURL,
 
       price: dataOption,
@@ -554,20 +561,45 @@ function CreateService() {
                 >
                   {Drop}
                 </Dropdown>
-                {/* <input
-                type="text"
-                onChange={(e) => setService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-              <input
-                type="text"
-                onChange={(e) => setSubService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              /> */}
+              </div>
+            </div>
+            <div className=" flex py-1 ps-40 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Main Description:</p>
+              </div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> English</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesIng(e)}
+                  name="contentIng"
+                  placeholder={`Input Description English For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] w-full   "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesChi(e)}
+                  name="contentChi"
+                  placeholder={`Input Description Mandarin For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] my-10 "
+                />
               </div>
             </div>
             <div className=" flex py-1 ps-40 pt-32 ">
@@ -587,11 +619,15 @@ function CreateService() {
                     </div>
                     <div className=" flex py-1 px-20 ">
                       <div className=" w-2/12 text-end p-3 py-5">
-                        <p>Topic :</p>
+                        <p>
+                          Topic
+                          <span className="text-red-600"> English</span> :
+                        </p>
                       </div>
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicIng"
+                          required
                           value={val.topicIng}
                           onChange={(e) => handleChange(e, i)}
                           id=""
@@ -607,16 +643,22 @@ function CreateService() {
                       </div>
                     </div>
                     <div className=" flex py-1 px-20">
-                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>
+                          Topic
+                          <span className="text-red-600"> Chinese</span> :
+                        </p>
+                      </div>
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicChi"
+                          required
                           value={val.topicChi}
                           onChange={(e) => handleChange(e, i)}
                           id=""
                           cols="20"
                           rows="1"
-                          placeholder={`Input Topic Mandarin For Description ${
+                          placeholder={`Input Topic Chinese For Description ${
                             i + 1
                           }`}
                           color=" bg-transparent"
@@ -627,7 +669,10 @@ function CreateService() {
                     </div>
                     <div className=" flex py-1 px-20 ">
                       <div className=" w-2/12 text-end p-3 py-5">
-                        <p>Description :</p>
+                        <p>
+                          Description
+                          <span className="text-red-600"> English</span> :
+                        </p>
                       </div>
                       <div className=" w-10/12 p-3">
                         <ReactQuill
@@ -650,7 +695,12 @@ function CreateService() {
                       </div>
                     </div>
                     <div className=" flex py-1 px-20">
-                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>
+                          Description
+                          <span className="text-red-600"> Chinese</span> :
+                        </p>
+                      </div>
                       <div className=" w-10/12 p-3">
                         <ReactQuill
                           value={val.contentChi}
@@ -663,25 +713,12 @@ function CreateService() {
                             )
                           }
                           name="contentChi"
-                          placeholder={`Input Description Mandarin For Description ${
+                          placeholder={`Input Description Chinese For Description ${
                             i + 1
                           }`}
                           maxLength={1000}
                           className="h-[200px] my-10 "
                         />
-                        {/* <textarea
-                      name="contentChi"
-                      value={val.contentChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea> */}
                       </div>
                     </div>
                     <div className=" w-10/12 p-3 ps-72">
