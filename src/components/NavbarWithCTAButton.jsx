@@ -101,7 +101,7 @@ export default function NavbarWithCTAButton({ height }) {
   };
   const DropdownServices = () => {
     return (
-      <div className=" bg-white absolute mt-10 shadow-md z-10">
+      <div className=" bg-white absolute mt-10  z-10">
         <a href="/services/basicEstablish">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
@@ -145,8 +145,8 @@ export default function NavbarWithCTAButton({ height }) {
       <Navbar
         className={
           navbar
-            ? "bg-[#d9d9d943] fixed w-full md:py-5 sm:py-5 py-2 z-30 shadow-md top-0 "
-            : " fixed w-full md:py-5 sm:py-5 py-2 z-30 shadow-md top-0 bg-white"
+            ? "bg-[#d9d9d943] fixed w-full md:py-5 sm:py-5 py-2 z-30  top-0 "
+            : " fixed w-full md:py-5 sm:py-5 py-2 z-30  top-0 bg-white"
         }
         fluid
       >
