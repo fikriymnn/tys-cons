@@ -56,50 +56,41 @@ function Packages() {
             const lastPriceRp = data.price[data.price.length - 1].priceRupiah;
             const firsPriceYuan = data.price[0].priceYuan;
             const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
-            const firsPriceRupiah = data.price[0].priceRupiah;
-            const lastPriceRupiah =
-              data.price[data.price.length - 1].priceRupiah;
+
             return (
               <>
                 <div
                   key={i}
                   className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <div className="bg-blue-800 h-full">
-                    <h5 className="mb-4 bg- text-xl text-black font-medium text-center ">
-                      {language == "en" ? data.titleEnglish : data.titleChinese}
-                    </h5>
-                    <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                      {firsPriceYuan + "-" + lastPriceYuan} 元
-                    </p>
-                  </div>
+                  <h5 className="mb-4 bg- text-xl text-black font-medium text-center  h-16">
+                    {data.titleEnglish}
+                  </h5>
+                  <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                    {language == "en"
+                      ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                      : firsPriceYuan + "-" + lastPriceYuan + "元"}
+                  </p>
 
-                  <div className="mb-auto bg-red-900 pb-3 ">
+                  <ol className="mb-auto pb-3 ">
                     <li className="flex space-x-3">
                       <p className="text-base my-2 font-normal leading-tight text-black ">
                         <span className="">Package Includes :</span>
                       </p>
                     </li>
-                    <div className="bg-blue-900">
-                      {data.services.map((data, i) => {
-                        return (
-                          <>
-                            <p key={i} className="flex space-x-3 my-3 ">
-                              <p className="text-base font-normal leading-tight text-black line-clamp-1">
-                                &bull;{" "}
-                                <span className="px-2">
-                                  {" "}
-                                  {language == "en"
-                                    ? data.nameIng
-                                    : data.nameChi}
-                                </span>
-                              </p>
+                    {data.services.map((data, i) => {
+                      return (
+                        <>
+                          <p key={i} className="flex space-x-3 my-3 ">
+                            <p className="text-base font-normal leading-tight text-black line-clamp-1 ">
+                              &bull;{" "}
+                              <span className="px-2">{data.nameIng}</span>
                             </p>
-                          </>
-                        );
-                      })}
-                    </div>
-                  </div>
+                          </p>
+                        </>
+                      );
+                    })}
+                  </ol>
 
                   <a
                     className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
