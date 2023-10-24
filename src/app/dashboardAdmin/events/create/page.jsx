@@ -39,6 +39,8 @@ function CreateEvent() {
   const [durationTo, setDurationTo] = useState("");
   const [timeFrom, setTimeFrom] = useState("");
   const [timeTo, setTimeTo] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [parsedDateFrom, setParsedDateFrom] = useState("");
   const [parsedDateTo, setParsedDateTo] = useState("");
@@ -145,6 +147,8 @@ function CreateEvent() {
       durationToValue: durationTo,
       timeFrom: timeFrom,
       timeTo: timeTo,
+      descriptionEnglish: desIng,
+      descriptionChinese: desChi,
 
       img: downloadURL,
       date: date,
@@ -261,7 +265,10 @@ function CreateEvent() {
             </div>
             <div className=" flex py-1 px-20 ">
               <div className=" w-2/12 text-end p-3 py-5">
-                <p>English :</p>
+                <p>
+                  Title
+                  <span className="text-red-600"> English</span> :
+                </p>
               </div>
               <div className=" w-10/12 p-3">
                 <input
@@ -276,7 +283,10 @@ function CreateEvent() {
             </div>
             <div className=" flex py-1 px-20">
               <div className=" w-2/12 text-end p-3 py-5">
-                <p>Chinese :</p>
+                <p>
+                  Title
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
               </div>
               <div className=" w-10/12 p-3">
                 <input
@@ -361,6 +371,45 @@ function CreateEvent() {
                 />
               </div>
             </div>
+            <div className=" flex py-1 ps-24 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Main Description:</p>
+              </div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> English</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesIng(e)}
+                  name="contentIng"
+                  placeholder={`Input Description English For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] w-full   "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesChi(e)}
+                  name="contentChi"
+                  placeholder={`Input Description Mandarin For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] my-10 "
+                />
+              </div>
+            </div>
             <div className=" flex py-1 px-20 ">
               <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
                 <p>Content</p>
@@ -378,7 +427,10 @@ function CreateEvent() {
                   </div>
                   <div className=" flex py-1 px-20 ">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Topic :</p>
+                      <p>
+                        Topic
+                        <span className="text-red-600"> English</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <textarea
@@ -388,7 +440,7 @@ function CreateEvent() {
                         onChange={(e) => handleChange(e, i)}
                         id=""
                         cols="20"
-                        rows="5"
+                        rows="1"
                         placeholder={`Input Topic English For Description ${
                           i + 1
                         }`}
@@ -399,7 +451,13 @@ function CreateEvent() {
                     </div>
                   </div>
                   <div className=" flex py-1 px-20">
-                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      {" "}
+                      <p>
+                        Topic
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
+                    </div>
                     <div className=" w-10/12 p-3">
                       <textarea
                         name="topicChi"
@@ -408,7 +466,7 @@ function CreateEvent() {
                         onChange={(e) => handleChange(e, i)}
                         id=""
                         cols="20"
-                        rows="5"
+                        rows="1"
                         placeholder={`Input Topic Mandarin For Description ${
                           i + 1
                         }`}
@@ -420,7 +478,10 @@ function CreateEvent() {
                   </div>
                   <div className=" flex py-1 px-20 ">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Description :</p>
+                      <p>
+                        Description
+                        <span className="text-red-600"> English</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
@@ -444,7 +505,13 @@ function CreateEvent() {
                     </div>
                   </div>
                   <div className=" flex py-1 px-20">
-                    <div className=" w-2/12 text-end p-3 py-5"></div>
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      {" "}
+                      <p>
+                        Description
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
+                    </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
                         theme="snow"
