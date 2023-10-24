@@ -40,9 +40,13 @@ function CreatePolicies() {
   const [category, setCategory] = useState("");
   const [subCategoryIng, setSubCategoryIng] = useState("");
   const [subCategoryChi, setSubCategoryChi] = useState("");
-  const [contentIng, setContentIng] = useState("");
-  const [contentChi, setContentChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
+
   const [downloadURL, setDownloadURL] = useState("");
+  const [data, setData] = useState([
+    { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+  ]);
 
   // progress
   const [percent, setPercent] = useState(0);
@@ -85,6 +89,48 @@ function CreatePolicies() {
     }
   };
 
+  const handleUpload2 = async (filess, e, i) => {
+    const files = filess;
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+
+    try {
+      setLoading(true);
+      const storageRef = ref(storage, `/policies/${files.name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+
+            onchangeVal[i][name] = url;
+            setData(onchangeVal);
+            setLoading(false);
+          });
+        }
+      );
+    } catch (error) {
+      alert(error);
+      setLoading(false);
+    }
+  };
+
   const addData = async (e) => {
     e.preventDefault();
     var today = new Date();
@@ -100,11 +146,12 @@ function CreatePolicies() {
       category: category,
       subCategoryEnglish: subCategoryIng,
       subCategoryChinese: subCategoryChi,
+      descriptionEnglish: desIng,
+      descriptionChinese: desChi,
 
       img: downloadURL,
       date: date,
-      contentEnglish: contentIng,
-      contentChinese: contentChi,
+      content: data,
     });
 
     alert("success");
@@ -300,40 +347,190 @@ function CreatePolicies() {
               </div>
             </div>
 
+            <div className=" flex py-1 ps-24 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Main Description:</p>
+              </div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> English</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesIng(e)}
+                  name="contentIng"
+                  placeholder={`Input Description English For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] w-full   "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesChi(e)}
+                  name="contentChi"
+                  placeholder={`Input Description Mandarin For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] my-10 "
+                />
+              </div>
+            </div>
             <div className=" flex py-1 px-20 ">
               <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
                 <p>Content</p>
               </div>
               <div className=" w-10/12 "></div>
             </div>
-            <div className=" flex py-1 px-20 ">
-              <div className=" w-2/12 text-end p-3 py-5">
-                <p>Description :</p>
-              </div>
-              <div className=" w-10/12 p-3">
-                <ReactQuill
-                  theme="snow"
-                  value={contentIng}
-                  onChange={(e) => setContentIng(e)}
-                  name="contentIng"
-                  placeholder={`Input Description English For Description`}
-                  maxLength={2000}
-                  className="h-[200px] "
-                />
-              </div>
-            </div>
-            <div className=" flex py-1 px-20">
-              <div className=" w-2/12 text-end p-3 py-5"></div>
-              <div className=" w-10/12 p-3">
-                <ReactQuill
-                  theme="snow"
-                  value={contentChi}
-                  onChange={(e) => setContentChi(e)}
-                  name="contentChi"
-                  placeholder={`Input Description Mandarin For Description`}
-                  maxLength={2000}
-                  className="h-[200px] my-10 "
-                />
+            {data.map((val, i) => {
+              return (
+                <>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                      <p>{i + 1}</p>
+                    </div>
+                    <div className=" w-10/12 "></div>
+                  </div>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>
+                        Topic
+                        <span className="text-red-600"> English</span> :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicIng"
+                        required
+                        value={val.topicIng}
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="1"
+                        placeholder={`Input Topic English For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      {" "}
+                      <p>
+                        Topic
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <textarea
+                        name="topicChi"
+                        value={val.topicChi}
+                        required
+                        onChange={(e) => handleChange(e, i)}
+                        id=""
+                        cols="20"
+                        rows="1"
+                        placeholder={`Input Topic Mandarin For Description ${
+                          i + 1
+                        }`}
+                        color=" bg-transparent"
+                        className=" w-full resize-none rounded-lg border-slate-300 "
+                        maxLength={1000}
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20 ">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      <p>
+                        Description
+                        <span className="text-red-600"> English</span> :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        theme="snow"
+                        value={val.contentIng}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentIng" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentIng"
+                        placeholder={`Input Description English For Description ${
+                          i + 1
+                        }`}
+                        maxLength={2000}
+                        className="h-[200px] "
+                      />
+                    </div>
+                  </div>
+                  <div className=" flex py-1 px-20">
+                    <div className=" w-2/12 text-end p-3 py-5">
+                      {" "}
+                      <p>
+                        Description
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
+                    </div>
+                    <div className=" w-10/12 p-3">
+                      <ReactQuill
+                        theme="snow"
+                        value={val.contentChi}
+                        onChange={(e) =>
+                          handleChange(
+                            {
+                              target: { value: e, name: "contentChi" },
+                            },
+                            i
+                          )
+                        }
+                        name="contentChi"
+                        placeholder={`Input Description Mandarin For Description ${
+                          i + 1
+                        }`}
+                        maxLength={2000}
+                        className="h-[200px] my-10 "
+                      />
+                    </div>
+                  </div>
+                  <div className=" w-10/12 p-3 ps-72">
+                    <input
+                      type="file"
+                      name="img"
+                      onChange={(event) =>
+                        handleUpload2(event.target.files[0], event, i)
+                      }
+                    />
+                    {data.length !== 1 && (
+                      <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            })}
+            <div className="flex justify-center items-center gap-10 mb-20">
+              <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                <button onClick={handleClick} className="font-light">
+                  Add More
+                </button>
               </div>
             </div>
 
