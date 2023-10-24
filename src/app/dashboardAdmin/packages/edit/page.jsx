@@ -50,6 +50,8 @@ function EditPackage() {
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [data, setData] = useState([
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
@@ -128,6 +130,8 @@ function EditPackage() {
       setData(data[0].content);
       setDataOption(data[0].price);
       setDataServiceId(data[0].services);
+      setDesChi(data[0].descriptionChinese);
+      setDesIng(data[0].descriptionEnglish);
 
       for (let i = 0; i < data[0].services.length; i++) {
         setIsHidden([...isHidden, false]);
@@ -229,6 +233,8 @@ function EditPackage() {
         services: dataServiceId,
         titleChinese: titleChi,
         titleEnglish: titleIng,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     } else {
       await updateDoc(todoRef, {
@@ -238,6 +244,8 @@ function EditPackage() {
         services: dataServiceId,
         titleChinese: titleChi,
         titleEnglish: titleIng,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     }
 
@@ -307,30 +315,7 @@ function EditPackage() {
 
   return (
     <>
-      {/* {isAlert && (
-                <div className="bgtr w-screen h-screen fixed top-0 flex items-center justify-center gap-5 z-50">
-                    <div className="flex-col">
-                        <div className=" text-2xl mb-5">Change Will not be saved</div>
-                        <div className="flex justify-between">
-                            <a href="/dashboardAdmin/services">
-                                <button className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-red-700">
-                                    Oke
-                                </button>
-                            </a>
-                            <button
-                                className="p-3 px-7 hover:bg-blue-500 rounded-lg mb-5 text-white bg-green-500"
-                                onClick={() => {
-                                    setIsAlert(false);
-                                }}
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
-      <div className="w-full z-40 rounded-xl border-[#007aff] border-2 bgtr top-0">
+      <div className="w-full z-40 rounded-xl border-[#007aff] border-2  top-0">
         <div className=" bg-[#007aff] flex  text-2xl font-semibold py-7 rounded-t-xl text-white ">
           <div className="w-1/12"></div>
           <div className=" w-10/12 flex justify-center items-center">
@@ -426,7 +411,10 @@ function EditPackage() {
                 </div>
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Input Price :</p>
+                    <p>
+                      Input price
+                      <span className="text-red-600"> Yuan</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <input
@@ -438,6 +426,16 @@ function EditPackage() {
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Input price
+                      <span className="text-red-600"> Rupiah</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
                     <input
                       type="text"
                       name="priceRupiah"
@@ -637,6 +635,47 @@ function EditPackage() {
           </div>
           <div className=" flex py-1 ps-40 pt-32 ">
             <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+              <p>Main Description:</p>
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> English</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desIng}
+                onChange={(e) => setDesIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] w-full   "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> Chinese</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desChi}
+                onChange={(e) => setDesChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] my-10 "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 ps-40 pt-32 ">
+            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
               <p>Content</p>
             </div>
           </div>
@@ -651,7 +690,10 @@ function EditPackage() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
+                    <p>
+                      Topic
+                      <span className="text-red-600"> English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <textarea
@@ -671,7 +713,13 @@ function EditPackage() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    {" "}
+                    <p>
+                      Topic
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <textarea
                       name="topicChi"
@@ -691,7 +739,10 @@ function EditPackage() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
+                    <p>
+                      Description
+                      <span className="text-red-600"> English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
@@ -715,7 +766,13 @@ function EditPackage() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    {" "}
+                    <p>
+                      Description
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
                       theme="snow"
