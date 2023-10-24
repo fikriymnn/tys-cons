@@ -10,6 +10,7 @@ import {
   query,
   getDoc,
   deleteDoc,
+  orderBy,
   updateDoc,
   doc,
   Firestore,
@@ -41,7 +42,9 @@ function EventsAdmin() {
   const getDataEvents = async () => {
     try {
       try {
-        const querySnapshot = await getDocs(collection(db, "events"));
+        const ordersRef = collection(db, "events");
+        const q = query(ordersRef, orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
         let data = [];
         console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
