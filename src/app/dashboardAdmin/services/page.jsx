@@ -11,6 +11,7 @@ import {
   getDoc,
   deleteDoc,
   updateDoc,
+  orderBy,
   doc,
   Firestore,
 } from "firebase/firestore";
@@ -39,7 +40,10 @@ function ServicesAdmin() {
   const getDataService = async () => {
     try {
       try {
-        const querySnapshot = await getDocs(collection(db, "service"));
+        const ordersRef = collection(db, "service");
+        const q = query(ordersRef, orderBy("service", "desc"));
+        const querySnapshot = await getDocs(q);
+
         let data = [];
         console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
