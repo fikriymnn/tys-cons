@@ -11,6 +11,7 @@ import {
   getDoc,
   deleteDoc,
   updateDoc,
+  orderBy,
   doc,
   Firestore,
 } from "firebase/firestore";
@@ -38,7 +39,9 @@ function PackageAdmin() {
   const getDataPackage = async () => {
     try {
       try {
-        const querySnapshot = await getDocs(collection(db, "package"));
+        const ordersRef = collection(db, "package");
+        const q = query(ordersRef, orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
         let data = [];
         console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
