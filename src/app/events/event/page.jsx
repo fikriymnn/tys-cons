@@ -101,9 +101,9 @@ function Event() {
                             ? data.titleEnglish
                             : data.titleChinese}
                         </h1>
-                        <div className="bg-blue-500 h-[200px] md:h-[500px] relative">
+                        <div className=" h-[200px] md:h-[500px] relative">
                           <div
-                            className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-fill"
+                            className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
                             style={{ backgroundImage: `url(${data.img})` }}
                           >
                             {/* <Image
@@ -117,9 +117,18 @@ function Event() {
                         <h3 className="my-3">
                           Duration: {data.durationFrom} - {data.durationTo}
                         </h3>
-                        <h3 className="my-3">
+                        <h3 className="mt-3">
                           Time: {data.timeFrom} - {data.timeTo}
                         </h3>
+                        <div className="content  pt-10 pb-10">
+                          <p>
+                            {parse(
+                              language == "en"
+                                ? data.descriptionEnglish
+                                : data.descriptionChinese
+                            )}{" "}
+                          </p>
+                        </div>
                         {data.content.map((data, i) => {
                           return (
                             <>
