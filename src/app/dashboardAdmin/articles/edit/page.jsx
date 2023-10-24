@@ -38,6 +38,8 @@ function EditArticle() {
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [data, setData] = useState([
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
@@ -75,6 +77,8 @@ function EditArticle() {
       setTitleIng(data[0].titleEnglish);
       setTitleChi(data[0].titleChinese);
       setData(data[0].content);
+      setDesChi(data[0].descriptionChinese);
+      setDesIng(data[0].descriptionEnglish);
     } catch (error) {
       alert(error);
     }
@@ -169,6 +173,8 @@ function EditArticle() {
         titleEnglish: titleIng,
         titleChinese: titleChi,
         content: data,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     } else {
       await updateDoc(todoRef, {
@@ -176,6 +182,8 @@ function EditArticle() {
         titleChinese: titleChi,
         content: data,
         img: downloadURL,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     }
 
@@ -291,7 +299,47 @@ function EditArticle() {
               />
             </div>
           </div>
-
+          <div className=" flex py-1 ps-24 pt-32 ">
+            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+              <p>Main Description:</p>
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> English</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desIng}
+                onChange={(e) => setDesIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] w-full   "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> Chinese</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desChi}
+                onChange={(e) => setDesChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] my-10 "
+              />
+            </div>
+          </div>
           {data.map((val, i) => {
             return (
               <>
@@ -303,7 +351,7 @@ function EditArticle() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-                    <p>Head Text</p>
+                    <p>Content:</p>
                   </div>
                   <div className=" w-10/12 "></div>
                 </div>
@@ -345,9 +393,7 @@ function EditArticle() {
                 </div>
 
                 <div className=" flex py-1 px-20 ">
-                  <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
-                    <p>Article Content</p>
-                  </div>
+                  <div className=" w-10/12 px-3 text-2xl font-semibold pt-5"></div>
                   <div className=" w-10/12 "></div>
                 </div>
                 <div className=" flex py-1 px-20 ">
