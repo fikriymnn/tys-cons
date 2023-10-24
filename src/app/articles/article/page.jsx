@@ -91,11 +91,19 @@ function Article() {
                                 /> */}
                           </div>
                         </div>
-
+                        <div className="content  pt-10 pb-10">
+                          <p>
+                            {parse(
+                              language == "en"
+                                ? data.descriptionEnglish
+                                : data.descriptionChinese
+                            )}{" "}
+                          </p>
+                        </div>
                         {dataArticle[0].content.map((data, i) => {
                           return (
                             <>
-                              <div className="bg-gray-400 h-[2px] mt-5  "></div>
+                              <div className="bg-gray-400 h-[2px]   "></div>
                               <div className="w-100px flex items-center justify-center">
                                 <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white ">
