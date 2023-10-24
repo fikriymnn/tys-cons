@@ -38,6 +38,8 @@ function EditService() {
   const searchParams = useSearchParams();
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [service, setService] = useState("");
   const [subService, setSubService] = useState("");
@@ -86,6 +88,8 @@ function EditService() {
       setDataOption(data[0].price);
       setService(data[0].service);
       setSubService(data[0].subService);
+      setDesChi(data[0].descriptionChinese);
+      setDesIng(data[0].descriptionEnglish);
     } catch (error) {
       alert(error);
     }
@@ -183,6 +187,8 @@ function EditService() {
         titleEnglish: titleIng,
         content: data,
         price: dataOption,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     } else {
       await updateDoc(todoRef, {
@@ -194,6 +200,8 @@ function EditService() {
         subService: subService,
         titleChinese: titleChi,
         titleEnglish: titleIng,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
       });
     }
 
@@ -470,7 +478,10 @@ function EditService() {
                 </div>
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Input Price :</p>
+                    <p>
+                      Input Price
+                      <span className="text-red-600"> Yuan</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <input
@@ -482,6 +493,16 @@ function EditService() {
                       color=" bg-transparent"
                       className=" rounded-lg w-full border-slate-300 "
                     />
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Input Price
+                      <span className="text-red-600"> Yuan</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
                     <input
                       type="text"
                       name="priceRupiah"
@@ -577,6 +598,47 @@ function EditService() {
               </Dropdown>
             </div>
           </div>
+          <div className=" flex py-1 ps-40 pt-32 ">
+            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+              <p>Main Description:</p>
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> English</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desIng}
+                onChange={(e) => setDesIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] w-full   "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> Chinese</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desChi}
+                onChange={(e) => setDesChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] my-10 "
+              />
+            </div>
+          </div>
           <div className=" flex py-1 ps-40 pt-32">
             <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
               <p>Content</p>
@@ -594,7 +656,10 @@ function EditService() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Topic :</p>
+                    <p>
+                      Topic
+                      <span className="text-red-600"> English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <textarea
@@ -614,7 +679,12 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Topic
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <textarea
                       name="topicChi"
@@ -634,7 +704,10 @@ function EditService() {
                 </div>
                 <div className=" flex py-1 px-20 ">
                   <div className=" w-2/12 text-end p-3 py-5">
-                    <p>Description :</p>
+                    <p>
+                      Description
+                      <span className="text-red-600"> English</span> :
+                    </p>
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
@@ -672,7 +745,12 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" flex py-1 px-20">
-                  <div className=" w-2/12 text-end p-3 py-5"></div>
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Description
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
                       theme="snow"
