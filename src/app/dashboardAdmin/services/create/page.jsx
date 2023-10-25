@@ -202,24 +202,37 @@ function CreateService() {
       <>
         <div className="flex items-start justify-start">
           <div className="grid grid-cols-1">
-            <button onClick={() => setSubService("Company Registration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Company Registration")}
+            >
               <div className="p-2">Company Registration</div>
             </button>
-            <button onClick={() => setSubService("Visa Registration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Visa Registration")}
+            >
               <div className="p-2">Visa Registration</div>
             </button>
-            <button onClick={() => setSubService("Trademark")}>
+            <button type="button" onClick={() => setSubService("Trademark")}>
               <div className="p-2">Trademark</div>
             </button>
-            <button onClick={() => setSubService("Office Administration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Office Administration")}
+            >
               <div className="p-2">Office Administration</div>
             </button>
             <button
+              type="button"
               onClick={() => setSubService("Construction Certifications")}
             >
               <div className="p-2">Construction Certifications</div>
             </button>
-            <button onClick={() => setSubService("Factory Licenses")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Factory Licenses")}
+            >
               <div className="p-2">Factory Licenses</div>
             </button>
           </div>
@@ -230,25 +243,46 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("BPOM Food and Drug")}>
+          <button
+            type="button"
+            onClick={() => setSubService("BPOM Food and Drug")}
+          >
             <div className="p-2">BPOM Food and Drug</div>
           </button>
-          <button onClick={() => setSubService("ISO Management System")}>
+          <button
+            type="button"
+            onClick={() => setSubService("ISO Management System")}
+          >
             <div className="p-2">ISO Management System</div>
           </button>
-          <button onClick={() => setSubService("SNI National Standard")}>
+          <button
+            type="button"
+            onClick={() => setSubService("SNI National Standard")}
+          >
             <div className="p-2">SNI National Standard</div>
           </button>
-          <button onClick={() => setSubService("Medical and Hygiene")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Medical and Hygiene")}
+          >
             <div className="p-2">Medical and Hygiene</div>
           </button>
-          <button onClick={() => setSubService("POSTEL Telecommunication")}>
+          <button
+            type="button"
+            onClick={() => setSubService("POSTEL Telecommunication")}
+          >
             <div className="p-2">POSTEL Telecommunication</div>
           </button>
-          <button onClick={() => setSubService("Alcohol and Cigarette")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Alcohol and Cigarette")}
+          >
             <div className="p-2">Alcohol and Cigarette</div>
           </button>
-          <button onClick={() => setSubService("Other Certification")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Other Certification")}
+          >
             <div className="p-2">Other Certification</div>
           </button>
         </div>
@@ -259,13 +293,19 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Finance Services")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Finance Services")}
+          >
             <div className="p-2">Finance Services</div>
           </button>
-          <button onClick={() => setSubService("Accounting Services")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Accounting Services")}
+          >
             <div className="p-2">Accounting Services</div>
           </button>
-          <button onClick={() => setSubService("Tax Services")}>
+          <button type="button" onClick={() => setSubService("Tax Services")}>
             <div className="p-2">Tax Services</div>
           </button>
         </div>
@@ -276,19 +316,34 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Translator Assistant")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Translator Assistant")}
+          >
             <div className="p-2">Translator Assistant</div>
           </button>
-          <button onClick={() => setSubService("Finance Accounting Tax")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Finance Accounting Tax")}
+          >
             <div className="p-2">Finance Accounting Tax</div>
           </button>
-          <button onClick={() => setSubService("Marketing Sales")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Marketing Sales")}
+          >
             <div className="p-2">Marketing Sales</div>
           </button>
-          <button onClick={() => setSubService("Management Candidate")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Management Candidate")}
+          >
             <div className="p-2">Management Candidate</div>
           </button>
-          <button onClick={() => setSubService("HR Management Service")}>
+          <button
+            type="button"
+            onClick={() => setSubService("HR Management Service")}
+          >
             <div className="p-2">HR Management Service</div>
           </button>
         </div>
@@ -299,7 +354,10 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Legal Administration")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Legal Administration")}
+          >
             <div className="p-2">Legal Administration</div>
           </button>
         </div>
@@ -477,7 +535,10 @@ function CreateService() {
                           />
                           {dataOption.length !== 1 && (
                             <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                              <button onClick={(e) => handleDeleteOption(i)}>
+                              <button
+                                type="button"
+                                onClick={(e) => handleDeleteOption(i)}
+                              >
                                 Delete option
                               </button>
                             </div>
@@ -490,7 +551,11 @@ function CreateService() {
               })}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickOption} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickOption}
+                  className="font-light"
+                >
                   Add Option
                 </button>
               </div>
@@ -513,6 +578,7 @@ function CreateService() {
                 >
                   <div className="grid grid-cols-1 ">
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Basic Establishment Services");
                         setSubService("");
@@ -522,6 +588,7 @@ function CreateService() {
                     </button>
 
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Product Certifications");
                         setSubService("");
@@ -530,6 +597,7 @@ function CreateService() {
                       <div className="p-2">Product Certifications</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Finance Accounting Tax");
                         setSubService("");
@@ -538,6 +606,7 @@ function CreateService() {
                       <div className="p-2"> Finance Accounting Tax</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Talent Recruitment HR");
                         setSubService("");
@@ -546,6 +615,7 @@ function CreateService() {
                       <div className="p-2"> Talent Recruitment HR</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Legal Services");
                         setSubService("");
@@ -731,7 +801,10 @@ function CreateService() {
                       />
                       {data.length !== 1 && (
                         <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                          <button onClick={(e) => handleDelete(i)}>
+                          <button
+                            type="button"
+                            onClick={(e) => handleDelete(i)}
+                          >
                             Delete
                           </button>
                         </div>
@@ -743,7 +816,11 @@ function CreateService() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>
