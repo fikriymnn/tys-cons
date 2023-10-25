@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import CustomFooter from "@/components/CustomFooter";
@@ -23,7 +23,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Legal Services"),
-        where("subService", "==", "Legal Administration")
+        where("subService", "==", "Legal Administration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);

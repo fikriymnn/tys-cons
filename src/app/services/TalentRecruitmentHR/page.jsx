@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { Tabs } from "flowbite-react";
@@ -36,7 +36,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Translator Assistant")
+        where("subService", "==", "Translator Assistant"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -55,7 +56,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Finance Accounting Tax")
+        where("subService", "==", "Finance Accounting Tax"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -74,7 +76,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Marketing Sales")
+        where("subService", "==", "Marketing Sales"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -93,7 +96,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Management Candidate")
+        where("subService", "==", "Management Candidate"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -112,7 +116,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "HR Management Service")
+        where("subService", "==", "HR Management Service"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
