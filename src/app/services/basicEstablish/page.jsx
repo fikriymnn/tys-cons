@@ -2,13 +2,15 @@
 import React from "react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function Events() {
   const { language, changeLanguage } = useLanguage();
+
   const [comp, setComp] = useState(0);
   const [dataServiceCompany, setDataServiceCompany] = useState([]);
   const [dataServiceVisa, setDataServiceVisa] = useState([]);
@@ -16,6 +18,18 @@ function Events() {
   const [dataServiceOffice, setDataServiceOffice] = useState([]);
   const [dataServiceConstruction, setDataServiceConstruction] = useState([]);
   const [dataServiceFactory, setDataServiceFactory] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataServiceCompany();
@@ -32,10 +46,12 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Company Registration")
+        where("subService", "==", "Company Registration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
+
       let data = [];
       querySnapshot.forEach((doc) => {
         // console.log(doc.id, " => ", doc.data());
@@ -51,7 +67,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Visa Registration")
+        where("subService", "==", "Visa Registration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -70,7 +87,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Trademark")
+        where("subService", "==", "Trademark"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -89,7 +107,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Office Administration")
+        where("subService", "==", "Office Administration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -108,7 +127,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Construction Certifications")
+        where("subService", "==", "Construction Certifications"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -127,7 +147,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Factory Licenses")
+        where("subService", "==", "Factory Licenses"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -238,7 +259,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-40 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -248,7 +269,9 @@ function Events() {
                                   : data.titleChinese}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -276,7 +299,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -287,7 +310,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -315,7 +340,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -326,7 +351,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -354,7 +381,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -365,7 +392,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -393,7 +422,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -404,7 +433,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -432,7 +463,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -443,7 +474,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

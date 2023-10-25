@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { Tabs } from "flowbite-react";
@@ -14,6 +14,7 @@ import MarketingSales from "../../../components/ServicesSub/TalentRecruitmentHR/
 import ManagementCandidate from "../../../components/ServicesSub/TalentRecruitmentHR/ManagementCandidate";
 import HRManagementService from "../../../components/ServicesSub/TalentRecruitmentHR/HRManagementService";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductTalent() {
   const { language, changeLanguage } = useLanguage();
@@ -23,6 +24,18 @@ function ProductTalent() {
   const [dataTalentMarketing, setDataTalentMarketing] = useState([]);
   const [dataTalentMenagement, setDataTalentMenagement] = useState([]);
   const [dataTalentHR, setDataTalentHR] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataTalentTranslator();
@@ -36,7 +49,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Translator Assistant")
+        where("subService", "==", "Translator Assistant"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -55,7 +69,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Finance Accounting Tax")
+        where("subService", "==", "Finance Accounting Tax"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -74,7 +89,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Marketing Sales")
+        where("subService", "==", "Marketing Sales"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -93,7 +109,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "Management Candidate")
+        where("subService", "==", "Management Candidate"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -112,7 +129,8 @@ function ProductTalent() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
-        where("subService", "==", "HR Management Service")
+        where("subService", "==", "HR Management Service"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -209,7 +227,7 @@ function ProductTalent() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -220,7 +238,9 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -248,7 +268,7 @@ function ProductTalent() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -259,7 +279,9 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -287,7 +309,7 @@ function ProductTalent() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -298,7 +320,9 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -326,7 +350,7 @@ function ProductTalent() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -337,7 +361,9 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -365,7 +391,7 @@ function ProductTalent() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -376,7 +402,9 @@ function ProductTalent() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

@@ -1,5 +1,12 @@
 "use client";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  orderBy,
+  startAt,
+} from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import PoliciesDetail from "@/components/PoliciesDetail";
@@ -7,6 +14,7 @@ import Image from "next/image";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { useLanguage } from "@/context/LanguageContext";
+import parse from "html-react-parser";
 
 export default function Policies() {
   const { language, changeLanguage } = useLanguage();
@@ -17,8 +25,10 @@ export default function Policies() {
   const [dropdown4, setDropdown4] = useState(false);
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
-  const [contentIng, setContentIng] = useState("");
-  const [contentChi, setContentChi] = useState("");
+  const [desChi, setDesChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [content, setContent] = useState([]);
+
   const [dataimg, setDataImg] = useState("");
   const [selectedDetail1, setSelectedDetail1] = useState();
   const [selectedDetail2, setSelectedDetail2] = useState();
@@ -50,11 +60,7 @@ export default function Policies() {
         data.push({ ...doc.data(), id: doc.id });
       });
       setDataForeigen(data);
-      setContentChi(data[0].contentChinese);
-      setContentIng(data[0].contentEnglish);
-      setTitleChi(data[0].titleChinese);
-      setTitleIng(data[0].titleEnglish);
-      setDataImg(data[0].img);
+
       setSelectedDetail1(0);
     } catch (error) {
       console.log(error);
@@ -118,6 +124,46 @@ export default function Policies() {
     }
   };
 
+  dataForeigen.sort(function (a, b) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
+      return -1;
+    }
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
+      return 1;
+    }
+    return 0;
+  });
+
+  dataTak.sort(function (a, b) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
+      return -1;
+    }
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
+      return 1;
+    }
+    return 0;
+  });
+
+  dataLabor.sort(function (a, b) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
+      return -1;
+    }
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
+      return 1;
+    }
+    return 0;
+  });
+
+  dataImport.sort(function (a, b) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
+      return -1;
+    }
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
+      return 1;
+    }
+    return 0;
+  });
+
   const defaultDetail = <PoliciesDetail />;
   const defaultDetail2 = <PoliciesDetail />;
 
@@ -163,15 +209,16 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail1 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
-                          setContentChi(data.contentChinese);
-                          setContentIng(data.contentEnglish);
+                          setContent(data.content);
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail1(i);
                           setSelectedDetail2();
                           setSelectedDetail3();
@@ -224,15 +271,16 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail2 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
-                          setContentChi(data.contentChinese);
-                          setContentIng(data.contentEnglish);
+                          setContent(data.content);
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail2(i);
                           setSelectedDetail3();
                           setSelectedDetail4();
@@ -285,15 +333,16 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail3 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
-                          setContentChi(data.contentChinese);
-                          setContentIng(data.contentEnglish);
+                          setContent(data.content);
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail3(i);
                           setSelectedDetail2();
                           setSelectedDetail1();
@@ -348,15 +397,16 @@ export default function Policies() {
                   return (
                     <>
                       <div
-                        className={`w-full h-[50px]  border-white flex items-center cursor-pointer ${
+                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
                           selectedDetail4 == i ? "bg-blue-900" : ""
                         }`}
                         onClick={() => {
-                          setContentChi(data.contentChinese);
-                          setContentIng(data.contentEnglish);
+                          setContent(data.content);
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail4(i);
                           setSelectedDetail1();
                           setSelectedDetail2();
@@ -375,12 +425,131 @@ export default function Policies() {
               </div>
             )}
           </div>
-
-          <PoliciesDetail
-            src={dataimg}
-            title={language == "en" ? titleIng : titleChi}
-            content={language == "en" ? contentIng : contentChi}
-          />
+          <div
+            className={`md:mr-5 md:w-9/12 sm:w-8/12 w-10/12 shadow-2xl mb-10 border-t mt-5 md:mt-0 sm:mt-0`}
+          >
+            {dataimg == "" ? (
+              dataForeigen.map((data, i) => {
+                return i == 0 ? (
+                  <>
+                    <p className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </p>
+                    <div className="flex items-center w-full">
+                      <Image
+                        src={data.img}
+                        width={800}
+                        height={400}
+                        className="m-auto"
+                        alt="Image"
+                      />
+                    </div>
+                    <div className="content mt-5 px-20">
+                      <p>{parse(language == "en" ? desIng : desChi)} </p>
+                    </div>
+                    {data.content.map((data, i) => {
+                      return (
+                        <>
+                          <div className="px-20">
+                            <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                            <div className="flex items-center w-full">
+                              <div className=" bg-blue-600 ">
+                                <p className="text-center text-white text-base font-semibold p-3">
+                                  {language == "en"
+                                    ? data.topicIng
+                                    : data.topicChi}
+                                </p>
+                              </div>
+                              <div></div>
+                            </div>
+                            <div className="content py-5">
+                              <p>
+                                {" "}
+                                {parse(
+                                  language == "en"
+                                    ? data.contentIng
+                                    : data.contentChi
+                                )}{" "}
+                              </p>
+                            </div>
+                            {data.img == "" ? (
+                              <></>
+                            ) : (
+                              <>
+                                <img
+                                  width={500}
+                                  height={300}
+                                  src={data.img}
+                                  alt=""
+                                ></img>
+                              </>
+                            )}
+                          </div>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : null;
+              })
+            ) : (
+              <>
+                <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                  {language == "en" ? titleIng : titleChi}
+                </h1>
+                <div className="flex items-center w-full">
+                  <Image
+                    src={dataimg}
+                    width={800}
+                    height={400}
+                    className="m-auto"
+                    alt="Image"
+                  />
+                </div>
+                <div className="content mt-5 px-20">
+                  <p>{parse(language == "en" ? desIng : desChi)} </p>
+                </div>
+                {content.map((data, i) => {
+                  return (
+                    <>
+                      <div className="px-20">
+                        <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                        <div className="flex items-center w-full">
+                          <div className=" bg-blue-600 ">
+                            <p className="text-center text-white text-base font-semibold p-3">
+                              {language == "en" ? data.topicIng : data.topicChi}
+                            </p>
+                          </div>
+                          <div></div>
+                        </div>
+                        <div className="content py-5">
+                          <p>
+                            {" "}
+                            {parse(
+                              language == "en"
+                                ? data.contentIng
+                                : data.contentChi
+                            )}{" "}
+                          </p>
+                        </div>
+                        {data.img == "" ? (
+                          <></>
+                        ) : (
+                          <>
+                            <img
+                              width={500}
+                              height={300}
+                              src={data.img}
+                              alt=""
+                            ></img>
+                          </>
+                        )}
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
+          </div>
         </div>
       </div>
       <CustomFooter />

@@ -182,14 +182,14 @@ const About = () => {
   return (
     <>
       <NavbarWithCTAButton />
-      <div className=" px-5 md:px-16 sm:px-10 pt-24 ">
-        <p className="text-blue-800 text-3xl font-semibold pb-4 font-sans">
+      <div className=" px-5 md:px-[5%] sm:px-10 pt-36 ">
+        <p className="text-blue-600 text-[32px] font-semibold pb-4 font-sans">
           {language == "en" ? inggrisHeading : chinaHeading}
         </p>
-        <p className=" text-lg font-sans">
+        <p className=" text-[19px] font-sans">
           {language == "en" ? inggrisParagraph : chinaParagraph}
         </p>
-        <div className="md:grid md:grid-cols-2 py-10 gap-2 ">
+        <div className="md:grid md:grid-cols-2 py-10 gap-2 text-sm ">
           <div>
             <Iframe
               url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126941.19501629066!2d106.73087!3d-6.142476!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7fc6ab10259%3A0x8b5219b3d0af9b39!2sCitra%20Garden%20City%2C%20West%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1694419390459!5m2!1sen!2sid"
@@ -200,33 +200,33 @@ const About = () => {
               display="block"
               position=""
             />
-            <div className="flex gap-4  pt-3">
+            <div className="flex gap-4   pt-6">
               <Image
                 src={"/assets/images/map (1).png"}
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 alt=""
-                className="py-4"
+                className=""
               />
               <p className=" my-auto">{address}</p>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4  pt-6">
               <Image
                 src={"/assets/images/call (1).png"}
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 alt=""
-                className=" py-4"
+                className=" "
               />
               <p className=" my-auto">{phone}</p>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4  pt-6">
               <Image
                 src={"/assets/images/email (3).png"}
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 alt=""
-                className=" py-4"
+                className=" "
               />
               <p className=" my-auto">{email}</p>
             </div>
@@ -249,7 +249,7 @@ const About = () => {
                   name="from_name"
                   placeholder="Input your name"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className=" py-5">
@@ -257,9 +257,9 @@ const About = () => {
                 <input
                   type="email"
                   name="from_email"
-                  placeholder="Input your name"
+                  placeholder="Input your email"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className="">
@@ -267,9 +267,9 @@ const About = () => {
                 <input
                   type="text"
                   name="phone"
-                  placeholder="Input your name"
+                  placeholder="Input your phone number"
                   color=" bg-transparent"
-                  className=" rounded-lg w-full border-slate-300 "
+                  className=" rounded-md w-full border-slate-300 "
                 />
               </div>
               <div className=" py-5">
@@ -281,12 +281,16 @@ const About = () => {
                   rows="10"
                   placeholder="Input your message"
                   color=" bg-transparent"
-                  className=" w-full resize-none rounded-lg border-slate-300 "
+                  className=" w-full resize-none rounded-md border-slate-300 "
                   maxLength={100}
                 ></textarea>
               </div>
-              <button type="submit" value="Send">
-                <div className=" w-full h-12 bg-blue-600 hover:bg-blue-500 py-3 px-5 rounded-md">
+              <button
+                className=" w-full h-12 bg-blue-600 py-2 px-5"
+                type="submit"
+                value="Send"
+              >
+                <div>
                   <p className=" text-white text-center my-auto ">
                     Send Message
                   </p>

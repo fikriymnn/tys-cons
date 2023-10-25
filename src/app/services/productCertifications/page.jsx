@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { Tabs } from "flowbite-react";
@@ -16,9 +16,11 @@ import OtherCer from "@/components/ServicesSub/ProductCertificationsServices/Oth
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
+
   const [comp, setComp] = useState(0);
   const [dataProductBPOM, setDataProductBPOM] = useState([]);
   const [dataProductISO, setDataProductISO] = useState([]);
@@ -27,6 +29,18 @@ function ProductCertifications() {
   const [dataProductPostel, setDataProductPostel] = useState([]);
   const [dataProductAlcohol, setDataProductAlcohol] = useState([]);
   const [dataProductOther, setDataProductOther] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataProductBPOM();
@@ -42,7 +56,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "BPOM Food and Drug")
+        where("subService", "==", "BPOM Food and Drug"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -61,7 +76,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "ISO Management System")
+        where("subService", "==", "ISO Management System"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -80,7 +96,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "SNI National Standard")
+        where("subService", "==", "SNI National Standard"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -99,7 +116,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Medical and Hygiene")
+        where("subService", "==", "Medical and Hygiene"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -118,7 +136,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "POSTEL Telecommunication")
+        where("subService", "==", "POSTEL Telecommunication"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -137,7 +156,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Alcohol and Cigarette")
+        where("subService", "==", "Alcohol and Cigarette"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -156,7 +176,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Other Certification")
+        where("subService", "==", "Other Certification"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -277,7 +298,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -288,7 +309,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -316,7 +339,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -327,7 +350,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -355,7 +380,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -366,7 +391,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -394,7 +421,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -405,7 +432,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -433,7 +462,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -444,7 +473,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -472,7 +503,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -483,7 +514,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -511,7 +544,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -522,7 +555,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

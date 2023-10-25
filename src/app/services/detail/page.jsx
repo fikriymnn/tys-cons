@@ -178,7 +178,15 @@ function DetailServices() {
                       </fieldset>
                     </div>
                   </div>
-
+                  <div className="content pb-5">
+                    <p>
+                      {parse(
+                        language == "en"
+                          ? data.descriptionEnglish
+                          : data.descriptionChinese
+                      )}{" "}
+                    </p>
+                  </div>
                   {data.content.map((data, i) => {
                     return (
                       <>

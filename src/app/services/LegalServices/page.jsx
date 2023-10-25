@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import CustomFooter from "@/components/CustomFooter";
@@ -9,11 +9,24 @@ import CustomFooter from "@/components/CustomFooter";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
   const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
+
   const [comp, setComp] = useState(0);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataLegalAdministration();
@@ -23,7 +36,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Legal Services"),
-        where("subService", "==", "Legal Administration")
+        where("subService", "==", "Legal Administration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -79,7 +93,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -90,7 +104,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

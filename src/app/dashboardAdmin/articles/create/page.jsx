@@ -35,6 +35,8 @@ function CreateArticle() {
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [data, setData] = useState([
     { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
@@ -132,6 +134,8 @@ function CreateArticle() {
     const docRef = await addDoc(collection(db, "articles"), {
       titleEnglish: titleIng,
       titleChinese: titleChi,
+      descriptionEnglish: desIng,
+      descriptionChinese: desChi,
 
       img: downloadURL,
       date: date,
@@ -213,6 +217,10 @@ function CreateArticle() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
+                <p className="text-red-600 pt-2">Image Ratio: 16:9 </p>
+                <p className="text-red-600 pt-2">
+                  minimum image resolution: 1920 x 1080 pixel{" "}
+                </p>
               </div>
             </div>
             <div className=" flex py-1 px-20 ">
@@ -251,7 +259,45 @@ function CreateArticle() {
                 />
               </div>
             </div>
-
+            <div className=" flex py-1 ps-40 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Main Description:</p>
+              </div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> English</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesIng(e)}
+                  name="contentIng"
+                  placeholder={`Input Description English For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] w-full   "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesChi(e)}
+                  name="contentChi"
+                  placeholder={`Input Description Mandarin For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] my-10 "
+                />
+              </div>
+            </div>
             {data.map((val, i) => {
               return (
                 <>
@@ -263,13 +309,16 @@ function CreateArticle() {
                   </div>
                   <div className=" flex py-1 px-20 ">
                     <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-                      <p>Head Text</p>
+                      <p>Content:</p>
                     </div>
                     <div className=" w-10/12 "></div>
                   </div>
                   <div className=" flex py-1 px-20 ">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>English :</p>
+                      <p>
+                        Topic
+                        <span className="text-red-600"> English</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <input
@@ -285,7 +334,10 @@ function CreateArticle() {
                   </div>
                   <div className=" flex py-1 px-20">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Chinese :</p>
+                      <p>
+                        Topic
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <input
@@ -305,14 +357,14 @@ function CreateArticle() {
                   </div>
 
                   <div className=" flex py-1 px-20 ">
-                    <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
-                      <p>Article Content</p>
-                    </div>
                     <div className=" w-10/12 "></div>
                   </div>
                   <div className=" flex py-1 px-20 ">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>English :</p>
+                      <p>
+                        Description
+                        <span className="text-red-600"> English</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
@@ -337,7 +389,10 @@ function CreateArticle() {
                   </div>
                   <div className=" flex py-1 px-20">
                     <div className=" w-2/12 text-end p-3 py-5">
-                      <p>Chinese :</p>
+                      <p>
+                        Description
+                        <span className="text-red-600"> Chinese</span> :
+                      </p>
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
@@ -371,7 +426,9 @@ function CreateArticle() {
                     />
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                        <button type="button" onClick={(e) => handleDelete(i)}>
+                          Delete
+                        </button>
                       </div>
                     )}
                   </div>
@@ -380,7 +437,11 @@ function CreateArticle() {
             })}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>

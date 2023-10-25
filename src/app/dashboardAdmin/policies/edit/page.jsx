@@ -42,6 +42,12 @@ function EditPolicies() {
   const [subCategoryChi, setSubCategoryChi] = useState("");
   const [contentIng, setContentIng] = useState("");
   const [contentChi, setContentChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
+
+  const [data, setData] = useState([
+    { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+  ]);
 
   const [downloadURL, setDownloadURL] = useState("");
   const [file, setFile] = useState("");
@@ -78,8 +84,9 @@ function EditPolicies() {
       setCategory(data[0].category);
       setSubCategoryIng(data[0].subCategoryEnglish);
       setSubCategoryChi(data[0].subCategoryChinese);
-      setContentIng(data[0].contentEnglish);
-      setContentChi(data[0].contentChinese);
+      setDesChi(data[0].descriptionChinese);
+      setDesIng(data[0].descriptionEnglish);
+      setData(data[0].content);
     } catch (error) {
       alert(error);
     }
@@ -123,6 +130,48 @@ function EditPolicies() {
     }
   };
 
+  const handleUpload2 = async (filess, e, i) => {
+    const files = filess;
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+
+    try {
+      setLoading(true);
+      const storageRef = ref(storage, `/policies/${files.name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+
+            onchangeVal[i][name] = url;
+            setData(onchangeVal);
+            setLoading(false);
+          });
+        }
+      );
+    } catch (error) {
+      alert(error);
+      setLoading(false);
+    }
+  };
+
   const addData = async (e) => {
     e.preventDefault();
     const todoRef = doc(db, "policies", id);
@@ -132,10 +181,11 @@ function EditPolicies() {
         titleEnglish: titleIng,
         titleChinese: titleChi,
         category: category,
-        subCategory: subCategory,
-
-        contentEnglish: contentIng,
-        contentChinese: contentChi,
+        subCategoryEnglish: subCategoryIng,
+        subCategoryChinese: subCategoryChi,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
+        content: data,
       });
     } else {
       await updateDoc(todoRef, {
@@ -147,12 +197,31 @@ function EditPolicies() {
 
         img: downloadURL,
 
-        contentEnglish: contentIng,
-        contentChinese: contentChi,
+        descriptionEnglish: desIng,
+        descriptionChinese: desChi,
+        content: data,
       });
     }
 
     alert("success");
+  };
+
+  const handleClick = () => {
+    setData([
+      ...data,
+      { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+    ]);
+  };
+  const handleChange = (e, i) => {
+    const { name, value } = e.target;
+    const onchangeVal = [...data];
+    onchangeVal[i][name] = value;
+    setData(onchangeVal);
+  };
+  const handleDelete = (i) => {
+    const deleteVal = [...data];
+    deleteVal.splice(i, 1);
+    setData(deleteVal);
   };
   return (
     <>
@@ -207,6 +276,10 @@ function EditPolicies() {
                 type="file"
                 onChange={(event) => handleUpload(event.target.files[0])}
               />
+              <p className="text-red-600 pt-2">Image Ratio: 16:9 </p>
+              <p className="text-red-600 pt-2">
+                minimum image resolution: 1920 x 1080 pixel{" "}
+              </p>
             </div>
           </div>
           <div className=" flex py-1 px-20 ">
@@ -327,40 +400,189 @@ function EditPolicies() {
             </div>
           </div>
 
+          <div className=" flex py-1 ps-24 pt-32 ">
+            <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+              <p>Main Description:</p>
+            </div>
+          </div>
+          <div className=" flex py-1 px-20 ">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> English</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desIng}
+                onChange={(e) => setDesIng(e)}
+                name="contentIng"
+                placeholder={`Input Description English For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] w-full   "
+              />
+            </div>
+          </div>
+          <div className=" flex py-1 px-20">
+            <div className=" w-2/12 text-end p-3 py-5">
+              <p>
+                Description
+                <span className="text-red-600"> Chinese</span> :
+              </p>
+            </div>
+            <div className=" w-10/12 p-3">
+              <ReactQuill
+                value={desChi}
+                onChange={(e) => setDesChi(e)}
+                name="contentChi"
+                placeholder={`Input Description Mandarin For Description ${1}`}
+                maxLength={1000}
+                className="h-[200px] my-10 "
+              />
+            </div>
+          </div>
           <div className=" flex py-1 px-20 ">
             <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
               <p>Content</p>
             </div>
             <div className=" w-10/12 "></div>
           </div>
-          <div className=" flex py-1 px-20 ">
-            <div className=" w-2/12 text-end p-3 py-5">
-              <p>Description :</p>
-            </div>
-            <div className=" w-10/12 p-3">
-              <ReactQuill
-                theme="snow"
-                value={contentIng}
-                onChange={(e) => setContentIng(e)}
-                name="contentIng"
-                placeholder={`Input Description English For Description`}
-                maxLength={2000}
-                className="h-[200px] "
-              />
-            </div>
-          </div>
-          <div className=" flex py-1 px-20">
-            <div className=" w-2/12 text-end p-3 py-5"></div>
-            <div className=" w-10/12 p-3">
-              <ReactQuill
-                theme="snow"
-                value={contentChi}
-                onChange={(e) => setContentChi(e)}
-                name="contentChi"
-                placeholder={`Input Description Mandarin For Description`}
-                maxLength={2000}
-                className="h-[200px] my-10 "
-              />
+          {data.map((val, i) => {
+            return (
+              <>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end px-3 text-2xl font-bold pt-5 text-blue-600">
+                    <p>{i + 1}</p>
+                  </div>
+                  <div className=" w-10/12 "></div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Topic
+                      <span className="text-red-600"> English</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <textarea
+                      name="topicIng"
+                      value={val.topicIng}
+                      onChange={(e) => handleChange(e, i)}
+                      id=""
+                      cols="20"
+                      rows="1"
+                      placeholder={`Input Topic English For Description ${
+                        i + 1
+                      }`}
+                      color=" bg-transparent"
+                      className=" w-full resize-none rounded-lg border-slate-300 "
+                      maxLength={1000}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Topic
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <textarea
+                      name="topicChi"
+                      value={val.topicChi}
+                      onChange={(e) => handleChange(e, i)}
+                      id=""
+                      cols="20"
+                      rows="1"
+                      placeholder={`Input Topic Mandarin For Description ${
+                        i + 1
+                      }`}
+                      color=" bg-transparent"
+                      className=" w-full resize-none rounded-lg border-slate-300 "
+                      maxLength={1000}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20 ">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Description
+                      <span className="text-red-600"> English</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentIng}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentIng" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentIng"
+                      placeholder={`Input Description English For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px] w-full   "
+                    />
+                  </div>
+                </div>
+                <div className=" flex py-1 px-20">
+                  <div className=" w-2/12 text-end p-3 py-5">
+                    <p>
+                      Description
+                      <span className="text-red-600"> Chinese</span> :
+                    </p>
+                  </div>
+                  <div className=" w-10/12 p-3">
+                    <ReactQuill
+                      theme="snow"
+                      value={val.contentChi}
+                      onChange={(e) =>
+                        handleChange(
+                          {
+                            target: { value: e, name: "contentChi" },
+                          },
+                          i
+                        )
+                      }
+                      name="contentChi"
+                      placeholder={`Input Description Mandarin For Description ${
+                        i + 1
+                      }`}
+                      maxLength={1000}
+                      className="h-[200px] w-full  my-10 "
+                    />
+                  </div>
+                </div>
+                <div className=" w-10/12 p-3 ps-72">
+                  <input
+                    type="file"
+                    name="img"
+                    onChange={(event) =>
+                      handleUpload2(event.target.files[0], event, i)
+                    }
+                  />
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+          })}
+          {/* <p>{JSON.stringify(data)}</p> */}
+          <div className="flex justify-center items-center gap-10 mb-20">
+            <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+              <button onClick={handleClick} className="font-light">
+                Add More
+              </button>
             </div>
           </div>
 

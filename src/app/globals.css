@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ma+Shan+Zheng&display=swap');
 
-:root{
+:root {
   scroll-behavior: smooth;
+  font-family: ui-sans-serif, system-ui , -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 }
 .hideScroll {
   -ms-overflow-style: none;
@@ -48,8 +51,9 @@
   margin-left: 20px;
 }
 
-ul, ol {
-  list-style: none ;
+ul,
+ol {
+  list-style: none;
   margin-left: 0;
 }
 .error-message {

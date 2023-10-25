@@ -19,8 +19,9 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useEffect, useState } from "react";
-
+import { useLanguage } from "@/context/LanguageContext";
 function Packages() {
+  const { language, changeLanguage } = useLanguage();
   const [dataPackage, setDataPackage] = useState([]);
   useEffect(() => {
     getDataPackage();
@@ -50,43 +51,53 @@ function Packages() {
         </p>
         <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 grid grid-cols-1  gap-3 px-12 h-full ">
           {dataPackage.map((data, i) => {
+            const le = data;
+            const firsPriceRp = data.price[0].priceRupiah;
+            const lastPriceRp = data.price[data.price.length - 1].priceRupiah;
+            const firsPriceYuan = data.price[0].priceYuan;
+            const lastPriceYuan = data.price[data.price.length - 1].priceYuan;
+
             return (
               <>
-                <div className="bg-white p-10 rounded-lg shadow-lg flex flex-col">
-                  <h5 className="mb-4 text-lg text-black font-medium text-center line-clamp-2">
+                <div
+                  key={i}
+                  className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                >
+                  <h5 className="mb-4 bg- text-xl text-black font-semibold text-center  h-[55px] line-clamp-2">
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
-                    {data.price[0].price} 元
+                    {language == "en"
+                      ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                      : firsPriceYuan + "-" + lastPriceYuan + "元"}
                   </p>
 
-                  <ol className="my-7 space-y-5">
+                  <ol className="mb-auto pb-3 ">
                     <li className="flex space-x-3">
-                      <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                        &bull; <span className="px-2">Package Include :</span>
+                      <p className="text-base my-2 font-normal leading-tight text-black ">
+                        <span className="">Package Includes :</span>
                       </p>
                     </li>
                     {data.services.map((data, i) => {
                       return (
                         <>
-                          <li className="flex space-x-3">
-                            <p className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 line-clamp-1">
+                          <p key={i} className="flex space-x-3 my-3 ">
+                            <p className="text-base font-normal leading-tight text-black line-clamp-1 ">
                               &bull;{" "}
                               <span className="px-2">{data.nameIng}</span>
                             </p>
-                          </li>
+                          </p>
                         </>
                       );
                     })}
                   </ol>
-                  <div className="mt-auto">
-                    <a
-                      className="inline-flex w-full justify-center rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                      href={`/packages/details?id=${data.id}`}
-                    >
-                      <p>DETAILS</p>
-                    </a>
-                  </div>
+
+                  <a
+                    className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
+                    href={`/packages/details?id=${data.id}`}
+                  >
+                    <p>DETAILS</p>
+                  </a>
                 </div>
               </>
             );

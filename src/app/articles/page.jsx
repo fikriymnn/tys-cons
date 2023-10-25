@@ -12,6 +12,7 @@ import {
   query,
   getDoc,
   deleteDoc,
+  orderBy,
   updateDoc,
   doc,
   Firestore,
@@ -59,7 +60,9 @@ function Articles() {
   }, []);
   async function getDataArticles() {
     try {
-      const querySnapshot = await getDocs(collection(db, "articles"));
+      const ordersRef = collection(db, "articles");
+      const q = query(ordersRef, orderBy("date", "desc"));
+      const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots

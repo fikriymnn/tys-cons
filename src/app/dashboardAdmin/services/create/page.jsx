@@ -24,12 +24,15 @@ import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
 import { Dropdown } from "flowbite-react";
 import dynamic from "next/dynamic";
+import { format } from "date-fns";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desIng, setDesIng] = useState("");
+  const [desChi, setDesChi] = useState("");
 
   const [service, setService] = useState("");
   const [subService, setSubService] = useState("");
@@ -136,9 +139,13 @@ function CreateService() {
 
   const addData = async (e) => {
     e.preventDefault();
+    var today = new Date();
+    var date = today.getDate() + " " + format(today, "MMMM yyyy");
     const docRef = await addDoc(collection(db, "service"), {
       content: data,
-
+      descriptionEnglish: desIng,
+      descriptionChinese: desChi,
+      date: date,
       img: downloadURL,
 
       price: dataOption,
@@ -195,24 +202,37 @@ function CreateService() {
       <>
         <div className="flex items-start justify-start">
           <div className="grid grid-cols-1">
-            <button onClick={() => setSubService("Company Registration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Company Registration")}
+            >
               <div className="p-2">Company Registration</div>
             </button>
-            <button onClick={() => setSubService("Visa Registration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Visa Registration")}
+            >
               <div className="p-2">Visa Registration</div>
             </button>
-            <button onClick={() => setSubService("Trademark")}>
+            <button type="button" onClick={() => setSubService("Trademark")}>
               <div className="p-2">Trademark</div>
             </button>
-            <button onClick={() => setSubService("Office Administration")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Office Administration")}
+            >
               <div className="p-2">Office Administration</div>
             </button>
             <button
+              type="button"
               onClick={() => setSubService("Construction Certifications")}
             >
               <div className="p-2">Construction Certifications</div>
             </button>
-            <button onClick={() => setSubService("Factory Licenses")}>
+            <button
+              type="button"
+              onClick={() => setSubService("Factory Licenses")}
+            >
               <div className="p-2">Factory Licenses</div>
             </button>
           </div>
@@ -223,25 +243,46 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("BPOM Food and Drug")}>
+          <button
+            type="button"
+            onClick={() => setSubService("BPOM Food and Drug")}
+          >
             <div className="p-2">BPOM Food and Drug</div>
           </button>
-          <button onClick={() => setSubService("ISO Management System")}>
+          <button
+            type="button"
+            onClick={() => setSubService("ISO Management System")}
+          >
             <div className="p-2">ISO Management System</div>
           </button>
-          <button onClick={() => setSubService("SNI National Standard")}>
+          <button
+            type="button"
+            onClick={() => setSubService("SNI National Standard")}
+          >
             <div className="p-2">SNI National Standard</div>
           </button>
-          <button onClick={() => setSubService("Medical and Hygiene")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Medical and Hygiene")}
+          >
             <div className="p-2">Medical and Hygiene</div>
           </button>
-          <button onClick={() => setSubService("POSTEL Telecommunication")}>
+          <button
+            type="button"
+            onClick={() => setSubService("POSTEL Telecommunication")}
+          >
             <div className="p-2">POSTEL Telecommunication</div>
           </button>
-          <button onClick={() => setSubService("Alcohol and Cigarette")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Alcohol and Cigarette")}
+          >
             <div className="p-2">Alcohol and Cigarette</div>
           </button>
-          <button onClick={() => setSubService("Other Certification")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Other Certification")}
+          >
             <div className="p-2">Other Certification</div>
           </button>
         </div>
@@ -252,13 +293,19 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Finance Services")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Finance Services")}
+          >
             <div className="p-2">Finance Services</div>
           </button>
-          <button onClick={() => setSubService("Accounting Services")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Accounting Services")}
+          >
             <div className="p-2">Accounting Services</div>
           </button>
-          <button onClick={() => setSubService("Tax Services")}>
+          <button type="button" onClick={() => setSubService("Tax Services")}>
             <div className="p-2">Tax Services</div>
           </button>
         </div>
@@ -269,19 +316,34 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Translator Assistant")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Translator Assistant")}
+          >
             <div className="p-2">Translator Assistant</div>
           </button>
-          <button onClick={() => setSubService("Finance Accounting Tax")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Finance Accounting Tax")}
+          >
             <div className="p-2">Finance Accounting Tax</div>
           </button>
-          <button onClick={() => setSubService("Marketing Sales")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Marketing Sales")}
+          >
             <div className="p-2">Marketing Sales</div>
           </button>
-          <button onClick={() => setSubService("Management Candidate")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Management Candidate")}
+          >
             <div className="p-2">Management Candidate</div>
           </button>
-          <button onClick={() => setSubService("HR Management Service")}>
+          <button
+            type="button"
+            onClick={() => setSubService("HR Management Service")}
+          >
             <div className="p-2">HR Management Service</div>
           </button>
         </div>
@@ -292,7 +354,10 @@ function CreateService() {
     Drop = (
       <div className="flex items-start justify-start">
         <div className="grid grid-cols-1">
-          <button onClick={() => setSubService("Legal Administration")}>
+          <button
+            type="button"
+            onClick={() => setSubService("Legal Administration")}
+          >
             <div className="p-2">Legal Administration</div>
           </button>
         </div>
@@ -355,7 +420,10 @@ function CreateService() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
-                <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
+                <p className="text-red-600 pt-2">image ratio: 10:9 </p>
+                <p className="text-red-600 pt-2">
+                  minimum image resolution: 1000 x 900 pixel{" "}
+                </p>
               </div>
               {loading ? <p>Loading</p> : <></>}
             </div>
@@ -470,7 +538,10 @@ function CreateService() {
                           />
                           {dataOption.length !== 1 && (
                             <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                              <button onClick={(e) => handleDeleteOption(i)}>
+                              <button
+                                type="button"
+                                onClick={(e) => handleDeleteOption(i)}
+                              >
                                 Delete option
                               </button>
                             </div>
@@ -483,7 +554,11 @@ function CreateService() {
               })}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickOption} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickOption}
+                  className="font-light"
+                >
                   Add Option
                 </button>
               </div>
@@ -506,6 +581,7 @@ function CreateService() {
                 >
                   <div className="grid grid-cols-1 ">
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Basic Establishment Services");
                         setSubService("");
@@ -515,6 +591,7 @@ function CreateService() {
                     </button>
 
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Product Certifications");
                         setSubService("");
@@ -523,6 +600,7 @@ function CreateService() {
                       <div className="p-2">Product Certifications</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Finance Accounting Tax");
                         setSubService("");
@@ -531,6 +609,7 @@ function CreateService() {
                       <div className="p-2"> Finance Accounting Tax</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Talent Recruitment HR");
                         setSubService("");
@@ -539,6 +618,7 @@ function CreateService() {
                       <div className="p-2"> Talent Recruitment HR</div>
                     </button>
                     <button
+                      type="button"
                       onClick={() => {
                         setService("Legal Services");
                         setSubService("");
@@ -554,20 +634,45 @@ function CreateService() {
                 >
                   {Drop}
                 </Dropdown>
-                {/* <input
-                type="text"
-                onChange={(e) => setService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              />
-              <input
-                type="text"
-                onChange={(e) => setSubService(e.target.value)}
-                placeholder="This will be a Dropdown"
-                color=" bg-transparent"
-                className=" rounded-lg w-full border-slate-300 "
-              /> */}
+              </div>
+            </div>
+            <div className=" flex py-1 ps-40 pt-32 ">
+              <div className=" w-10/12 px-3 text-2xl font-semibold pt-5">
+                <p>Main Description:</p>
+              </div>
+            </div>
+            <div className=" flex py-1 px-20 ">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> English</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesIng(e)}
+                  name="contentIng"
+                  placeholder={`Input Description English For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] w-full   "
+                />
+              </div>
+            </div>
+            <div className=" flex py-1 px-20">
+              <div className=" w-2/12 text-end p-3 py-5">
+                <p>
+                  Description
+                  <span className="text-red-600"> Chinese</span> :
+                </p>
+              </div>
+              <div className=" w-10/12 p-3">
+                <ReactQuill
+                  onChange={(e) => setDesChi(e)}
+                  name="contentChi"
+                  placeholder={`Input Description Mandarin For Description ${1}`}
+                  maxLength={1000}
+                  className="h-[200px] my-10 "
+                />
               </div>
             </div>
             <div className=" flex py-1 ps-40 pt-32 ">
@@ -587,11 +692,15 @@ function CreateService() {
                     </div>
                     <div className=" flex py-1 px-20 ">
                       <div className=" w-2/12 text-end p-3 py-5">
-                        <p>Topic :</p>
+                        <p>
+                          Topic
+                          <span className="text-red-600"> English</span> :
+                        </p>
                       </div>
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicIng"
+                          required
                           value={val.topicIng}
                           onChange={(e) => handleChange(e, i)}
                           id=""
@@ -607,16 +716,22 @@ function CreateService() {
                       </div>
                     </div>
                     <div className=" flex py-1 px-20">
-                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>
+                          Topic
+                          <span className="text-red-600"> Chinese</span> :
+                        </p>
+                      </div>
                       <div className=" w-10/12 p-3">
                         <textarea
                           name="topicChi"
+                          required
                           value={val.topicChi}
                           onChange={(e) => handleChange(e, i)}
                           id=""
                           cols="20"
                           rows="1"
-                          placeholder={`Input Topic Mandarin For Description ${
+                          placeholder={`Input Topic Chinese For Description ${
                             i + 1
                           }`}
                           color=" bg-transparent"
@@ -627,7 +742,10 @@ function CreateService() {
                     </div>
                     <div className=" flex py-1 px-20 ">
                       <div className=" w-2/12 text-end p-3 py-5">
-                        <p>Description :</p>
+                        <p>
+                          Description
+                          <span className="text-red-600"> English</span> :
+                        </p>
                       </div>
                       <div className=" w-10/12 p-3">
                         <ReactQuill
@@ -650,7 +768,12 @@ function CreateService() {
                       </div>
                     </div>
                     <div className=" flex py-1 px-20">
-                      <div className=" w-2/12 text-end p-3 py-5"></div>
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>
+                          Description
+                          <span className="text-red-600"> Chinese</span> :
+                        </p>
+                      </div>
                       <div className=" w-10/12 p-3">
                         <ReactQuill
                           value={val.contentChi}
@@ -663,25 +786,12 @@ function CreateService() {
                             )
                           }
                           name="contentChi"
-                          placeholder={`Input Description Mandarin For Description ${
+                          placeholder={`Input Description Chinese For Description ${
                             i + 1
                           }`}
                           maxLength={1000}
                           className="h-[200px] my-10 "
                         />
-                        {/* <textarea
-                      name="contentChi"
-                      value={val.contentChi}
-                      onChange={(e) => handleChange(e, i)}
-                      id=""
-                      cols="20"
-                      rows="5"
-                      placeholder={`Input Description Mandarin For Description ${i + 1
-                        }`}
-                      color=" bg-transparent"
-                      className=" w-full resize-none rounded-lg border-slate-300 "
-                      maxLength={1000}
-                    ></textarea> */}
                       </div>
                     </div>
                     <div className=" w-10/12 p-3 ps-72">
@@ -694,7 +804,10 @@ function CreateService() {
                       />
                       {data.length !== 1 && (
                         <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                          <button onClick={(e) => handleDelete(i)}>
+                          <button
+                            type="button"
+                            onClick={(e) => handleDelete(i)}
+                          >
                             Delete
                           </button>
                         </div>
@@ -706,7 +819,11 @@ function CreateService() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>
