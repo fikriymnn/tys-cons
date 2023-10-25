@@ -202,7 +202,7 @@ const Home = () => {
           <div className="my-5 space-y-5">
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/basicEstablish?comp=0"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline hover:underline"
               >
                 {language == "en" ? "Company Registration" : "公司注册"}
@@ -211,7 +211,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/basicEstablish?comp=1"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Visa Registration" : "签证办理"}
@@ -220,7 +220,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/basicEstablish?comp=2"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Trademark" : "商标"}
@@ -229,7 +229,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/basicEstablish?comp=3"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Office Administration" : "行政办公"}
@@ -238,7 +238,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/basicEstablish?comp=4"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Construction Certifications" : "建筑工程"}
@@ -247,7 +247,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3">
               <a
-                href="/services/basicEstablish"
+                href="/services/basicEstablish/?comp=5"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Factory Licenses" : "工厂许可"}
@@ -278,7 +278,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/basicEstablish/"
+              href="/services/productCertifications?comp=0"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Product Certifications" : "产品认证"}
@@ -288,7 +288,7 @@ const Home = () => {
           <div className="my-5 space-y-5">
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/productCertifications?comp=0"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "BPOM Food and Drug" : "BPOM 食药化妆"}
@@ -297,7 +297,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/productCertifications?comp=1"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "ISO Management System" : "ISO 管理体系"}
@@ -306,7 +306,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/productCertifications?comp=2"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "SNI National Standard" : "SNI 国家标准"}
@@ -315,7 +315,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/productCertifications?comp=3"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
@@ -324,7 +324,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/productCertifications?comp=4"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en"
@@ -335,7 +335,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3">
               <a
-                href="/services/basicEstablish"
+                href="/services/productCertifications?comp=5"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Alcohol And Cigarette" : "酒和烟证"}
@@ -344,7 +344,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3">
               <a
-                href="/services/basicEstablish"
+                href="/services/productCertifications?comp=6"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Other Certification" : "其他证"}
@@ -375,7 +375,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/basicEstablish/"
+              href="/services/financeAccountingTax/"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
@@ -385,7 +385,7 @@ const Home = () => {
           <div className="my-5 space-y-5">
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/financeAccountingTax?comp=0"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Finance Services" : "财务服务"}
@@ -394,7 +394,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/financeAccountingTax?comp=1"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Accounting Services" : "会计服务"}
@@ -403,7 +403,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/financeAccountingTax?comp=2"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline "
               >
                 {language == "en" ? "Tax Services" : "税务服务"}
@@ -434,7 +434,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/basicEstablish/"
+              href="/services/TalentRecruitmentHR/"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
@@ -444,7 +444,7 @@ const Home = () => {
           <div className="my-5 space-y-5">
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/TalentRecruitmentHR?comp=0"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Translator Assistant" : "翻译助理"}
@@ -453,7 +453,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/TalentRecruitmentHR?comp=1"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Finance Accounting Tax" : "财税会计"}
@@ -462,7 +462,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/TalentRecruitmentHR?comp=2"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Marketing Sales" : "销售和营销"}
@@ -471,7 +471,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/TalentRecruitmentHR?comp=3"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Management Candidate" : "管理人选"}
@@ -480,7 +480,7 @@ const Home = () => {
             <hr className="" />
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish"
+                href="/services/TalentRecruitmentHR?comp=4"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "HR Management Service" : "人事管理服务"}
@@ -511,7 +511,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/basicEstablish/"
+              href="/services/LegalServices/"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Legal Services" : "法律服务"}
@@ -521,7 +521,7 @@ const Home = () => {
           <div className="my-5 space-y-5">
             <div className="flex space-x-3 ">
               <a
-                href="/services/basicEstablish/"
+                href="/services/LegalServices?comp=0"
                 className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Legal Administration" : "法律行政"}
