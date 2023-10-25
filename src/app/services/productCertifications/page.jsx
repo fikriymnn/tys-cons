@@ -19,9 +19,9 @@ import { useLanguage } from "@/context/LanguageContext";
 
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search)
-  const compValue = searchParams.get('comp');
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 7) : 0)
+  const searchParams = new URLSearchParams(location.search);
+  const compValue = searchParams.get("comp");
+  const [comp, setComp] = useState(compValue ? parseInt(compValue, 7) : 0);
   const [dataProductBPOM, setDataProductBPOM] = useState([]);
   const [dataProductISO, setDataProductISO] = useState([]);
   const [dataProductSNI, setDataProductSNI] = useState([]);
@@ -193,49 +193,54 @@ function ProductCertifications() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${comp == 0
+                  className={`${
+                    comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "BPOM Food & Drug " : "BPOM 食药化妆"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${comp == 1
+                  className={`${
+                    comp == 1
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "ISO Management System" : "ISO 管理体系"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${comp == 2
+                  className={`${
+                    comp == 2
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "SNI National Standard" : "SNI 国家标准"}
                 </button>
                 <button
                   onClick={() => setComp(3)}
-                  className={`${comp == 3
+                  className={`${
+                    comp == 3
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
                 </button>
                 <button
                   onClick={() => setComp(4)}
-                  className={`${comp == 4
+                  className={`${
+                    comp == 4
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en"
                     ? "POSTEL Telecommunication"
@@ -243,19 +248,21 @@ function ProductCertifications() {
                 </button>
                 <button
                   onClick={() => setComp(5)}
-                  className={`${comp == 5
+                  className={`${
+                    comp == 5
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Alcohol and Cigarette" : "酒和烟证"}
                 </button>
                 <button
                   onClick={() => setComp(6)}
-                  className={`${comp == 6
+                  className={`${
+                    comp == 6
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Other Certification" : "其他证"}
                 </button>
@@ -279,7 +286,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -290,7 +297,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -318,7 +327,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -329,7 +338,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -357,7 +368,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -368,7 +379,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -396,7 +409,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -407,7 +420,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -435,7 +450,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -446,7 +461,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -474,7 +491,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -485,7 +502,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -513,7 +532,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -524,7 +543,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

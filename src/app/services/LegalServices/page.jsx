@@ -13,9 +13,9 @@ import { useLanguage } from "@/context/LanguageContext";
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
   const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
-  const searchParams = new URLSearchParams(location.search)
-  const compValue = searchParams.get('comp');
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 1) : 0)
+  const searchParams = new URLSearchParams(location.search);
+  const compValue = searchParams.get("comp");
+  const [comp, setComp] = useState(compValue ? parseInt(compValue, 1) : 0);
 
   useEffect(() => {
     getDataLegalAdministration();
@@ -54,10 +54,11 @@ function ProductCertifications() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${comp == 0
+                  className={`${
+                    comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Legal Administration" : "法律行政"}
                 </button>
@@ -81,7 +82,7 @@ function ProductCertifications() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -92,7 +93,9 @@ function ProductCertifications() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>

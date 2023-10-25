@@ -178,7 +178,7 @@ function DetailServices() {
                       </fieldset>
                     </div>
                   </div>
-                  <div className="content pb-10">
+                  <div className="content pb-5">
                     <p>
                       {parse(
                         language == "en"

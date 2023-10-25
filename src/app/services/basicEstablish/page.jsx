@@ -9,9 +9,9 @@ import { useLanguage } from "@/context/LanguageContext";
 
 function Events() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search)
-  const compValue = searchParams.get('comp');
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 6) : 0)
+  const searchParams = new URLSearchParams(location.search);
+  const compValue = searchParams.get("comp");
+  const [comp, setComp] = useState(compValue ? parseInt(compValue, 6) : 0);
   const [dataServiceCompany, setDataServiceCompany] = useState([]);
   const [dataServiceVisa, setDataServiceVisa] = useState([]);
   const [dataServiceTrademark, setDataServiceTrademark] = useState([]);
@@ -167,46 +167,51 @@ function Events() {
               <div className="flex gap-9 border-b w-full overflow-auto md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${comp == 0
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 0
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? " Company Registration" : "公司注册"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${comp == 1
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 1
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? " Visa Registration" : "签证办理"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${comp == 2
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 2
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? " Trademark" : "商标"}
                 </button>
                 <button
                   onClick={() => setComp(3)}
-                  className={`${comp == 3
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 3
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? " OfficeAdministration " : "行政办公"}
                 </button>
                 <button
                   onClick={() => setComp(4)}
-                  className={`${comp == 4
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 4
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en"
                     ? "Construction Certifications"
@@ -214,10 +219,11 @@ function Events() {
                 </button>
                 <button
                   onClick={() => setComp(5)}
-                  className={`${comp == 5
-                    ? "text-blue-600 border-b pb-2 border-blue-600"
-                    : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  className={`${
+                    comp == 5
+                      ? "text-blue-600 border-b pb-2 border-blue-600"
+                      : "text-black border-0"
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? " Factory Licenses" : "工厂许可"}
                 </button>
@@ -241,7 +247,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className=" h-40 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -251,7 +257,9 @@ function Events() {
                                   : data.titleChinese}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -279,7 +287,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -290,7 +298,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -318,7 +328,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -329,7 +339,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -357,7 +369,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -368,7 +380,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -396,7 +410,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -407,7 +421,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
@@ -435,7 +451,7 @@ function Events() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" bg-blue-700 h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -446,7 +462,9 @@ function Events() {
                                   : data.titleEnglish}
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                {firsPriceYuan + "-" + lastPriceYuan} 元
+                                {language == "en"
+                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
                           </div>
