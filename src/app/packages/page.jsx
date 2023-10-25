@@ -63,7 +63,7 @@ function Packages() {
                   key={i}
                   className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <h5 className="mb-4 bg- text-xl text-black font-medium text-center  h-16">
+                  <h5 className="mb-4 bg- text-xl text-black font-semibold text-center  h-[55px] line-clamp-2">
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
