@@ -25,6 +25,8 @@ export default function Policies() {
   const [dropdown4, setDropdown4] = useState(false);
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [desChi, setDesChi] = useState("");
+  const [desIng, setDesIng] = useState("");
   const [content, setContent] = useState([]);
 
   const [dataimg, setDataImg] = useState("");
@@ -215,6 +217,8 @@ export default function Policies() {
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail1(i);
                           setSelectedDetail2();
                           setSelectedDetail3();
@@ -275,6 +279,8 @@ export default function Policies() {
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail2(i);
                           setSelectedDetail3();
                           setSelectedDetail4();
@@ -335,6 +341,8 @@ export default function Policies() {
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail3(i);
                           setSelectedDetail2();
                           setSelectedDetail1();
@@ -397,6 +405,8 @@ export default function Policies() {
                           setTitleChi(data.titleChinese);
                           setTitleIng(data.titleEnglish);
                           setDataImg(data.img);
+                          setDesIng(data.descriptionEnglish);
+                          setDesChi(data.descriptionChinese);
                           setSelectedDetail4(i);
                           setSelectedDetail1();
                           setSelectedDetail2();
@@ -422,9 +432,9 @@ export default function Policies() {
               dataForeigen.map((data, i) => {
                 return i == 0 ? (
                   <>
-                    <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                    <p className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
-                    </h1>
+                    </p>
                     <div className="flex items-center w-full">
                       <Image
                         src={data.img}
@@ -434,17 +444,46 @@ export default function Policies() {
                         alt="Image"
                       />
                     </div>
+                    <div className="content mt-5 px-20">
+                      <p>{parse(language == "en" ? desIng : desChi)} </p>
+                    </div>
                     {data.content.map((data, i) => {
                       return (
                         <>
-                          <div className="w-10/12 m-auto mt-7 mb-7">
-                            <p className="md:text-base sm:text-sm text-xs">
-                              {parse(
-                                language == "en"
-                                  ? data.contentIng
-                                  : data.contentChi
-                              )}
-                            </p>
+                          <div className="px-20">
+                            <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                            <div className="flex items-center w-full">
+                              <div className=" bg-blue-600 ">
+                                <p className="text-center text-white text-base font-semibold p-3">
+                                  {language == "en"
+                                    ? data.topicIng
+                                    : data.topicChi}
+                                </p>
+                              </div>
+                              <div></div>
+                            </div>
+                            <div className="content py-5">
+                              <p>
+                                {" "}
+                                {parse(
+                                  language == "en"
+                                    ? data.contentIng
+                                    : data.contentChi
+                                )}{" "}
+                              </p>
+                            </div>
+                            {data.img == "" ? (
+                              <></>
+                            ) : (
+                              <>
+                                <img
+                                  width={500}
+                                  height={300}
+                                  src={data.img}
+                                  alt=""
+                                ></img>
+                              </>
+                            )}
                           </div>
                         </>
                       );
@@ -466,15 +505,44 @@ export default function Policies() {
                     alt="Image"
                   />
                 </div>
+                <div className="content mt-5 px-20">
+                  <p>{parse(language == "en" ? desIng : desChi)} </p>
+                </div>
                 {content.map((data, i) => {
                   return (
                     <>
-                      <div className="w-10/12 m-auto mt-7 mb-7">
-                        <p className="md:text-base sm:text-sm text-xs">
-                          {parse(
-                            language == "en" ? data.contentIng : data.contentChi
-                          )}
-                        </p>
+                      <div className="px-20">
+                        <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                        <div className="flex items-center w-full">
+                          <div className=" bg-blue-600 ">
+                            <p className="text-center text-white text-base font-semibold p-3">
+                              {language == "en" ? data.topicIng : data.topicChi}
+                            </p>
+                          </div>
+                          <div></div>
+                        </div>
+                        <div className="content py-5">
+                          <p>
+                            {" "}
+                            {parse(
+                              language == "en"
+                                ? data.contentIng
+                                : data.contentChi
+                            )}{" "}
+                          </p>
+                        </div>
+                        {data.img == "" ? (
+                          <></>
+                        ) : (
+                          <>
+                            <img
+                              width={500}
+                              height={300}
+                              src={data.img}
+                              alt=""
+                            ></img>
+                          </>
+                        )}
                       </div>
                     </>
                   );
