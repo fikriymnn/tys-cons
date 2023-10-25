@@ -128,7 +128,7 @@ const Home = () => {
         <HomeNavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full h-[920px]  bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className='w-full h-[920px] bg-center bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
         <div className="w-full h-[920px]  md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="  md:pl-[20%] sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
@@ -203,7 +203,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline hover:underline"
               >
                 {language == "en" ? "Company Registration" : "公司注册"}
               </a>
@@ -212,7 +212,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Visa Registration" : "签证办理"}
               </a>
@@ -221,7 +221,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Trademark" : "商标"}
               </a>
@@ -230,7 +230,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Office Administration" : "行政办公"}
               </a>
@@ -239,7 +239,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Construction Certifications" : "建筑工程"}
               </a>
@@ -248,7 +248,7 @@ const Home = () => {
             <div className="flex space-x-3">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Factory Licenses" : "工厂许可"}
               </a>
@@ -289,7 +289,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "BPOM Food and Drug" : "BPOM 食药化妆"}
               </a>
@@ -298,7 +298,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "ISO Management System" : "ISO 管理体系"}
               </a>
@@ -307,7 +307,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "SNI National Standard" : "SNI 国家标准"}
               </a>
@@ -316,7 +316,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
               </a>
@@ -325,7 +325,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en"
                   ? "POSTEL Telecommunication"
@@ -336,7 +336,7 @@ const Home = () => {
             <div className="flex space-x-3">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Alcohol And Cigarette" : "酒和烟证"}
               </a>
@@ -345,7 +345,7 @@ const Home = () => {
             <div className="flex space-x-3">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white  group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Other Certification" : "其他证"}
               </a>
@@ -386,7 +386,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Finance Services" : "财务服务"}
               </a>
@@ -395,7 +395,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Accounting Services" : "会计服务"}
               </a>
@@ -404,7 +404,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline "
               >
                 {language == "en" ? "Tax Services" : "税务服务"}
               </a>
@@ -445,7 +445,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Translator Assistant" : "翻译助理"}
               </a>
@@ -454,7 +454,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Finance Accounting Tax" : "财税会计"}
               </a>
@@ -463,7 +463,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Marketing Sales" : "销售和营销"}
               </a>
@@ -472,7 +472,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Management Candidate" : "管理人选"}
               </a>
@@ -481,7 +481,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "HR Management Service" : "人事管理服务"}
               </a>
@@ -522,7 +522,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish/"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Legal Administration" : "法律行政"}
               </a>
@@ -624,7 +624,7 @@ const Home = () => {
                     key={i}
                     className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
                   >
-                    <h5 className="mb-4 bg- text-xl text-black font-medium text-center  h-16">
+                    <h5 className="mb-4 bg- text-xl text-black font-medium text-center  h-16 line-clamp-2">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
                     <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -686,7 +686,7 @@ const Home = () => {
                   key={i}
                   className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <h5 className="mb-4 bg- text-xl text-black font-semibold text-center  h-16">
+                  <h5 className="mb-4 text-xl text-black font-semibold text-center  h-16 ">
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
