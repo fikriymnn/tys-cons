@@ -1,5 +1,12 @@
 "use client";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  orderBy,
+  startAt,
+} from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import PoliciesDetail from "@/components/PoliciesDetail";
@@ -50,27 +57,13 @@ export default function Policies() {
         // console.log(doc.id, " => ", doc.data());
         data.push({ ...doc.data(), id: doc.id });
       });
-      await setDataForeigen(data);
+      setDataForeigen(data);
 
-      setTitleChi(data[0].titleChinese);
-      setTitleIng(data[0].titleEnglish);
-      setDataImg(data[0].img);
-      setContent(data[0].content);
       setSelectedDetail1(0);
     } catch (error) {
       console.log(error);
     }
   };
-
-  dataForeigen.sort(function (a, b) {
-    if (a.titleEnglish < b.titleEnglish) {
-      return -1;
-    }
-    if (a.titleEnglish > b.titleEnglish) {
-      return 1;
-    }
-    return 0;
-  });
 
   const getDataTak = async () => {
     try {
@@ -130,40 +123,40 @@ export default function Policies() {
   };
 
   dataForeigen.sort(function (a, b) {
-    if (a.titleEnglish < b.titleEnglish) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
       return -1;
     }
-    if (a.titleEnglish > b.titleEnglish) {
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
       return 1;
     }
     return 0;
   });
 
   dataTak.sort(function (a, b) {
-    if (a.titleEnglish < b.titleEnglish) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
       return -1;
     }
-    if (a.titleEnglish > b.titleEnglish) {
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
       return 1;
     }
     return 0;
   });
 
   dataLabor.sort(function (a, b) {
-    if (a.titleEnglish < b.titleEnglish) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
       return -1;
     }
-    if (a.titleEnglish > b.titleEnglish) {
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
       return 1;
     }
     return 0;
   });
 
   dataImport.sort(function (a, b) {
-    if (a.titleEnglish < b.titleEnglish) {
+    if (a.subCategoryEnglish < b.subCategoryEnglish) {
       return -1;
     }
-    if (a.titleEnglish > b.titleEnglish) {
+    if (a.subCategoryEnglish > b.subCategoryEnglish) {
       return 1;
     }
     return 0;
@@ -422,35 +415,72 @@ export default function Policies() {
               </div>
             )}
           </div>
-
           <div
             className={`md:mr-5 md:w-9/12 sm:w-8/12 w-10/12 shadow-2xl mb-10 border-t mt-5 md:mt-0 sm:mt-0`}
           >
-            <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
-              {language == "en" ? titleIng : titleChi}
-            </h1>
-            <div className="flex items-center w-full">
-              <Image
-                src={dataimg}
-                width={800}
-                height={400}
-                className="m-auto"
-                alt="Image"
-              />
-            </div>
-            {content.map((data, i) => {
-              return (
-                <>
-                  <div className="w-10/12 m-auto mt-7 mb-7">
-                    <p className="md:text-base sm:text-sm text-xs">
-                      {parse(
-                        language == "en" ? data.contentIng : data.contentChi
-                      )}
-                    </p>
-                  </div>
-                </>
-              );
-            })}
+            {dataimg == "" ? (
+              dataForeigen.map((data, i) => {
+                return i == 0 ? (
+                  <>
+                    <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                      {language == "en" ? data.titleEnglish : data.titleChinese}
+                    </h1>
+                    <div className="flex items-center w-full">
+                      <Image
+                        src={data.img}
+                        width={800}
+                        height={400}
+                        className="m-auto"
+                        alt="Image"
+                      />
+                    </div>
+                    {data.content.map((data, i) => {
+                      return (
+                        <>
+                          <div className="w-10/12 m-auto mt-7 mb-7">
+                            <p className="md:text-base sm:text-sm text-xs">
+                              {parse(
+                                language == "en"
+                                  ? data.contentIng
+                                  : data.contentChi
+                              )}
+                            </p>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : null;
+              })
+            ) : (
+              <>
+                <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                  {language == "en" ? titleIng : titleChi}
+                </h1>
+                <div className="flex items-center w-full">
+                  <Image
+                    src={dataimg}
+                    width={800}
+                    height={400}
+                    className="m-auto"
+                    alt="Image"
+                  />
+                </div>
+                {content.map((data, i) => {
+                  return (
+                    <>
+                      <div className="w-10/12 m-auto mt-7 mb-7">
+                        <p className="md:text-base sm:text-sm text-xs">
+                          {parse(
+                            language == "en" ? data.contentIng : data.contentChi
+                          )}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </div>
