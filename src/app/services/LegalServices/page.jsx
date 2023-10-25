@@ -13,7 +13,9 @@ import { useLanguage } from "@/context/LanguageContext";
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
   const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
-  const [comp, setComp] = useState(0);
+  const searchParams = new URLSearchParams(location.search)
+  const compValue = searchParams.get('comp');
+  const [comp, setComp] = useState(compValue ? parseInt(compValue, 1) : 0)
 
   useEffect(() => {
     getDataLegalAdministration();
@@ -52,11 +54,10 @@ function ProductCertifications() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${
-                    comp == 0
+                  className={`${comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Legal Administration" : "法律行政"}
                 </button>
