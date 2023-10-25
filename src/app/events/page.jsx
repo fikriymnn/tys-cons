@@ -9,6 +9,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  orderBy,
+  query,
   where,
   Firestore,
 } from "firebase/firestore";
@@ -37,7 +39,9 @@ function Events() {
   }, []);
   async function getDataEvents() {
     try {
-      const querySnapshot = await getDocs(collection(db, "events"));
+      const ordersRef = collection(db, "events");
+      const q = query(ordersRef, orderBy("date", "desc"));
+      const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
