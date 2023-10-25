@@ -128,7 +128,7 @@ const Home = () => {
         <HomeNavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full h-[920px] bg-center bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
+        <div className='w-full h-[920px] bg-left bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
         <div className="w-full h-[920px]  md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="  md:pl-[20%] sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[40px] pb-3 z-20 text-2xl  ">
