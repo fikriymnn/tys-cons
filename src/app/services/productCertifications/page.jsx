@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { Tabs } from "flowbite-react";
@@ -42,7 +42,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "BPOM Food and Drug")
+        where("subService", "==", "BPOM Food and Drug"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -61,7 +62,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "ISO Management System")
+        where("subService", "==", "ISO Management System"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -80,7 +82,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "SNI National Standard")
+        where("subService", "==", "SNI National Standard"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -99,7 +102,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Medical and Hygiene")
+        where("subService", "==", "Medical and Hygiene"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -118,7 +122,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "POSTEL Telecommunication")
+        where("subService", "==", "POSTEL Telecommunication"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -137,7 +142,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Alcohol and Cigarette")
+        where("subService", "==", "Alcohol and Cigarette"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -156,7 +162,8 @@ function ProductCertifications() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Product Certifications"),
-        where("subService", "==", "Other Certification")
+        where("subService", "==", "Other Certification"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);

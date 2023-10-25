@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CompanyRegistrationPage from "@/components/ServicesSub/BasicEstablishmentServices/CompanyRegistrationPage";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 
@@ -29,7 +29,8 @@ function FinanceAccountingTax() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
-        where("subService", "==", "Finance Services")
+        where("subService", "==", "Finance Services"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -48,7 +49,8 @@ function FinanceAccountingTax() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
-        where("subService", "==", "Accounting Services")
+        where("subService", "==", "Accounting Services"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -67,7 +69,8 @@ function FinanceAccountingTax() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
-        where("subService", "==", "Tax Services")
+        where("subService", "==", "Tax Services"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);

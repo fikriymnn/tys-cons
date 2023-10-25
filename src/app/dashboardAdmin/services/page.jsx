@@ -41,7 +41,7 @@ function ServicesAdmin() {
     try {
       try {
         const ordersRef = collection(db, "service");
-        const q = query(ordersRef, orderBy("service", "desc"));
+        const q = query(ordersRef, orderBy("date", "desc"));
         const querySnapshot = await getDocs(q);
 
         let data = [];
