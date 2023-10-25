@@ -101,26 +101,24 @@ function Event() {
                             ? data.titleEnglish
                             : data.titleChinese}
                         </h1>
-                        <div className=" h-[200px] md:h-[500px] relative">
-                          <div
-                            className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
-                            style={{ backgroundImage: `url(${data.img})` }}
-                          >
-                            {/* <Image
-                                    src={'/assets/images/article.png'}
-                                    width={1080}
-                                    height={1080}
-                                    alt=''
-                                /> */}
-                          </div>
+                        <div className="">
+                          <Image
+                            src={data.img}
+                            width={1200}
+                            height={10}
+                            alt=""
+                          />
                         </div>
-                        <h3 className="my-3">
-                          Duration: {data.durationFrom} - {data.durationTo}
-                        </h3>
-                        <h3 className="mt-3">
-                          Time: {data.timeFrom} - {data.timeTo}
-                        </h3>
-                        <div className="content  pt-10 pb-10">
+                        <div className="font-semibold">
+                          <h3 className="my-3 ">
+                            Duration: {data.durationFrom} - {data.durationTo}
+                          </h3>
+                          <h3 className="my-3">
+                            Time: {data.timeFrom} - {data.timeTo}
+                          </h3>
+                        </div>
+                        <div className="bg-gray-400 h-[2px] "></div>
+                        <div className="content  my-5">
                           <p>
                             {parse(
                               language == "en"
@@ -129,6 +127,7 @@ function Event() {
                             )}{" "}
                           </p>
                         </div>
+
                         {data.content.map((data, i) => {
                           return (
                             <>
