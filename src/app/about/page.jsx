@@ -182,14 +182,14 @@ const About = () => {
   return (
     <>
       <NavbarWithCTAButton />
-      <div className=" px-5 md:px-16 sm:px-10 pt-36 ">
+      <div className=" px-5 md:px-[5%] sm:px-10 pt-36 ">
         <p className="text-blue-600 text-[32px] font-semibold pb-4 font-sans">
           {language == "en" ? inggrisHeading : chinaHeading}
         </p>
-        <p className=" text-[18px] font-sans">
+        <p className=" text-[19px] font-sans">
           {language == "en" ? inggrisParagraph : chinaParagraph}
         </p>
-        <div className="md:grid md:grid-cols-2 py-10 gap-2 text-sm">
+        <div className="md:grid md:grid-cols-2 py-10 gap-2 text-sm ">
           <div>
             <Iframe
               url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126941.19501629066!2d106.73087!3d-6.142476!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7fc6ab10259%3A0x8b5219b3d0af9b39!2sCitra%20Garden%20City%2C%20West%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1694419390459!5m2!1sen!2sid"
