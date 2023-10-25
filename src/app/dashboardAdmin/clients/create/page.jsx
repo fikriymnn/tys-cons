@@ -142,6 +142,9 @@ function AddClient() {
               type="file"
               onChange={(event) => handleUpload(event.target.files[0])}
             />
+            <p className="text-red-600 pt-2">
+              minimum image resolution: 1920 x 1080{" "}
+            </p>
           </div>
         </div>
 

@@ -247,7 +247,7 @@ function CreateEvent() {
           <div className="">
             <div className=" flex py-1 px-20 ">
               <div className=" w-2/12 text-end px-3 text-2xl font-semibold pt-5">
-                <p>Image</p>
+                <p>Image Banner</p>
               </div>
               <div className=" w-10/12 p-3">
                 <input
@@ -255,6 +255,9 @@ function CreateEvent() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
+                <p className="text-red-600 pt-2">
+                  minimum image resolution: 1920 x 1080{" "}
+                </p>
               </div>
             </div>
             <div className=" flex py-1 px-20 ">

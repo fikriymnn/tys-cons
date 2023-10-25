@@ -260,7 +260,9 @@ function EditArticle() {
                 type="file"
                 onChange={(event) => handleUpload(event.target.files[0])}
               />
-              <p className="text-red-600 pt-2">File Ratio 4:3 or 16:9</p>
+              <p className="text-red-600 pt-2">
+                minimum image resolution: 1920 x 1080{" "}
+              </p>
             </div>
           </div>
           <div className=" flex py-1 px-20 ">

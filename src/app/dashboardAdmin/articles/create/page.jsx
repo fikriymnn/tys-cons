@@ -217,6 +217,9 @@ function CreateArticle() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
+                <p className="text-red-600 pt-2">
+                  minimum image resolution: 1920 x 1080{" "}
+                </p>
               </div>
             </div>
             <div className=" flex py-1 px-20 ">
