@@ -2,7 +2,7 @@
 import React from "react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { useLanguage } from "@/context/LanguageContext";
@@ -32,10 +32,12 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Company Registration")
+        where("subService", "==", "Company Registration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
+
       let data = [];
       querySnapshot.forEach((doc) => {
         // console.log(doc.id, " => ", doc.data());
@@ -51,7 +53,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Visa Registration")
+        where("subService", "==", "Visa Registration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -70,7 +73,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Trademark")
+        where("subService", "==", "Trademark"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -89,7 +93,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Office Administration")
+        where("subService", "==", "Office Administration"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -108,7 +113,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Construction Certifications")
+        where("subService", "==", "Construction Certifications"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -127,7 +133,8 @@ function Events() {
       const q = query(
         collection(db, "service"),
         where("service", "==", "Basic Establishment Services"),
-        where("subService", "==", "Factory Licenses")
+        where("subService", "==", "Factory Licenses"),
+        orderBy("date", "desc")
       );
 
       const querySnapshot = await getDocs(q);
