@@ -14,17 +14,28 @@ import MarketingSales from "../../../components/ServicesSub/TalentRecruitmentHR/
 import ManagementCandidate from "../../../components/ServicesSub/TalentRecruitmentHR/ManagementCandidate";
 import HRManagementService from "../../../components/ServicesSub/TalentRecruitmentHR/HRManagementService";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductTalent() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search);
-  const compValue = searchParams.get("comp");
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 5) : 0);
+  const [comp, setComp] = useState(0);
   const [dataTalentTranslator, setDataTalentTranslator] = useState([]);
   const [dataTalentFinance, setDataTalentFinance] = useState([]);
   const [dataTalentMarketing, setDataTalentMarketing] = useState([]);
   const [dataTalentMenagement, setDataTalentMenagement] = useState([]);
   const [dataTalentHR, setDataTalentHR] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataTalentTranslator();

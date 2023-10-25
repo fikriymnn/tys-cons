@@ -192,7 +192,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/basicEstablish/"
+              href="/services/basicEstablish?comp=0"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Basic Establishment Services" : "基础服务"}
@@ -203,7 +203,7 @@ const Home = () => {
             <div className="flex space-x-3 ">
               <a
                 href="/services/basicEstablish?comp=0"
-                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline hover:underline"
+                className="text-base font-normal leading-3 md:text-black sm:text-black text-white group-hover:text-white pl-3 hover:underline"
               >
                 {language == "en" ? "Company Registration" : "公司注册"}
               </a>
@@ -375,7 +375,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/financeAccountingTax/"
+              href="/services/financeAccountingTax?comp=0"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
@@ -434,7 +434,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/TalentRecruitmentHR/"
+              href="/services/TalentRecruitmentHR?comp=0"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
@@ -511,7 +511,7 @@ const Home = () => {
               ></path>
             </svg>
             <a
-              href="/services/LegalServices/"
+              href="/services/LegalServices?comp=0"
               className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Legal Services" : "法律服务"}

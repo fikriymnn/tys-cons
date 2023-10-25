@@ -102,35 +102,35 @@ export default function NavbarWithCTAButton({ height }) {
   const DropdownServices = () => {
     return (
       <div className=" bg-white absolute mt-10  z-10">
-        <a href="/services/basicEstablish">
+        <a href="/services/basicEstablish?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Basic Establishment Services" : "基础服务"}
             </p>
           </div>
         </a>
-        <a href="/services/productCertifications">
+        <a href="/services/productCertifications?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Product Certification" : "产品认证"}
             </p>
           </div>
         </a>
-        <a href="/services/financeAccountingTax">
+        <a href="/services/financeAccountingTax?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
             </p>
           </div>
         </a>
-        <a href="/services/TalentRecruitmentHR">
+        <a href="/services/TalentRecruitmentHR?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
             </p>
           </div>
         </a>
-        <a href="/services/LegalServices">
+        <a href="/services/LegalServices?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Legal Services" : "法律服务"}

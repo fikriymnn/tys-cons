@@ -11,15 +11,26 @@ import FinanceServices from "../../../components/ServicesSub/FinanceAccountingTa
 import AccountingServices from "@/components/ServicesSub/FinanceAccountingTax/AcountingServices";
 import TaxServices from "@/components/ServicesSub/FinanceAccountingTax/TaxServices";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function FinanceAccountingTax() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search);
-  const compValue = searchParams.get("comp");
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 3) : 0);
+
+  const [comp, setComp] = useState(0);
   const [dataFinanceServices, setDataFinanceServices] = useState([]);
   const [dataFinanceAccounting, setDataFinanceAccounting] = useState([]);
   const [dataFinanceTax, setDataFinanceTax] = useState([]);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataFinanceServices();

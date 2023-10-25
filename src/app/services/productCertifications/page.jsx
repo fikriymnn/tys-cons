@@ -16,12 +16,12 @@ import OtherCer from "@/components/ServicesSub/ProductCertificationsServices/Oth
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search);
-  const compValue = searchParams.get("comp");
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 7) : 0);
+
+  const [comp, setComp] = useState(0);
   const [dataProductBPOM, setDataProductBPOM] = useState([]);
   const [dataProductISO, setDataProductISO] = useState([]);
   const [dataProductSNI, setDataProductSNI] = useState([]);
@@ -29,6 +29,18 @@ function ProductCertifications() {
   const [dataProductPostel, setDataProductPostel] = useState([]);
   const [dataProductAlcohol, setDataProductAlcohol] = useState([]);
   const [dataProductOther, setDataProductOther] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataProductBPOM();

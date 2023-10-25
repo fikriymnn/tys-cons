@@ -9,13 +9,24 @@ import CustomFooter from "@/components/CustomFooter";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function ProductCertifications() {
   const { language, changeLanguage } = useLanguage();
   const [dataLegalAdministration, setDataLegalAdministration] = useState([]);
-  const searchParams = new URLSearchParams(location.search);
-  const compValue = searchParams.get("comp");
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 1) : 0);
+
+  const [comp, setComp] = useState(0);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataLegalAdministration();

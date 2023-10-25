@@ -6,18 +6,30 @@ import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import { useLanguage } from "@/context/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 function Events() {
   const { language, changeLanguage } = useLanguage();
-  const searchParams = new URLSearchParams(location.search);
-  const compValue = searchParams.get("comp");
-  const [comp, setComp] = useState(compValue ? parseInt(compValue, 6) : 0);
+
+  const [comp, setComp] = useState(0);
   const [dataServiceCompany, setDataServiceCompany] = useState([]);
   const [dataServiceVisa, setDataServiceVisa] = useState([]);
   const [dataServiceTrademark, setDataServiceTrademark] = useState([]);
   const [dataServiceOffice, setDataServiceOffice] = useState([]);
   const [dataServiceConstruction, setDataServiceConstruction] = useState([]);
   const [dataServiceFactory, setDataServiceFactory] = useState([]);
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get("comp");
+
+  useEffect(() => {
+    getCom(id);
+  }, [id]);
+
+  const getCom = async (comp) => {
+    const a = parseInt(comp);
+    setComp(a);
+  };
 
   useEffect(() => {
     getDataServiceCompany();
