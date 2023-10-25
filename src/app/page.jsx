@@ -131,11 +131,11 @@ const Home = () => {
         <div className='w-full h-[920px] bg-center bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
         <div className="w-full h-[920px]  md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="  md:pl-[20%] sm:px-10 px-10 md:px-0  z-10">
-            <div className="text-white flex items-center font-semibold md:text-[35px] pb-3 z-20 text-2xl  ">
+            <div className="text-white flex items-center font-semibold md:text-[40px] pb-3 z-20 text-2xl  ">
               {dataHeading.map((data, i) => {
                 return (
                   <>
-                    <p className="leading-relaxed tracking-wide">
+                    <p className="leading-[60px] tracking-normal">
                       {language == "en" ? data.english : data.chinese}
                     </p>
                   </>
@@ -686,7 +686,7 @@ const Home = () => {
                   key={i}
                   className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <h5 className="mb-4 text-xl text-black font-semibold text-center  h-16 ">
+                  <h5 className="mb-4 text-xl text-black font-semibold text-center line-clamp-2 h-[55px] ">
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
