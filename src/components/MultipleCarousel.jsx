@@ -73,6 +73,7 @@ function MultipleCarousel() {
       infinite={"true"}
       showDots="true"
       autoPlaySpeed={1000}
+      removeArrowOnDeviceType={"desktop"}
     >
       {dataClient.map((data, i) => {
         return (
