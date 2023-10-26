@@ -13,7 +13,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
         imgAlt="Meaningful alt text for an image that is not purely decorative"
       >
         <div
-          className=" h-[230px] rounded-t-lg bg-cover bg-center"
+          className=" h-[230px] rounded-t-md bg-cover bg-center"
           style={{ backgroundImage: `url(${img})` }}
         >
           {/* <Image src={img} alt="" height={0} width={520} /> */}
@@ -22,7 +22,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
           <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1 line-clamp-2">
             {text}
           </h5>
-          <div className="font-normal text-gray-700 dark:text-gray-400 line-clamp-2 mb-5">
+          <div className="font-normal text-[#6b7280] line-clamp-2 mb-5">
             {parse(isi)}
           </div>
           <div className="font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
