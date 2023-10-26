@@ -456,9 +456,9 @@ function CreateService() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
-                <p className="text-red-600 pt-2">image ratio: 10:9 </p>
+                <p className="text-red-600 pt-2">image ratio: 16:9 </p>
                 <p className="text-red-600 pt-2">
-                  minimum image resolution: 1000 x 900 pixel{" "}
+                  minimum image resolution: 1920 x 1080 pixel{" "}
                 </p>
               </div>
               {loading ? <p>Loading</p> : <></>}
