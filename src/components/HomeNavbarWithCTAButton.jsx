@@ -152,7 +152,7 @@ export default function NavbarWithCTAButton({ height }) {
           {navbar ? (
             <img
               src={logoWhite}
-              alt=""
+              alt="not found image"
               className=" md:w-52 md:h-12 sm:w-36 sm:h-10 w-40 opacity-100"
             />
           ) : (
@@ -169,6 +169,7 @@ export default function NavbarWithCTAButton({ height }) {
               <Image
                 src={"/assets/images/united-states.png"}
                 width={40}
+                alt=""
                 height={10}
               />
               <p
