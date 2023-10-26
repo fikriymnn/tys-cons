@@ -15,6 +15,7 @@ import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { useLanguage } from "@/context/LanguageContext";
 import parse from "html-react-parser";
+import "react-quill/dist/quill.snow.css";
 
 export default function Policies() {
   const { language, changeLanguage } = useLanguage();
@@ -171,7 +172,7 @@ export default function Policies() {
     <>
       <NavbarWithCTAButton />
       <div>
-        <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center ql-editor  pt-24">
+        <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center   pt-24">
           <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
             <div
               className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
@@ -462,7 +463,7 @@ export default function Policies() {
                               </div>
                               <div></div>
                             </div>
-                            <div className="content py-5">
+                            <div className="content py-5 ql-editor">
                               <p>
                                 {" "}
                                 {parse(
@@ -505,7 +506,7 @@ export default function Policies() {
                     alt="Image"
                   />
                 </div>
-                <div className="content mt-5 px-20">
+                <div className="content mt-5 px-20 ql-editor">
                   <p>{parse(language == "en" ? desIng : desChi)} </p>
                 </div>
                 {content.map((data, i) => {
@@ -521,7 +522,7 @@ export default function Policies() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content py-5">
+                        <div className="content py-5 ql-editor">
                           <p>
                             {" "}
                             {parse(
