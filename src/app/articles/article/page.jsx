@@ -8,7 +8,7 @@ import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import { useSearchParams } from "next/navigation";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firebase/page";
-import parse from "html-react-parser";
+import parser from "html-react-parser";
 import { useLanguage } from "@/context/LanguageContext";
 
 function Article() {
@@ -42,7 +42,7 @@ function Article() {
         {dataArticle.map((data, i) => {
           return (
             <>
-              <div className="md:flex justify-center items-center">
+              <div className="md:flex justify-center items-center ql-editor">
                 <div></div>
                 <div className="md:w-4/6">
                   <div className="py-2 flex gap-1">
@@ -91,9 +91,9 @@ function Article() {
                                 /> */}
                           </div>
                         </div>
-                        <div className="content  pt-10 pb-10">
+                        <div className=" pt-10 pb-10">
                           <p>
-                            {parse(
+                            {parser(
                               language == "en"
                                 ? data.descriptionEnglish
                                 : data.descriptionChinese
@@ -105,7 +105,7 @@ function Article() {
                             <>
                               <div className="bg-gray-400 h-[2px]   "></div>
                               <div className="w-100px flex items-center justify-center">
-                                <div className="bg-blue-600 py-1 flex items-center">
+                                <div className="bg-blue-600 py-1 px-2 flex justify-center items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white ">
                                     {language == "en"
                                       ? data.topicIng
@@ -114,9 +114,9 @@ function Article() {
                                 </div>
                               </div>
 
-                              <div className="py-5 content">
+                              <div className="py-5">
                                 {" "}
-                                {parse(
+                                {parser(
                                   language == "en"
                                     ? data.contentIng
                                     : data.contentChi
@@ -127,7 +127,7 @@ function Article() {
                               ) : (
                                 <>
                                   <img
-                                    width={500}
+                                    width={300}
                                     height={300}
                                     src={data.img}
                                   ></img>

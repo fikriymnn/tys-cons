@@ -421,7 +421,11 @@ function CreatePackage() {
             })}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickOption} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickOption}
+                  className="font-light"
+                >
                   Add Option
                 </button>
               </div>
@@ -441,6 +445,7 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3 flex gap-3">
                       <button
+                        type="button"
                         onClick={() =>
                           handleChangeHiden(
                             isHidden[ii] == true ? false : true,
@@ -489,6 +494,7 @@ function CreatePackage() {
                                 return (
                                   <>
                                     <button
+                                      type="button"
                                       name="id"
                                       onClick={(e) => {
                                         handleChangeService("id", data.id, ii),
@@ -537,6 +543,7 @@ function CreatePackage() {
                                 return (
                                   <>
                                     <button
+                                      type="button"
                                       name="id"
                                       onClick={(e) => {
                                         handleChangeService("id", data.id, ii),
@@ -586,7 +593,10 @@ function CreatePackage() {
                     )}
                     {dataServiceId.length !== 1 && (
                       <div className="ms-32 w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDeleteService(ii)}>
+                        <button
+                          type="button"
+                          onClick={(e) => handleDeleteService(ii)}
+                        >
                           Delete
                         </button>
                       </div>
@@ -598,7 +608,11 @@ function CreatePackage() {
 
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickService} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickService}
+                  className="font-light"
+                >
                   Add Service
                 </button>
               </div>
@@ -787,7 +801,9 @@ function CreatePackage() {
                     />
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                        <button type="button" onClick={(e) => handleDelete(i)}>
+                          Delete
+                        </button>
                       </div>
                     )}
                   </div>
@@ -797,7 +813,11 @@ function CreatePackage() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>

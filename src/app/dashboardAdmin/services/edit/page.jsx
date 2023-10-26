@@ -726,7 +726,7 @@ function EditService() {
                         )
                       }
                       name="contentIng"
-                      placeholder={`Input Description Mandarin For Description ${
+                      placeholder={`Input Description English For Description ${
                         i + 1
                       }`}
                       maxLength={1000}

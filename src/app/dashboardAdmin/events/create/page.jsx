@@ -547,7 +547,9 @@ function CreateEvent() {
                     />
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                        <button type="button" onClick={(e) => handleDelete(i)}>
+                          Delete
+                        </button>
                       </div>
                     )}
                   </div>
@@ -557,7 +559,11 @@ function CreateEvent() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>
