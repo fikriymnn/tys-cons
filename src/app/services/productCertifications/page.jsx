@@ -194,7 +194,7 @@ function ProductCertifications() {
   return (
     <>
       <NavbarWithCTAButton />
-      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
+      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="flex pb-5">
           <p>{language == "en" ? "Services" : "服务"}</p>{" "}
           <p className="text-blue-600 ml-1">/ Product Certifications</p>

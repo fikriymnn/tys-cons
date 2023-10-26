@@ -28,6 +28,7 @@ import Image from "next/image";
 import { Label, Radio } from "flowbite-react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import { useLanguage } from "@/context/LanguageContext";
+import "react-quill/dist/quill.snow.css";
 
 function DetailServices() {
   const { language, changeLanguage } = useLanguage();
@@ -73,7 +74,7 @@ function DetailServices() {
       {dataService.map((data, i) => {
         return (
           <>
-            <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 ql-editor">
+            <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 q">
               <div className="flex pb-5 gap-1">
                 <a href="/services" onClick={() => console.log(lastIndex)}>
                   {language == "en" ? "Services" : "服务"}{" "}
@@ -92,14 +93,13 @@ function DetailServices() {
                     <p> {data.subService}</p>
                   </div>
 
-                  <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
-                    <div className="bg-gray-100 md:w-[500px] md:h-[300px] ms:w-full ms:h-full mt-2">
-                      <img
-                        src={data.img}
-                        alt="Image"
-                        className="md:w-[350px] md:h-[300px]"
-                      />
-                    </div>
+                  <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-3">
+                    <div
+                      className="bg-gray-100 md:w-[500px] md:h-[300px]  mt-2 bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${data.img})`,
+                      }}
+                    ></div>
                     <div className="md:ps-4 ps-">
                       <p className="md:text-2xl text-2xl pb-4">
                         {language == "en"
@@ -178,7 +178,7 @@ function DetailServices() {
                       </fieldset>
                     </div>
                   </div>
-                  <div className="content pb-5">
+                  <div className="content pb-3 ql-editor">
                     <p>
                       {parse(
                         language == "en"
@@ -199,7 +199,7 @@ function DetailServices() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content pb-10">
+                        <div className="content pb-10 ql-editor">
                           <p>
                             {" "}
                             {parse(

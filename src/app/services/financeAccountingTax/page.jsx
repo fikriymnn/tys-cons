@@ -101,7 +101,7 @@ function FinanceAccountingTax() {
   return (
     <>
       <NavbarWithCTAButton />
-      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
+      <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="flex pb-5">
           <p>{language == "en" ? "Services" : "服务"}</p>{" "}
           <p className="text-blue-600 ml-1">/ Finance Accounting Tax</p>
@@ -161,7 +161,7 @@ function FinanceAccountingTax() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -202,7 +202,7 @@ function FinanceAccountingTax() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
@@ -243,7 +243,7 @@ function FinanceAccountingTax() {
                         <a href={`/services/detail?id=${data.id}`}>
                           <div className="bg-white shadow-xl hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2 md:h-72">
                             <div
-                              className=" h-48 bg-cover bg-center"
+                              className="  h-48 bg-cover bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
                             <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
