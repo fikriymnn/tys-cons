@@ -10,6 +10,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firebase/page";
 import parser from "html-react-parser";
 import { useLanguage } from "@/context/LanguageContext";
+import "react-quill/dist/quill.snow.css";
 
 function Article() {
   const { language, changeLanguage } = useLanguage();
@@ -42,7 +43,7 @@ function Article() {
         {dataArticle.map((data, i) => {
           return (
             <>
-              <div className="md:flex justify-center items-center ql-editor">
+              <div className="md:flex justify-center items-center ">
                 <div></div>
                 <div className="md:w-4/6">
                   <div className="py-2 flex gap-1">
@@ -78,20 +79,15 @@ function Article() {
                             ? data.titleEnglish
                             : data.titleChinese}
                         </h1>
-                        <div className="bg-blue-500 md:h-[500px] h-[200px] relative">
-                          <div
-                            className="absolute top-0 left-0 w-full h-full bg-no-repeat bg-center bg-cover"
-                            style={{ backgroundImage: `url(${data.img})` }}
-                          >
-                            {/* <Image
-                                    src={'/assets/images/article.png'}
-                                    width={1080}
-                                    height={1080}
-                                    alt=''
-                                /> */}
-                          </div>
+                        <div className="">
+                          <Image
+                            src={data.img}
+                            width={1200}
+                            height={10}
+                            alt=""
+                          />
                         </div>
-                        <div className=" pt-10 pb-10">
+                        <div className=" pt-10 pb-10 ql-editor">
                           <p>
                             {parser(
                               language == "en"
@@ -114,7 +110,7 @@ function Article() {
                                 </div>
                               </div>
 
-                              <div className="py-5">
+                              <div className="py-5 ql-editor">
                                 {" "}
                                 {parser(
                                   language == "en"
