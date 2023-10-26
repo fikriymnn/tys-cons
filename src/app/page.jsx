@@ -128,8 +128,8 @@ const Home = () => {
         <HomeNavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full h-[920px] bg-left bg-cover bg-[url("/assets/images/crop2.png")] absolute opacity-40 md:opacity-40'></div>
-        <div className="w-full h-[920px]  md:grid md:grid-cols-2 flex items-center justify-center ">
+        <div className='w-full md:h-[500px] lg:h-[900px] bg-left bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 sm:opacity-40'></div>
+        <div className="w-full md:h-[500px] lg:h-[900px]  md:grid md:grid-cols-2 flex items-center justify-center ">
           <div className="  md:pl-[20%] sm:px-10 px-10 md:px-0  z-10">
             <div className="text-white flex items-center font-semibold md:text-[40px] pb-3 z-20 text-2xl  ">
               {dataHeading.map((data, i) => {
@@ -145,7 +145,7 @@ const Home = () => {
             {dataParagraph.map((data, i) => {
               return (
                 <>
-                  <div className="text-white flex items-center pb-5  md:text-[19px]">
+                  <div className="text-white flex items-center pb-5  md:text-[19px] ">
                     {language == "en" ? data.english : data.chinese}
                   </div>
                 </>
@@ -171,7 +171,7 @@ const Home = () => {
         id="getstart"
         className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7"
       >
-        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2">
+        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5"
@@ -257,7 +257,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2">
+        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5"
@@ -354,7 +354,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2">
+        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5"
@@ -413,7 +413,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2">
+        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5"
@@ -490,7 +490,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:p-6 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all md:h-[550px] sm:h-[550px] border-2">
+        <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
                       p-5"
@@ -562,10 +562,10 @@ const Home = () => {
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
                   <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-4">
-                    <div className="font-semibold text-xl hover:underline">
+                    <div className="font-semibold text-xl leading-[30px] hover:underline line-clamp-1">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
-                    <h1>{data.date}</h1>
+                    <h1 className="text-[#6b7280]">{data.date}</h1>
                   </div>
                 </a>
               </>
@@ -608,7 +608,7 @@ const Home = () => {
             indicators={true}
             autoPlay={true}
             infinite="true"
-            showDots="true"
+            showDots="false"
             arrows="true"
           >
             {dataPackage.map((data, i) => {
@@ -622,9 +622,9 @@ const Home = () => {
                 <>
                   <div
                     key={i}
-                    className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                    className="bg-white  p-[50px] rounded-lg shadow-lg h-full flex flex-col justify-between"
                   >
-                    <h5 className="mb-4 bg- text-xl text-black font-medium text-center  h-16 line-clamp-2">
+                    <h5 className="mb-4 text-[20px] text-black font-semibold text-center line-clamp-2 h-[55px] ">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </h5>
                     <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -633,17 +633,17 @@ const Home = () => {
                         : firsPriceYuan + "-" + lastPriceYuan + "元"}
                     </p>
 
-                    <ol className="mb-auto pb-3 ">
-                      <li className="flex space-x-3">
-                        <p className="text-base my-2 font-normal leading-tight text-black ">
+                    <div className="mb-auto pb-3 ">
+                      <div className="flex space-x-3">
+                        <p className="text-base my-2 font-normal leading-[24px] text-black ">
                           <span className="">Package Includes :</span>
                         </p>
-                      </li>
+                      </div>
                       {data.services.map((data, i) => {
                         return (
                           <>
                             <p key={i} className="flex space-x-3 my-3 ">
-                              <p className="text-base font-normal leading-tight text-black line-clamp-1 ">
+                              <p className="text-base font-normal leading-[24px] text-black line-clamp-1 ">
                                 &bull;{" "}
                                 <span className="px-2">
                                   {" "}
@@ -656,7 +656,7 @@ const Home = () => {
                           </>
                         );
                       })}
-                    </ol>
+                    </div>
 
                     <a
                       className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
@@ -684,9 +684,9 @@ const Home = () => {
               <>
                 <div
                   key={i}
-                  className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                  className="bg-white  p-[50px] rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <h5 className="mb-4 text-xl text-black font-semibold text-center line-clamp-2 h-[55px] ">
+                  <h5 className="mb-4 text-[20px] text-black font-semibold text-center line-clamp-2 h-[55px] ">
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -695,17 +695,17 @@ const Home = () => {
                       : firsPriceYuan + "-" + lastPriceYuan + "元"}
                   </p>
 
-                  <ol className="mb-auto pb-3 ">
-                    <li className="flex space-x-3">
-                      <p className="text-base my-2 font-normal leading-tight text-black ">
+                  <div className="mb-auto pb-3 ">
+                    <div className="flex space-x-3">
+                      <p className="text-base my-2 font-normal leading-[24px] text-black ">
                         <span className="">Package Includes :</span>
                       </p>
-                    </li>
+                    </div>
                     {data.services.map((data, i) => {
                       return (
                         <>
                           <p key={i} className="flex space-x-3 my-3 ">
-                            <p className="text-base font-normal leading-tight text-black line-clamp-1 ">
+                            <p className="text-base font-normal leading-[24px] text-black line-clamp-1 ">
                               &bull;{" "}
                               <span className="px-2">
                                 {" "}
@@ -716,7 +716,7 @@ const Home = () => {
                         </>
                       );
                     })}
-                  </ol>
+                  </div>
 
                   <a
                     className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
