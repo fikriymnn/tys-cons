@@ -263,6 +263,42 @@ function CreatePackage() {
     deleteVal.splice(i, 1);
     setDataOption(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
+
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
 
   return (
     <>
@@ -631,6 +667,8 @@ function CreatePackage() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesIng(e)}
                   name="contentIng"
                   placeholder={`Input Description English For Description ${1}`}
@@ -648,6 +686,8 @@ function CreatePackage() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesChi(e)}
                   name="contentChi"
                   placeholder={`Input Description Mandarin For Description ${1}`}
@@ -728,6 +768,8 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3 ">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentIng}
                         required
@@ -758,6 +800,8 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentChi}
                         required

@@ -207,6 +207,42 @@ function EditArticle() {
     deleteVal.splice(i, 1);
     setData(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
+
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
   return (
     <>
       {isAlert && (
@@ -316,6 +352,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <ReactQuill
+                modules={modules}
+                format={formats}
                 value={desIng}
                 onChange={(e) => setDesIng(e)}
                 name="contentIng"
@@ -334,6 +372,8 @@ function EditArticle() {
             </div>
             <div className=" w-10/12 p-3">
               <ReactQuill
+                modules={modules}
+                format={formats}
                 value={desChi}
                 onChange={(e) => setDesChi(e)}
                 name="contentChi"
@@ -405,6 +445,8 @@ function EditArticle() {
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
+                      modules={modules}
+                      format={formats}
                       theme="snow"
                       value={val.contentIng}
                       onChange={(e) =>
@@ -430,6 +472,8 @@ function EditArticle() {
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
+                      modules={modules}
+                      format={formats}
                       theme="snow"
                       value={val.contentChi}
                       onChange={(e) =>
