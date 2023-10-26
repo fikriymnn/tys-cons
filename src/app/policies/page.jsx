@@ -15,6 +15,7 @@ import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import CustomFooter from "@/components/CustomFooter";
 import { useLanguage } from "@/context/LanguageContext";
 import parse from "html-react-parser";
+import "react-quill/dist/quill.snow.css";
 
 export default function Policies() {
   const { language, changeLanguage } = useLanguage();
@@ -462,7 +463,7 @@ export default function Policies() {
                               </div>
                               <div></div>
                             </div>
-                            <div className="content py-5">
+                            <div className="content py-5 ql-editor">
                               <p>
                                 {" "}
                                 {parse(
@@ -493,7 +494,7 @@ export default function Policies() {
               })
             ) : (
               <>
-                <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                <h1 className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                   {language == "en" ? titleIng : titleChi}
                 </h1>
                 <div className="flex items-center w-full">
@@ -505,7 +506,7 @@ export default function Policies() {
                     alt="Image"
                   />
                 </div>
-                <div className="content mt-5 px-20">
+                <div className="content mt-5 px-20 ql-editor">
                   <p>{parse(language == "en" ? desIng : desChi)} </p>
                 </div>
                 {content.map((data, i) => {
@@ -521,7 +522,7 @@ export default function Policies() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content py-5">
+                        <div className="content py-5 ql-editor">
                           <p>
                             {" "}
                             {parse(

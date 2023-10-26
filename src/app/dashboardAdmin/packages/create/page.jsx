@@ -263,6 +263,42 @@ function CreatePackage() {
     deleteVal.splice(i, 1);
     setDataOption(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
+
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
 
   return (
     <>
@@ -297,9 +333,9 @@ function CreatePackage() {
                   required
                   onChange={(event) => handleUpload(event.target.files[0])}
                 />
-                <p className="text-red-600 pt-2">image ratio: 10:9 </p>
+                <p className="text-red-600 pt-2">image ratio: 16:9 </p>
                 <p className="text-red-600 pt-2">
-                  minimum image resolution: 1000 x 900 pixel{" "}
+                  minimum image resolution: 1920 x 1080 pixel{" "}
                 </p>
               </div>
             </div>
@@ -421,7 +457,11 @@ function CreatePackage() {
             })}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickOption} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickOption}
+                  className="font-light"
+                >
                   Add Option
                 </button>
               </div>
@@ -441,6 +481,7 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3 flex gap-3">
                       <button
+                        type="button"
                         onClick={() =>
                           handleChangeHiden(
                             isHidden[ii] == true ? false : true,
@@ -489,6 +530,7 @@ function CreatePackage() {
                                 return (
                                   <>
                                     <button
+                                      type="button"
                                       name="id"
                                       onClick={(e) => {
                                         handleChangeService("id", data.id, ii),
@@ -537,6 +579,7 @@ function CreatePackage() {
                                 return (
                                   <>
                                     <button
+                                      type="button"
                                       name="id"
                                       onClick={(e) => {
                                         handleChangeService("id", data.id, ii),
@@ -586,7 +629,10 @@ function CreatePackage() {
                     )}
                     {dataServiceId.length !== 1 && (
                       <div className="ms-32 w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDeleteService(ii)}>
+                        <button
+                          type="button"
+                          onClick={(e) => handleDeleteService(ii)}
+                        >
                           Delete
                         </button>
                       </div>
@@ -598,7 +644,11 @@ function CreatePackage() {
 
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClickService} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClickService}
+                  className="font-light"
+                >
                   Add Service
                 </button>
               </div>
@@ -617,6 +667,8 @@ function CreatePackage() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesIng(e)}
                   name="contentIng"
                   placeholder={`Input Description English For Description ${1}`}
@@ -634,6 +686,8 @@ function CreatePackage() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesChi(e)}
                   name="contentChi"
                   placeholder={`Input Description Mandarin For Description ${1}`}
@@ -714,6 +768,8 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3 ">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentIng}
                         required
@@ -744,6 +800,8 @@ function CreatePackage() {
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentChi}
                         required
@@ -787,7 +845,9 @@ function CreatePackage() {
                     />
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                        <button type="button" onClick={(e) => handleDelete(i)}>
+                          Delete
+                        </button>
                       </div>
                     )}
                   </div>
@@ -797,7 +857,11 @@ function CreatePackage() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>

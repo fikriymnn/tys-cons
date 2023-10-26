@@ -39,25 +39,7 @@
 .currentColor {
   fill: currentColor;
 }
-.content ul {
-  list-style-type: disc;
-  list-style: disc;
-  margin-left: 30px;
-  /* Add any other necessary styles here */
-}
-.content ol {
-  list-style-type: decimal;
-  list-style: decimal;
-  margin-left: 20px;
+.bakg{
+  background: rgba(0, 0, 0, 0.6);
 }
 
-ul,
-ol {
-  list-style: none;
-  margin-left: 0;
-}
-.error-message {
-  color: red;
-  font-size: 14px;
-  display: none;
-}

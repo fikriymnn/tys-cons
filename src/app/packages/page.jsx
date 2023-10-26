@@ -61,9 +61,9 @@ function Packages() {
               <>
                 <div
                   key={i}
-                  className="bg-white px-14 p-10 rounded-lg shadow-lg h-full flex flex-col justify-between"
+                  className="bg-white p-[50px] rounded-lg shadow-lg h-full flex flex-col justify-between"
                 >
-                  <h5 className="mb-4 bg- text-xl text-black font-semibold text-center  h-[55px] line-clamp-2">
+                  <h5 className="mb-4 bg- text-[20px]  text-black font-semibold text-center  h-[55px] line-clamp-2">
                     {data.titleEnglish}
                   </h5>
                   <p className="mb-4 text-base font-medium text-blue-500 text-center">
@@ -74,19 +74,22 @@ function Packages() {
 
                   <ol className="mb-auto pb-3 ">
                     <li className="flex space-x-3">
-                      <p className="text-base my-2 font-normal leading-tight text-black ">
+                      <p className="leading-[24px] text-base my-2 font-normal  text-black ">
                         <span className="">Package Includes :</span>
                       </p>
                     </li>
                     {data.services.map((data, i) => {
                       return (
                         <>
-                          <p key={i} className="flex space-x-3 my-3 ">
+                          <div
+                            key={i}
+                            className="flex space-x-3 my-3 leading-[24px]"
+                          >
                             <p className="text-base font-normal leading-tight text-black line-clamp-1 ">
                               &bull;{" "}
                               <span className="px-2">{data.nameIng}</span>
                             </p>
-                          </p>
+                          </div>
                         </>
                       );
                     })}

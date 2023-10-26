@@ -154,7 +154,7 @@ function PoliciesAdmin() {
                                 </div>
                                 <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
                                   <div className="flex flex-col">
-                                    <div>
+                                    <div className="line-clamp-4">
                                       {parse(data.content[0].contentIng)}
                                     </div>
                                   </div>

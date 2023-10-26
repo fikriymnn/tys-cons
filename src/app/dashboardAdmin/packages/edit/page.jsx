@@ -312,7 +312,42 @@ function EditPackage() {
     deleteVal.splice(i, 1);
     setDataOption(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
 
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
   return (
     <>
       <div className="w-full z-40 rounded-xl border-[#007aff] border-2  top-0">
@@ -343,9 +378,9 @@ function EditPackage() {
                 type="file"
                 onChange={(event) => handleUpload(event.target.files[0])}
               />
-              <p className="text-red-600 pt-2">image ratio: 10:9 </p>
+              <p className="text-red-600 pt-2">image ratio: 16:9 </p>
               <p className="text-red-600 pt-2">
-                minimum image resolution: 1000 x 900 pixel{" "}
+                minimum image resolution: 1920 x 1080 pixel{" "}
               </p>
             </div>
           </div>
@@ -650,6 +685,8 @@ function EditPackage() {
             </div>
             <div className=" w-10/12 p-3">
               <ReactQuill
+                modules={modules}
+                format={formats}
                 value={desIng}
                 onChange={(e) => setDesIng(e)}
                 name="contentIng"
@@ -668,6 +705,8 @@ function EditPackage() {
             </div>
             <div className=" w-10/12 p-3">
               <ReactQuill
+                modules={modules}
+                format={formats}
                 value={desChi}
                 onChange={(e) => setDesChi(e)}
                 name="contentChi"
@@ -749,6 +788,8 @@ function EditPackage() {
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
+                      modules={modules}
+                      format={formats}
                       theme="snow"
                       value={val.contentIng}
                       onChange={(e) =>
@@ -778,6 +819,8 @@ function EditPackage() {
                   </div>
                   <div className=" w-10/12 p-3">
                     <ReactQuill
+                      modules={modules}
+                      format={formats}
                       theme="snow"
                       value={val.contentChi}
                       onChange={(e) =>

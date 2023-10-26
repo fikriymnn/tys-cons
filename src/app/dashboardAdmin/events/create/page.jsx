@@ -201,6 +201,42 @@ function CreateEvent() {
     deleteVal.splice(i, 1);
     setData(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
+
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
   return (
     <>
       {isAlert && (
@@ -389,6 +425,8 @@ function CreateEvent() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesIng(e)}
                   name="contentIng"
                   placeholder={`Input Description English For Description ${1}`}
@@ -406,6 +444,8 @@ function CreateEvent() {
               </div>
               <div className=" w-10/12 p-3">
                 <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesChi(e)}
                   name="contentChi"
                   placeholder={`Input Description Mandarin For Description ${1}`}
@@ -489,6 +529,8 @@ function CreateEvent() {
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentIng}
                         onChange={(e) =>
@@ -518,6 +560,8 @@ function CreateEvent() {
                     </div>
                     <div className=" w-10/12 p-3">
                       <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentChi}
                         onChange={(e) =>
@@ -547,7 +591,9 @@ function CreateEvent() {
                     />
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
-                        <button onClick={(e) => handleDelete(i)}>Delete</button>
+                        <button type="button" onClick={(e) => handleDelete(i)}>
+                          Delete
+                        </button>
                       </div>
                     )}
                   </div>
@@ -557,7 +603,11 @@ function CreateEvent() {
             {/* <p>{JSON.stringify(data)}</p> */}
             <div className="flex justify-center items-center gap-10 mb-20">
               <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
-                <button onClick={handleClick} className="font-light">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="font-light"
+                >
                   Add More
                 </button>
               </div>

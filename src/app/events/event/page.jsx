@@ -22,6 +22,7 @@ import { db, storage } from "../../../../firebase/page";
 import parse from "html-react-parser";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import "react-quill/dist/quill.snow.css";
 
 function Event() {
   const { language, changeLanguage } = useLanguage();
@@ -64,9 +65,9 @@ function Event() {
         {dataEvents.map((data, i) => {
           return (
             <>
-              <div className="md:flex justify-center items-center">
+              <div className="md:flex justify-center items-center ">
                 <div></div>
-                <div className="md:w-4/6">
+                <div className="md:w-4/6 ">
                   {" "}
                   <div className="py-2 flex gap-1 ">
                     <a href="/events">Events</a>
@@ -141,7 +142,7 @@ function Event() {
                                   </h2>
                                 </div>
                               </div>
-                              <div className="py-5 content">
+                              <div className="py-5 content ql-editor">
                                 <p>
                                   {parse(
                                     language == "en"
