@@ -17,6 +17,7 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
+import "react-quill/dist/quill.snow.css";
 
 import { db } from "../../../../firebase/page";
 import { useState, useEffect } from "react";
@@ -88,15 +89,12 @@ function DetailPackages() {
               <div className="bg-white">
                 <div className="relative p-5 pt-5">
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
-                    <div className="bg-gray-100 md:w-[500px] md:h-[300px] ms:w-full ms:h-full mt-2">
-                      <Image
-                        src={data.img}
-                        alt=""
-                        className="md:w-[350px] md:h-[300px]"
-                        width={350}
-                        height={350}
-                      />
-                    </div>
+                    <div
+                      className="bg-gray-100 md:w-[500px] md:h-[300px]  mt-2 bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${data.img})`,
+                      }}
+                    ></div>
                     <div className="md:ps-5 ps-">
                       <p className="md:text-2xl text-2xl pb-4">
                         {data.titleChinese} {data.titleEnglish}
@@ -168,7 +166,7 @@ function DetailPackages() {
                   <div className="text-2xl font-medium">
                     <p> {language == "en" ? "Services: " : "服务: "}</p>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 pb-10 pt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-4 pb-5 pt-2">
                     {data.services.map((data, i, arr) => {
                       const le = data;
                       const firsPriceRp = data.price[0].priceRupiah;
@@ -184,7 +182,7 @@ function DetailPackages() {
                               <a href={`/services/detail?id=${data.id}`}>
                                 <div className="bg-white shadow-xl md:hover:translate-y-[-10px] duration-300 md:block sm:block grid grid-cols-2  ">
                                   <div
-                                    className="bg-blue-700 h-48 bg-cover bg-center"
+                                    className=" h-48 bg-cover bg-center"
                                     style={{
                                       backgroundImage: `url(${data.img})`,
                                     }}
@@ -220,12 +218,22 @@ function DetailPackages() {
                       );
                     })}
                   </div>
+                  <div className="h-[2px] w-full bg-gray-300 mt-3 "></div>
+                  <div className="content pb-5 ql-editor">
+                    <p>
+                      {parse(
+                        language == "en"
+                          ? data.descriptionEnglish
+                          : data.descriptionChinese
+                      )}{" "}
+                    </p>
+                  </div>
                   <div className="h-[2px] w-full bg-gray-300 "></div>
                   {data.content.map((data, i) => {
                     return (
                       <>
                         <div className=" flex mb-2">
-                          <p className="bg-blue-600 text-white text-base font-semibold p-3">
+                          <p className="bg-blue-600 text-white text-base font-semibold py-2 px-4">
                             {language == "en" ? data.topicIng : data.topicChi}
                           </p>
                           <div className=""></div>
