@@ -171,7 +171,7 @@ export default function Policies() {
     <>
       <NavbarWithCTAButton />
       <div>
-        <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center   pt-24">
+        <div className="md:flex md:justify-evenly sm:flex sm:justify-evenly grid grid-cols-1 justify-items-center ql-editor  pt-24">
           <div className="md:w-3/12 sm:w-4/12 w-10/12 mx-5 h-full bg-blue-600 ">
             <div
               className={`w-full h-16  border-y border-white flex items-center cursor-pointer ${
@@ -493,7 +493,7 @@ export default function Policies() {
               })
             ) : (
               <>
-                <h1 className="text-center my-10 md:text-2xl sm:text-xl text-base font-bold text-blue-600">
+                <h1 className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                   {language == "en" ? titleIng : titleChi}
                 </h1>
                 <div className="flex items-center w-full">

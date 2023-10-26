@@ -230,7 +230,7 @@ function DetailPackages() {
                           </p>
                           <div className=""></div>
                         </div>
-                        <div>
+                        <div className="ql-editor">
                           {parse(
                             language == "en" ? data.contentIng : data.contentChi
                           )}

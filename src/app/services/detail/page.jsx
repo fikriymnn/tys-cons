@@ -73,7 +73,7 @@ function DetailServices() {
       {dataService.map((data, i) => {
         return (
           <>
-            <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5">
+            <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 ql-editor">
               <div className="flex pb-5 gap-1">
                 <a href="/services" onClick={() => console.log(lastIndex)}>
                   {language == "en" ? "Services" : "服务"}{" "}

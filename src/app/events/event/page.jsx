@@ -64,9 +64,9 @@ function Event() {
         {dataEvents.map((data, i) => {
           return (
             <>
-              <div className="md:flex justify-center items-center">
+              <div className="md:flex justify-center items-center ">
                 <div></div>
-                <div className="md:w-4/6">
+                <div className="md:w-4/6 ql-editor">
                   {" "}
                   <div className="py-2 flex gap-1 ">
                     <a href="/events">Events</a>
