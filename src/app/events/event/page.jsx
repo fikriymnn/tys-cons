@@ -119,7 +119,7 @@ function Event() {
                           </h3>
                         </div>
                         <div className="bg-gray-400 h-[2px] "></div>
-                        <div className="content  my-5">
+                        <div className="content  my-5  ql-editor">
                           <p>
                             {parse(
                               language == "en"
