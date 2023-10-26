@@ -128,37 +128,36 @@ const Home = () => {
         <HomeNavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div className='w-full md:h-[500px] lg:h-[900px] bg-left bg-cover bg-[url("/assets/images/bgtys.png")] absolute opacity-40 sm:opacity-40'></div>
-        <div className="w-full md:h-[500px] lg:h-[900px]  md:grid md:grid-cols-2 flex items-center justify-center ">
-          <div className="  md:pl-[20%] sm:px-10 px-10 md:px-0  z-10">
-            <div className="text-white flex items-center font-semibold md:text-[40px] pb-3 z-20 text-2xl  ">
-              {dataHeading.map((data, i) => {
-                return (
-                  <>
-                    <p className="leading-[60px] tracking-normal">
-                      {language == "en" ? data.english : data.chinese}
-                    </p>
-                  </>
-                );
-              })}
-            </div>
-            {dataParagraph.map((data, i) => {
-              return (
-                <>
-                  <div className="text-white flex items-center pb-5  md:text-[19px] ">
-                    {language == "en" ? data.english : data.chinese}
-                  </div>
-                </>
-              );
-            })}
-
-            <a className="py-10" href="#getstart">
-              <div className="text-white bg-primary p-3 w-36  flex items-center justify-center">
-                <p className=" my-auto text-center font-semibold ">
-                  GET STARTED
-                </p>
+        <div class='flex items-center justify-center bg-left bg-cover bg-[url("/assets/images/bgtys.png")] text-white'>
+          <div class="w-full h-full flex items-center bakg py-12 p-5 lg:px-[10%] py-[20vh] lg:py-[30vh]">
+            <div class="flex flex-col text-left lg:max-w-[50%]">
+              <div class="font-semibold text-[1.75rem] lg:text-[2.5rem]">
+                {dataHeading.map((data, i) => {
+                  return (
+                    <>
+                      <p>{language == "en" ? data.english : data.chinese}</p>
+                    </>
+                  );
+                })}
               </div>
-            </a>
+              <div class="mt-2 lg:text-[1.2rem]">
+                {dataParagraph.map((data, i) => {
+                  return (
+                    <>
+                      <div>
+                        {language == "en" ? data.english : data.chinese}
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+              <a
+                href="#about"
+                class="bg-primary w-fit px-5 font-semibold py-3 mt-6 flex items-center space-x-2 cursor-pointer hover:brightness-110 transition-all"
+              >
+                <div>GET STARTED</div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -169,7 +168,7 @@ const Home = () => {
       </p>
       <div
         id="getstart"
-        className="md:gri sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7"
+        className="md:grid sm:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:pb-10 md:pt-6 md:px-10 pb-10 px-7 py-7"
       >
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
@@ -193,7 +192,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/basicEstablish?comp=0"
-              className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white  pl-3 w-full "
             >
               {language == "en" ? "Basic Establishment Services" : "基础服务"}
             </a>
@@ -279,7 +278,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/productCertifications?comp=0"
-              className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Product Certifications" : "产品认证"}
             </a>
@@ -376,7 +375,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/financeAccountingTax?comp=0"
-              className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
             </a>
@@ -435,7 +434,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/TalentRecruitmentHR?comp=0"
-              className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
             </a>
@@ -512,7 +511,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/LegalServices?comp=0"
-              className=" md:border-none ml-1 text-[19px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white pl-3 "
             >
               {language == "en" ? "Legal Services" : "法律服务"}
             </a>
