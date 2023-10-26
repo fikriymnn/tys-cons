@@ -39,5 +39,7 @@
 .currentColor {
   fill: currentColor;
 }
-
+.bakg{
+  background: rgba(0, 0, 0, 0.6);
+}
 
