@@ -73,7 +73,7 @@ const Home = () => {
   async function getDataArticles() {
     try {
       const ordersRef = collection(db, "articles");
-      const q = query(ordersRef, orderBy("date", "desc"), limit(2));
+      const q = query(ordersRef, orderBy("createdAt", "desc"), limit(2));
       const querySnapshot = await getDocs(q);
       let data = [];
 
@@ -91,7 +91,7 @@ const Home = () => {
   async function getDataArticles4() {
     try {
       const ordersRef = collection(db, "articles");
-      const q = query(ordersRef, orderBy("date", "desc"), limit(4));
+      const q = query(ordersRef, orderBy("createdAt", "desc"), limit(4));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
@@ -108,7 +108,7 @@ const Home = () => {
   async function getDataPackage() {
     try {
       const ordersRef = collection(db, "package");
-      const q = query(ordersRef, orderBy("date", "desc"), limit(3));
+      const q = query(ordersRef, orderBy("createdAt", "desc"), limit(3));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach(async (doc) => {

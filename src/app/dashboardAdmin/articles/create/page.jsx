@@ -136,10 +136,12 @@ function CreateArticle() {
       titleChinese: titleChi,
       descriptionEnglish: desIng,
       descriptionChinese: desChi,
+      createdAt: today,
 
       img: downloadURL,
       date: date,
       content: data,
+
     });
 
     alert("success");
@@ -421,9 +423,8 @@ function CreateArticle() {
                           )
                         }
                         name="contentIng"
-                        placeholder={`Input Description English For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description English For Description ${i + 1
+                          }`}
                         maxLength={2000}
                         className="h-[200px] "
                       />
@@ -451,9 +452,8 @@ function CreateArticle() {
                           )
                         }
                         name="contentChi"
-                        placeholder={`Input Description Mandarin For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description Mandarin For Description ${i + 1
+                          }`}
                         maxLength={2000}
                         className="h-[200px] my-10 "
                       />

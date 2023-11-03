@@ -149,6 +149,7 @@ function CreateEvent() {
       timeTo: timeTo,
       descriptionEnglish: desIng,
       descriptionChinese: desChi,
+      createdAt: today,
 
       img: downloadURL,
       date: date,
@@ -485,9 +486,8 @@ function CreateEvent() {
                         id=""
                         cols="20"
                         rows="1"
-                        placeholder={`Input Topic English For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Topic English For Description ${i + 1
+                          }`}
                         color=" bg-transparent"
                         className=" w-full resize-none rounded-lg border-slate-300 "
                         maxLength={1000}
@@ -511,9 +511,8 @@ function CreateEvent() {
                         id=""
                         cols="20"
                         rows="1"
-                        placeholder={`Input Topic Mandarin For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Topic Mandarin For Description ${i + 1
+                          }`}
                         color=" bg-transparent"
                         className=" w-full resize-none rounded-lg border-slate-300 "
                         maxLength={1000}
@@ -542,9 +541,8 @@ function CreateEvent() {
                           )
                         }
                         name="contentIng"
-                        placeholder={`Input Description English For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description English For Description ${i + 1
+                          }`}
                         maxLength={2000}
                         className="h-[200px] "
                       />
@@ -573,9 +571,8 @@ function CreateEvent() {
                           )
                         }
                         name="contentChi"
-                        placeholder={`Input Description Mandarin For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description Mandarin For Description ${i + 1
+                          }`}
                         maxLength={2000}
                         className="h-[200px] my-10 "
                       />

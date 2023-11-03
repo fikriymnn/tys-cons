@@ -50,7 +50,7 @@ function ProductTalent() {
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
         where("subService", "==", "Translator Assistant"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -70,7 +70,7 @@ function ProductTalent() {
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
         where("subService", "==", "Finance Accounting Tax"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -90,7 +90,7 @@ function ProductTalent() {
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
         where("subService", "==", "Marketing Sales"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -110,7 +110,7 @@ function ProductTalent() {
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
         where("subService", "==", "Management Candidate"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -130,7 +130,7 @@ function ProductTalent() {
         collection(db, "service"),
         where("service", "==", "Talent Recruitment HR"),
         where("subService", "==", "HR Management Service"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -159,51 +159,46 @@ function ProductTalent() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${
-                    comp == 0
+                  className={`${comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Translator Assistant" : "翻译助理"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${
-                    comp == 1
+                  className={`${comp == 1
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Finance Accounting Tax" : "财税会计"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${
-                    comp == 2
+                  className={`${comp == 2
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Marketing Sales" : "销售和营销"}
                 </button>
                 <button
                   onClick={() => setComp(3)}
-                  className={`${
-                    comp == 3
+                  className={`${comp == 3
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Management Candidate" : "管理人选"}
                 </button>
                 <button
                   onClick={() => setComp(4)}
-                  className={`${
-                    comp == 4
+                  className={`${comp == 4
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "HR Management Service" : "人事管理服务"}
                 </button>

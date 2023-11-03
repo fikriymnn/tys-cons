@@ -29,7 +29,7 @@ function Packages() {
   async function getDataPackage() {
     try {
       const ordersRef = collection(db, "package");
-      const q = query(ordersRef, orderBy("date", "desc"));
+      const q = query(ordersRef, orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach(async (doc) => {

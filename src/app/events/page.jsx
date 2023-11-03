@@ -40,7 +40,7 @@ function Events() {
   async function getDataEvents() {
     try {
       const ordersRef = collection(db, "events");
-      const q = query(ordersRef, orderBy("date", "desc"));
+      const q = query(ordersRef, orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
@@ -88,53 +88,53 @@ function Events() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
             {search == ""
               ? dataEvents.map((data, i) => {
-                  return (
-                    <>
-                      <div key={i}>
-                        <a href={`/events/event?id=${data.id}`}>
-                          <div className="bg-white rounded-md shadow-xl md:hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:flex md:flex-col h-full">
-                            <div
-                              className="bg-blue-700 md:grid grid-cols-1 h-28 md:h-36 bg-cover bg-no-repeat bg-center"
-                              style={{ backgroundImage: `url(${data.img})` }}
-                            ></div>
-                            <div className="p-3 ">
-                              <h1 className="font-semibold text-gray-900 line-clamp-2  ">
-                                {language == "en"
-                                  ? data.titleEnglish
-                                  : data.titleChinese}
-                              </h1>
-                              <h2>{data.date}</h2>
-                            </div>
+                return (
+                  <>
+                    <div key={i}>
+                      <a href={`/events/event?id=${data.id}`}>
+                        <div className="bg-white rounded-md shadow-xl md:hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:flex md:flex-col h-full">
+                          <div
+                            className="bg-blue-700 md:grid grid-cols-1 h-28 md:h-36 bg-cover bg-no-repeat bg-center"
+                            style={{ backgroundImage: `url(${data.img})` }}
+                          ></div>
+                          <div className="p-3 ">
+                            <h1 className="font-semibold text-gray-900 line-clamp-2  ">
+                              {language == "en"
+                                ? data.titleEnglish
+                                : data.titleChinese}
+                            </h1>
+                            <h2>{data.date}</h2>
                           </div>
-                        </a>
-                      </div>
-                    </>
-                  );
-                })
+                        </div>
+                      </a>
+                    </div>
+                  </>
+                );
+              })
               : dataEventsResult.map((data, i) => {
-                  return (
-                    <>
-                      <div key={i}>
-                        <a href={`/events/event?id=${data.id}`}>
-                          <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1 ">
-                            <div
-                              className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
-                              style={{ backgroundImage: `url(${data.img})` }}
-                            ></div>
-                            <div className="p-3 h-64">
-                              <h1 className="font-medium md:text-xl text-gray-900 line-clamp-1 ">
-                                {language == "en"
-                                  ? data.titleEnglish
-                                  : data.titleChinese}
-                              </h1>
-                              <h2>{data.date}</h2>
-                            </div>
+                return (
+                  <>
+                    <div key={i}>
+                      <a href={`/events/event?id=${data.id}`}>
+                        <div className="bg-white shadow-xl hover:translate-y-[-10px] transition-transform duration-50 ease-in-out grid grid-cols-2 md:grid-cols-1 ">
+                          <div
+                            className="h-28 md:h-36 bg-cover bg-no-repeat bg-center"
+                            style={{ backgroundImage: `url(${data.img})` }}
+                          ></div>
+                          <div className="p-3 h-64">
+                            <h1 className="font-medium md:text-xl text-gray-900 line-clamp-1 ">
+                              {language == "en"
+                                ? data.titleEnglish
+                                : data.titleChinese}
+                            </h1>
+                            <h2>{data.date}</h2>
                           </div>
-                        </a>
-                      </div>
-                    </>
-                  );
-                })}
+                        </div>
+                      </a>
+                    </div>
+                  </>
+                );
+              })}
           </div>
         </div>
       </div>

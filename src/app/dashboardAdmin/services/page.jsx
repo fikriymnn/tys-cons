@@ -41,7 +41,7 @@ function ServicesAdmin() {
     try {
       try {
         const ordersRef = collection(db, "service");
-        const q = query(ordersRef, orderBy("date", "desc"));
+        const q = query(ordersRef, orderBy("createdAt", "desc"));
         const querySnapshot = await getDocs(q);
 
         let data = [];
@@ -134,55 +134,135 @@ function ServicesAdmin() {
                 <div className=" h-[450px] overflow-y-auto">
                   {search == ""
                     ? dataService.map((data, i) => {
-                        return (
-                          <>
-                            <div className="flex bg-slate-300 rounded-md mb-3">
-                              <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                                <p>{i + 1}</p>
+                      return (
+                        <>
+                          <div className="flex bg-slate-300 rounded-md mb-3">
+                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                              <p>{i + 1}</p>
+                            </div>
+                            <div className="p-2 h-full w-[209px] border-s-2">
+                              <Image
+                                width={100}
+                                height={100}
+                                src={data.img}
+                                alt=""
+                              />
+                            </div>
+                            <div className="w-full flex">
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.titleEnglish}</p>
+                                  <p>{data.titleChinese}</p>
+                                </div>
                               </div>
-                              <div className="p-2 h-full w-[209px] border-s-2">
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.price[0].priceYuan} 元</p>
+                                </div>
+                              </div>
+                              <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.service}</p>
+                                  <p className="text-blue-600">
+                                    {data.subService}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
+                              <a
+                                className="bg-yellow-400  rounded-md p-2"
+                                href={`/dashboardAdmin/services/edit?id=${data.id}`}
+                              >
                                 <Image
-                                  width={100}
-                                  height={100}
-                                  src={data.img}
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/edit-svgrepo-com.svg"
                                   alt=""
                                 />
+                              </a>
+                              <button
+                                onClick={async (e) => {
+                                  try {
+                                    // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                    await deleteDoc(
+                                      doc(db, "service", data.id)
+                                    );
+                                    alert("delete success");
+                                    location.reload();
+                                    console.log("Deleted successfully");
+                                  } catch (error) {
+                                    console.error("An error occured", error);
+                                  }
+                                }}
+                                className="bg-red-600  rounded-md p-2"
+                              >
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/delete-1-svgrepo-com.svg"
+                                  alt=""
+                                />
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })
+                    : dataServicesResult.map((data, i) => {
+                      return (
+                        <>
+                          <div className="flex bg-slate-300 rounded-md mb-3">
+                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                              <p>{i + 1}</p>
+                            </div>
+                            <div className="p-2 h-full w-[209px] border-s-2">
+                              <Image
+                                width={100}
+                                height={100}
+                                src={data.img}
+                                alt=""
+                              />
+                            </div>
+                            <div className="w-full flex">
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.titleEnglish}</p>
+                                  <p>{data.titleChinese}</p>
+                                </div>
                               </div>
-                              <div className="w-full flex">
-                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.titleEnglish}</p>
-                                    <p>{data.titleChinese}</p>
-                                  </div>
-                                </div>
-                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.price[0].priceYuan} 元</p>
-                                  </div>
-                                </div>
-                                <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.service}</p>
-                                    <p className="text-blue-600">
-                                      {data.subService}
-                                    </p>
-                                  </div>
+                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.price[0].priceYuan} 元</p>
                                 </div>
                               </div>
-                              <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
-                                <a
-                                  className="bg-yellow-400  rounded-md p-2"
-                                  href={`/dashboardAdmin/services/edit?id=${data.id}`}
-                                >
-                                  <Image
-                                    width={35}
-                                    height={35}
-                                    src="/assets/images/edit-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </a>
-                                <button
-                                  onClick={async (e) => {
+                              <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
+                                <div className="flex flex-col">
+                                  <p>{data.service}</p>
+                                  <p className="text-blue-600">
+                                    {data.subService}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
+                              <a
+                                className="bg-yellow-400  rounded-md p-2"
+                                href={`/dashboardAdmin/services/edit?id=${data.id}`}
+                              >
+                                <Image
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  alt=""
+                                />
+                              </a>
+                              <button
+                                onClick={async (e) => {
+                                  const confirmed = window.confirm(
+                                    "Are you sure you want to delete this item?"
+                                  );
+                                  if (confirmed) {
                                     try {
                                       // Delete the todo document with the given ID from the "todos" collection in Firestore.
                                       await deleteDoc(
@@ -192,107 +272,27 @@ function ServicesAdmin() {
                                       location.reload();
                                       console.log("Deleted successfully");
                                     } catch (error) {
-                                      console.error("An error occured", error);
+                                      console.error(
+                                        "An error occured",
+                                        error
+                                      );
                                     }
-                                  }}
-                                  className="bg-red-600  rounded-md p-2"
-                                >
-                                  <Image
-                                    width={35}
-                                    height={35}
-                                    src="/assets/images/delete-1-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </button>
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })
-                    : dataServicesResult.map((data, i) => {
-                        return (
-                          <>
-                            <div className="flex bg-slate-300 rounded-md mb-3">
-                              <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                                <p>{i + 1}</p>
-                              </div>
-                              <div className="p-2 h-full w-[209px] border-s-2">
+                                  }
+                                }}
+                                className="bg-red-600  rounded-md p-2"
+                              >
                                 <Image
-                                  width={100}
-                                  height={100}
-                                  src={data.img}
+                                  width={35}
+                                  height={35}
+                                  src="/assets/images/delete-1-svgrepo-com.svg"
                                   alt=""
                                 />
-                              </div>
-                              <div className="w-full flex">
-                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.titleEnglish}</p>
-                                    <p>{data.titleChinese}</p>
-                                  </div>
-                                </div>
-                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.price[0].priceYuan} 元</p>
-                                  </div>
-                                </div>
-                                <div className="w-[250px] border-x-2  flex justify-start items-center p-2">
-                                  <div className="flex flex-col">
-                                    <p>{data.service}</p>
-                                    <p className="text-blue-600">
-                                      {data.subService}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="w-32  flex gap-3 m-3 my-auto justify-center items-center">
-                                <a
-                                  className="bg-yellow-400  rounded-md p-2"
-                                  href={`/dashboardAdmin/services/edit?id=${data.id}`}
-                                >
-                                  <Image
-                                    width={35}
-                                    height={35}
-                                    src="/assets/images/edit-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </a>
-                                <button
-                                  onClick={async (e) => {
-                                    const confirmed = window.confirm(
-                                      "Are you sure you want to delete this item?"
-                                    );
-                                    if (confirmed) {
-                                      try {
-                                        // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                        await deleteDoc(
-                                          doc(db, "service", data.id)
-                                        );
-                                        alert("delete success");
-                                        location.reload();
-                                        console.log("Deleted successfully");
-                                      } catch (error) {
-                                        console.error(
-                                          "An error occured",
-                                          error
-                                        );
-                                      }
-                                    }
-                                  }}
-                                  className="bg-red-600  rounded-md p-2"
-                                >
-                                  <Image
-                                    width={35}
-                                    height={35}
-                                    src="/assets/images/delete-1-svgrepo-com.svg"
-                                    alt=""
-                                  />
-                                </button>
-                              </div>
+                              </button>
                             </div>
-                          </>
-                        );
-                      })}
+                          </div>
+                        </>
+                      );
+                    })}
                 </div>
               </div>
             </div>

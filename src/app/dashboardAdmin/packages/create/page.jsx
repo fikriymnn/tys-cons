@@ -197,6 +197,7 @@ function CreatePackage() {
       descriptionEnglish: desIng,
       descriptionChinese: desChi,
       date: date,
+      createdAt: today,
     });
 
     alert("Success");
@@ -527,103 +528,103 @@ function CreatePackage() {
                         <div className="grid grid-cols-2 gap-5 p-5 bg-slate-300 max-h-[400px] overflow-y-scroll pb-10">
                           {search == ""
                             ? dataService.map((data, i) => {
-                                return (
-                                  <>
-                                    <button
-                                      type="button"
-                                      name="id"
-                                      onClick={(e) => {
-                                        handleChangeService("id", data.id, ii),
-                                          handleChangeService(
-                                            "nameIng",
-                                            data.titleEnglish,
-                                            ii
-                                          );
+                              return (
+                                <>
+                                  <button
+                                    type="button"
+                                    name="id"
+                                    onClick={(e) => {
+                                      handleChangeService("id", data.id, ii),
                                         handleChangeService(
-                                          "nameChi",
-                                          data.titleChinese,
+                                          "nameIng",
+                                          data.titleEnglish,
                                           ii
                                         );
-                                        handleChangeService(
-                                          "img",
-                                          data.img,
-                                          ii
-                                        );
-                                        handleChangeService(
-                                          "price",
-                                          data.price,
-                                          ii
-                                        );
-                                      }}
-                                    >
-                                      <div className="bg-white hover:bg-slate-200 flex">
-                                        <img
-                                          className="w-[80px] h-[80px]"
-                                          src={data.img}
-                                          alt=""
-                                        />
-                                        <div className="p-3">
-                                          <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                            {data.titleEnglish}
-                                          </h1>
-                                          <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                            {data.price[0].priceYuan} 元
-                                          </h2>
-                                        </div>
+                                      handleChangeService(
+                                        "nameChi",
+                                        data.titleChinese,
+                                        ii
+                                      );
+                                      handleChangeService(
+                                        "img",
+                                        data.img,
+                                        ii
+                                      );
+                                      handleChangeService(
+                                        "price",
+                                        data.price,
+                                        ii
+                                      );
+                                    }}
+                                  >
+                                    <div className="bg-white hover:bg-slate-200 flex">
+                                      <img
+                                        className="w-[80px] h-[80px]"
+                                        src={data.img}
+                                        alt=""
+                                      />
+                                      <div className="p-3">
+                                        <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                          {data.titleEnglish}
+                                        </h1>
+                                        <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                          {data.price[0].priceYuan} 元
+                                        </h2>
                                       </div>
-                                    </button>
-                                  </>
-                                );
-                              })
+                                    </div>
+                                  </button>
+                                </>
+                              );
+                            })
                             : dataServiceResult.map((data, i) => {
-                                return (
-                                  <>
-                                    <button
-                                      type="button"
-                                      name="id"
-                                      onClick={(e) => {
-                                        handleChangeService("id", data.id, ii),
-                                          handleChangeService(
-                                            "nameIng",
-                                            data.titleEnglish,
-                                            ii
-                                          );
+                              return (
+                                <>
+                                  <button
+                                    type="button"
+                                    name="id"
+                                    onClick={(e) => {
+                                      handleChangeService("id", data.id, ii),
                                         handleChangeService(
-                                          "nameChi",
-                                          data.titleChinese,
+                                          "nameIng",
+                                          data.titleEnglish,
                                           ii
                                         );
-                                        handleChangeService(
-                                          "img",
-                                          data.img,
-                                          ii
-                                        );
-                                        handleChangeService(
-                                          "price",
-                                          data.price,
-                                          ii
-                                        );
-                                      }}
-                                    >
-                                      <div className="bg-white hover:bg-slate-200 flex">
-                                        <img
-                                          className="w-[80px] h-[80px]"
-                                          src={data.img}
-                                          alt=""
-                                        />
-                                        <div className="p-3">
-                                          <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
-                                            {data.titleEnglish}
-                                          </h1>
-                                          <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
-                                            {data.price[0].price} 元
-                                          </h2>
-                                        </div>
+                                      handleChangeService(
+                                        "nameChi",
+                                        data.titleChinese,
+                                        ii
+                                      );
+                                      handleChangeService(
+                                        "img",
+                                        data.img,
+                                        ii
+                                      );
+                                      handleChangeService(
+                                        "price",
+                                        data.price,
+                                        ii
+                                      );
+                                    }}
+                                  >
+                                    <div className="bg-white hover:bg-slate-200 flex">
+                                      <img
+                                        className="w-[80px] h-[80px]"
+                                        src={data.img}
+                                        alt=""
+                                      />
+                                      <div className="p-3">
+                                        <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 line-clamp-2 ">
+                                          {data.titleEnglish}
+                                        </h1>
+                                        <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
+                                          {data.price[0].price} 元
+                                        </h2>
                                       </div>
-                                    </button>
-                                  </>
-                                );
-                              })}
+                                    </div>
+                                  </button>
+                                </>
+                              );
+                            })}
                         </div>
                       </>
                     )}
@@ -725,9 +726,8 @@ function CreatePackage() {
                         id=""
                         cols="20"
                         rows="1"
-                        placeholder={`Input Topic English For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Topic English For Description ${i + 1
+                          }`}
                         color=" bg-transparent"
                         className=" w-full resize-none rounded-lg border-slate-300 "
                         maxLength={1000}
@@ -750,9 +750,8 @@ function CreatePackage() {
                         id=""
                         cols="20"
                         rows="1"
-                        placeholder={`Input Topic Mandarin For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Topic Mandarin For Description ${i + 1
+                          }`}
                         color=" bg-transparent"
                         className=" w-full resize-none rounded-lg border-slate-300 "
                         maxLength={1000}
@@ -782,9 +781,8 @@ function CreatePackage() {
                           )
                         }
                         name="contentIng"
-                        placeholder={`Input Description english For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description english For Description ${i + 1
+                          }`}
                         maxLength={1000}
                         className="h-[200px] w-full   "
                       />
@@ -814,9 +812,8 @@ function CreatePackage() {
                           )
                         }
                         name="contentChi"
-                        placeholder={`Input Description Mandarin For Description ${
-                          i + 1
-                        }`}
+                        placeholder={`Input Description Mandarin For Description ${i + 1
+                          }`}
                         maxLength={1000}
                         className="h-[200px] my-10 "
                       />

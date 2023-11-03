@@ -61,7 +61,7 @@ function Articles() {
   async function getDataArticles() {
     try {
       const ordersRef = collection(db, "articles");
-      const q = query(ordersRef, orderBy("date", "desc"));
+      const q = query(ordersRef, orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
@@ -109,39 +109,39 @@ function Articles() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
             {search == ""
               ? dataArticle.map((data, i) => {
-                  return (
-                    <>
-                      <ArticleCard
-                        key={i}
-                        date={data.date}
-                        id={data.id}
-                        img={data.img}
-                        title={
-                          language == "en"
-                            ? data.titleEnglish
-                            : data.titleChinese
-                        }
-                      />
-                    </>
-                  );
-                })
+                return (
+                  <>
+                    <ArticleCard
+                      key={i}
+                      date={data.date}
+                      id={data.id}
+                      img={data.img}
+                      title={
+                        language == "en"
+                          ? data.titleEnglish
+                          : data.titleChinese
+                      }
+                    />
+                  </>
+                );
+              })
               : dataArticleResult.map((data, i) => {
-                  return (
-                    <>
-                      <ArticleCard
-                        key={i}
-                        date={data.date}
-                        id={data.id}
-                        img={data.img}
-                        title={
-                          language == "en"
-                            ? data.titleEnglish
-                            : data.titleChinese
-                        }
-                      />
-                    </>
-                  );
-                })}
+                return (
+                  <>
+                    <ArticleCard
+                      key={i}
+                      date={data.date}
+                      id={data.id}
+                      img={data.img}
+                      title={
+                        language == "en"
+                          ? data.titleEnglish
+                          : data.titleChinese
+                      }
+                    />
+                  </>
+                );
+              })}
           </div>
         </div>
       </div>

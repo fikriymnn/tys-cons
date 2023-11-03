@@ -43,7 +43,7 @@ function FinanceAccountingTax() {
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
         where("subService", "==", "Finance Services"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -63,7 +63,7 @@ function FinanceAccountingTax() {
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
         where("subService", "==", "Accounting Services"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -83,7 +83,7 @@ function FinanceAccountingTax() {
         collection(db, "service"),
         where("service", "==", "Finance Accounting Tax"),
         where("subService", "==", "Tax Services"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -112,32 +112,29 @@ function FinanceAccountingTax() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${
-                    comp == 0
+                  className={`${comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "Finance Services" : "财务服务"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${
-                    comp == 1
+                  className={`${comp == 1
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Accounting Services" : "会计服务"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${
-                    comp == 2
+                  className={`${comp == 2
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Tax Services" : "税务服务"}
                 </button>

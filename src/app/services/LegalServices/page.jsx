@@ -37,7 +37,7 @@ function ProductCertifications() {
         collection(db, "service"),
         where("service", "==", "Legal Services"),
         where("subService", "==", "Legal Administration"),
-        orderBy("date", "desc")
+        orderBy("createdAt", "desc")
       );
 
       const querySnapshot = await getDocs(q);
@@ -65,11 +65,10 @@ function ProductCertifications() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${
-                    comp == 0
+                  className={`${comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                  } md:text-base sm:text-sm text-sm`}
+                    } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Legal Administration" : "法律行政"}
                 </button>
