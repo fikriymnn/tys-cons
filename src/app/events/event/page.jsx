@@ -68,7 +68,6 @@ function Event() {
               <div className="md:flex justify-center items-center ">
                 <div></div>
                 <div className="md:w-4/6 ">
-                  {" "}
                   <div className="py-2 flex gap-1 ">
                     <a href="/events">Events</a>
                     <svg
@@ -87,7 +86,6 @@ function Event() {
                       ></path>
                     </svg>
                     <p className="text-blue-500">
-                      {" "}
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
                   </div>
@@ -119,7 +117,7 @@ function Event() {
                           </h3>
                         </div>
                         <div className="bg-gray-400 h-[2px] "></div>
-                        <div className="content  my-5  ql-editor">
+                        <div className="content  my-5  ql-editor  -translate-x-4">
                           <p>
                             {parse(
                               language == "en"
@@ -142,7 +140,7 @@ function Event() {
                                   </h2>
                                 </div>
                               </div>
-                              <div className="py-5 content ql-editor">
+                              <div className="py-5 content ql-editor  -translate-x-4">
                                 <p>
                                   {parse(
                                     language == "en"

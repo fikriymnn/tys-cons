@@ -445,13 +445,19 @@ export default function Policies() {
                         alt="Image"
                       />
                     </div>
-                    <div className="content mt-5 px-20">
-                      <p>{parse(language == "en" ? desIng : desChi)} </p>
+                    <div className="content mt-10 px-20">
+                      <p>
+                        {parse(
+                          language == "en"
+                            ? data.descriptionEnglish
+                            : data.descriptionChinese
+                        )}
+                      </p>
                     </div>
                     {data.content.map((data, i) => {
                       return (
                         <>
-                          <div className="px-20">
+                          <div className="px-20 mb-5">
                             <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
                             <div className="flex items-center w-full">
                               <div className=" bg-blue-600 ">
@@ -463,14 +469,13 @@ export default function Policies() {
                               </div>
                               <div></div>
                             </div>
-                            <div className="content py-5 ql-editor">
+                            <div className="content py-5 ql-editor  -translate-x-4">
                               <p>
-                                {" "}
                                 {parse(
                                   language == "en"
                                     ? data.contentIng
                                     : data.contentChi
-                                )}{" "}
+                                )}
                               </p>
                             </div>
                             {data.img == "" ? (
@@ -494,9 +499,9 @@ export default function Policies() {
               })
             ) : (
               <>
-                <h1 className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
+                <p className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                   {language == "en" ? titleIng : titleChi}
-                </h1>
+                </p>
                 <div className="flex items-center w-full">
                   <Image
                     src={dataimg}
@@ -506,13 +511,13 @@ export default function Policies() {
                     alt="Image"
                   />
                 </div>
-                <div className="content mt-5 px-20 ql-editor">
+                <div className="content mt-5 px-20">
                   <p>{parse(language == "en" ? desIng : desChi)} </p>
                 </div>
                 {content.map((data, i) => {
                   return (
                     <>
-                      <div className="px-20">
+                      <div className="px-20 mb-5">
                         <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
                         <div className="flex items-center w-full">
                           <div className=" bg-blue-600 ">
@@ -522,14 +527,13 @@ export default function Policies() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content py-5 ql-editor">
+                        <div className="content py-5 ql-editor  -translate-x-4">
                           <p>
-                            {" "}
                             {parse(
                               language == "en"
                                 ? data.contentIng
                                 : data.contentChi
-                            )}{" "}
+                            )}
                           </p>
                         </div>
                         {data.img == "" ? (

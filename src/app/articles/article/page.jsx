@@ -66,7 +66,6 @@ function Article() {
                       ></path>
                     </svg>
                     <p className="text-blue-500">
-                      {" "}
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
                   </div>
@@ -87,13 +86,13 @@ function Article() {
                             alt=""
                           />
                         </div>
-                        <div className=" pt-10 pb-10 ql-editor">
+                        <div className=" pt-10 pb-10 ql-editor  -translate-x-4">
                           <p>
                             {parser(
                               language == "en"
                                 ? data.descriptionEnglish
                                 : data.descriptionChinese
-                            )}{" "}
+                            )}
                           </p>
                         </div>
                         {dataArticle[0].content.map((data, i) => {
@@ -110,8 +109,7 @@ function Article() {
                                 </div>
                               </div>
 
-                              <div className="py-5 ql-editor">
-                                {" "}
+                              <div className="py-5 ql-editor  -translate-x-4">
                                 {parser(
                                   language == "en"
                                     ? data.contentIng
@@ -126,6 +124,7 @@ function Article() {
                                     width={300}
                                     height={300}
                                     src={data.img}
+                                    className="mb-5"
                                   ></img>
                                 </>
                               )}

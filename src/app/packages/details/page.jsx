@@ -218,27 +218,28 @@ function DetailPackages() {
                       );
                     })}
                   </div>
-                  <div className="h-[2px] w-full bg-gray-300 mt-3 "></div>
-                  <div className="content pb-5 ql-editor">
+                  <div className="h-[2px] w-full bg-gray-300 mt-5 "></div>
+                  <div className="content pb-5 ql-editor -translate-x-4">
                     <p>
                       {parse(
                         language == "en"
                           ? data.descriptionEnglish
                           : data.descriptionChinese
-                      )}{" "}
+                      )}
                     </p>
                   </div>
                   <div className="h-[2px] w-full bg-gray-300 "></div>
                   {data.content.map((data, i) => {
                     return (
                       <>
+                        <div className="h-[2px] w-full bg-gray-300 mt-5 "></div>
                         <div className=" flex mb-2">
                           <p className="bg-blue-600 text-white text-base font-semibold py-2 px-4">
                             {language == "en" ? data.topicIng : data.topicChi}
                           </p>
                           <div className=""></div>
                         </div>
-                        <div className="ql-editor">
+                        <div className="ql-editor -translate-x-4">
                           {parse(
                             language == "en" ? data.contentIng : data.contentChi
                           )}
@@ -247,7 +248,12 @@ function DetailPackages() {
                           <></>
                         ) : (
                           <>
-                            <img width={500} height={300} src={data.img}></img>
+                            <img
+                              width={500}
+                              height={300}
+                              src={data.img}
+                              alt=""
+                            ></img>
                           </>
                         )}
                       </>

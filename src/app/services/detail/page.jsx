@@ -77,11 +77,11 @@ function DetailServices() {
             <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 q">
               <div className="flex pb-5 gap-1">
                 <a href="/services" onClick={() => console.log(lastIndex)}>
-                  {language == "en" ? "Services" : "服务"}{" "}
-                </a>{" "}
+                  {language == "en" ? "Services" : "服务"}
+                </a>
                 <p>&gt;</p>
                 <p className="text-blue-600">
-                  {language == "en" ? data.titleEnglish : data.titleChinese}{" "}
+                  {language == "en" ? data.titleEnglish : data.titleChinese}
                 </p>
               </div>
               <div className="bg-white">
@@ -104,7 +104,7 @@ function DetailServices() {
                       <p className="md:text-2xl text-2xl pb-4">
                         {language == "en"
                           ? data.titleEnglish
-                          : data.titleChinese}{" "}
+                          : data.titleChinese}
                       </p>
                       <div className="flex pb-6 gap-1 ">
                         {currency == 1 ? (
@@ -178,13 +178,13 @@ function DetailServices() {
                       </fieldset>
                     </div>
                   </div>
-                  <div className="content pb-3 ql-editor">
+                  <div className="content pb-3 ql-editor  -translate-x-4">
                     <p>
                       {parse(
                         language == "en"
                           ? data.descriptionEnglish
                           : data.descriptionChinese
-                      )}{" "}
+                      )}
                     </p>
                   </div>
                   {data.content.map((data, i) => {
@@ -192,28 +192,32 @@ function DetailServices() {
                       <>
                         <div className="h-[2px] w-full bg-gray-300 "></div>
                         <div className="flex">
-                          <div className=" bg-blue-600  mb-2">
+                          <div className=" bg-blue-600">
                             <p className="text-center text-white text-base font-semibold p-3">
                               {language == "en" ? data.topicIng : data.topicChi}
                             </p>
                           </div>
                           <div></div>
                         </div>
-                        <div className="content pb-10 ql-editor">
+                        <div className="content pb-10 ql-editor ">
                           <p>
-                            {" "}
                             {parse(
                               language == "en"
                                 ? data.contentIng
                                 : data.contentChi
-                            )}{" "}
+                            )}
                           </p>
                         </div>
                         {data.img == "" ? (
                           <></>
                         ) : (
                           <>
-                            <img width={500} height={300} src={data.img}></img>
+                            <img
+                              width={500}
+                              height={300}
+                              src={data.img}
+                              className="mb-5"
+                            ></img>
                           </>
                         )}
                       </>
