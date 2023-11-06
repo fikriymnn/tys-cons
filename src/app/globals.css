@@ -8,6 +8,12 @@
   font-family: ui-sans-serif, system-ui , -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
+::-webkit-scrollbar {
+  width: 0.5em;
+}::-webkit-scrollbar-thumb {
+  background: rgb(180, 180, 180);
+}
+
 .hideScroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
