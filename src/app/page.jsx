@@ -173,7 +173,7 @@ const Home = () => {
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
-                      p-5"
+                      pl-1 pr-0 py-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +192,7 @@ const Home = () => {
             </svg>
             <a
               href="/services/basicEstablish?comp=0"
-              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white  pl-3 w-full "
+              className=" md:border-none ml-1 text-[20px] font-semibold my-auto  md:text-black sm:text-black text-white  group-hover:text-white  pl-2 w-full "
             >
               {language == "en" ? "Basic Establishment Services" : "基础服务"}
             </a>
@@ -259,7 +259,7 @@ const Home = () => {
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
-                      p-5"
+                       pl-1 pr-0 py-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +356,7 @@ const Home = () => {
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
-                      p-5"
+                       pl-1 pr-0 py-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +415,7 @@ const Home = () => {
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
-                      p-5"
+                       pl-1 pr-0 py-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -492,7 +492,7 @@ const Home = () => {
         <div className="group block md:rounded-lg sm:rounded-lg rounded-none md:px-7 md:py-4 p-0 md:bg-white sm:bg-white bg-blue-600 shadow-lg  md:hover:bg-blue-600 sm:hover:bg-blue-600 group-hover:text-white first-linexport service-list hover:bg-primary md:hover:text-white sm:hover:text-white cursor-pointer transition-all  border-2">
           <div
             className="flex items-baseline text-gray-900 md:text-[#007aff]  
-                      p-5"
+                       pl-1 pr-0 py-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -560,8 +560,8 @@ const Home = () => {
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
-                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-4">
-                    <div className="font-semibold text-xl leading-[30px] hover:underline line-clamp-1">
+                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-3">
+                    <div className="font-semibold text-xl leading-[30px] hover:underline line-clamp-2">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
                     <h1 className="text-[#6b7280]">{data.date}</h1>

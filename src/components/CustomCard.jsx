@@ -19,7 +19,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
           {/* <Image src={img} alt="" height={0} width={520} /> */}
         </div>
         <div className="m-2 mb-4">
-          <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1 line-clamp-2">
+          <h5 className="text-xl font-semibold  text-gray-900 dark:text-white my-1 line-clamp-1">
             {text}
           </h5>
           <div className="font-normal text-[#6b7280] line-clamp-2 mb-5">
