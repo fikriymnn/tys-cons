@@ -75,7 +75,7 @@ function MultipleCarousel() {
         autoPlay={true}
         infinite={"true"}
         showDots="true"
-        autoPlaySpeed={1000}
+        autoPlaySpeed={2000}
         arrows={hide == true ? true : false}
       >
         {dataClient.map((data, i) => {
