@@ -445,14 +445,14 @@ export default function Policies() {
                         alt="Image"
                       />
                     </div>
-                    <div className="content mt-10 px-20">
-                      <p>
+                    <div className=" mt-10 px-20 ">
+                      <div className="ql-editor  -translate-x-4">
                         {parse(
                           language == "en"
                             ? data.descriptionEnglish
                             : data.descriptionChinese
                         )}
-                      </p>
+                      </div>
                     </div>
                     {data.content.map((data, i) => {
                       return (
@@ -511,14 +511,16 @@ export default function Policies() {
                     alt="Image"
                   />
                 </div>
-                <div className="content mt-5 px-20">
-                  <p>{parse(language == "en" ? desIng : desChi)} </p>
+                <div className=" px-20">
+                  <div className="ql-editor  -translate-x-4">
+                    {parse(language == "en" ? desIng : desChi)}
+                  </div>
                 </div>
                 {content.map((data, i) => {
                   return (
                     <>
-                      <div className="px-20 mb-5">
-                        <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                      <div className="px-20 mb-16">
+                        <div className="h-[2px] w-full bg-gray-300 "></div>
                         <div className="flex items-center w-full">
                           <div className=" bg-blue-600 ">
                             <p className="text-center text-white text-base font-semibold p-3">
@@ -527,7 +529,7 @@ export default function Policies() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content py-5 ql-editor  -translate-x-4">
+                        <div className=" py-5 ql-editor  -translate-x-4">
                           <p>
                             {parse(
                               language == "en"
@@ -545,6 +547,7 @@ export default function Policies() {
                               height={300}
                               src={data.img}
                               alt=""
+                              className=""
                             ></img>
                           </>
                         )}

@@ -2,8 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
+import Quilltext from "@/components/admin/quilltext";
 import {
   collection,
   addDoc,
@@ -141,7 +140,6 @@ function CreateArticle() {
       img: downloadURL,
       date: date,
       content: data,
-
     });
 
     alert("success");
@@ -164,42 +162,6 @@ function CreateArticle() {
     deleteVal.splice(i, 1);
     setData(deleteVal);
   };
-  const modules = {
-    toolbar: {
-      container: [
-        ["bold", "italic", "underline", "strike"], // toggled buttons
-        ["code-block", "link"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        [{ script: "sub" }, { script: "super" }], // superscript/subscript
-        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-        [{ direction: "rtl" }], // text direction
-        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-        [{ font: [] }],
-        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-        [{ align: [] }],
-
-        ["clean"],
-      ],
-    },
-  };
-  const formats = [
-    "strike",
-    "bold",
-    "italic",
-    "underline",
-    "link",
-    "align",
-    "direction",
-    "list",
-    "code-block",
-    "script",
-    "indent",
-    "direction",
-    "color",
-    "font",
-    "background",
-    "size",
-  ];
 
   return (
     <>
@@ -310,14 +272,10 @@ function CreateArticle() {
                 </p>
               </div>
               <div className=" w-10/12 p-3">
-                <ReactQuill
-                  modules={modules}
-                  format={formats}
+                <Quilltext
                   onChange={(e) => setDesIng(e)}
                   name="contentIng"
                   placeholder={`Input Description English For Description ${1}`}
-                  maxLength={1000}
-                  className="h-[200px] w-full   "
                 />
               </div>
             </div>
@@ -329,14 +287,10 @@ function CreateArticle() {
                 </p>
               </div>
               <div className=" w-10/12 p-3">
-                <ReactQuill
-                  modules={modules}
-                  format={formats}
+                <Quilltext
                   onChange={(e) => setDesChi(e)}
                   name="contentChi"
                   placeholder={`Input Description Mandarin For Description ${1}`}
-                  maxLength={1000}
-                  className="h-[200px] my-10 "
                 />
               </div>
             </div>
@@ -409,9 +363,7 @@ function CreateArticle() {
                       </p>
                     </div>
                     <div className=" w-10/12 p-3">
-                      <ReactQuill
-                        modules={modules}
-                        format={formats}
+                      <Quilltext
                         theme="snow"
                         value={val.contentIng}
                         onChange={(e) =>
@@ -423,10 +375,9 @@ function CreateArticle() {
                           )
                         }
                         name="contentIng"
-                        placeholder={`Input Description English For Description ${i + 1
-                          }`}
-                        maxLength={2000}
-                        className="h-[200px] "
+                        placeholder={`Input Description English For Description ${
+                          i + 1
+                        }`}
                       />
                     </div>
                   </div>
@@ -438,10 +389,7 @@ function CreateArticle() {
                       </p>
                     </div>
                     <div className=" w-10/12 p-3">
-                      <ReactQuill
-                        modules={modules}
-                        format={formats}
-                        theme="snow"
+                      <Quilltext
                         value={val.contentChi}
                         onChange={(e) =>
                           handleChange(
@@ -452,10 +400,9 @@ function CreateArticle() {
                           )
                         }
                         name="contentChi"
-                        placeholder={`Input Description Mandarin For Description ${i + 1
-                          }`}
-                        maxLength={2000}
-                        className="h-[200px] my-10 "
+                        placeholder={`Input Description Mandarin For Description ${
+                          i + 1
+                        }`}
                       />
                     </div>
                   </div>
