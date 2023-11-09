@@ -1,49 +1,55 @@
-import React, { useRef } from "react";
-import ReactQuill from "react-quill";
+"use client";
+import React from "react";
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
 const modules = {
   toolbar: {
-    container: [["bold", "italic", "underline"], ["link"]],
+    container: [
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      ["code-block", "link"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ script: "sub" }, { script: "super" }], // superscript/subscript
+      [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+      [{ direction: "rtl" }], // text direction
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+
+      [{ align: [] }],
+
+      ["clean"],
+    ],
   },
 };
+const formats = [
+  "strike",
+  "bold",
+  "italic",
+  "underline",
+  "link",
+  "align",
+  "direction",
+  "list",
+  "code-block",
+  "script",
+  "indent",
+  "direction",
+  "color",
 
-const formats = ["bold", "italic", "underline", "link"];
-
-const MyEditor = ({ value, onChange }) => {
-  const quillRef = useRef(null);
-
-  const handleChange = (content) => {
-    onChange(content);
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Tab" || event.key === " ") {
-      event.preventDefault();
-      const quill = quillRef.current.getEditor();
-      const cursorPosition = quill.getSelection().index;
-
-      // Insert a tab or space at the cursor position
-      const textToInsert = event.key === "Tab" ? "\t" : " ";
-      quill.insertText(cursorPosition, textToInsert, "text", "user");
-
-      // Move the cursor to the correct position
-      quill.setSelection(cursorPosition + textToInsert.length);
-    }
-  };
-
+  "background",
+];
+function Quilltext({ ...props }) {
   return (
     <ReactQuill
-      theme="snow"
+      {...props}
       modules={modules}
-      formats={formats}
-      value={value}
-      onChange={handleChange}
-      onKeyDown={handleKeyDown}
-      ref={quillRef}
-      placeholder="Type here..."
+      format={formats}
+      theme="snow"
+      maxLength={1000}
+      className="h-[200px] w-full  pb-10 "
     />
   );
-};
+}
 
-export default MyEditor;
+export default Quilltext;
