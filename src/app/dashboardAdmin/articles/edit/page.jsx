@@ -11,7 +11,7 @@ import {
   doc,
   Firestore,
 } from "firebase/firestore";
-
+import Quilltext from "@/components/admin/quilltext";
 import {
   getStorage,
   ref,

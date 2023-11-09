@@ -135,168 +135,176 @@ function ArticlesAdmin() {
                 <div className=" h-[450px] overflow-y-auto">
                   {search == ""
                     ? dataArticles.map((data, i) => {
-                      return (
-                        <>
-                          <div className="flex bg-slate-300 rounded-md">
-                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                              <p>{i + 1}</p>
-                            </div>
-                            <div className="px-4 py-2 h-full w-[212px] border-s-2">
-                              <Image
-                                src={data.img}
-                                alt=""
-                                width={150}
-                                height={150}
-                              />
-                            </div>
-                            <div className="w-full flex ">
-                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col">
-                                  <p>{data.titleEnglish}</p>
-                                  <p>{data.titleChinese}</p>
-                                </div>
+                        return (
+                          <>
+                            <div className="flex bg-slate-300 rounded-md">
+                              <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                                <p>{i + 1}</p>
                               </div>
-                              <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col content">
-                                  <div className="line-clamp-2">
-                                    {parse(data.content[0].contentIng)}
-                                  </div>
-                                  <div className="line-clamp-2">
-                                    {parse(data.content[0].contentChi)}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
-                                <p>{data.date}</p>
-                              </div>
-                            </div>
-                            <div className="w-32  flex gap-3 m-3 my-auto">
-                              <a
-                                className="bg-yellow-400  rounded-md p-2"
-                                href={`/dashboardAdmin/articles/edit?id=${data.id}`}
-                              >
+                              <div className="px-4 py-2 h-full w-[212px] border-s-2">
                                 <Image
-                                  width={35}
-                                  height={35}
-                                  src="/assets/images/edit-svgrepo-com.svg"
+                                  src={data.img}
                                   alt=""
+                                  width={150}
+                                  height={150}
                                 />
-                              </a>
-                              <button
-                                onClick={async (e) => {
-                                  try {
-                                    // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                    await deleteDoc(
-                                      doc(db, "articles", data.id)
+                              </div>
+                              <div className="w-full flex ">
+                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                  <div className="flex flex-col">
+                                    <p>{data.titleEnglish}</p>
+                                    <p>{data.titleChinese}</p>
+                                  </div>
+                                </div>
+                                <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
+                                  <div className="flex flex-col content">
+                                    <div className="line-clamp-2">
+                                      {parse(data.content[0].contentIng)}
+                                    </div>
+                                    <div className="line-clamp-2">
+                                      {parse(data.content[0].contentChi)}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
+                                  <p>{data.date}</p>
+                                </div>
+                              </div>
+                              <div className="w-32  flex gap-3 m-3 my-auto">
+                                <a
+                                  className="bg-yellow-400  rounded-md p-2"
+                                  href={`/dashboardAdmin/articles/edit?id=${data.id}`}
+                                >
+                                  <Image
+                                    width={35}
+                                    height={35}
+                                    src="/assets/images/edit-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </a>
+                                <button
+                                  onClick={async (e) => {
+                                    const confirmed = window.confirm(
+                                      "Are you sure you want to delete this item?"
                                     );
-                                    alert("delete success");
-                                    location.reload();
-                                    console.log("Deleted successfully");
-                                  } catch (error) {
-                                    console.error("An error occured", error);
-                                  }
-                                }}
-                                className="bg-red-600 rounded-md p-2"
-                              >
-                                <Image
-                                  width={35}
-                                  height={35}
-                                  src="/assets/images/delete-1-svgrepo-com.svg"
-                                  alt=""
-                                />
-                              </button>
-                            </div>
-                          </div>
-                          ;
-                        </>
-                      );
-                    })
-                    : dataArticlesResult.map((data, i) => {
-                      return (
-                        <>
-                          <div className="flex bg-slate-300 rounded-md">
-                            <div className="p-2 h-full w-[50px] flex justify-start items-center ">
-                              <p>{i + 1}</p>
-                            </div>
-                            <div className="px-4 py-2 h-full w-[212px] border-s-2">
-                              <Image
-                                src={data.img}
-                                alt=""
-                                width={150}
-                                height={150}
-                              />
-                            </div>
-                            <div className="w-full flex ">
-                              <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col">
-                                  <p>{data.titleEnglish}</p>
-                                  <p>{data.titleChinese}</p>
-                                </div>
-                              </div>
-                              <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
-                                <div className="flex flex-col content">
-                                  <div className="line-clamp-2">
-                                    {parse(data.content[0].contentIng)}
-                                  </div>
-                                  <div className="line-clamp-2">
-                                    {parse(data.content[0].contentChi)}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
-                                <p>{data.date}</p>
-                              </div>
-                            </div>
-                            <div className="w-32  flex gap-3 m-3 my-auto">
-                              <a
-                                className="bg-yellow-400  rounded-md p-2"
-                                href={`/dashboardAdmin/articles/edit?id=${data.id}`}
-                              >
-                                <Image
-                                  width={35}
-                                  height={35}
-                                  src="/assets/images/edit-svgrepo-com.svg"
-                                  alt=""
-                                />
-                              </a>
-                              <button
-                                onClick={async (e) => {
-                                  const confirmed = window.confirm(
-                                    "Are you sure you want to delete this item?"
-                                  );
-
-                                  if (confirmed) {
-                                    try {
-                                      // Delete the todo document with the given ID from the "todos" collection in Firestore.
-                                      await deleteDoc(
-                                        doc(db, "articles", data.id)
-                                      );
-                                      alert("delete success");
-                                      location.reload();
-                                      console.log("Deleted successfully");
-                                    } catch (error) {
-                                      console.error(
-                                        "An error occured",
-                                        error
-                                      );
+                                    if (confirmed) {
+                                      try {
+                                        // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                        await deleteDoc(
+                                          doc(db, "articles", data.id)
+                                        );
+                                        alert("delete success");
+                                        location.reload();
+                                        console.log("Deleted successfully");
+                                      } catch (error) {
+                                        console.error(
+                                          "An error occured",
+                                          error
+                                        );
+                                      }
                                     }
-                                  }
-                                }}
-                                className="bg-red-600 rounded-md p-2"
-                              >
-                                <Image
-                                  width={35}
-                                  height={35}
-                                  src="/assets/images/delete-1-svgrepo-com.svg"
-                                  alt=""
-                                />
-                              </button>
+                                  }}
+                                  className="bg-red-600 rounded-md p-2"
+                                >
+                                  <Image
+                                    width={35}
+                                    height={35}
+                                    src="/assets/images/delete-1-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </button>
+                              </div>
                             </div>
-                          </div>
-                          ;
-                        </>
-                      );
-                    })}
+                            ;
+                          </>
+                        );
+                      })
+                    : dataArticlesResult.map((data, i) => {
+                        return (
+                          <>
+                            <div className="flex bg-slate-300 rounded-md">
+                              <div className="p-2 h-full w-[50px] flex justify-start items-center ">
+                                <p>{i + 1}</p>
+                              </div>
+                              <div className="px-4 py-2 h-full w-[212px] border-s-2">
+                                <Image
+                                  src={data.img}
+                                  alt=""
+                                  width={150}
+                                  height={150}
+                                />
+                              </div>
+                              <div className="w-full flex ">
+                                <div className="w-[200px] border-s-2  flex justify-start items-center p-2">
+                                  <div className="flex flex-col">
+                                    <p>{data.titleEnglish}</p>
+                                    <p>{data.titleChinese}</p>
+                                  </div>
+                                </div>
+                                <div className="w-[250px] border-s-2  flex justify-start items-center p-2">
+                                  <div className="flex flex-col content">
+                                    <div className="line-clamp-2">
+                                      {parse(data.content[0].contentIng)}
+                                    </div>
+                                    <div className="line-clamp-2">
+                                      {parse(data.content[0].contentChi)}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className=" border-x-2 w-[200px] flex justify-start items-center p-2">
+                                  <p>{data.date}</p>
+                                </div>
+                              </div>
+                              <div className="w-32  flex gap-3 m-3 my-auto">
+                                <a
+                                  className="bg-yellow-400  rounded-md p-2"
+                                  href={`/dashboardAdmin/articles/edit?id=${data.id}`}
+                                >
+                                  <Image
+                                    width={35}
+                                    height={35}
+                                    src="/assets/images/edit-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </a>
+                                <button
+                                  onClick={async (e) => {
+                                    const confirmed = window.confirm(
+                                      "Are you sure you want to delete this item?"
+                                    );
+
+                                    if (confirmed) {
+                                      try {
+                                        // Delete the todo document with the given ID from the "todos" collection in Firestore.
+                                        await deleteDoc(
+                                          doc(db, "articles", data.id)
+                                        );
+                                        alert("delete success");
+                                        location.reload();
+                                        console.log("Deleted successfully");
+                                      } catch (error) {
+                                        console.error(
+                                          "An error occured",
+                                          error
+                                        );
+                                      }
+                                    }
+                                  }}
+                                  className="bg-red-600 rounded-md p-2"
+                                >
+                                  <Image
+                                    width={35}
+                                    height={35}
+                                    src="/assets/images/delete-1-svgrepo-com.svg"
+                                    alt=""
+                                  />
+                                </button>
+                              </div>
+                            </div>
+                            ;
+                          </>
+                        );
+                      })}
                 </div>
               </div>
             </div>

@@ -253,8 +253,7 @@ function EditService() {
         [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
         [{ direction: "rtl" }], // text direction
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-        [{ font: [] }],
-        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+
         [{ align: [] }],
 
         ["clean"],
@@ -275,9 +274,8 @@ function EditService() {
     "indent",
     "direction",
     "color",
-    "font",
+
     "background",
-    "size",
   ];
 
   let Drop;

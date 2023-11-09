@@ -205,8 +205,7 @@ function CreateService() {
         [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
         [{ direction: "rtl" }], // text direction
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-        [{ font: [] }],
-        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+
         [{ align: [] }],
 
         ["clean"],
@@ -227,9 +226,8 @@ function CreateService() {
     "indent",
     "direction",
     "color",
-    "font",
+
     "background",
-    "size",
   ];
 
   let Drop;
@@ -747,8 +745,9 @@ function CreateService() {
                           id=""
                           cols="20"
                           rows="1"
-                          placeholder={`Input Topic English For Description ${i + 1
-                            }`}
+                          placeholder={`Input Topic English For Description ${
+                            i + 1
+                          }`}
                           color=" bg-transparent"
                           className=" w-full resize-none rounded-lg border-slate-300 "
                           maxLength={1000}
@@ -771,8 +770,9 @@ function CreateService() {
                           id=""
                           cols="20"
                           rows="1"
-                          placeholder={`Input Topic Chinese For Description ${i + 1
-                            }`}
+                          placeholder={`Input Topic Chinese For Description ${
+                            i + 1
+                          }`}
                           color=" bg-transparent"
                           className=" w-full resize-none rounded-lg border-slate-300 "
                           maxLength={1000}
@@ -800,8 +800,9 @@ function CreateService() {
                             )
                           }
                           name="contentIng"
-                          placeholder={`Input Description english For Description ${i + 1
-                            }`}
+                          placeholder={`Input Description english For Description ${
+                            i + 1
+                          }`}
                           maxLength={1000}
                           className="h-[200px] w-full   "
                         />
@@ -828,8 +829,9 @@ function CreateService() {
                             )
                           }
                           name="contentChi"
-                          placeholder={`Input Description Chinese For Description ${i + 1
-                            }`}
+                          placeholder={`Input Description Chinese For Description ${
+                            i + 1
+                          }`}
                           maxLength={1000}
                           className="h-[200px] my-10 "
                         />
