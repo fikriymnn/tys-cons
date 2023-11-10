@@ -70,7 +70,7 @@ function Article() {
                     </p>
                   </div>
                   <div className="bg-white ">
-                    <div className="relative p-5">
+                    <div className="relative p-5 pb-0">
                       <div className="w-full h-1000px">
                         <h3>{data.date}</h3>
                         <h1 className="md:text-4xl sm:text-2xl text-xl text-center p-5 font-semibold">
@@ -120,12 +120,13 @@ function Article() {
                                 <></>
                               ) : (
                                 <>
-                                  <img
-                                    width={300}
-                                    height={300}
-                                    src={data.img}
-                                    className="mb-5"
-                                  ></img>
+                                  <div className="pb-5">
+                                    <img
+                                      width={300}
+                                      height={300}
+                                      src={data.img}
+                                    ></img>
+                                  </div>
                                 </>
                               )}
                             </>

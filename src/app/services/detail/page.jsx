@@ -85,7 +85,7 @@ function DetailServices() {
                 </p>
               </div>
               <div className="bg-white">
-                <div className="relative p-5 ">
+                <div className="relative px-5 pt-5 ">
                   <p>{data.date}</p>
                   <div className="flex gap-1 mb-2 md:text-base sm:text-sm text-xs">
                     <p>{data.service} </p>
@@ -199,7 +199,7 @@ function DetailServices() {
                           </div>
                           <div></div>
                         </div>
-                        <div className="content pb-10 ql-editor ">
+                        <div className=" pb-10 ql-editor -translate-x-4">
                           <p>
                             {parse(
                               language == "en"
@@ -212,12 +212,14 @@ function DetailServices() {
                           <></>
                         ) : (
                           <>
-                            <img
-                              width={500}
-                              height={300}
-                              src={data.img}
-                              className="mb-5"
-                            ></img>
+                            <div className="pb-5">
+                              <img
+                                width={500}
+                                height={300}
+                                src={data.img}
+                                className=""
+                              ></img>
+                            </div>
                           </>
                         )}
                       </>
