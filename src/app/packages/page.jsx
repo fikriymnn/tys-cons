@@ -47,7 +47,7 @@ function Packages() {
       <NavbarWithCTAButton />
       <div className="bg-slate-100 w-full py-4 mt-20">
         <p className="font-semibold text-3xl text-center pt-10 ">
-          Choose The Best Package
+          Choose The Best Package You Need
         </p>
         <div className="bg-slate-100 w-full pt-4 mt-6 md:grid md:grid-cols-3 grid grid-cols-1  gap-3 px-12 h-full ">
           {dataPackage.map((data, i) => {
@@ -66,7 +66,7 @@ function Packages() {
                   <h5 className="mb-4 bg- text-[20px]  text-black font-semibold text-center  h-[55px] line-clamp-2">
                     {data.titleEnglish}
                   </h5>
-                  <p className="mb-4 text-base font-medium text-blue-500 text-center">
+                  <p className="mb-4 text-[18px] font-medium leading-[28px] text-[#1e70ea] text-center">
                     {language == "en"
                       ? "Rp" + firsPriceRp + "-" + lastPriceRp
                       : firsPriceYuan + "-" + lastPriceYuan + "元"}

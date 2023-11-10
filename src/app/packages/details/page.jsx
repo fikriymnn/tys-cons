@@ -165,7 +165,7 @@ function DetailPackages() {
                   <div className="text-2xl font-medium">
                     <p> {language == "en" ? "Services: " : "服务: "}</p>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 pb-5 pt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-6 pb-5 pt-2 scale-95 gap-5">
                     {data.services.map((data, i, arr) => {
                       const le = data;
                       const firsPriceRp = data.price[0].priceRupiah;
@@ -186,13 +186,13 @@ function DetailPackages() {
                                       backgroundImage: `url(${data.img})`,
                                     }}
                                   ></div>
-                                  <div className="p-3 md:w-full sm:w-full w-11/12 md:h-20">
-                                    <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 md:line-clamp-1 line-clamp-3 ">
+                                  <div className="p-3 md:w-full sm:w-full w-11/12 md:h-32 flex-col flex justify-between">
+                                    <h1 className="font-semibold text-gray-900  md:text-base sm:text-base text-sm mb-2 md:line-clamp-3 line-clamp-3 ">
                                       {language == "en"
                                         ? data.nameIng
                                         : data.nameChi}
                                     </h1>
-                                    <h2 className="md:text-sm sm:text-sm text-sm text-blue-600 line-clamp-1">
+                                    <h2 className="md:text-sm sm:text-sm text-sm text-blue-600 line-clamp-1 ">
                                       {currency == 1
                                         ? "RP. " +
                                           firsPriceRp +
@@ -207,11 +207,11 @@ function DetailPackages() {
                                 </div>
                               </a>
                             </div>
-                            {i < arr.length - 1 && (
+                            {/* {i < arr.length - 1 && (
                               <div className=" flex items-center justify-center w-10 mx-auto  text-center m-2 ">
                                 <span className="text-5xl font-bold">+</span>
                               </div>
-                            )}
+                            )} */}
                           </div>
                         </>
                       );

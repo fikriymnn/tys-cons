@@ -433,19 +433,19 @@ export default function Policies() {
               dataForeigen.map((data, i) => {
                 return i == 0 ? (
                   <>
-                    <p className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
+                    <p className="text-center my-5 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
-                    <div className="flex items-center w-full">
+                    <div className="flex items-center w-full px-5">
                       <Image
                         src={data.img}
-                        width={800}
+                        width={1000}
                         height={400}
                         className="m-auto"
                         alt="Image"
                       />
                     </div>
-                    <div className=" mt-10 px-20 ">
+                    <div className=" mt-10 px-5 ">
                       <div className="ql-editor  -translate-x-4">
                         {parse(
                           language == "en"
@@ -457,7 +457,7 @@ export default function Policies() {
                     {data.content.map((data, i) => {
                       return (
                         <>
-                          <div className="px-20 mb-5">
+                          <div className="px-5 mb-5">
                             <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
                             <div className="flex items-center w-full">
                               <div className=" bg-blue-600 ">
@@ -499,19 +499,19 @@ export default function Policies() {
               })
             ) : (
               <>
-                <p className="text-center my-10 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
+                <p className="text-center my-5 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                   {language == "en" ? titleIng : titleChi}
                 </p>
-                <div className="flex items-center w-full">
+                <div className="flex items-center w-full px-5">
                   <Image
                     src={dataimg}
-                    width={800}
+                    width={1000}
                     height={400}
                     className="m-auto"
                     alt="Image"
                   />
                 </div>
-                <div className=" px-20">
+                <div className=" px-5">
                   <div className="ql-editor  -translate-x-4">
                     {parse(language == "en" ? desIng : desChi)}
                   </div>
@@ -519,7 +519,7 @@ export default function Policies() {
                 {content.map((data, i) => {
                   return (
                     <>
-                      <div className="px-20 mb-16">
+                      <div className="px-5 mb-5">
                         <div className="h-[2px] w-full bg-gray-300 "></div>
                         <div className="flex items-center w-full">
                           <div className=" bg-blue-600 ">
