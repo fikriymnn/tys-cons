@@ -91,7 +91,7 @@ const Home = () => {
   async function getDataArticles4() {
     try {
       const ordersRef = collection(db, "articles");
-      const q = query(ordersRef, orderBy("createdAt", "desc"), limit(4));
+      const q = query(ordersRef, orderBy("createdAt", "desc"), limit(5));
       const querySnapshot = await getDocs(q);
       let data = [];
       querySnapshot.forEach((doc) => {
@@ -561,7 +561,7 @@ const Home = () => {
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
-                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:my-3">
+                  <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:mb-3 md:mt-0">
                     <div className="font-semibold text-xl leading-[30px] hover:underline line-clamp-2">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
