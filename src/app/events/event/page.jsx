@@ -89,10 +89,10 @@ function Event() {
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
                   </div>
-                  <div className="bg-white">
-                    <div className="relative p-5  ">
+                  <div className="bg-white ">
+                    <div className="relative px-5">
                       <div className="w-full">
-                        <div className="">
+                        <div className="pt-3">
                           <p>Posted at: {data.date}</p>
                         </div>
                         <h1 className="md:text-4xl sm:text-2xl text-2xl text-center p-5 font-semibold">
@@ -117,21 +117,21 @@ function Event() {
                           </h3>
                         </div>
                         <div className="bg-gray-400 h-[2px] "></div>
-                        <div className="content  my-5  ql-editor  -translate-x-4">
+                        <div className="content   ql-editor  -translate-x-4">
                           <p>
                             {parse(
                               language == "en"
                                 ? data.descriptionEnglish
                                 : data.descriptionChinese
-                            )}{" "}
+                            )}
                           </p>
                         </div>
 
                         {data.content.map((data, i) => {
                           return (
                             <>
-                              <div className="bg-gray-400 h-[2px] "></div>
-                              <div className="w-100px flex ">
+                              <div className="bg-gray-400 h-[2px]  "></div>
+                              <div className="w-100px flex">
                                 <div className="bg-blue-600 py-1 flex items-center">
                                   <h2 className="mx-5 text-xl text-center font-semibold text-white">
                                     {language == "en"
@@ -153,12 +153,13 @@ function Event() {
                                 <></>
                               ) : (
                                 <>
-                                  <img
-                                    width={500}
-                                    height={300}
-                                    src={data.img}
-                                    className="mb-5"
-                                  ></img>
+                                  <div className="pb-5">
+                                    <img
+                                      width={500}
+                                      height={300}
+                                      src={data.img}
+                                    ></img>
+                                  </div>
                                 </>
                               )}
                             </>

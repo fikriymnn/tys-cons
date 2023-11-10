@@ -82,12 +82,11 @@ function DetailPackages() {
               <div className="flex pb-5 gap-1">
                 <p>Packages </p> <p>&gt;</p>
                 <p className="text-blue-600">
-                  {" "}
                   {data.titleChinese} {data.titleEnglish}
                 </p>
               </div>
               <div className="bg-white">
-                <div className="relative p-5 pt-5">
+                <div className="relative px-5 pt-5">
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-5">
                     <div
                       className="bg-gray-100 md:w-[500px] md:h-[300px]  mt-2 bg-cover bg-center"
@@ -219,7 +218,7 @@ function DetailPackages() {
                     })}
                   </div>
                   <div className="h-[2px] w-full bg-gray-300 mt-5 "></div>
-                  <div className="content pb-5 ql-editor -translate-x-4">
+                  <div className=" ql-editor pb-0 mb-0 -translate-x-4">
                     <p>
                       {parse(
                         language == "en"
@@ -228,12 +227,12 @@ function DetailPackages() {
                       )}
                     </p>
                   </div>
-                  <div className="h-[2px] w-full bg-gray-300 "></div>
+
                   {data.content.map((data, i) => {
                     return (
                       <>
-                        <div className="h-[2px] w-full bg-gray-300 mt-5 "></div>
-                        <div className=" flex mb-2">
+                        <div className="h-[2px] w-full bg-gray-300 "></div>
+                        <div className=" flex ">
                           <p className="bg-blue-600 text-white text-base font-semibold py-2 px-4">
                             {language == "en" ? data.topicIng : data.topicChi}
                           </p>
@@ -248,12 +247,14 @@ function DetailPackages() {
                           <></>
                         ) : (
                           <>
-                            <img
-                              width={500}
-                              height={300}
-                              src={data.img}
-                              alt=""
-                            ></img>
+                            <div className="pb-5">
+                              <img
+                                width={500}
+                                height={300}
+                                src={data.img}
+                                alt=""
+                              ></img>
+                            </div>
                           </>
                         )}
                       </>
