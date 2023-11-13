@@ -27,6 +27,7 @@ import { useSearchParams } from "next/navigation";
 import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
 import { Dropdown } from "flowbite-react";
+import "@/components/admin/editor.css";
 function EditService() {
   const [isAlert, setIsAlert] = useState(false);
   const openAlert = () => {

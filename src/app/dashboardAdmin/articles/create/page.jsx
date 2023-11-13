@@ -22,7 +22,7 @@ import {
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
 import { format } from "date-fns";
-
+import "@/components/admin/editor.css";
 function CreateArticle() {
   const [isAlert, setIsAlert] = useState(false);
   const openAlert = () => {

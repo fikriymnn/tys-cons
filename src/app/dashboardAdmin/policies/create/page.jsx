@@ -25,7 +25,7 @@ import {
 import { db, storage } from "../../../../../firebase/page";
 import DropdownDef1 from "@/components/dropdownDef";
 import DropdownDef2 from "@/components/dropdownDef2";
-
+import "@/components/admin/editor.css";
 function CreatePolicies() {
   const [isAlert, setIsAlert] = useState(false);
   const openAlert = () => {

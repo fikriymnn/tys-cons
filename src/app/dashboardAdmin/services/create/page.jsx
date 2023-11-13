@@ -27,6 +27,7 @@ import dynamic from "next/dynamic";
 import { format } from "date-fns";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
+import "@/components/admin/editor.css";
 function CreateService() {
   const [isAlert, setIsAlert] = useState(false);
   const [titleIng, setTitleIng] = useState("");

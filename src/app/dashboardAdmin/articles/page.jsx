@@ -19,7 +19,7 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import Image from "next/image";
-
+import "@/components/admin/editor.css";
 function ArticlesAdmin() {
   const [dataArticles, setDataArticles] = useState([]);
 

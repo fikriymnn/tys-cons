@@ -25,7 +25,7 @@ import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
-
+import "@/components/admin/editor.css";
 function EditPackage() {
   const [isHidden, setIsHidden] = useState([]);
 
