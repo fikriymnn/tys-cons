@@ -128,10 +128,10 @@ const Home = () => {
         <HomeNavbarWithCTAButton height={500} />
       </div>
       <div className="bg-black">
-        <div class='flex items-center justify-center bg-left bg-cover bg-[url("/assets/images/bgtys.png")] text-white'>
-          <div class="w-full h-full flex items-center bakg py-12 p-5 lg:px-[10%] py-[20vh] lg:py-[30vh]">
-            <div class="flex flex-col text-left lg:max-w-[50%]">
-              <div class="font-semibold text-[1.75rem] lg:text-[2.5rem]">
+        <div className='flex items-center justify-center bg-left bg-cover bg-[url("/assets/images/bgtys.png")] text-white'>
+          <div className="w-full h-full flex items-center bakg py-12 p-5 lg:px-[10%] py-[20vh] lg:py-[30vh]">
+            <div className="flex flex-col text-left lg:max-w-[50%]">
+              <div className="font-semibold text-[1.75rem] lg:text-[2.5rem]">
                 {dataHeading.map((data, i) => {
                   return (
                     <>
@@ -140,7 +140,7 @@ const Home = () => {
                   );
                 })}
               </div>
-              <div class="mt-2 lg:text-[1.2rem]">
+              <div className="mt-2 lg:text-[1.2rem]">
                 {dataParagraph.map((data, i) => {
                   return (
                     <>
@@ -153,7 +153,7 @@ const Home = () => {
               </div>
               <a
                 href="#about"
-                class="bg-primary w-fit px-5 font-semibold py-3 mt-6 flex items-center space-x-2 cursor-pointer hover:brightness-110 transition-all"
+                className="bg-primary w-fit px-5 font-semibold py-3 mt-6 flex items-center space-x-2 cursor-pointer hover:brightness-110 transition-all"
               >
                 <div>GET STARTED</div>
               </a>
