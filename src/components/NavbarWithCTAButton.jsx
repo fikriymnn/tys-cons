@@ -206,7 +206,9 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="/">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar
+                    ? "text-white md:text-[15px]"
+                    : "  text-black my-auto md:text-[15px]  "
                 }
               >
                 {language == "en" ? "Home" : "首页"}
@@ -217,7 +219,9 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="/about" className="navbar-link">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar
+                    ? "text-white md:text-[15px]"
+                    : "  text-black my-auto md:text-[15px]  "
                 }
               >
                 {language == "en" ? "About Us" : "关于我们"}
@@ -231,7 +235,9 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="#" className=" flex gap-1">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar
+                    ? "text-white md:text-[15px]"
+                    : "  text-black my-auto md:text-[15px]  "
                 }
               >
                 {language == "en" ? "Services" : "服务"}
@@ -261,7 +267,7 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="/articles">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar ? "text-white" : "  text-black my-auto md:text-[15px] "
                 }
               >
                 {language == "en" ? "Articles" : "必读"}
@@ -272,7 +278,9 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="/events">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar
+                    ? "text-white md:text-[15px]"
+                    : "  text-black my-auto md:text-[15px]  "
                 }
               >
                 {language == "en" ? "Events" : "活动"}
@@ -283,7 +291,9 @@ export default function NavbarWithCTAButton({ height }) {
             <Navbar.Link href="/policies">
               <span
                 className={
-                  navbar ? "text-white" : "  text-black my-auto md:text-sm  "
+                  navbar
+                    ? "text-white md:text-[15px]"
+                    : "  text-black my-auto md:text-[15px]  "
                 }
               >
                 {language == "en" ? "Policies & Regulations" : "政策法规"}
