@@ -253,7 +253,9 @@ const About = () => {
           <div>
             <form ref={form} onSubmit={(e) => sendMail(e)}>
               <div className="">
-                <h1 className=" text-md pb-3 md:pt-0 sm:pt-0 pt-10">Name</h1>
+                <h1 className=" text-md pb-3 md:pt-0 sm:pt-0 pt-10">
+                  {language == "en" ? "Name" : "名称"}
+                </h1>
                 <input
                   type="text"
                   name="from_name"
@@ -263,7 +265,9 @@ const About = () => {
                 />
               </div>
               <div className=" py-5">
-                <h1 className=" text-md pb-3">Email</h1>
+                <h1 className=" text-md pb-3">
+                  {language == "en" ? "Email" : "电子邮箱"}
+                </h1>
                 <input
                   type="email"
                   name="from_email"
@@ -273,7 +277,9 @@ const About = () => {
                 />
               </div>
               <div className="">
-                <h1 className=" text-md pb-3">Phone Number</h1>
+                <h1 className=" text-md pb-3">
+                  {language == "en" ? "Phone Number" : "电话号"}
+                </h1>
                 <input
                   type="text"
                   name="phone"
@@ -283,7 +289,9 @@ const About = () => {
                 />
               </div>
               <div className=" py-5">
-                <h1 className=" text-md pb-3">Message</h1>
+                <h1 className=" text-md pb-3">
+                  {language == "en" ? "Message" : "请输入您想咨询的问题"}
+                </h1>
                 <textarea
                   name="message"
                   id=""
@@ -302,7 +310,7 @@ const About = () => {
               >
                 <div>
                   <p className=" text-white text-center my-auto ">
-                    Send Message
+                    {language == "en" ? "Send Message" : "发送"}
                   </p>
                 </div>
               </button>

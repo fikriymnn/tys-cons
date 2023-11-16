@@ -23,7 +23,7 @@ function CustomCard({ text, isi, isi2, img, id }) {
             {text}
           </h5>
           <div className="font-normal text-[#6b7280] line-clamp-2 mb-5">
-            {parse(isi)}
+            {isi}
           </div>
           <div className="font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
             {parse(isi2)}

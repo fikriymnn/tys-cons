@@ -23,6 +23,7 @@ import parse from "html-react-parser";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import "react-quill/dist/quill.snow.css";
+import { format } from "date-fns";
 
 function Event() {
   const { language, changeLanguage } = useLanguage();
@@ -63,6 +64,11 @@ function Event() {
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
         {dataEvents.map((data, i) => {
+          const timestamp = data.createdAt.toDate();
+
+          // Format tanggal
+          const formattedDate = format(timestamp, "yyyy-MM-dd");
+
           return (
             <>
               <div className="md:flex justify-center items-center ">
@@ -93,7 +99,10 @@ function Event() {
                     <div className="relative px-5">
                       <div className="w-full">
                         <div className="pt-3">
-                          <p>Posted at: {data.date}</p>
+                          <p>
+                            Posted at:{" "}
+                            {language == "en" ? data.date : formattedDate}
+                          </p>
                         </div>
                         <h1 className="md:text-4xl sm:text-2xl text-2xl text-center p-5 font-semibold">
                           {language == "en"
@@ -110,7 +119,14 @@ function Event() {
                         </div>
                         <div className="font-semibold">
                           <h3 className="my-3 ">
-                            Duration: {data.durationFrom} - {data.durationTo}
+                            Duration:{" "}
+                            {language == "en"
+                              ? data.durationFrom
+                              : data.durationFromValue}{" "}
+                            -{" "}
+                            {language == "en"
+                              ? data.durationTo
+                              : data.durationToValue}
                           </h3>
                           <h3 className="my-3">
                             Time: {data.timeFrom} - {data.timeTo}

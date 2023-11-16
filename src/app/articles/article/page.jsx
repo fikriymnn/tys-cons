@@ -11,7 +11,7 @@ import { db } from "../../../../firebase/page";
 import parser from "html-react-parser";
 import { useLanguage } from "@/context/LanguageContext";
 import "react-quill/dist/quill.snow.css";
-
+import { format } from "date-fns";
 function Article() {
   const { language, changeLanguage } = useLanguage();
 
@@ -41,6 +41,11 @@ function Article() {
       <NavbarWithCTAButton />
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5">
         {dataArticle.map((data, i) => {
+          const timestamp = data.createdAt.toDate();
+
+          // Format tanggal
+          const formattedDate = format(timestamp, "yyyy-MM-dd");
+
           return (
             <>
               <div className="md:flex justify-center items-center ">
@@ -72,7 +77,7 @@ function Article() {
                   <div className="bg-white ">
                     <div className="relative p-5 pb-0">
                       <div className="w-full h-1000px">
-                        <h3>{data.date}</h3>
+                        <h3>{language == "en" ? data.date : formattedDate}</h3>
                         <h1 className="md:text-4xl sm:text-2xl text-xl text-center p-5 font-semibold">
                           {language == "en"
                             ? data.titleEnglish

@@ -19,7 +19,7 @@ import {
 } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useEffect, useState } from "react";
-
+import { format } from "date-fns";
 import { useLanguage } from "@/context/LanguageContext";
 
 // async function getDataArticles() {
@@ -109,39 +109,44 @@ function Articles() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
             {search == ""
               ? dataArticle.map((data, i) => {
-                return (
-                  <>
-                    <ArticleCard
-                      key={i}
-                      date={data.date}
-                      id={data.id}
-                      img={data.img}
-                      title={
-                        language == "en"
-                          ? data.titleEnglish
-                          : data.titleChinese
-                      }
-                    />
-                  </>
-                );
-              })
+                  const timestamp = data.createdAt.toDate();
+
+                  // Format tanggal
+                  const formattedDate = format(timestamp, "yyyy-MM-dd");
+
+                  return (
+                    <>
+                      <ArticleCard
+                        key={i}
+                        date={language == "en" ? data.date : formattedDate}
+                        id={data.id}
+                        img={data.img}
+                        title={
+                          language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese
+                        }
+                      />
+                    </>
+                  );
+                })
               : dataArticleResult.map((data, i) => {
-                return (
-                  <>
-                    <ArticleCard
-                      key={i}
-                      date={data.date}
-                      id={data.id}
-                      img={data.img}
-                      title={
-                        language == "en"
-                          ? data.titleEnglish
-                          : data.titleChinese
-                      }
-                    />
-                  </>
-                );
-              })}
+                  return (
+                    <>
+                      <ArticleCard
+                        key={i}
+                        date={data.date}
+                        id={data.id}
+                        img={data.img}
+                        title={
+                          language == "en"
+                            ? data.titleEnglish
+                            : data.titleChinese
+                        }
+                      />
+                    </>
+                  );
+                })}
           </div>
         </div>
       </div>

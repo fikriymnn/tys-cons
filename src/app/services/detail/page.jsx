@@ -18,6 +18,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { format } from "date-fns";
 
 import { db, storage } from "../../../../firebase/page";
 import React from "react";
@@ -72,6 +73,11 @@ function DetailServices() {
     <>
       <NavbarWithCTAButton />
       {dataService.map((data, i) => {
+        const timestamp = data.createdAt.toDate();
+
+        // Format tanggal
+        const formattedDate = format(timestamp, "yyyy-MM-dd");
+
         return (
           <>
             <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 q">
@@ -86,7 +92,7 @@ function DetailServices() {
               </div>
               <div className="bg-white">
                 <div className="relative px-5 pt-5 ">
-                  <p>{data.date}</p>
+                  <p> {language == "en" ? data.date : formattedDate}</p>
                   <div className="flex gap-1 mb-2 md:text-base sm:text-sm text-xs">
                     <p>{data.service} </p>
                     <p>&gt;</p>
