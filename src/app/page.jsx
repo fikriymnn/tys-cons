@@ -27,6 +27,7 @@ import {
 import { db, storage, firebaseAnalytics } from "../../firebase/page";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState, useEffect } from "react";
+import { format } from "date-fns";
 
 const Home = () => {
   const { language, changeLanguage } = useLanguage();
@@ -155,7 +156,7 @@ const Home = () => {
                 href="#about"
                 className="bg-primary w-fit px-5 font-semibold py-3 mt-6 flex items-center space-x-2 cursor-pointer hover:brightness-110 transition-all"
               >
-                <div>GET STARTED</div>
+                <div>{language == "en" ? "GET STARTED" : "开始看看"}</div>
               </a>
             </div>
           </div>
@@ -536,6 +537,11 @@ const Home = () => {
 
       <div className="md:grid md:grid-cols-3 gap-4 px-10 ">
         {dataArticle.map((data, i) => {
+          const timestamp = data.createdAt.toDate();
+
+          // Format tanggal
+          const formattedDate = format(timestamp, "yyyy-MM-dd");
+
           return (
             <>
               <div key={i}>
@@ -543,7 +549,7 @@ const Home = () => {
                   text={
                     language == "en" ? data.titleEnglish : data.titleChinese
                   }
-                  isi={data.date}
+                  isi={language == "en" ? data.date : formattedDate}
                   isi2={
                     language == "en"
                       ? data.content[0].contentIng
@@ -558,6 +564,10 @@ const Home = () => {
         })}
         <div className=" flex flex-col">
           {dataArticle4.map((data, i) => {
+            const timestamp = data.createdAt.toDate();
+
+            // Format tanggal
+            const formattedDate = format(timestamp, "yyyy-MM-dd");
             return (
               <>
                 <a key={i} href={`/articles/article?id=${data.id}`}>
@@ -565,7 +575,9 @@ const Home = () => {
                     <div className="font-semibold text-xl leading-[30px] hover:underline line-clamp-2">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </div>
-                    <h1 className="text-[#6b7280]">{data.date}</h1>
+                    <h1 className="text-[#6b7280]">
+                      {language == "en" ? data.date : formattedDate}
+                    </h1>
                   </div>
                 </a>
               </>
@@ -636,7 +648,11 @@ const Home = () => {
                     <div className="mb-auto pb-3 ">
                       <div className="flex space-x-3">
                         <p className="text-base my-2 font-normal leading-[24px] text-black ">
-                          <span className="">Package Includes :</span>
+                          <span className="">
+                            {language == "en"
+                              ? "package Includes:"
+                              : "套餐包括:"}
+                          </span>
                         </p>
                       </div>
                       {data.services.map((data, i) => {
@@ -644,9 +660,8 @@ const Home = () => {
                           <>
                             <p key={i} className="flex space-x-3 my-3 ">
                               <p className="text-base font-normal leading-[24px] text-black line-clamp-1 ">
-                                &bull;{" "}
+                                &bull;
                                 <span className="px-2">
-                                  {" "}
                                   {language == "en"
                                     ? data.nameIng
                                     : data.nameChi}
@@ -662,7 +677,7 @@ const Home = () => {
                       className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
                       href={`/packages/details?id=${data.id}`}
                     >
-                      <p>DETAILS</p>
+                      <p>{language == "en" ? "DETAILS" : "更详细"}</p>
                     </a>
                   </div>
                 </>
@@ -698,7 +713,9 @@ const Home = () => {
                   <div className="mb-auto pb-3 ">
                     <div className="flex space-x-3">
                       <p className="text-base my-2 font-normal leading-[24px] text-black ">
-                        <span className="">Package Includes :</span>
+                        <span className="">
+                          {language == "en" ? "package Includes:" : "套餐包括:"}
+                        </span>
                       </p>
                     </div>
                     {data.services.map((data, i) => {
@@ -706,9 +723,8 @@ const Home = () => {
                         <>
                           <p key={i} className="flex space-x-3 my-3 ">
                             <p className="text-base font-normal leading-[24px] text-black line-clamp-1 ">
-                              &bull;{" "}
+                              &bull;
                               <span className="px-2">
-                                {" "}
                                 {language == "en" ? data.nameIng : data.nameChi}
                               </span>
                             </p>
@@ -722,7 +738,7 @@ const Home = () => {
                     className=" inline-flex w-full justify-center  bg-primary px-5 py-2.5 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-cyan-200 "
                     href={`/packages/details?id=${data.id}`}
                   >
-                    <p>DETAILS</p>
+                    <p>{language == "en" ? "DETAILS" : "更详细"}</p>
                   </a>
                 </div>
               </>
@@ -732,8 +748,8 @@ const Home = () => {
         <div className="pb-16 pt-10 px-12">
           <div className="flex items-center justify-center font-medium text-blue-600 text-xl">
             <a href="/packages">
-              {language == "en" ? "See More Packages" : "See More Packages"}
-            </a>{" "}
+              {language == "en" ? "See More Packages" : "查看更多套餐"}
+            </a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
