@@ -20,7 +20,6 @@ import { db, storage, firebaseAnalytics } from "../../../firebase/page";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
 import { LanguageProvider } from "@/context/LanguageContext";
 const About = () => {
   const { language, changeLanguage } = useLanguage();
@@ -160,25 +159,7 @@ const About = () => {
   }
   const form = useRef();
 
-  const sendMail = async (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_lu2s5ci",
-        "template_9nqk4cb",
-        form.current,
-        "-Ogru2wb76QTdI6Ci"
-      )
-      .then(
-        (result) => {
-          alert("message send");
-        },
-        (error) => {
-          alert("message error");
-        }
-      );
-  };
-
+ 
   return (
     <>
       <NavbarWithCTAButton />
@@ -251,7 +232,7 @@ const About = () => {
             <input type="submit" value="Send" />
           </form> */}
           <div>
-            <form ref={form} onSubmit={(e) => sendMail(e)}>
+            <form >
               <div className="">
                 <h1 className=" text-md pb-3 md:pt-0 sm:pt-0 pt-10">
                   {language == "en" ? "Name" : "名称"}
