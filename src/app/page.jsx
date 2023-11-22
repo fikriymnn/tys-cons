@@ -164,7 +164,7 @@ const Home = () => {
       </div>
 
       {/* ==== SERVICES ==== */}
-      <p className="font-semibold text-3xl text-center pt-14 pb">
+      <p id="about" className="font-semibold text-3xl text-center pt-14 pb">
         {language == "en" ? "What Services We Offer" : "我们提供的服务"}
       </p>
       <div
