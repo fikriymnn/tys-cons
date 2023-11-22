@@ -323,9 +323,9 @@ const CustomFooter = () => {
           <div className=" flex gap-4">
             <img src={barcode} alt="" className=" w-40" />
             <div className=" ">
-              <a href={fb}>
+              <a href={`https://wa.me/${fb}`}>
                 <img
-                  src="/assets/images/facebook-circular-logo.png"
+                  src="/assets/images/wa.svg"
                   alt=""
                   className=" w-6 h-6 hover:scale-110"
                 />

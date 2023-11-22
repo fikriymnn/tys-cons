@@ -511,7 +511,7 @@ function AboutAdmin() {
                 <div className="flex bg-slate-300 w-full  rounded-md">
                   <div className="w-full flex h-20">
                     <div className="w-2/12  font-semibold flex justify-start items-center p-2">
-                      <p>Facebook</p>
+                      <p>WhatsApp</p>
                     </div>
                     <div className="w-8/12 border-s-2  flex justify-start items-center p-2">
                       {dataAboutFacebook.length > 0 &&
@@ -520,9 +520,9 @@ function AboutAdmin() {
                             <>
                               <a
                                 className="hover:text-blue-600"
-                                href={`${data.link}`}
+                                href={`https://wa.me/${data.link}`}
                               >
-                                {data.link}
+                                {`https://wa.me/${data.link}`}
                               </a>
                             </>
                           );

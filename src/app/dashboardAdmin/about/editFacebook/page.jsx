@@ -119,9 +119,9 @@ function EditFacebook() {
         </div>
 
         <div className="max-h-[500px] overflow-y-auto">
-          <div className=" flex p-5 px-20 ">
+          <div className=" flex ">
             <div className=" w-2/12 text-end p-3 py-5">
-              <p>Link facebook :</p>
+              <p>No WhatsApp :</p>
             </div>
             <div className=" w-10/12 p-3">
               <textarea
@@ -130,12 +130,14 @@ function EditFacebook() {
                 name=""
                 id=""
                 cols="20"
-                rows="5"
+                rows="1"
                 placeholder="Enter New Text"
                 color=" bg-transparent"
                 className=" w-full resize-none rounded-lg border-slate-300 "
                 maxLength={1000}
               ></textarea>
+              <p className="text-red-600">Use Country code</p>
+              <p >ex: 62812345678</p>
             </div>
           </div>
 
