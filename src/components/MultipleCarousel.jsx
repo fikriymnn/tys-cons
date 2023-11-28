@@ -70,7 +70,7 @@ function MultipleCarousel() {
   return (
     <div onMouseEnter={() => setHide(true)} onMouseLeave={() => setHide(false)}>
       <Carousel
-        className="pb-16 mb-10 md:w-full"
+        className="pb-8 mb-10 md:w-full "
         responsive={responsive}
         autoPlay={true}
         infinite={"true"}
@@ -78,11 +78,10 @@ function MultipleCarousel() {
         autoPlaySpeed={2000}
         arrows={hide == true ? true : false}
       >
-        
         {dataClient.map((data, i) => {
           return (
             <>
-              <div className="text-white flex justify-center items-center h-[80px]">
+              <div className="text-white flex justify-center items-center h-full">
                 <Image
                   key={i}
                   className="md:w-[200px] w-32"
@@ -91,11 +90,10 @@ function MultipleCarousel() {
                   height={200}
                   alt=""
                 />
-               </div>
+              </div>
             </>
           );
         })}
-          
       </Carousel>
     </div>
   );
