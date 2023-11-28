@@ -108,13 +108,13 @@ function Events() {
                                   : data.titleChinese}
                               </h1>
                               <div>
-                                <h2 className="flex text-base gap-1 font-medium text-gray-800">
+                                <h2 className="md:flex text-[11px] md:text-base md:gap-1 font-medium text-gray-800">
                                   <h3 className="mt-2">
                                     {language == "en"
                                       ? data.durationFrom
                                       : data.durationFromValue}{" "}
                                   </h3>
-                                  <p className="text-lg translate-y-[4px]">
+                                  <p className="text-lg translate-y-[1px] md:translate-y-[4px]">
                                     &#8226;
                                   </p>
                                   <h3 className="mt-2">{data.timeFrom}</h3>
