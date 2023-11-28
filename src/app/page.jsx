@@ -650,7 +650,7 @@ const Home = () => {
                         <p className="text-base my-2 font-normal leading-[24px] text-black ">
                           <span className="">
                             {language == "en"
-                              ? "package Includes:"
+                              ? "Package Includes:"
                               : "套餐包括:"}
                           </span>
                         </p>
@@ -714,7 +714,7 @@ const Home = () => {
                     <div className="flex space-x-3">
                       <p className="text-base my-2 font-normal leading-[24px] text-black ">
                         <span className="">
-                          {language == "en" ? "package Includes:" : "套餐包括:"}
+                          {language == "en" ? "Package Includes:" : "套餐包括:"}
                         </span>
                       </p>
                     </div>
