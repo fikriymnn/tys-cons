@@ -249,8 +249,7 @@ function DetailPackages() {
                           <>
                             <div className="pb-5">
                               <img
-                                width={500}
-                                height={300}
+                                className="w-full md:w-4/6"
                                 src={data.img}
                                 alt=""
                               ></img>

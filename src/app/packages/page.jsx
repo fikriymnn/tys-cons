@@ -79,7 +79,7 @@ function Packages() {
                       <p className="leading-[24px] text-base my-2 font-normal  text-black ">
                         <span className="">
                           {language == "en"
-                            ? "package Includes :"
+                            ? "Package Includes :"
                             : "套餐包括:"}
                         </span>
                       </p>
