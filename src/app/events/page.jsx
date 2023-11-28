@@ -101,15 +101,31 @@ function Events() {
                               className="bg-blue-700 md:grid grid-cols-1 h-28 md:h-36 bg-cover bg-no-repeat bg-center"
                               style={{ backgroundImage: `url(${data.img})` }}
                             ></div>
-                            <div className="p-3 ">
-                              <h1 className="font-semibold text-gray-900 line-clamp-2  ">
+                            <div className="p-3 flex flex-col justify-between h-[155px]">
+                              <h1 className="font-semibold text-black line-clamp-2  ">
                                 {language == "en"
                                   ? data.titleEnglish
                                   : data.titleChinese}
                               </h1>
-                              <h2 className="">
-                                {language == "en" ? data.date : formattedDate}
-                              </h2>
+                              <div>
+                                <h2 className="flex text-base gap-1 font-medium text-gray-800">
+                                  <h3 className="mt-2">
+                                    {language == "en"
+                                      ? data.durationFrom
+                                      : data.durationFromValue}{" "}
+                                  </h3>
+                                  <p className="text-lg translate-y-[4px]">
+                                    &#8226;
+                                  </p>
+                                  <h3 className="mt-2">{data.timeFrom}</h3>
+                                </h2>
+                                <h2 className="text-gray-500 ">
+                                  {language == "en" ? "Bali" : "data.locChi"}
+                                </h2>
+                                <h2 className="font-medium text-gray-800">
+                                  {language == "en" ? "Rp30000" : "data.feeChi"}
+                                </h2>
+                              </div>
                             </div>
                           </div>
                         </a>
