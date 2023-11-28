@@ -197,7 +197,9 @@ function ProductCertifications() {
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="flex pb-5">
           <p>{language == "en" ? "Services" : "服务"}</p>{" "}
-          <p className="text-blue-600 ml-1">/ Product Certifications</p>
+          <p className="text-blue-600 ml-1">
+            &gt; {language == "en" ? "Product Certification" : "产品认证"}
+          </p>
         </div>
         <div className="bg-white">
           <div className="p-5 pt-3">
@@ -205,49 +207,54 @@ function ProductCertifications() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${comp == 0
+                  className={`${
+                    comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "BPOM Food & Drug " : "BPOM 食药化妆"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${comp == 1
+                  className={`${
+                    comp == 1
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "ISO Management System" : "ISO 管理体系"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${comp == 2
+                  className={`${
+                    comp == 2
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "SNI National Standard" : "SNI 国家标准"}
                 </button>
                 <button
                   onClick={() => setComp(3)}
-                  className={`${comp == 3
+                  className={`${
+                    comp == 3
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "Medical and Hygiene" : "医疗卫生 PKRT"}
                 </button>
                 <button
                   onClick={() => setComp(4)}
-                  className={`${comp == 4
+                  className={`${
+                    comp == 4
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en"
                     ? "POSTEL Telecommunication"
@@ -255,19 +262,21 @@ function ProductCertifications() {
                 </button>
                 <button
                   onClick={() => setComp(5)}
-                  className={`${comp == 5
+                  className={`${
+                    comp == 5
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Alcohol and Cigarette" : "酒和烟证"}
                 </button>
                 <button
                   onClick={() => setComp(6)}
-                  className={`${comp == 6
+                  className={`${
+                    comp == 6
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Other Certification" : "其他证"}
                 </button>

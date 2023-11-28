@@ -30,6 +30,7 @@ import { Label, Radio } from "flowbite-react";
 import NavbarWithCTAButton from "@/components/NavbarWithCTAButton";
 import { useLanguage } from "@/context/LanguageContext";
 import "react-quill/dist/quill.snow.css";
+import { data } from "autoprefixer";
 
 function DetailServices() {
   const { language, changeLanguage } = useLanguage();
@@ -74,15 +75,76 @@ function DetailServices() {
       <NavbarWithCTAButton />
       {dataService.map((data, i) => {
         const timestamp = data.createdAt.toDate();
+        let servicech = "";
+        if (data.service == "Basic Establishment Services") {
+          servicech = "基础服务";
+        } else if (data.service == "Product Certifications") {
+          servicech = "产品认证";
+        } else if (data.service == "Finance Accounting Tax") {
+          servicech = "财税会计服务";
+        } else if (data.service == "Talent Recruitment HR") {
+          servicech = "人才招聘和人事";
+        } else if (data.service == "Legal Services") {
+          servicech = "法律服务";
+        }
 
-        // Format tanggal
+        let subServicech = "";
+        if (data.subService == "Company Registration") {
+          subServicech = "公司注册";
+        } else if (data.subService == "Visa Registration") {
+          subServicech = "签证办理";
+        } else if (data.subService == "Trademark") {
+          subServicech = "商标";
+        } else if (data.subService == "Office Administration") {
+          subServicech = "行政办公";
+        } else if (data.subService == "Construction Certifications") {
+          subServicech = "建筑工程";
+        } else if (data.subService == "Factory Licenses") {
+          subServicech = "工厂许可";
+        } else if (data.subService == "BPOM Food and Drug") {
+          subServicech = "BPOM 食药化妆";
+        } else if (data.subService == "ISO Management System") {
+          subServicech = "ISO 管理体系";
+        } else if (data.subService == "SNI National Standard") {
+          subServicech = "SNI 国家标准";
+        } else if (data.subService == "Medical and Hygiene") {
+          subServicech = "医疗卫生 PKRT";
+        } else if (data.subService == "POSTEL Telecommunication") {
+          subServicech = "POSTEL 电通信";
+        } else if (data.subService == "Alcohol and Cigarette") {
+          subServicech = "酒和烟证";
+        } else if (data.subService == "Other Certification") {
+          subServicech = "其他证";
+        } else if (data.subService == "Finance Services") {
+          subServicech = "财务服务";
+        } else if (data.subService == "Accounting Services") {
+          subServicech = "会计服务";
+        } else if (data.subService == "Tax Services") {
+          subServicech = "税务服务";
+        } else if (data.subService == "Translator Assistant") {
+          subServicech = "翻译助理";
+        } else if (data.subService == "Finance Accounting Tax") {
+          subServicech = "财税会计";
+        } else if (data.subService == "Marketing Sales") {
+          subServicech = "销售和营销";
+        } else if (data.subService == "Management Candidate") {
+          subServicech = "管理人选";
+        } else if (data.subService == "HR Management Service") {
+          subServicech = "人事管理服务";
+        } else if (data.subService == "Legal Administration") {
+          subServicech = "法律行政";
+        }
+
         const formattedDate = format(timestamp, "yyyy-MM-dd");
 
         return (
           <>
             <div key={i} className="bg-gray-200 pt-28 pb-5 ps-5 pe-5 q">
               <div className="flex pb-5 gap-1">
-                <a href="/services" onClick={() => console.log(lastIndex)}>
+                <a
+                  href="/services/basicEstablish?comp=0"
+                  onClick={() => console.log(lastIndex)}
+                >
                   {language == "en" ? "Services" : "服务"}
                 </a>
                 <p>&gt;</p>
@@ -94,9 +156,9 @@ function DetailServices() {
                 <div className="relative px-5 pt-5 ">
                   <p> {language == "en" ? data.date : formattedDate}</p>
                   <div className="flex gap-1 mb-2 md:text-base sm:text-sm text-xs">
-                    <p>{data.service} </p>
+                    <p>{language == "en" ? data.service : servicech} </p>
                     <p>&gt;</p>
-                    <p> {data.subService}</p>
+                    <p> {language == "en" ? data.subService : subServicech}</p>
                   </div>
 
                   <div className="md:flex sm:grid sm:grid-cols-1 grid grid-cols-1 mb-3">
@@ -220,10 +282,8 @@ function DetailServices() {
                           <>
                             <div className="pb-5">
                               <img
-                                width={500}
-                                height={300}
+                                className="w-full md:w-4/6"
                                 src={data.img}
-                                className=""
                               ></img>
                             </div>
                           </>

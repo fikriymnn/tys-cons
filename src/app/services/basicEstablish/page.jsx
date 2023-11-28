@@ -170,7 +170,8 @@ function Events() {
         <div className="flex pb-5">
           <p> {language == "en" ? "Services" : "服务"}</p>{" "}
           <p className="text-blue-600 ml-1">
-            {language == "en" ? "/ Basic Establishment Services" : "/基础服务"}
+            &gt;{" "}
+            {language == "en" ? "Basic Establishment Services" : "基础服务"}
           </p>
         </div>
         <div className="bg-white">

@@ -104,7 +104,9 @@ function FinanceAccountingTax() {
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="flex pb-5">
           <p>{language == "en" ? "Services" : "服务"}</p>{" "}
-          <p className="text-blue-600 ml-1">/ Finance Accounting Tax</p>
+          <p className="text-blue-600 ml-1">
+            &gt; {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
+          </p>
         </div>
         <div className="bg-white">
           <div className="p-5 pt-3">
@@ -112,29 +114,32 @@ function FinanceAccountingTax() {
               <div className="flex gap-9 border-b md:w-full sm:w-[1000px] w-[1100px]  md:h-full sm:h-full h-16 ">
                 <button
                   onClick={() => setComp(0)}
-                  className={`${comp == 0
+                  className={`${
+                    comp == 0
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {" "}
                   {language == "en" ? "Finance Services" : "财务服务"}
                 </button>
                 <button
                   onClick={() => setComp(1)}
-                  className={`${comp == 1
+                  className={`${
+                    comp == 1
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Accounting Services" : "会计服务"}
                 </button>
                 <button
                   onClick={() => setComp(2)}
-                  className={`${comp == 2
+                  className={`${
+                    comp == 2
                       ? "text-blue-600 border-b pb-2 border-blue-600"
                       : "text-black border-0"
-                    } md:text-base sm:text-sm text-sm`}
+                  } md:text-base sm:text-sm text-sm`}
                 >
                   {language == "en" ? "Tax Services" : "税务服务"}
                 </button>
