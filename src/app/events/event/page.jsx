@@ -75,7 +75,9 @@ function Event() {
                 <div></div>
                 <div className="md:w-4/6 ">
                   <div className="py-2 flex gap-1 ">
-                    <a href="/events">Events</a>
+                    <a href="/events">
+                      {language == "en" ? "Events" : "活动 "}
+                    </a>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -100,7 +102,7 @@ function Event() {
                       <div className="w-full">
                         <div className="pt-3">
                           <p>
-                            Posted at:{" "}
+                            {language == "en" ? " Posted at: " : "发表日期: "}
                             {language == "en" ? data.date : formattedDate}
                           </p>
                         </div>
@@ -118,8 +120,12 @@ function Event() {
                           />
                         </div>
                         <div className="font-semibold">
-                          <h3 className="my-3 ">
-                            Duration:{" "}
+                          <h3 className="mt-2">
+                            {language == "en" ? " Location: " : "活动地点: "}
+                            data.loc
+                          </h3>
+                          <h3 className="mt-2">
+                            {language == "en" ? " Durations: " : "活动期间: "}
                             {language == "en"
                               ? data.durationFrom
                               : data.durationFromValue}{" "}
@@ -128,8 +134,13 @@ function Event() {
                               ? data.durationTo
                               : data.durationToValue}
                           </h3>
-                          <h3 className="my-3">
-                            Time: {data.timeFrom} - {data.timeTo}
+                          <h3 className="mt-2">
+                            {language == "en" ? " Time: " : " 活动时间: "}{" "}
+                            {data.timeFrom} - {data.timeTo}
+                          </h3>
+                          <h3 className="mb-3  mt-2">
+                            {language == "en" ? " Fee: " : "费用: "}
+                            {language == "en" ? " Fee " : "Fee chi"}
                           </h3>
                         </div>
                         <div className="bg-gray-400 h-[2px] "></div>
@@ -171,8 +182,7 @@ function Event() {
                                 <>
                                   <div className="pb-5">
                                     <img
-                                      width={500}
-                                      height={300}
+                                      className="w-full md:w-4/6"
                                       src={data.img}
                                     ></img>
                                   </div>
