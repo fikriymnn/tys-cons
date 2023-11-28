@@ -78,10 +78,11 @@ function MultipleCarousel() {
         autoPlaySpeed={2000}
         arrows={hide == true ? true : false}
       >
+         <div className="text-white flex justify-center items-center h-[80px]">
         {dataClient.map((data, i) => {
           return (
             <>
-              <div className="text-white flex justify-center items-center h-[80px]">
+             
                 <Image
                   key={i}
                   className="md:w-[200px] w-32"
@@ -90,10 +91,11 @@ function MultipleCarousel() {
                   height={200}
                   alt=""
                 />
-              </div>
+              
             </>
           );
         })}
+           </div>
       </Carousel>
     </div>
   );
