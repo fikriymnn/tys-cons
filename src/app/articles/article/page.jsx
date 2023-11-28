@@ -127,8 +127,7 @@ function Article() {
                                 <>
                                   <div className="pb-5">
                                     <img
-                                      width={300}
-                                      height={300}
+                                      className="w-full md:w-4/6"
                                       src={data.img}
                                     ></img>
                                   </div>
