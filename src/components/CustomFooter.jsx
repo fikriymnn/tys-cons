@@ -41,21 +41,13 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "wechat");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
-
-      // doc.data() is never undefined for query doc snapshots
 
       data.push(querySnapshot.data());
 
       setWechat(data[0].link);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -64,12 +56,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "phone");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -78,7 +64,7 @@ const CustomFooter = () => {
 
       setPhone(data[0].no);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -87,12 +73,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "paragraph");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -102,7 +82,7 @@ const CustomFooter = () => {
       setChinaParagraph(data[0].chinese);
       setInggrisParagraph(data[0].english);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -111,12 +91,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "linkedin");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -125,7 +99,7 @@ const CustomFooter = () => {
 
       setLinkedin(data[0].link);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -134,12 +108,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "ig");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -148,7 +116,7 @@ const CustomFooter = () => {
 
       setIg(data[0].link);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -157,12 +125,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "heading");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -172,7 +134,7 @@ const CustomFooter = () => {
       setChinaHeading(data[0].chinese);
       setInggrisHeading(data[0].english);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -189,7 +151,7 @@ const CustomFooter = () => {
 
       setAddress(data[0].address);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
   async function getDataAboutBarcode() {
@@ -205,7 +167,7 @@ const CustomFooter = () => {
 
       setBarcode(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
   async function getDataAboutEmail() {
@@ -213,12 +175,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "email");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -227,7 +183,7 @@ const CustomFooter = () => {
 
       setEmail(data[0].email);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
@@ -236,12 +192,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editAbout", "facebook");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -250,7 +200,7 @@ const CustomFooter = () => {
 
       setFb(data[0].link);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
   async function getDataLogoFooter() {
@@ -258,12 +208,6 @@ const CustomFooter = () => {
       const docRef = doc(db, "editHomePage", "logoFooter");
       const querySnapshot = await getDoc(docRef);
 
-      // if (querySnapshot.exists()) {
-      //   console.log("Document data:", querySnapshot.data());
-      // } else {
-      //   // docSnap.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -272,7 +216,7 @@ const CustomFooter = () => {
 
       setLogo(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
   return (
