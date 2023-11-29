@@ -40,7 +40,9 @@ function EditEvent() {
   const searchParams = useSearchParams();
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
-
+  const [location, setLocation] = useState("");
+  const [feeRupiah, setFeeRupiah] = useState("");
+  const [feeYuan, setFeeYuan] = useState("");
   const [durationFrom, setDurationFrom] = useState("");
   const [durationTo, setDurationTo] = useState("");
   const [timeFrom, setTimeFrom] = useState("");
@@ -98,6 +100,9 @@ function EditEvent() {
       setTimeTo(data[0].timeTo);
       setDesChi(data[0].descriptionChinese);
       setDesIng(data[0].descriptionEnglish);
+      setLocation(data[0].location);
+      setFeeRupiah(data[0].feeRupiah);
+      setFeeYuan(data[0].feeYuan);
     } catch (error) {
       alert(error);
     }
@@ -199,8 +204,10 @@ function EditEvent() {
         timeTo: timeTo,
         descriptionEnglish: desIng,
         descriptionChinese: desChi,
-
         content: data,
+        location: location,
+        feeRupiah: feeRupiah,
+        feeYuan: feeYuan,
       });
     } else {
       await updateDoc(todoRef, {
@@ -214,10 +221,11 @@ function EditEvent() {
         timeTo: timeTo,
         descriptionEnglish: desIng,
         descriptionChinese: desChi,
-
         img: downloadURL,
-
         content: data,
+        location: location,
+        feeRupiah: feeRupiah,
+        feeYuan: feeYuan,
       });
     }
 
@@ -422,7 +430,8 @@ function EditEvent() {
             </div>
             <div className=" w-10/12 p-3">
               <input
-                // onChange={(e) => setTimeFrom(e.target.value)}
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 type="text"
                 required
                 placeholder="Insert location"
@@ -516,7 +525,8 @@ function EditEvent() {
             </div>
             <div className=" w-10/12 p-3">
               <input
-                // onChange={(e) => setTimeFrom(e.target.value)}
+                value={feeRupiah}
+                onChange={(e) => setFeeRupiah(e.target.value)}
                 type="text"
                 required
                 placeholder="Insert fee"
@@ -531,7 +541,8 @@ function EditEvent() {
             </div>
             <div className=" w-10/12 p-3">
               <input
-                // onChange={(e) => setTimeFrom(e.target.value)}
+                value={feeYuan}
+                onChange={(e) => setFeeYuan(e.target.value)}
                 type="text"
                 required
                 placeholder="Insert fee"

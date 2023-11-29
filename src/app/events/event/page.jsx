@@ -122,7 +122,7 @@ function Event() {
                         <div className="font-semibold">
                           <h3 className="mt-2">
                             {language == "en" ? " Location: " : "活动地点: "}
-                            data.loc
+                            {data.location}
                           </h3>
                           <h3 className="mt-2">
                             {language == "en" ? " Durations: " : "活动期间: "}
@@ -140,7 +140,7 @@ function Event() {
                           </h3>
                           <h3 className="mb-3  mt-2">
                             {language == "en" ? " Fee: " : "费用: "}
-                            {language == "en" ? " Fee " : "Fee chi"}
+                            {language == "en" ? data.feeRupiah : data.feeYuan}
                           </h3>
                         </div>
                         <div className="bg-gray-400 h-[2px] "></div>

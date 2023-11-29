@@ -36,6 +36,9 @@ function CreateEvent() {
 
   const [titleIng, setTitleIng] = useState("");
   const [titleChi, setTitleChi] = useState("");
+  const [location, setLocation] = useState("");
+  const [feeRupiah, setFeeRupiah] = useState("");
+  const [feeYuan, setFeeYuan] = useState("");
   const [durationFrom, setDurationFrom] = useState("");
   const [durationTo, setDurationTo] = useState("");
   const [timeFrom, setTimeFrom] = useState("");
@@ -151,10 +154,12 @@ function CreateEvent() {
       descriptionEnglish: desIng,
       descriptionChinese: desChi,
       createdAt: today,
-
       img: downloadURL,
       date: date,
       content: data,
+      location: location,
+      feeRupiah: feeRupiah,
+      feeYuan: feeYuan,
     });
 
     alert("success");
@@ -353,7 +358,7 @@ function CreateEvent() {
               </div>
               <div className=" w-10/12 p-3">
                 <input
-                  // onChange={(e) => setTimeFrom(e.target.value)}
+                  onChange={(e) => setLocation(e.target.value)}
                   type="text"
                   required
                   placeholder="Insert Location"
@@ -448,7 +453,7 @@ function CreateEvent() {
               </div>
               <div className=" w-10/12 p-3">
                 <input
-                  // onChange={(e) => setTimeFrom(e.target.value)}
+                  onChange={(e) => setFeeRupiah(e.target.value)}
                   type="text"
                   required
                   placeholder="Insert fee"
@@ -463,7 +468,7 @@ function CreateEvent() {
               </div>
               <div className=" w-10/12 p-3">
                 <input
-                  // onChange={(e) => setTimeFrom(e.target.value)}
+                  onChange={(e) => setFeeYuan(e.target.value)}
                   type="text"
                   required
                   placeholder="Insert fee"

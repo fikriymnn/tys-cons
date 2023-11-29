@@ -120,10 +120,12 @@ function Events() {
                                   <h3 className="mt-2">{data.timeFrom}</h3>
                                 </h2>
                                 <h2 className="text-gray-500 ">
-                                  {language == "en" ? "Bali" : "data.locChi"}
+                                  {data.location}
                                 </h2>
                                 <h2 className="font-medium text-gray-800">
-                                  {language == "en" ? "Rp30000" : "data.feeChi"}
+                                  {language == "en"
+                                    ? data.feeRupiah
+                                    : data.feeYuan}
                                 </h2>
                               </div>
                             </div>
