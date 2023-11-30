@@ -29,6 +29,7 @@ function ArticlePage({ dataArticle }) {
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="bg-white ">
           <div className="relative p-5 pt-10">
+            <button onClick={() => console.log(dataArticle)}>tess</button>
             <div className="relative">
               <input
                 type="text"
@@ -58,15 +59,15 @@ function ArticlePage({ dataArticle }) {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-5 pb-5">
             {search == ""
               ? dataArticle.map((data, i) => {
-                  //   const timestamp = data.createdAt.toDate();
-
+                  const secon = data.createdAt.seconds;
+                  const date = new Date(secon * 1000);
                   // Format tanggal
-                  //const formattedDate = format(timestamp, "yyyy-MM-dd");
+                  const formattedDate = format(date, "yyyy-MM-dd");
 
                   return (
                     <ArticleCard
                       key={i}
-                      date={language == "en" ? data.date : data.date}
+                      date={language == "en" ? data.date : formattedDate}
                       id={data.id}
                       img={data.img}
                       title={
@@ -76,10 +77,14 @@ function ArticlePage({ dataArticle }) {
                   );
                 })
               : dataArticleResult.map((data, i) => {
+                  const secon = data.createdAt.seconds;
+                  const date = new Date(secon * 1000);
+                  // Format tanggal
+                  const formattedDate = format(date, "yyyy-MM-dd");
                   return (
                     <ArticleCard
                       key={i}
-                      date={data.date}
+                      date={language == "en" ? data.date : formattedDate}
                       id={data.id}
                       img={data.img}
                       title={

@@ -110,31 +110,30 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
               <div className="border-y border-white">
                 {forigent.map((data, i) => {
                   return (
-                    <>
-                      <div
-                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
-                          selectedDetail1 == i ? "bg-blue-900" : ""
-                        }`}
-                        onClick={() => {
-                          setContent(data.content);
-                          setTitleChi(data.titleChinese);
-                          setTitleIng(data.titleEnglish);
-                          setDataImg(data.img);
-                          setDesIng(data.descriptionEnglish);
-                          setDesChi(data.descriptionChinese);
-                          setSelectedDetail1(i);
-                          setSelectedDetail2();
-                          setSelectedDetail3();
-                          setSelectedDetail4();
-                        }}
-                      >
-                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {language == "en"
-                            ? data.subCategoryEnglish
-                            : data.subCategoryChinese}
-                        </p>
-                      </div>
-                    </>
+                    <div
+                      key={i}
+                      className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
+                        selectedDetail1 == i ? "bg-blue-900" : ""
+                      }`}
+                      onClick={() => {
+                        setContent(data.content);
+                        setTitleChi(data.titleChinese);
+                        setTitleIng(data.titleEnglish);
+                        setDataImg(data.img);
+                        setDesIng(data.descriptionEnglish);
+                        setDesChi(data.descriptionChinese);
+                        setSelectedDetail1(i);
+                        setSelectedDetail2();
+                        setSelectedDetail3();
+                        setSelectedDetail4();
+                      }}
+                    >
+                      <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                        {language == "en"
+                          ? data.subCategoryEnglish
+                          : data.subCategoryChinese}
+                      </p>
+                    </div>
                   );
                 })}
               </div>
@@ -172,31 +171,30 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
               <div className="border-y border-white">
                 {tax.map((data, i) => {
                   return (
-                    <>
-                      <div
-                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
-                          selectedDetail2 == i ? "bg-blue-900" : ""
-                        }`}
-                        onClick={() => {
-                          setContent(data.content);
-                          setTitleChi(data.titleChinese);
-                          setTitleIng(data.titleEnglish);
-                          setDataImg(data.img);
-                          setDesIng(data.descriptionEnglish);
-                          setDesChi(data.descriptionChinese);
-                          setSelectedDetail2(i);
-                          setSelectedDetail3();
-                          setSelectedDetail4();
-                          setSelectedDetail1();
-                        }}
-                      >
-                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {language == "en"
-                            ? data.subCategoryEnglish
-                            : data.subCategoryChinese}
-                        </p>
-                      </div>
-                    </>
+                    <div
+                      key={i}
+                      className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
+                        selectedDetail2 == i ? "bg-blue-900" : ""
+                      }`}
+                      onClick={() => {
+                        setContent(data.content);
+                        setTitleChi(data.titleChinese);
+                        setTitleIng(data.titleEnglish);
+                        setDataImg(data.img);
+                        setDesIng(data.descriptionEnglish);
+                        setDesChi(data.descriptionChinese);
+                        setSelectedDetail2(i);
+                        setSelectedDetail3();
+                        setSelectedDetail4();
+                        setSelectedDetail1();
+                      }}
+                    >
+                      <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                        {language == "en"
+                          ? data.subCategoryEnglish
+                          : data.subCategoryChinese}
+                      </p>
+                    </div>
                   );
                 })}
               </div>
@@ -234,31 +232,30 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
               <div className="border-y border-white">
                 {labor.map((data, i) => {
                   return (
-                    <>
-                      <div
-                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
-                          selectedDetail3 == i ? "bg-blue-900" : ""
-                        }`}
-                        onClick={() => {
-                          setContent(data.content);
-                          setTitleChi(data.titleChinese);
-                          setTitleIng(data.titleEnglish);
-                          setDataImg(data.img);
-                          setDesIng(data.descriptionEnglish);
-                          setDesChi(data.descriptionChinese);
-                          setSelectedDetail3(i);
-                          setSelectedDetail2();
-                          setSelectedDetail1();
-                          setSelectedDetail4();
-                        }}
-                      >
-                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {language == "en"
-                            ? data.subCategoryEnglish
-                            : data.subCategoryChinese}
-                        </p>
-                      </div>
-                    </>
+                    <div
+                      key={i}
+                      className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
+                        selectedDetail3 == i ? "bg-blue-900" : ""
+                      }`}
+                      onClick={() => {
+                        setContent(data.content);
+                        setTitleChi(data.titleChinese);
+                        setTitleIng(data.titleEnglish);
+                        setDataImg(data.img);
+                        setDesIng(data.descriptionEnglish);
+                        setDesChi(data.descriptionChinese);
+                        setSelectedDetail3(i);
+                        setSelectedDetail2();
+                        setSelectedDetail1();
+                        setSelectedDetail4();
+                      }}
+                    >
+                      <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                        {language == "en"
+                          ? data.subCategoryEnglish
+                          : data.subCategoryChinese}
+                      </p>
+                    </div>
                   );
                 })}
               </div>
@@ -298,31 +295,30 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
               <div className="border-y border-white">
                 {importt.map((data, i) => {
                   return (
-                    <>
-                      <div
-                        className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
-                          selectedDetail4 == i ? "bg-blue-900" : ""
-                        }`}
-                        onClick={() => {
-                          setContent(data.content);
-                          setTitleChi(data.titleChinese);
-                          setTitleIng(data.titleEnglish);
-                          setDataImg(data.img);
-                          setDesIng(data.descriptionEnglish);
-                          setDesChi(data.descriptionChinese);
-                          setSelectedDetail4(i);
-                          setSelectedDetail1();
-                          setSelectedDetail2();
-                          setSelectedDetail3();
-                        }}
-                      >
-                        <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
-                          {language == "en"
-                            ? data.subCategoryEnglish
-                            : data.subCategoryChinese}
-                        </p>
-                      </div>
-                    </>
+                    <div
+                      key={i}
+                      className={`w-full h-[60px]  border-white flex items-center cursor-pointer ${
+                        selectedDetail4 == i ? "bg-blue-900" : ""
+                      }`}
+                      onClick={() => {
+                        setContent(data.content);
+                        setTitleChi(data.titleChinese);
+                        setTitleIng(data.titleEnglish);
+                        setDataImg(data.img);
+                        setDesIng(data.descriptionEnglish);
+                        setDesChi(data.descriptionChinese);
+                        setSelectedDetail4(i);
+                        setSelectedDetail1();
+                        setSelectedDetail2();
+                        setSelectedDetail3();
+                      }}
+                    >
+                      <p className="ml-5 mr-5 text-white md:text-[15px] sm:text-xs text-sm  w-full">
+                        {language == "en"
+                          ? data.subCategoryEnglish
+                          : data.subCategoryChinese}
+                      </p>
+                    </div>
                   );
                 })}
               </div>
@@ -334,7 +330,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
             {dataimg == "" ? (
               dataForeigen.map((data, i) => {
                 return i == 0 ? (
-                  <>
+                  <div key={i}>
                     <p className="text-center my-5 md:text-3xl sm:text-xl text-base font-bold text-blue-600">
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
@@ -358,45 +354,43 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                     </div>
                     {data.content.map((data, i) => {
                       return (
-                        <>
-                          <div className="px-5 mb-5">
-                            <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
-                            <div className="flex items-center w-full">
-                              <div className=" bg-blue-600 ">
-                                <p className="text-center text-white text-base font-semibold p-3">
-                                  {language == "en"
-                                    ? data.topicIng
-                                    : data.topicChi}
-                                </p>
-                              </div>
-                              <div></div>
-                            </div>
-                            <div className="content py-5 ql-editor  -translate-x-4">
-                              <p>
-                                {parse(
-                                  language == "en"
-                                    ? data.contentIng
-                                    : data.contentChi
-                                )}
+                        <div key={i} className="px-5 mb-5">
+                          <div className="h-[2px] w-full bg-gray-300  mt-5"></div>
+                          <div className="flex items-center w-full">
+                            <div className=" bg-blue-600 ">
+                              <p className="text-center text-white text-base font-semibold p-3">
+                                {language == "en"
+                                  ? data.topicIng
+                                  : data.topicChi}
                               </p>
                             </div>
-                            {data.img == "" ? (
-                              <></>
-                            ) : (
-                              <>
-                                <img
-                                  width={500}
-                                  height={300}
-                                  src={data.img}
-                                  alt=""
-                                ></img>
-                              </>
-                            )}
+                            <div></div>
                           </div>
-                        </>
+                          <div className="content py-5 ql-editor  -translate-x-4">
+                            <p>
+                              {parse(
+                                language == "en"
+                                  ? data.contentIng
+                                  : data.contentChi
+                              )}
+                            </p>
+                          </div>
+                          {data.img == "" ? (
+                            <></>
+                          ) : (
+                            <>
+                              <img
+                                width={500}
+                                height={300}
+                                src={data.img}
+                                alt=""
+                              ></img>
+                            </>
+                          )}
+                        </div>
                       );
                     })}
-                  </>
+                  </div>
                 ) : null;
               })
             ) : (

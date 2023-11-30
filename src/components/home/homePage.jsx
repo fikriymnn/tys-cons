@@ -435,16 +435,16 @@ function HomePage({
 
       <div className="md:grid md:grid-cols-3 gap-4 px-10 ">
         {dataArticle.map((data, i) => {
-          //   const timestamp = data.createdAt.toDate();
-
-          //   // Format tanggal
-          //   const formattedDate = format(timestamp, "yyyy-MM-dd");
+          const secon = data.createdAt.seconds;
+          const date = new Date(secon * 1000);
+          // Format tanggal
+          const formattedDate = format(date, "yyyy-MM-dd");
 
           return (
             <div key={i}>
               <CustomCard
                 text={language == "en" ? data.titleEnglish : data.titleChinese}
-                isi={language == "en" ? data.date : data.date}
+                isi={language == "en" ? data.date : formattedDate}
                 isi2={
                   language == "en"
                     ? data.content[0].contentIng
@@ -458,10 +458,10 @@ function HomePage({
         })}
         <div className=" flex flex-col">
           {dataArticle4.map((data, i) => {
-            // const timestamp = data.createdAt.toDate();
-
-            // // Format tanggal
-            // const formattedDate = format(timestamp, "yyyy-MM-dd");
+            const secon = data.createdAt.seconds;
+            const date = new Date(secon * 1000);
+            // Format tanggal
+            const formattedDate = format(date, "yyyy-MM-dd");
             return (
               <a key={i} href={`/articles/article?id=${data.id}`}>
                 <div className="cursor-pointer border-b-[2px] border-[#031530]  my-4 md:mb-3 md:mt-0">
@@ -469,7 +469,7 @@ function HomePage({
                     {language == "en" ? data.titleEnglish : data.titleChinese}
                   </div>
                   <h1 className="text-[#6b7280]">
-                    {language == "en" ? data.date : data.date}
+                    {language == "en" ? data.date : formattedDate}
                   </h1>
                 </div>
               </a>
