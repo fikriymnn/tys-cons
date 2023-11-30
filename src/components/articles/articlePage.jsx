@@ -29,7 +29,6 @@ function ArticlePage({ dataArticle }) {
       <div className="bg-gray-200 pt-24 pb-5 ps-5 pe-5 min-h-[700px]">
         <div className="bg-white ">
           <div className="relative p-5 pt-10">
-            <button onClick={() => console.log(dataArticle)}>tess</button>
             <div className="relative">
               <input
                 type="text"
