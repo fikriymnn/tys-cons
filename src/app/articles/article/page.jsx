@@ -121,18 +121,23 @@ function Article() {
                                     : data.contentChi
                                 )}
                               </div>
-                              {data.img == "" ? (
-                                <></>
-                              ) : (
+                              {
                                 <>
-                                  <div className="pb-5">
-                                    <img
-                                      className="w-full md:w-4/6"
-                                      src={data.img}
-                                    ></img>
-                                  </div>
+                                  {data.img.map((data, ii) => {
+                                    return data.img == "" ? (
+                                      <></>
+                                    ) : (
+                                      <div className="pb-5">
+                                        <img
+                                          alt="error"
+                                          className="w-full md:w-4/6"
+                                          src={data.img}
+                                        ></img>
+                                      </div>
+                                    );
+                                  })}
                                 </>
-                              )}
+                              }
                             </>
                           );
                         })}

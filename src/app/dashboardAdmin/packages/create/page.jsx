@@ -76,7 +76,13 @@ function CreatePackage() {
   const [desChi, setDesChi] = useState("");
 
   const [data, setData] = useState([
-    { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+    {
+      topicIng: "",
+      topicChi: "",
+      contentIng: "",
+      contentChi: "",
+      img: [{ img: "" }],
+    },
   ]);
 
   const [dataOption, setDataOption] = useState([
@@ -136,7 +142,7 @@ function CreatePackage() {
     }
   };
 
-  const handleUpload2 = async (filess, e, i) => {
+  const handleUpload2 = async (filess, e, i, ii) => {
     const files = filess;
     const { name, value } = e.target;
     const onchangeVal = [...data];
@@ -166,7 +172,7 @@ function CreatePackage() {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             console.log(url);
 
-            onchangeVal[i][name] = url;
+            onchangeVal[i][name][ii][name] = url;
             setData(onchangeVal);
             setLoading(false);
           });
@@ -203,10 +209,29 @@ function CreatePackage() {
     alert("Success");
   };
 
+  const handleClickImg = (i) => {
+    //setData([data[i].img.push("")]);
+    const onchangeVal = [...data];
+    onchangeVal[i]["img"].push({ img: "" });
+    setData(onchangeVal);
+  };
+
+  const handleDeleteImg = (i, ii) => {
+    const deleteVal = [...data];
+    deleteVal[i]["img"].splice(ii, 1);
+    setData(deleteVal);
+  };
+
   const handleClick = () => {
     setData([
       ...data,
-      { topicIng: "", topicChi: "", contentIng: "", contentChi: "", img: "" },
+      {
+        topicIng: "",
+        topicChi: "",
+        contentIng: "",
+        contentChi: "",
+        img: [{ img: "" }],
+      },
     ]);
   };
   const handleChange = (e, i) => {
@@ -835,13 +860,43 @@ function CreatePackage() {
                     </div>
                   </div>
                   <div className=" w-10/12 p-3 ps-72">
-                    <input
-                      type="file"
-                      name="img"
-                      onChange={(event) =>
-                        handleUpload2(event.target.files[0], event, i)
-                      }
-                    />
+                    {val.img.map((vall, ii) => {
+                      return (
+                        <div className="flex" key={ii}>
+                          <input
+                            type="file"
+                            name="img"
+                            onChange={(event) =>
+                              handleUpload2(event.target.files[0], event, i, ii)
+                            }
+                          />
+                          {val.img.length !== 1 && (
+                            <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                              <button
+                                type="button"
+                                onClick={(e) => handleDeleteImg(i, ii)}
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                    <div className="flex justify-center items-center gap-10 mb-20">
+                      <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            handleClickImg(i);
+                            console.log(data);
+                          }}
+                          className="font-light"
+                        >
+                          Add More
+                        </button>
+                      </div>
+                    </div>
                     {data.length !== 1 && (
                       <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
                         <button type="button" onClick={(e) => handleDelete(i)}>

@@ -434,19 +434,24 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                             )}
                           </p>
                         </div>
-                        {data.img == "" ? (
-                          <></>
-                        ) : (
+                        {
                           <>
-                            <img
-                              width={500}
-                              height={300}
-                              src={data.img}
-                              alt=""
-                              className=""
-                            ></img>
+                            {data.img.map((data, ii) => {
+                              return data.img == "" ? (
+                                <></>
+                              ) : (
+                                <img
+                                  key={ii}
+                                  width={500}
+                                  height={300}
+                                  src={data.img}
+                                  alt=""
+                                  className=""
+                                ></img>
+                              );
+                            })}
                           </>
-                        )}
+                        }
                       </div>
                     </>
                   );
