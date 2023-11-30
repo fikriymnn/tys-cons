@@ -58,22 +58,12 @@ export default function NavbarWithCTAButton({ height }) {
     try {
       const docRef = doc(db, "editHomePage", "logoWhite");
       const querySnapshot = await getDoc(docRef);
-
-      if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
       let data = [];
-
-      // doc.data() is never undefined for query doc snapshots
-
       data.push(querySnapshot.data());
 
       setLogoWhite(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -82,12 +72,6 @@ export default function NavbarWithCTAButton({ height }) {
       const docRef = doc(db, "editHomePage", "logoNav");
       const querySnapshot = await getDoc(docRef);
 
-      if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
       let data = [];
 
       // doc.data() is never undefined for query doc snapshots
@@ -96,7 +80,7 @@ export default function NavbarWithCTAButton({ height }) {
 
       setLogo(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
   const DropdownServices = () => {
@@ -119,7 +103,7 @@ export default function NavbarWithCTAButton({ height }) {
         <a href="/services/financeAccountingTax?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
-              {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
+              {language == "en" ? "Finance Accounting Tax" : "财税会计服务"}
             </p>
           </div>
         </a>

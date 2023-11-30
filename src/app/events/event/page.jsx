@@ -176,18 +176,19 @@ function Event() {
                                   )}
                                 </p>
                               </div>
-                              {data.img == "" ? (
-                                <></>
-                              ) : (
+                              {
                                 <>
-                                  <div className="pb-5">
-                                    <img
-                                      className="w-full md:w-4/6"
-                                      src={data.img}
-                                    ></img>
-                                  </div>
+                                  {data.img.map((data, ii) => {
+                                    return data.img == "" ? (
+                                      <></>
+                                    ) : (
+                                      <div key={ii} className="pb-5">
+                                        <img alt="error" src={data.img}></img>
+                                      </div>
+                                    );
+                                  })}
                                 </>
-                              )}
+                              }
                             </>
                           );
                         })}

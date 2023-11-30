@@ -57,21 +57,13 @@ export default function NavbarWithCTAButton({ height }) {
       const docRef = doc(db, "editHomePage", "logoWhite");
       const querySnapshot = await getDoc(docRef);
 
-      if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
       let data = [];
-
-      // doc.data() is never undefined for query doc snapshots
 
       data.push(querySnapshot.data());
 
       setLogoWhite(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -80,55 +72,47 @@ export default function NavbarWithCTAButton({ height }) {
       const docRef = doc(db, "editHomePage", "logoNav");
       const querySnapshot = await getDoc(docRef);
 
-      if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
       let data = [];
-
-      // doc.data() is never undefined for query doc snapshots
 
       data.push(querySnapshot.data());
 
       setLogo(data[0].img);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
   const DropdownServices = () => {
     return (
       <div className=" bg-white absolute mt-10 shadow-md z-10">
-        <a href="/services/basicEstablish">
+        <a href="/services/basicEstablish?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Basic Establishment Services" : "基础服务"}
             </p>
           </div>
         </a>
-        <a href="/services/productCertifications">
+        <a href="/services/productCertifications?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Product Certification" : "产品认证"}
             </p>
           </div>
         </a>
-        <a href="/services/financeAccountingTax">
+        <a href="/services/financeAccountingTax?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
-              {language == "en" ? "Finance Acounting Tax" : "财税会计服务"}
+              {language == "en" ? "Finance Accounting Tax" : "财税会计服务"}
             </p>
           </div>
         </a>
-        <a href="/services/TalentRecruitmentHR">
+        <a href="/services/TalentRecruitmentHR?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Talent Recruitment HR" : "人才招聘和人事"}
             </p>
           </div>
         </a>
-        <a href="/services/LegalServices">
+        <a href="/services/LegalServices?comp=0">
           <div className=" py-3 px-4 hover:bg-blue-500 hover:text-white text-slate-600">
             <p className="">
               {language == "en" ? "Legal Services" : "法律服务"}

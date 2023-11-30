@@ -243,19 +243,23 @@ function DetailPackages() {
                             language == "en" ? data.contentIng : data.contentChi
                           )}
                         </div>
-                        {data.img == "" ? (
-                          <></>
-                        ) : (
+                        {
                           <>
-                            <div className="pb-5">
-                              <img
-                                className="w-full md:w-4/6"
-                                src={data.img}
-                                alt=""
-                              ></img>
-                            </div>
+                            {data.img.map((data, ii) => {
+                              return data.img == "" ? (
+                                <></>
+                              ) : (
+                                <div key={ii} className="pb-5">
+                                  <img
+                                    alt="error"
+                                    src={data.img}
+                                    className="w-full md:w-4/6"
+                                  ></img>
+                                </div>
+                              );
+                            })}
                           </>
-                        )}
+                        }
                       </>
                     );
                   })}
