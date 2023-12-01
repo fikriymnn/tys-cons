@@ -127,10 +127,10 @@ function Article() {
                                     return data.img == "" ? (
                                       <></>
                                     ) : (
-                                      <div className="pb-5">
+                                      <div className="pb-5 w-[60%] ">
                                         <img
                                           alt="error"
-                                          className="w-full md:w-4/6"
+                                          className="w-full "
                                           src={data.img}
                                         ></img>
                                       </div>

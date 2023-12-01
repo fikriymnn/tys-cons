@@ -182,8 +182,12 @@ function Event() {
                                     return data.img == "" ? (
                                       <></>
                                     ) : (
-                                      <div key={ii} className="pb-5">
-                                        <img alt="error" src={data.img}></img>
+                                      <div className="pb-5 w-[60%] ">
+                                        <img
+                                          alt="error"
+                                          className="w-full "
+                                          src={data.img}
+                                        ></img>
                                       </div>
                                     );
                                   })}

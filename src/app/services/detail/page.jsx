@@ -186,8 +186,8 @@ function DetailServices() {
                               ? `${firsIndexRp} - ${lastIndexRp}`
                               : data.price[Index].priceRupiah
                             : Index == null
-                            ? `${firsIndex} - ${lastIndex}`
-                            : data.price[Index].priceYuan}
+                              ? `${firsIndex} - ${lastIndex}`
+                              : data.price[Index].priceYuan}
                         </p>
                         {currency == 2 ? (
                           <p className="md:text-2xl sm:text2xl text-xl">元</p>
@@ -282,11 +282,11 @@ function DetailServices() {
                               return data.img == "" ? (
                                 <></>
                               ) : (
-                                <div key={ii} className="pb-5">
+                                <div className="pb-5 w-[60%] ">
                                   <img
                                     alt="error"
+                                    className="w-full "
                                     src={data.img}
-                                    className="w-full md:w-4/6"
                                   ></img>
                                 </div>
                               );
