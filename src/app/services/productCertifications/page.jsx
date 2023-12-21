@@ -2,6 +2,7 @@ import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import ProductCertification from "@/components/service/productCertification";
+import { cache } from "react";
 
 async function getDataProductBPOM() {
   let data = [];
@@ -15,10 +16,13 @@ async function getDataProductBPOM() {
 
     const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
+    querySnapshot.forEach(
+      (doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      },
+      { cache: "no-store" }
+    );
   } catch (error) {
     console.log(error);
   }
