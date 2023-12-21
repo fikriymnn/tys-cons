@@ -15,13 +15,10 @@ async function getDataProductBPOM() {
 
     const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach(
-      (doc) => {
-        // console.log(doc.id, " => ", doc.data());
-        data.push({ ...doc.data(), id: doc.id });
-      },
-      { refetchOnMount: true }
-    );
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data());
+      data.push({ ...doc.data(), id: doc.id });
+    });
   } catch (error) {
     console.log(error);
   }

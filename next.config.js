@@ -3,11 +3,10 @@ const nextConfig = {
   images: {
     domains: ["firebasestorage.googleapis.com"],
   },
-  //experimental: true,
   serverlessConfig: {
     experimental: {
       ssr: {
-        cache: "full",
+        cache: "none",
       },
     },
   },
