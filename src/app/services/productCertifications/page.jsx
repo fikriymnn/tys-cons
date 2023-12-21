@@ -14,15 +14,12 @@ async function getDataProductBPOM() {
       orderBy("createdAt", "desc")
     );
 
-    const querySnapshot = await getDocs(q, { cache: "no store" });
+    const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach(
-      (doc) => {
-        // console.log(doc.id, " => ", doc.data());
-        data.push({ ...doc.data(), id: doc.id });
-      },
-      { cache: "no-store" }
-    );
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data());
+      data.push({ ...doc.data(), id: doc.id });
+    });
   } catch (error) {
     console.log(error);
   }

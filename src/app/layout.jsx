@@ -21,3 +21,5 @@ export default function RootLayout({ children }) {
     </LanguageProvider>
   );
 }
+
+export const revalidate = 3;
