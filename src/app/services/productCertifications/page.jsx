@@ -1,11 +1,4 @@
-import {
-  collection,
-  getDocs,
-  where,
-  query,
-  orderBy,
-  onSnapshot,
-} from "firebase/firestore";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import ProductCertification from "@/components/service/productCertification";
@@ -17,16 +10,18 @@ async function getDataProductBPOM() {
       collection(db, "service"),
       where("service", "==", "Product Certifications"),
       where("subService", "==", "BPOM Food and Drug"),
-      orderBy("createdAt", "desc"),
-      onSnapshot()
+      orderBy("createdAt", "desc")
     );
 
     const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
+    querySnapshot.forEach(
+      (doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        data.push({ ...doc.data(), id: doc.id });
+      },
+      { refetchOnMount: true }
+    );
   } catch (error) {
     console.log(error);
   }
