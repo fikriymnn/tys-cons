@@ -106,8 +106,8 @@ function DetailPackages() {
                               ? `${firsIndexRp} - ${lastIndexRp}`
                               : data.price[Index].priceRupiah
                             : Index == null
-                            ? `${firsIndex} - ${lastIndex}`
-                            : data.price[Index].priceYuan}
+                              ? `${firsIndex} - ${lastIndex}`
+                              : data.price[Index].priceYuan}
                         </p>
                         {currency == 2 ? <p className="text-2xl"> 元</p> : ""}
                       </div>
@@ -195,13 +195,13 @@ function DetailPackages() {
                                     <h2 className="md:text-sm sm:text-sm text-sm text-blue-600 line-clamp-1 ">
                                       {currency == 1
                                         ? "RP. " +
-                                          firsPriceRp +
-                                          "-" +
-                                          lastPriceRp
+                                        firsPriceRp +
+                                        "-" +
+                                        lastPriceRp
                                         : firsPriceYuan +
-                                          "-" +
-                                          lastPriceYuan +
-                                          "元"}
+                                        "-" +
+                                        lastPriceYuan +
+                                        "元"}
                                     </h2>
                                   </div>
                                 </div>
@@ -249,11 +249,11 @@ function DetailPackages() {
                               return data.img == "" ? (
                                 <></>
                               ) : (
-                                <div key={ii} className="pb-5">
+                                <div className="pb-5 w-[60%] ">
                                   <img
                                     alt="error"
+                                    className="w-full "
                                     src={data.img}
-                                    className="w-full md:w-4/6"
                                   ></img>
                                 </div>
                               );
