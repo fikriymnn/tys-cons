@@ -14,7 +14,7 @@ async function getDataProductBPOM() {
       orderBy("createdAt", "desc")
     );
 
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(q, { cache: "no store" });
 
     querySnapshot.forEach(
       (doc) => {
