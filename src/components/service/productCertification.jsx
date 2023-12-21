@@ -159,7 +159,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -200,7 +200,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -241,7 +241,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -282,7 +282,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -323,7 +323,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -364,7 +364,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
@@ -405,7 +405,7 @@ function ProductCertification({
                               </h1>
                               <h2 className="md:text-base sm:text-sm text-sm text-blue-600">
                                 {language == "en"
-                                  ? "Rp" + firsPriceRp + "-" + lastPriceRp
+                                  ? firsPriceRp + "-" + lastPriceRp
                                   : firsPriceYuan + "-" + lastPriceYuan + "元"}
                               </h2>
                             </div>
