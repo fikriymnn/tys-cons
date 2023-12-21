@@ -3,6 +3,27 @@ import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import ProductCertification from "@/components/service/productCertification";
 
+async function getDataProductBPOM() {
+  let data = [];
+  try {
+    const q = query(
+      collection(db, "service"),
+      where("service", "==", "Product Certifications"),
+      where("subService", "==", "BPOM Food and Drug"),
+      orderBy("createdAt", "desc")
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data());
+      data.push({ ...doc.data(), id: doc.id });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  return data;
+}
 async function getDataProductISO() {
   let data = [];
   try {
@@ -138,13 +159,18 @@ async function ProductCertifications() {
     where("subService", "==", "BPOM Food and Drug"),
     orderBy("createdAt", "desc")
   );
-  const querySnapshot = await getDocs(q);
-  const y = querySnapshot.forEach((doc) => {
-    // console.log(doc.id, " => ", doc.data());
-    data.push({ ...doc.data(), id: doc.id });
-  });
 
-  const dataProductBPOM = data;
+  const querySnapshot = await getDocs(q);
+
+  const y = querySnapshot.forEach(
+    (doc) => {
+      // console.log(doc.id, " => ", doc.data());
+      data.push({ ...doc.data(), id: doc.id });
+    },
+    { refetchOnMount: true }
+  );
+
+  const dataProductBPOM = await data;
   const dataProductISO = await getDataProductISO();
   const dataProductSNI = await getDataProductSNI();
   const dataProductMedical = await getDataProductMedical();
