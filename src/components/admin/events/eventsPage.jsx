@@ -2,20 +2,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/admin/navigation";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  where,
-  query,
-  getDoc,
-  deleteDoc,
-  orderBy,
-  updateDoc,
-  doc,
-  Firestore,
-} from "firebase/firestore";
-import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../../../firebase/page";
 import parse from "html-react-parser";
 import Image from "next/image";
 import "@/components/admin/editor.css";
@@ -257,6 +245,7 @@ function EventsAdminPage({ data }) {
                                       location.reload();
                                       console.log("Deleted successfully");
                                     } catch (error) {
+                                      alert(error.message);
                                       console.error("An error occured", error);
                                     }
                                   }}

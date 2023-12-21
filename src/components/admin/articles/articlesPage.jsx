@@ -2,6 +2,8 @@
 import React from "react";
 
 import { useState, useEffect } from "react";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../../../firebase/page";
 import parse from "html-react-parser";
 import Navigation from "@/components/admin/navigation";
 
@@ -238,6 +240,7 @@ function ArticlesAdminPage({ data }) {
                                         location.reload();
                                         console.log("Deleted successfully");
                                       } catch (error) {
+                                        alert(error.message);
                                         console.error(
                                           "An error occured",
                                           error

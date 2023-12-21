@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../../../firebase/page";
 import Navigation from "@/components/admin/navigation";
 
 import Image from "next/image";
@@ -230,10 +232,7 @@ function ServicesAdminPage({ data }) {
                                         location.reload();
                                         console.log("Deleted successfully");
                                       } catch (error) {
-                                        console.error(
-                                          "An error occured",
-                                          error
-                                        );
+                                        alert(error.message);
                                       }
                                     }
                                   }}
