@@ -2,6 +2,7 @@ import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
 
 import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
 import ProductCertification from "@/components/service/productCertification";
+import { cache } from "react";
 
 async function getDataProductBPOM() {
   let data = [];
