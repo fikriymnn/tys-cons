@@ -112,12 +112,7 @@ function Event() {
                             : data.titleChinese}
                         </h1>
                         <div className="">
-                          <Image
-                            src={data.img}
-                            width={1200}
-                            height={10}
-                            alt=""
-                          />
+                          <img src={data.img} width={1200} height={10} alt="" />
                         </div>
                         <div className="font-semibold">
                           <h3 className="mt-2">
