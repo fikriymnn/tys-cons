@@ -105,7 +105,7 @@ function EventsAdminPage({ data }) {
                                 <p>{i + 1}</p>
                               </div>
                               <div className="p-2 h-full w-[220px] border-s-2">
-                                <Image
+                                <img
                                   src={data.img}
                                   alt=""
                                   width={150}
@@ -142,7 +142,7 @@ function EventsAdminPage({ data }) {
                                   className="bg-yellow-400 rounded-md p-2"
                                   href={`/dashboardAdmin/events/edit?id=${data.id}`}
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/edit-svgrepo-com.svg"
@@ -174,7 +174,7 @@ function EventsAdminPage({ data }) {
                                   }}
                                   className="bg-red-600 rounded-md p-2"
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/delete-1-svgrepo-com.svg"
@@ -194,7 +194,7 @@ function EventsAdminPage({ data }) {
                                 <p>{i + 1}</p>
                               </div>
                               <div className="p-2 h-full w-[220px] border-s-2">
-                                <Image
+                                <img
                                   src={data.img}
                                   alt=""
                                   width={150}
@@ -227,7 +227,7 @@ function EventsAdminPage({ data }) {
                                   className="bg-yellow-400 rounded-md p-2"
                                   href={`/dashboardAdmin/events/edit?id=${data.id}`}
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/edit-svgrepo-com.svg"
@@ -251,7 +251,7 @@ function EventsAdminPage({ data }) {
                                   }}
                                   className="bg-red-600 rounded-md p-2"
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/delete-1-svgrepo-com.svg"

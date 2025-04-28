@@ -101,7 +101,7 @@ function ServicesAdminPage({ data }) {
                                 <p>{i + 1}</p>
                               </div>
                               <div className="p-2 h-full w-[209px] border-s-2">
-                                <Image
+                                <img
                                   width={100}
                                   height={100}
                                   src={data.img}
@@ -134,7 +134,7 @@ function ServicesAdminPage({ data }) {
                                   className="bg-yellow-400  rounded-md p-2"
                                   href={`/dashboardAdmin/services/edit?id=${data.id}`}
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/edit-svgrepo-com.svg"
@@ -157,7 +157,7 @@ function ServicesAdminPage({ data }) {
                                   }}
                                   className="bg-red-600  rounded-md p-2"
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/delete-1-svgrepo-com.svg"
@@ -177,7 +177,7 @@ function ServicesAdminPage({ data }) {
                                 <p>{i + 1}</p>
                               </div>
                               <div className="p-2 h-full w-[209px] border-s-2">
-                                <Image
+                                <img
                                   width={100}
                                   height={100}
                                   src={data.img}
@@ -210,7 +210,7 @@ function ServicesAdminPage({ data }) {
                                   className="bg-yellow-400  rounded-md p-2"
                                   href={`/dashboardAdmin/services/edit?id=${data.id}`}
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/edit-svgrepo-com.svg"
@@ -238,7 +238,7 @@ function ServicesAdminPage({ data }) {
                                   }}
                                   className="bg-red-600  rounded-md p-2"
                                 >
-                                  <Image
+                                  <img
                                     width={35}
                                     height={35}
                                     src="/assets/images/delete-1-svgrepo-com.svg"
