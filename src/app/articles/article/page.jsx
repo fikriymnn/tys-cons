@@ -84,12 +84,7 @@ function Article() {
                             : data.titleChinese}
                         </h1>
                         <div className="">
-                          <Image
-                            src={data.img}
-                            width={1200}
-                            height={10}
-                            alt=""
-                          />
+                          <img src={data.img} width={1200} height={10} alt="" />
                         </div>
                         <div className=" pt-10 pb-10 ql-editor  -translate-x-4">
                           <p>
