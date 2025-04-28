@@ -90,14 +90,14 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                   : "外资公司注册"}
               </p>
               {dropdown ? (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
                   className="mr-5 rotate-180"
                 />
               ) : (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
@@ -151,14 +151,14 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                 {language == "en" ? "  Tax Regulation" : "税务政策"}
               </p>
               {dropdown2 ? (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
                   className="mr-5 rotate-180"
                 />
               ) : (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
@@ -212,14 +212,14 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                 {language == "en" ? "  Labor Policy" : "劳动政策"}
               </p>
               {dropdown3 ? (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
                   className="mr-5 rotate-180"
                 />
               ) : (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
@@ -275,14 +275,14 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                   : "进出口手续政策"}
               </p>
               {dropdown4 ? (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
                   className="mr-5 rotate-180"
                 />
               ) : (
-                <Image
+                <img
                   src={"/dropdown.png"}
                   width={15}
                   height={15}
@@ -335,7 +335,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                       {language == "en" ? data.titleEnglish : data.titleChinese}
                     </p>
                     <div className="flex items-center w-full px-5">
-                      <Image
+                      <img
                         src={data.img}
                         width={1000}
                         height={400}
@@ -399,7 +399,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                   {language == "en" ? titleIng : titleChi}
                 </p>
                 <div className="flex items-center w-full px-5">
-                  <Image
+                  <img
                     src={dataimg}
                     width={1000}
                     height={400}
