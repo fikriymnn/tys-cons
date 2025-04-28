@@ -20,7 +20,12 @@ import ServicesAdminPage from "../../../components/admin/service/servicePage";
 async function getDataService() {
   let data = [];
   try {
-    const q = query(collection(db, "service"), orderBy("createdAt", "desc"));
+    const q = query(
+      collection(db, "service"),
+      where("service", "!=", ""),
+      orderBy("service"),
+      orderBy("createdAt", "desc")
+    );
 
     const querySnapshot = await getDocs(q);
 
