@@ -21,6 +21,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { db, storage } from "../../../../../firebase/page";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { format } from "date-fns";
 import "@/components/admin/editor.css";
 function CreateArticle() {
@@ -187,7 +188,42 @@ function CreateArticle() {
     deleteVal.splice(i, 1);
     setData(deleteVal);
   };
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["code-block", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ align: [] }],
 
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "strike",
+    "bold",
+    "italic",
+    "underline",
+    "link",
+    "align",
+    "direction",
+    "list",
+    "code-block",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "font",
+    "background",
+    "size",
+  ];
   return (
     <>
       {isAlert && (
@@ -297,10 +333,13 @@ function CreateArticle() {
                 </p>
               </div>
               <div className=" w-10/12 p-3">
-                <Quilltext
+                <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesIng(e)}
                   name="contentIng"
                   placeholder={`Input Description English For Description ${1}`}
+                  className="h-[200px] my-4 "
                 />
               </div>
             </div>
@@ -312,10 +351,13 @@ function CreateArticle() {
                 </p>
               </div>
               <div className=" w-10/12 p-3">
-                <Quilltext
+                <ReactQuill
+                  modules={modules}
+                  format={formats}
                   onChange={(e) => setDesChi(e)}
                   name="contentChi"
                   placeholder={`Input Description Mandarin For Description ${1}`}
+                  className="h-[200px] my-4 "
                 />
               </div>
             </div>
@@ -388,7 +430,9 @@ function CreateArticle() {
                       </p>
                     </div>
                     <div className=" w-10/12 p-3">
-                      <Quilltext
+                      <ReactQuill
+                        modules={modules}
+                        format={formats}
                         theme="snow"
                         value={val.contentIng}
                         onChange={(e) =>
@@ -403,6 +447,7 @@ function CreateArticle() {
                         placeholder={`Input Description English For Description ${
                           i + 1
                         }`}
+                        className="h-[200px] my-4 "
                       />
                     </div>
                   </div>
@@ -414,7 +459,9 @@ function CreateArticle() {
                       </p>
                     </div>
                     <div className=" w-10/12 p-3">
-                      <Quilltext
+                      <ReactQuill
+                        modules={modules}
+                        format={formats}
                         value={val.contentChi}
                         onChange={(e) =>
                           handleChange(
@@ -428,6 +475,7 @@ function CreateArticle() {
                         placeholder={`Input Description Mandarin For Description ${
                           i + 1
                         }`}
+                        className="h-[200px] mt-4 mb-10 "
                       />
                     </div>
                   </div>

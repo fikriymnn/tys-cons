@@ -323,7 +323,8 @@ function EditEvent() {
         [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
         [{ direction: "rtl" }], // text direction
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
         [{ align: [] }],
 
         ["clean"],
@@ -344,8 +345,9 @@ function EditEvent() {
     "indent",
     "direction",
     "color",
-
+    "font",
     "background",
+    "size",
   ];
   return (
     <>

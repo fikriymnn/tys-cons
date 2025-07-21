@@ -186,8 +186,8 @@ function DetailServices() {
                               ? `${firsIndexRp} - ${lastIndexRp}`
                               : data.price[Index].priceRupiah
                             : Index == null
-                              ? `${firsIndex} - ${lastIndex}`
-                              : data.price[Index].priceYuan}
+                            ? `${firsIndex} - ${lastIndex}`
+                            : data.price[Index].priceYuan}
                         </p>
                         {currency == 2 ? (
                           <p className="md:text-2xl sm:text2xl text-xl">元</p>
@@ -246,15 +246,34 @@ function DetailServices() {
                       </fieldset>
                     </div>
                   </div>
-                  <div className="content pb-3 ql-editor  -translate-x-4">
-                    <p>
+
+                  <div className="content pb-3 ql-editor -translate-x-4 ">
+                    <div className="h-[2px] w-full bg-gray-300 "></div>
+                    <div className="description-content">
                       {parse(
                         language == "en"
                           ? data.descriptionEnglish
                           : data.descriptionChinese
                       )}
-                    </p>
+                    </div>
                   </div>
+
+                  <style jsx>{`
+                    .description-content > :global(*:first-child) {
+                      background-color: #2563eb !important;
+                      color: white !important;
+                      padding: 8px 16px !important;
+                      margin: 0 0 16px 0 !important;
+                      font-weight: 600 !important;
+                      display: inline-block !important;
+                      width: auto !important;
+                    }
+
+                    .description-content > :global(*:first-child *) {
+                      background-color: transparent !important;
+                      color: white !important;
+                    }
+                  `}</style>
                   {data.content.map((data, i) => {
                     return (
                       <>
