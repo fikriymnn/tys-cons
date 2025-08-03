@@ -234,7 +234,9 @@ const CustomFooter = () => {
             {" "}
             {language == "en" ? "Contact Us" : "联系我们"}
           </p>
-          <a href={`https://www.google.com/maps/search/${address}`}>
+          <a
+            href={`https://www.google.com/maps?sca_esv=cba8e83070f3f7ab&output=search&q=pt+tys+consultation&source=lnms&fbs=AIIjpHys8BzNH5D6fIKg_ctYEpnGedDHqnvAFxY9BXiioaw7BTvRLriX9HlsX8RJhTrFjmBPldud43Z9Z-Z633r38snpnIGZlqUHK550Xpogte8ca2k-91-L0ezAHjEwK88tsjW4Sn3q_esvzPxcbRc6DZAmb5OVKYYyPhHiS84IS8zPbfV8w-ohROk99agdnWdRm7Iht_vNKsROQ3AhyyftEmcR5wwYtg&entry=mc&ved=1t:200715&ictx=111`}
+          >
             <p className=" text-white pt-3 pb-2 hover:translate-x-1 duration-100 hover:text-blue-200 ">
               {address}
             </p>
