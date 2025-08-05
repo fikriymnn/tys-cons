@@ -52,6 +52,7 @@ function EditService() {
       contentIng: "",
       contentChi: "",
       img: [{ img: "" }],
+      imgChi: [{ img: "" }],
     },
   ]);
 
@@ -202,7 +203,6 @@ function EditService() {
         img: downloadURL,
         content: data,
         price: dataOption,
-
         service: service,
         subService: subService,
         titleChinese: titleChi,
@@ -221,9 +221,21 @@ function EditService() {
     setData(onchangeVal);
   };
 
+  const handleClickImgChi = (i) => {
+    //setData([data[i].img.push("")]);
+    const onchangeVal = [...data];
+    onchangeVal[i]["imgChi"].push({ img: "" });
+    setData(onchangeVal);
+  };
+
   const handleDeleteImg = (i, ii) => {
     const deleteVal = [...data];
     deleteVal[i]["img"].splice(ii, 1);
+    setData(deleteVal);
+  };
+  const handleDeleteImgChi = (i, ii) => {
+    const deleteVal = [...data];
+    deleteVal[i]["imgChi"].splice(ii, 1);
     setData(deleteVal);
   };
 
@@ -814,6 +826,50 @@ function EditService() {
                     ></textarea> */}
                   </div>
                 </div>
+                <div className=" w-10/12 p-3   ps-72 pt-20">
+                  {val.img.map((vall, ii) => {
+                    return (
+                      <div className="flex" key={ii}>
+                        <input
+                          type="file"
+                          name="img"
+                          onChange={(event) =>
+                            handleUpload2(event.target.files[0], event, i, ii)
+                          }
+                        />
+                        {val.img.length !== 1 && (
+                          <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                            <button
+                              type="button"
+                              onClick={(e) => handleDeleteImg(i, ii)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                  <div className="flex justify-center items-center gap-10 mb-20">
+                    <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleClickImg(i);
+                          console.log(data);
+                        }}
+                        className="font-light"
+                      >
+                        Add More
+                      </button>
+                    </div>
+                  </div>
+                  {data.length !== 1 && (
+                    <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                      <button onClick={(e) => handleDelete(i)}>Delete</button>
+                    </div>
+                  )}
+                </div>
                 <div className=" flex py-1 px-20">
                   <div className=" w-2/12 text-end p-3 py-5">
                     <p>
@@ -858,21 +914,21 @@ function EditService() {
                   </div>
                 </div>
                 <div className=" w-10/12 p-3   ps-72">
-                  {val.img.map((vall, ii) => {
+                  {val.imgChi?.map((vall, ii) => {
                     return (
                       <div className="flex" key={ii}>
                         <input
                           type="file"
-                          name="img"
+                          name="imgChi"
                           onChange={(event) =>
                             handleUpload2(event.target.files[0], event, i, ii)
                           }
                         />
-                        {val.img.length !== 1 && (
+                        {val.imgChi?.length !== 1 && (
                           <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
                             <button
                               type="button"
-                              onClick={(e) => handleDeleteImg(i, ii)}
+                              onClick={(e) => handleDeleteImgChi(i, ii)}
                             >
                               Delete
                             </button>
@@ -886,7 +942,7 @@ function EditService() {
                       <button
                         type="button"
                         onClick={() => {
-                          handleClickImg(i);
+                          handleClickImgChi(i);
                           console.log(data);
                         }}
                         className="font-light"

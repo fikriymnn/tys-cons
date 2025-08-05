@@ -50,7 +50,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        // console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -73,7 +73,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -96,7 +96,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -119,7 +119,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -142,7 +142,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        // console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -165,7 +165,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -188,7 +188,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -211,7 +211,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -233,7 +233,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -255,7 +255,7 @@ function AboutAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -631,7 +631,14 @@ function AboutAdmin() {
                       {dataAboutBarcode.length > 0 &&
                         dataAboutBarcode.map((data, i) => {
                           // eslint-disable-next-line react/jsx-key
-                          return <Image width={100} height={100} src={data.img} alt="" />;
+                          return (
+                            <Image
+                              width={100}
+                              height={100}
+                              src={data.img}
+                              alt=""
+                            />
+                          );
                         })}
                     </div>
                   </div>

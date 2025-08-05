@@ -45,6 +45,7 @@ function CreateService() {
       contentIng: "",
       contentChi: "",
       img: [{ img: "" }],
+      imgChi: [{ img: "" }],
     },
   ]);
 
@@ -155,9 +156,7 @@ function CreateService() {
       date: date,
       createdAt: today,
       img: downloadURL,
-
       price: dataOption,
-
       service: service,
       subService: subService,
       titleChinese: titleChi,
@@ -174,9 +173,22 @@ function CreateService() {
     setData(onchangeVal);
   };
 
+  const handleClickImgChi = (i) => {
+    //setData([data[i].img.push("")]);
+    const onchangeVal = [...data];
+    onchangeVal[i]["imgChi"].push({ img: "" });
+    setData(onchangeVal);
+  };
+
   const handleDeleteImg = (i, ii) => {
     const deleteVal = [...data];
     deleteVal[i]["img"].splice(ii, 1);
+    setData(deleteVal);
+  };
+
+  const handleDeleteImgChi = (i, ii) => {
+    const deleteVal = [...data];
+    deleteVal[i]["imgChi"].splice(ii, 1);
     setData(deleteVal);
   };
 
@@ -836,36 +848,8 @@ function CreateService() {
                         />
                       </div>
                     </div>
-                    <div className=" flex py-1 px-20">
-                      <div className=" w-2/12 text-end p-3 py-5">
-                        <p>
-                          Description
-                          <span className="text-red-600"> Chinese</span> :
-                        </p>
-                      </div>
-                      <div className=" w-10/12 p-3">
-                        <ReactQuill
-                          modules={modules}
-                          format={formats}
-                          value={val.contentChi}
-                          onChange={(e) =>
-                            handleChange(
-                              {
-                                target: { value: e, name: "contentChi" },
-                              },
-                              i
-                            )
-                          }
-                          name="contentChi"
-                          placeholder={`Input Description Chinese For Description ${
-                            i + 1
-                          }`}
-                          maxLength={1000}
-                          className="h-[200px] my-10 "
-                        />
-                      </div>
-                    </div>
-                    <div className=" w-10/12 p-3 ps-72">
+
+                    <div className=" w-10/12 p-3 ps-72 pt-20">
                       {val.img.map((vall, ii) => {
                         return (
                           <div className="flex" key={ii}>
@@ -913,6 +897,89 @@ function CreateService() {
                           <button
                             type="button"
                             onClick={(e) => handleDelete(i)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <div className=" flex py-1 px-20">
+                      <div className=" w-2/12 text-end p-3 py-5">
+                        <p>
+                          Description
+                          <span className="text-red-600"> Chinese</span> :
+                        </p>
+                      </div>
+                      <div className=" w-10/12 p-3">
+                        <ReactQuill
+                          modules={modules}
+                          format={formats}
+                          value={val.contentChi}
+                          onChange={(e) =>
+                            handleChange(
+                              {
+                                target: { value: e, name: "contentChi" },
+                              },
+                              i
+                            )
+                          }
+                          name="contentChi"
+                          placeholder={`Input Description Chinese For Description ${
+                            i + 1
+                          }`}
+                          maxLength={1000}
+                          className="h-[200px] my-10 "
+                        />
+                      </div>
+                    </div>
+                    <div className=" w-10/12 p-3 ps-72 pt-20">
+                      {val.imgChi.map((vall, ii) => {
+                        return (
+                          <div className="flex" key={ii}>
+                            <input
+                              type="file"
+                              name="imgChi"
+                              onChange={(event) =>
+                                handleUpload2(
+                                  event.target.files[0],
+                                  event,
+                                  i,
+                                  ii
+                                )
+                              }
+                            />
+                            {val.imgChi.length !== 1 && (
+                              <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                                <button
+                                  type="button"
+                                  onClick={(e) => handleDeleteImgChi(i, ii)}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                      <div className="flex justify-center items-center gap-10 mb-20">
+                        <div className="w-32 bg-blue-950 text-center rounded-xl text-white ">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              handleClickImgChi(i);
+                              console.log(data);
+                            }}
+                            className="font-light"
+                          >
+                            Add More
+                          </button>
+                        </div>
+                      </div>
+                      {data.length !== 1 && (
+                        <div className="w-32 mt-5 bg-red-700 text-center rounded-sm text-white">
+                          <button
+                            type="button"
+                            onClick={(e) => handleDeleteChi(i)}
                           >
                             Delete
                           </button>

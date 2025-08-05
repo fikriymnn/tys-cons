@@ -98,10 +98,10 @@ function EditPackage() {
       try {
         const querySnapshot = await getDocs(collection(db, "service"));
         let data = [];
-        console.log(querySnapshot);
+        //console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          //console.log(doc.id, " => ", doc.data());
           data.push({ ...doc.data(), id: doc.id });
         });
         setDataService(data);

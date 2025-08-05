@@ -23,7 +23,7 @@ function HomePage({
 }) {
   const { language, changeLanguage } = useLanguage();
   const [Index, setIndex] = useState();
-  console.log("datapapage", dataPackage);
+  //console.log("datapapage", dataPackage);
   return (
     <>
       <div className="z-40">
@@ -454,7 +454,7 @@ function HomePage({
             )
             .join("");
 
-          console.log(data);
+          //console.log(data);
           return (
             <div key={i}>
               <CustomCard

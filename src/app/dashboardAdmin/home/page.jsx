@@ -40,7 +40,7 @@ function HomeAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        // console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -63,7 +63,7 @@ function HomeAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -86,7 +86,7 @@ function HomeAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -109,7 +109,7 @@ function HomeAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        // console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -132,7 +132,7 @@ function HomeAdmin() {
       const querySnapshot = await getDoc(docRef);
 
       if (querySnapshot.exists()) {
-        console.log("Document data:", querySnapshot.data());
+        //console.log("Document data:", querySnapshot.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -257,8 +257,16 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoWhite.length > 0 &&
                           dataLogoWhite.map((data, i) => {
-                            return <>
-                              <Image width={220} height={100} src={data.img} alt="" /></>;
+                            return (
+                              <>
+                                <Image
+                                  width={220}
+                                  height={100}
+                                  src={data.img}
+                                  alt=""
+                                />
+                              </>
+                            );
                           })}
                       </div>
                     </div>
@@ -290,8 +298,16 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoNav.length > 0 &&
                           dataLogoNav.map((data, i) => {
-                            return <>
-                              <Image width={220} height={100} src={data.img} alt="" /></>;
+                            return (
+                              <>
+                                <Image
+                                  width={220}
+                                  height={100}
+                                  src={data.img}
+                                  alt=""
+                                />
+                              </>
+                            );
                           })}
                       </div>
                     </div>
@@ -323,7 +339,17 @@ function HomeAdmin() {
                       <div className="flex flex-col">
                         {dataLogoFoot.length > 0 &&
                           dataLogoFoot.map((data, i) => {
-                            return <><Image width={220} height={100} className="h-14" src={data.img} alt="" /></>;
+                            return (
+                              <>
+                                <Image
+                                  width={220}
+                                  height={100}
+                                  className="h-14"
+                                  src={data.img}
+                                  alt=""
+                                />
+                              </>
+                            );
                           })}
                       </div>
                     </div>

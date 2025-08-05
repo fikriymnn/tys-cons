@@ -295,7 +295,7 @@ function DetailServices() {
                             )}
                           </p>
                         </div>
-                        {
+                        {language == "en" ? (
                           <>
                             {data.img.map((data, ii) => {
                               return data.img == "" ? (
@@ -311,7 +311,23 @@ function DetailServices() {
                               );
                             })}
                           </>
-                        }
+                        ) : (
+                          <>
+                            {data.imgChi?.map((data, ii) => {
+                              return data.img == "" ? (
+                                <></>
+                              ) : (
+                                <div className="pb-5 w-[60%] ">
+                                  <img
+                                    alt="error"
+                                    className="w-full "
+                                    src={data.img}
+                                  ></img>
+                                </div>
+                              );
+                            })}
+                          </>
+                        )}
                       </>
                     );
                   })}

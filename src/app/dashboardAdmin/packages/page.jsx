@@ -43,10 +43,10 @@ function PackageAdmin() {
         const q = query(ordersRef, orderBy("createdAt", "desc"));
         const querySnapshot = await getDocs(q);
         let data = [];
-        console.log(querySnapshot);
+        //console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          // console.log(doc.id, " => ", doc.data());
           data.push({ ...doc.data(), id: doc.id });
         });
         setDataPackage(data);
