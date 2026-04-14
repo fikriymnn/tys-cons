@@ -24,7 +24,7 @@ async function getDataService() {
       collection(db, "service"),
       where("service", "!=", ""),
       orderBy("service"),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "desc"),
     );
 
     const querySnapshot = await getDocs(q);
@@ -46,4 +46,4 @@ async function ServicesAdmin() {
 }
 
 export default ServicesAdmin;
-export const revalidate = 3;
+export const revalidate = 300;
