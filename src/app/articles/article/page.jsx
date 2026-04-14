@@ -91,7 +91,7 @@ function Article() {
                             {parser(
                               language == "en"
                                 ? data.descriptionEnglish
-                                : data.descriptionChinese
+                                : data.descriptionChinese,
                             )}
                           </p>
                         </div>
@@ -113,7 +113,7 @@ function Article() {
                                 {parser(
                                   language == "en"
                                     ? data.contentIng
-                                    : data.contentChi
+                                    : data.contentChi,
                                 )}
                               </div>
                               {

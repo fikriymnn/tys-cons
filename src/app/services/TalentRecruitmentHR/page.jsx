@@ -1,130 +1,122 @@
-import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
+"use client";
 
-import { db, storage, firebaseAnalytics } from "../../../../firebase/page";
+import { useEffect, useState } from "react";
+import { collection, getDocs, where, query, orderBy } from "firebase/firestore";
+import { db } from "../../../../firebase/page";
 import TalentRecruitmentHR from "@/components/service/talentRecruitmentHR";
 
-async function getDataTalentTranslator() {
-  let data = [];
-  try {
-    const q = query(
-      collection(db, "service"),
-      where("service", "==", "Talent Recruitment HR"),
-      where("subService", "==", "Translator Assistant"),
-      orderBy("createdAt", "desc")
+export default function ProductTalent() {
+  const [data, setData] = useState({
+    translator: [],
+    finance: [],
+    marketing: [],
+    management: [],
+    hr: [],
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async (subService) => {
+    const snapshot = await getDocs(
+      query(
+        collection(db, "service"),
+        where("service", "==", "Talent Recruitment HR"),
+        where("subService", "==", subService),
+        orderBy("createdAt", "desc"),
+      ),
     );
 
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
+    const arr = [];
+    snapshot.forEach((doc) => {
+      arr.push({ ...doc.data(), id: doc.id });
     });
-  } catch (error) {
-    console.log(error);
-  }
-  return data;
-}
-async function getDataTalentFinance() {
-  let data = [];
-  try {
-    const q = query(
-      collection(db, "service"),
-      where("service", "==", "Talent Recruitment HR"),
-      where("subService", "==", "Finance Accounting Tax"),
-      orderBy("createdAt", "desc")
+
+    return arr;
+  };
+
+  useEffect(() => {
+    async function getAllData() {
+      try {
+        const [translator, finance, marketing, management, hr] =
+          await Promise.all([
+            fetchData("Translator Assistant"),
+            fetchData("Finance Accounting Tax"),
+            fetchData("Marketing Sales"),
+            fetchData("Management Candidate"),
+            fetchData("HR Management Service"),
+          ]);
+
+        setData({
+          translator,
+          finance,
+          marketing,
+          management,
+          hr,
+        });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getAllData();
+  }, []);
+
+  // 🔥 Loading skeleton (konsisten semua page)
+  if (loading) {
+    return (
+      <div className="pt-24 px-5 bg-gray-200 min-h-[700px]">
+        {/* Breadcrumb */}
+        <div className="flex pb-5 gap-2">
+          <div className="w-24 h-4 bg-gray-300 rounded animate-pulse"></div>
+          <div className="w-40 h-4 bg-blue-300 rounded animate-pulse"></div>
+        </div>
+
+        <div className="bg-white">
+          {/* Tabs */}
+          <div className="p-5 pt-3">
+            <div className="flex gap-5 border-b overflow-auto h-16 items-center">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-32 h-4 bg-gray-300 rounded animate-pulse"
+                ></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card Grid */}
+          <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-5 px-5 pb-5">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <div
+                key={i}
+                className="bg-white shadow-xl md:h-72 grid md:block sm:block grid-cols-2"
+              >
+                {/* Image */}
+                <div className="h-40 bg-gray-300 animate-pulse"></div>
+
+                {/* Content */}
+                <div className="p-3 space-y-3">
+                  <div className="h-4 bg-gray-300 rounded animate-pulse"></div>
+                  <div className="h-4 w-3/4 bg-gray-300 rounded animate-pulse"></div>
+                  <div className="h-4 w-1/2 bg-blue-300 rounded animate-pulse"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     );
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
   }
-  return data;
-}
-async function getDataTalentMarketing() {
-  let data = [];
-  try {
-    const q = query(
-      collection(db, "service"),
-      where("service", "==", "Talent Recruitment HR"),
-      where("subService", "==", "Marketing Sales"),
-      orderBy("createdAt", "desc")
-    );
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  return data;
-}
-async function getDataTalentMenagement() {
-  let data = [];
-  try {
-    const q = query(
-      collection(db, "service"),
-      where("service", "==", "Talent Recruitment HR"),
-      where("subService", "==", "Management Candidate"),
-      orderBy("createdAt", "desc")
-    );
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  return data;
-}
-async function getDataTalentHR() {
-  let data = [];
-  try {
-    const q = query(
-      collection(db, "service"),
-      where("service", "==", "Talent Recruitment HR"),
-      where("subService", "==", "HR Management Service"),
-      orderBy("createdAt", "desc")
-    );
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
-      data.push({ ...doc.data(), id: doc.id });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  return data;
-}
-
-async function ProductTalent() {
-  const dataTalentTranslator = await getDataTalentTranslator();
-  const dataTalentFinance = await getDataTalentFinance();
-  const dataTalentMarketing = await getDataTalentMarketing();
-  const dataTalentMenagement = await getDataTalentMenagement();
-  const dataTalentHR = await getDataTalentHR();
 
   return (
     <TalentRecruitmentHR
-      dataTalentFinance={JSON.parse(JSON.stringify(dataTalentFinance))}
-      dataTalentHR={JSON.parse(JSON.stringify(dataTalentHR))}
-      dataTalentMarketing={JSON.parse(JSON.stringify(dataTalentMarketing))}
-      dataTalentMenagement={JSON.parse(JSON.stringify(dataTalentMenagement))}
-      dataTalentTranslator={JSON.parse(JSON.stringify(dataTalentTranslator))}
+      dataTalentTranslator={data.translator}
+      dataTalentFinance={data.finance}
+      dataTalentMarketing={data.marketing}
+      dataTalentMenagement={data.management}
+      dataTalentHR={data.hr}
     />
   );
 }
-
-export default ProductTalent;

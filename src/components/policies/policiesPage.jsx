@@ -348,7 +348,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                         {parse(
                           language == "en"
                             ? data.descriptionEnglish
-                            : data.descriptionChinese
+                            : data.descriptionChinese,
                         )}
                       </div>
                     </div>
@@ -371,7 +371,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                               {parse(
                                 language == "en"
                                   ? data.contentIng
-                                  : data.contentChi
+                                  : data.contentChi,
                               )}
                             </p>
                           </div>
@@ -430,7 +430,7 @@ function PoliciesPage({ dataForeigen, dataTak, dataLabor, dataImport }) {
                             {parse(
                               language == "en"
                                 ? data.contentIng
-                                : data.contentChi
+                                : data.contentChi,
                             )}
                           </p>
                         </div>
