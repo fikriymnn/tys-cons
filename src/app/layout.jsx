@@ -21,4 +21,4 @@ export default function RootLayout({ children }) {
     </LanguageProvider>
   );
 }
-export const revalidate = 300;
+//export const revalidate = 300;
