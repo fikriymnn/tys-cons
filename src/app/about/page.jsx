@@ -1,101 +1,108 @@
-import {
-  collection,
-  addDoc,
-  getDocs,
-  where,
-  query,
-  getDoc,
-  deleteDoc,
-  updateDoc,
-  doc,
-  Firestore,
-} from "firebase/firestore";
-import { db, storage, firebaseAnalytics } from "../../../firebase/page";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebase/page";
 import AboutPage from "@/components/about/aboutPage";
 
-async function getDataAboutPhone() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "phone");
-    const querySnapshot = await getDoc(docRef);
+export default function About() {
+  const [data, setData] = useState({
+    address: "",
+    email: "",
+    phone: "",
+    heading: { chi: "", ing: "" },
+    paragraph: { chi: "", ing: "" },
+  });
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  return data[0].no;
-}
+  const [loading, setLoading] = useState(true);
 
-async function getDataHomeParagraph() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "paragraph");
-    const querySnapshot = await getDoc(docRef);
+  useEffect(() => {
+    async function getAboutData() {
+      try {
+        const [phone, paragraph, heading, address, email] = await Promise.all([
+          getDoc(doc(db, "editAbout", "phone")),
+          getDoc(doc(db, "editAbout", "paragraph")),
+          getDoc(doc(db, "editAbout", "heading")),
+          getDoc(doc(db, "editAbout", "address")),
+          getDoc(doc(db, "editAbout", "email")),
+        ]);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  return [{ chi: data[0].chinese, ing: data[0].english }];
-}
+        setData({
+          phone: phone.data()?.no || "",
+          paragraph: {
+            chi: paragraph.data()?.chinese || "",
+            ing: paragraph.data()?.english || "",
+          },
+          heading: {
+            chi: heading.data()?.chinese || "",
+            ing: heading.data()?.english || "",
+          },
+          address: address.data()?.address || "",
+          email: email.data()?.email || "",
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-async function getDataHomeHeading() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "heading");
-    const querySnapshot = await getDoc(docRef);
+    getAboutData();
+  }, []);
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  return [{ ing: data[0].english, chi: data[0].chinese }];
-}
+  if (loading)
+    return (
+      <>
+        <div className="px-5 md:px-[5%] sm:px-10 pt-36 animate-pulse">
+          {/* Heading */}
+          <div className="h-10 bg-gray-300 w-1/2 mb-4 rounded"></div>
 
-async function getDataAboutAdress() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "address");
-    const querySnapshot = await getDoc(docRef);
+          {/* Paragraph */}
+          <div className="h-5 bg-gray-300 w-full mb-2 rounded"></div>
+          <div className="h-5 bg-gray-300 w-5/6 mb-2 rounded"></div>
+          <div className="h-5 bg-gray-300 w-4/6 mb-6 rounded"></div>
 
-    // doc.data() is never undefined for query doc snapshots
+          {/* Grid */}
+          <div className="md:grid md:grid-cols-2 py-10 gap-5">
+            {/* Left (map + info) */}
+            <div>
+              <div className="w-full h-80 bg-gray-300 rounded mb-6"></div>
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  return data[0].address;
-}
-async function getDataAboutEmail() {
-  let data = [];
-  try {
-    const docRef = doc(db, "editAbout", "email");
-    const querySnapshot = await getDoc(docRef);
+              <div className="h-5 bg-gray-300 w-3/4 mb-4 rounded"></div>
+              <div className="h-5 bg-gray-300 w-2/3 mb-4 rounded"></div>
+              <div className="h-5 bg-gray-300 w-1/2 mb-4 rounded"></div>
+            </div>
 
-    data.push(querySnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  return data[0].email;
-}
+            {/* Right (form) */}
+            <div>
+              <div className="h-5 bg-gray-300 w-1/3 mb-2 rounded"></div>
+              <div className="h-10 bg-gray-300 w-full mb-4 rounded"></div>
 
-async function About() {
-  const address = await getDataAboutAdress();
-  const email = await getDataAboutEmail();
-  const heading = await getDataHomeHeading();
-  const paragraf = await getDataHomeParagraph();
-  const phone = await getDataAboutPhone();
+              <div className="h-5 bg-gray-300 w-1/3 mb-2 rounded"></div>
+              <div className="h-10 bg-gray-300 w-full mb-4 rounded"></div>
+
+              <div className="h-5 bg-gray-300 w-1/3 mb-2 rounded"></div>
+              <div className="h-10 bg-gray-300 w-full mb-4 rounded"></div>
+
+              <div className="h-5 bg-gray-300 w-1/3 mb-2 rounded"></div>
+              <div className="h-24 bg-gray-300 w-full mb-4 rounded"></div>
+
+              <div className="h-12 bg-gray-400 w-full rounded"></div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+
   return (
     <AboutPage
-      address={address}
-      email={email}
-      chinaHeading={heading[0].chi}
-      inggrisHeading={heading[0].ing}
-      chinaParagraph={paragraf[0].chi}
-      inggrisParagraph={paragraf[0].ing}
-      phone={phone}
+      address={data.address}
+      email={data.email}
+      chinaHeading={data.heading.chi}
+      inggrisHeading={data.heading.ing}
+      chinaParagraph={data.paragraph.chi}
+      inggrisParagraph={data.paragraph.ing}
+      phone={data.phone}
     />
   );
 }
-
-export default About;

@@ -41,4 +41,4 @@ async function ArticlesAdmin() {
 }
 
 export default ArticlesAdmin;
-export const revalidate = 3;
+export const revalidate = 300;

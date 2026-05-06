@@ -42,10 +42,21 @@ export default function NavbarWithCTAButton({ height }) {
       SetNavbar(false);
     }
   };
-  if (typeof window !== "undefined") {
-    // browser code
-    window.addEventListener("scroll", ChangeBG);
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < height) {
+        SetNavbar(true);
+      } else {
+        SetNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [height]);
 
   useEffect(() => {
     getDataHomeLogoNav();
